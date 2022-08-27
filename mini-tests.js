@@ -1,5 +1,12 @@
 const MINI_TESTS = [
   {
+    section: "variable X",
+    description: "variable X exists",
+    function: () => {
+      expect(x).isDeclared();
+    },
+  },
+  {
     section: "variable fruit",
     description: "variable fruit exists",
     function: () => {

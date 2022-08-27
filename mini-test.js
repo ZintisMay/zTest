@@ -5,6 +5,10 @@ const FAILED_CSS = "color:red";
 const WARNING_CSS = "color:orange";
 const NORMAL_CSS = "color:default";
 
+const LIGHT_RED = "#FF6961";
+const LIGHT_GREEN = "#77DD77";
+const GRAY = "#6c757d";
+
 function miniTestAll(arr) {
   let miniTestResults = arr.map((item) => {
     const testResult = miniTest(item.description, item.function);
@@ -127,38 +131,64 @@ function miniTestDisplayResults(miniTestResults) {
 }
 
 function populateSection(arr) {
-  let div = document.createElement("div");
-  div.style.padding = "10px 10px";
-  div.style.margin = "5px";
-  // div.style.border = "5px solid black";
-  div.style.backgroundColor = "gray";
-  div.style.borderRadius = "10px";
+  // Create Div
+  let testConsole = document.createElement("div");
+  let anyTestFailed = arr.find((item) => !!item.result);
+  let allTestsFailed = arr.every((item) => !!item.result);
+  console.log("allTestsFailed", allTestsFailed);
+  let sectionBGColor = LIGHT_GREEN;
+  if (allTestsFailed) {
+    sectionBGColor = GRAY;
+  } else if (anyTestFailed) {
+    sectionBGColor = LIGHT_RED;
+  }
+  console.log("anyTestFailed", anyTestFailed);
+  testConsole.style.cssText = `
+    padding: 10px 10px; 
+    margin: 5px; 
+    background-color: ${sectionBGColor}; 
+    border-radius: 10px;
+  `;
+
+  // Create Title
   let h2 = document.createElement("h2");
-  h2.style.padding = "0px";
-  h2.style.margin = "0px";
+  h2.style.cssText = `
+    padding: 0px;
+    margin: 0px;
+  `;
   h2.innerHTML = `${arr[0].section}`;
-  div.appendChild(h2);
+  testConsole.appendChild(h2);
+
+  // Go through tests
   arr.forEach((item) => {
     const itemPassed = !item.result;
-    let el = document.createElement("div");
-    const itemText = itemPassed ? "PASSED " : "FAILED ";
+    let testContainer = document.createElement("div");
+    testContainer.style.cssText = `
+      padding: 3px;
+      border-radius: 5px;
+    `;
+
+    // Add pass fail sticker
+    const passFail = itemPassed ? "PASSED " : "FAILED ";
     let span = document.createElement("span");
     span.style.color = itemPassed ? "green" : "red";
-    span.innerHTML = itemText;
+    span.innerHTML = passFail;
+    testContainer.appendChild(span);
 
-    el.appendChild(span);
-    el.style.padding = "3px";
-    el.style.borderRadius = "5px";
-    el.innerHTML += item.description;
+    // Add Test Description
+    testContainer.innerHTML += item.description;
+
+    // Add Test Error
     if (item.result) {
       let errorSpan = document.createElement("span");
       errorSpan.style.color = "red";
       errorSpan.textContent = " " + item.result;
-      el.appendChild(errorSpan);
+      testContainer.appendChild(errorSpan);
     }
 
-    div.appendChild(el);
+    // Append to testConsole
+    testConsole.appendChild(testContainer);
   });
 
-  body.appendChild(div);
+  body.appendChild(testConsole);
 }
