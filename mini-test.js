@@ -1,4 +1,4 @@
-const M_T = {
+const MT_GLOBALS = {
   testCounter: 0,
   PASSED_CSS: "color:green",
   FAILED_CSS: "color:red",
@@ -10,6 +10,21 @@ const M_T = {
   GRAY: "#6c757d",
 };
 
+// MINI_TESTS should be defined in an earlier script.
+
+// MINI_TEST example:
+// const MINI_TESTS = [
+//   {
+//     section: `variable X`,
+//     description: `variable X exists`,
+//     function: () => {
+//       expect(x).isDeclared();
+//     },
+//   },
+// ];
+
+miniTestAll(MINI_TESTS);
+
 function miniTestAll(arr) {
   let miniTestResults = arr.map((item) => {
     const testResult = miniTest(item.description, item.function);
@@ -19,8 +34,8 @@ function miniTestAll(arr) {
 }
 
 function miniTest(description, func) {
-  M_T.testCounter++;
-  const { testCounter, FAILED_CSS, WARNING_CSS, PASSED_CSS } = M_T;
+  MT_GLOBALS.testCounter++;
+  const { testCounter, FAILED_CSS, WARNING_CSS, PASSED_CSS } = MT_GLOBALS;
   let error;
   try {
     func();
@@ -49,69 +64,66 @@ function expect(value) {
     toBeSameArrayAs,
     toBeSameObjectAs,
   };
-}
+  function isDeclared() {
+    if (typeof this.value === undefined) {
+      throw new Error(`is not declared`);
+    }
+  }
 
-function isDeclared() {
-  if (typeof this.value === undefined) {
-    throw new Error(`is not declared`);
+  function isNumber() {
+    if (typeof this.value !== "number") {
+      throw new Error(`is not a number`);
+    }
+  }
+
+  function isString() {
+    if (typeof this.value !== "string") {
+      throw new Error(`is not string`);
+    }
+  }
+
+  function isFunction() {
+    if (typeof this.value !== "function") {
+      throw new Error(`is not function`);
+    }
+  }
+
+  function isArray() {
+    if (!Array.isArray(this.value)) {
+      throw new Error(`is not array`);
+    }
+  }
+
+  function isObject() {
+    if (
+      typeof this.value !== "object" ||
+      Array.isArray(this.value) ||
+      this.value === null
+    ) {
+      throw new Error(`is not object`);
+    }
+  }
+
+  function toBe(x) {
+    if (this.value !== x) {
+      throw new Error(`not toBe ${x}`);
+    }
+  }
+
+  function toBeSameArrayAs(x) {
+    if (!_.isEqual(x, this.value)) {
+      throw new Error(
+        `not same arrays ${JSON.stringify(x)} ${JSON.stringify(this.value)}`
+      );
+    }
+  }
+
+  function toBeSameObjectAs(x) {
+    if (!_.isEqual(x, this.value)) {
+      throw new Error(`objects are not equal`);
+    }
   }
 }
-
-function isNumber() {
-  if (typeof this.value !== "number") {
-    throw new Error(`is not a number`);
-  }
-}
-
-function isString() {
-  if (typeof this.value !== "string") {
-    throw new Error(`is not string`);
-  }
-}
-
-function isFunction() {
-  if (typeof this.value !== "function") {
-    throw new Error(`is not function`);
-  }
-}
-
-function isArray() {
-  if (!Array.isArray(this.value)) {
-    throw new Error(`is not array`);
-  }
-}
-
-function isObject() {
-  if (
-    typeof this.value !== "object" ||
-    Array.isArray(this.value) ||
-    this.value === null
-  ) {
-    throw new Error(`is not object`);
-  }
-}
-
-function toBe(x) {
-  if (this.value !== x) {
-    throw new Error(`not toBe ${x}`);
-  }
-}
-
-function toBeSameArrayAs(x) {
-  if (!_.isEqual(x, this.value)) {
-    throw new Error(
-      `not same arrays ${JSON.stringify(x)} ${JSON.stringify(this.value)}`
-    );
-  }
-}
-
-function toBeSameObjectAs(x) {
-  if (!_.isEqual(x, this.value)) {
-    throw new Error(`objects are not equal`);
-  }
-}
-
-miniTestAll(MINI_TESTS);
 
 function miniTestDisplayResults(miniTestResults) {
   let results = {};
@@ -133,7 +145,7 @@ function miniTestDisplayResults(miniTestResults) {
     justify-content: flex-start;
   `;
   document.body.appendChild(miniTestContainer);
-  M_T.miniTestContainer = miniTestContainer;
+  MT_GLOBALS.miniTestContainer = miniTestContainer;
 
   // Iterate over test sections
   for (let key in results) {
@@ -148,11 +160,11 @@ function populateSection(arr) {
   // Assign bg color
   const anyTestFailed = arr.find((item) => !!item.result);
   const allTestsFailed = arr.every((item) => !!item.result);
-  let sectionBGColor = M_T.LIGHT_GREEN;
+  let sectionBGColor = MT_GLOBALS.LIGHT_GREEN;
   if (allTestsFailed) {
-    sectionBGColor = M_T.LIGHT_RED;
+    sectionBGColor = MT_GLOBALS.LIGHT_RED;
   } else if (anyTestFailed) {
-    sectionBGColor = M_T.LIGHT_ORANGE;
+    sectionBGColor = MT_GLOBALS.LIGHT_ORANGE;
   }
 
   sectionDiv.style.cssText = `
@@ -206,5 +218,5 @@ function populateSection(arr) {
     sectionDiv.appendChild(testContainer);
   });
 
-  M_T.miniTestContainer.appendChild(sectionDiv);
+  MT_GLOBALS.miniTestContainer.appendChild(sectionDiv);
 }
