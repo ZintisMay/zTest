@@ -12,7 +12,7 @@ const MINI_TESTS = [
     },
   },
   {
-    description: "  expect(add(3 + 7)).toBe(11);    ",
+    description: "Failing Test",
     function: () => {
       expect(add(3 + 7)).toBe(11);
     },
@@ -46,13 +46,61 @@ const MINI_TESTS = [
   {
     description: "subtract exists",
     function: () => {
-      mTest(subtract).exists();
+      expect(subtract).isDeclared();
     },
   },
   {
     description: "subtract is a function",
     function: () => {
-      mTest(subtract).isFunction();
+      expect(subtract).isFunction();
+    },
+  },
+  {
+    description: "subtract 3 - 1 = 2",
+    function: () => {
+      expect(subtract(3, 1)).toBe(2);
+    },
+  },
+  {
+    description: "array comparison",
+    function: () => {
+      expect([]).toBeSameArrayAs([]);
+    },
+  },
+  {
+    description: "array comparison",
+    function: () => {
+      expect([]).toBeSameArrayAs([1]);
+    },
+  },
+  {
+    description: "array comparison",
+    function: () => {
+      expect([1]).toBeSameArrayAs([]);
+    },
+  },
+  {
+    description: "array comparison",
+    function: () => {
+      expect([1]).toBeSameArrayAs([1]);
+    },
+  },
+  {
+    description: "array comparison",
+    function: () => {
+      expect([1]).toBeSameArrayAs([1, 2]);
+    },
+  },
+  {
+    description: "array comparison",
+    function: () => {
+      expect([2, 1]).toBeSameArrayAs([2, 1]);
+    },
+  },
+  {
+    description: "array comparison",
+    function: () => {
+      expect([1, 2]).toBeSameArrayAs([1, 2]);
     },
   },
 ];

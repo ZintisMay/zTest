@@ -1,7 +1,8 @@
 let testCounter = 0;
 const PASSED_CSS = "color:green";
 const FAILED_CSS = "color:red";
-const NORMAL_CSS = "color:black";
+const WARNING_CSS = "color:orange";
+const NORMAL_CSS = "color:default";
 
 function miniTestAll(arr) {
   arr.forEach((item) => {
@@ -15,7 +16,11 @@ function miniTest(description, func) {
     func();
     console.log(`Test #${testCounter}: ${description} %c PASSED`, PASSED_CSS);
   } catch (e) {
-    console.log(`Test #${testCounter}: ${description} %c FAILED`, FAILED_CSS);
+    console.log(
+      `Test #${testCounter}: ${description} %c FAILED %c ${e}`,
+      FAILED_CSS,
+      WARNING_CSS
+    );
   }
 }
 
@@ -76,17 +81,23 @@ function toBe(x) {
 }
 function toBeSameArrayAs(x) {
   if (JSON.stringify(x) !== JSON.stringify(this.value)) {
-    throw new Error(`not toBe ${x}`);
+    throw new Error(
+      `not same arrays ${JSON.stringify(x)} ${JSON.stringify(this.value)}`
+    );
   }
 }
 function toBeSameObjectAs(x) {
   console.log(x, this.value);
   const sameKeyCount = Object.keys(x).length === Object.keys(this.value).length;
   console.log(sameKeyCount);
-  if (!sameKeyCount) return false;
+  if (!sameKeyCount) {
+    throw new Error(`incorrect key count`);
+  }
   for (const key in x) {
     console.log(this.value[key], x[key], this.value[key] !== x[key]);
-    if (this.value[key] !== x[key]) return false;
+    if (this.value[key] !== x[key]) {
+      throw new Error(`non-matching key/value pairs`);
+    }
   }
   return true;
 }
