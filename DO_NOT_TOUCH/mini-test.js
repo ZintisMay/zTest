@@ -56,13 +56,17 @@ function expect(value) {
     value,
     toBe,
     isDeclared,
-    isNumber,
-    isString,
-    isFunction,
-    isArray,
-    isObject,
+    toBeNumber,
+    toBeString,
+    toBeFunction,
+    toBeArray,
+    toBeObject,
     toBeSameArrayAs,
     toBeSameObjectAs,
+    toUseMethod,
+    toHaveObjectKeyCount,
+    toHaveArrayLength,
+    toBeBoolean,
   };
   function isDeclared() {
     if (typeof this.value === undefined) {
@@ -70,37 +74,63 @@ function expect(value) {
     }
   }
 
-  function isNumber() {
+  function toBeNumber() {
     if (typeof this.value !== "number") {
       throw new Error(`is not a number`);
     }
   }
 
-  function isString() {
+  function toBeString() {
     if (typeof this.value !== "string") {
       throw new Error(`is not string`);
     }
   }
 
-  function isFunction() {
+  function toBeFunction() {
     if (typeof this.value !== "function") {
       throw new Error(`is not function`);
     }
   }
 
-  function isArray() {
+  function toBeBoolean() {
+    if (typeof this.value !== "boolean") {
+      throw new Error(`is not a boolean`);
+    }
+  }
+
+  function toUseMethod(x) {
+    if (typeof this.value !== "function") {
+      throw new Error(`is not function`);
+    } else if (!this.value.toString().includes(x)) {
+      throw new Error(`is not using the required method`);
+    }
+  }
+
+  function toBeArray() {
     if (!Array.isArray(this.value)) {
       throw new Error(`is not array`);
     }
   }
 
-  function isObject() {
+  function toBeObject() {
     if (
       typeof this.value !== "object" ||
       Array.isArray(this.value) ||
       this.value === null
     ) {
       throw new Error(`is not object`);
+    }
+  }
+
+  function toHaveObjectKeyCount(x) {
+    if (Object.keys(this.value) !== x) {
+      throw new Error(`incorrect object key count`);
+    }
+  }
+
+  function toHaveArrayLength(x) {
+    if (this.value.length !== x) {
+      throw new Error(`incorrect array length`);
     }
   }
 

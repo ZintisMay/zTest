@@ -1,4 +1,13 @@
-const MINI_TESTS = [
+const varQTests = [
+  {
+    section: `variable Q`,
+    description: `variable Q exists`,
+    function: () => {
+      expect(q).isDeclared();
+    },
+  },
+];
+const varXTests = [
   {
     section: `variable X`,
     description: `variable X exists`,
@@ -13,6 +22,8 @@ const MINI_TESTS = [
       expect(x).not.isDeclared();
     },
   },
+];
+const varFruitTests = [
   {
     section: `variable fruit`,
     description: `variable fruit exists`,
@@ -27,6 +38,8 @@ const MINI_TESTS = [
       expect(fruit).toBe(`apple`);
     },
   },
+];
+const functionAddTests = [
   {
     section: `function add`,
     description: `add(3,1) is 4`,
@@ -41,6 +54,9 @@ const MINI_TESTS = [
       expect(add(4, 4)).toBe(8);
     },
   },
+];
+
+const objectComparisonTests = [
   {
     section: `object comparison`,
     description: `object comparison {} and {}`,
@@ -76,6 +92,8 @@ const MINI_TESTS = [
       expect({ a: 1 }).toBeSameObjectAs({ b: 1 });
     },
   },
+];
+const functionSubtractTests = [
   {
     section: `function subtract`,
     description: `subtract exists`,
@@ -87,7 +105,7 @@ const MINI_TESTS = [
     section: `function subtract`,
     description: `subtract is a function`,
     function: () => {
-      expect(subtract).isFunction();
+      expect(subtract).toBeFunction();
     },
   },
   {
@@ -97,6 +115,9 @@ const MINI_TESTS = [
       expect(subtract(3, 1)).toBe(2);
     },
   },
+];
+
+const arrayComparisonTests = [
   {
     section: `array comparison`,
     description: `array comparison [] []`,
@@ -153,4 +174,88 @@ const MINI_TESTS = [
       expect([2, 1]).toBeSameArrayAs([1, 2]);
     },
   },
+];
+const numberToStringTests = [
+  {
+    section: `Number To String`,
+    description: `numberToString is a function`,
+    function: () => {
+      expect(numberToString).toBeFunction();
+    },
+  },
+  {
+    section: `Number To String`,
+    description: `Number uses method "String"`,
+    function: () => {
+      expect(numberToString).toUseMethod("String");
+    },
+  },
+  {
+    section: `Number To String`,
+    description: `Number returns a string`,
+    function: () => {
+      expect(numberToString(1)).isString();
+    },
+  },
+];
+// Function Method Check
+const arr3Tests = [
+  {
+    section: `arr3`,
+    description: `arr3 exists`,
+    function: () => {
+      expect(arr3).isDeclared();
+    },
+  },
+  {
+    section: `arr3`,
+    description: `arr3 is an array`,
+    function: () => {
+      expect(arr3).toBeArray();
+    },
+  },
+  {
+    section: `arr3`,
+    description: `arr3 has length of 3`,
+    function: () => {
+      expect(arr3).toHaveArrayLength(3);
+    },
+  },
+];
+
+const boolTests = [
+  {
+    section: `b`,
+    description: `b is declared`,
+    function: () => {
+      expect(b).isDeclared();
+    },
+  },
+  {
+    section: `b`,
+    description: `b is a boolean`,
+    function: () => {
+      expect(b).toBeBoolean();
+    },
+  },
+  {
+    section: `b`,
+    description: `b is true`,
+    function: () => {
+      expect(b).toBe(true);
+    },
+  },
+];
+
+const MINI_TESTS = [
+  ...varQTests,
+  ...varXTests,
+  ...varFruitTests,
+  ...functionAddTests,
+  ...objectComparisonTests,
+  ...functionSubtractTests,
+  ...arrayComparisonTests,
+  ...numberToStringTests,
+  ...arr3Tests,
+  ...boolTests,
 ];

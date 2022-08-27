@@ -6,3 +6,8 @@ function subtract(a, b) {
 }
 var fruit = "apple";
 var x;
+function numberToString(n) {
+  return String(n);
+}
+var arr3 = [1, 2, 3];
+var b = true;
