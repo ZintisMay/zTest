@@ -5,3 +5,4 @@ function subtract(a, b) {
   return a - b;
 }
 var fruit = "apple";
+var x;

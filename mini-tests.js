@@ -35,13 +35,6 @@ const MINI_TESTS = [
     },
   },
   {
-    section: "function add",
-    description: "Failing Test",
-    function: () => {
-      expect(add(3, 7)).toBe(11);
-    },
-  },
-  {
     section: "object comparison",
     description: "object comparison empty",
     function: () => {

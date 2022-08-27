@@ -1,25 +1,26 @@
-let testCounter = 0;
-const body = document.body;
-const PASSED_CSS = "color:green";
-const FAILED_CSS = "color:red";
-const WARNING_CSS = "color:orange";
-const NORMAL_CSS = "color:default";
-
-const LIGHT_RED = "#FF6961";
-const LIGHT_GREEN = "#77DD77";
-const GRAY = "#6c757d";
+const M_T = {
+  testCounter: 0,
+  PASSED_CSS: "color:green",
+  FAILED_CSS: "color:red",
+  WARNING_CSS: "color:orange",
+  NORMAL_CSS: "color:default",
+  LIGHT_RED: "#FF6961",
+  LIGHT_GREEN: "#77DD77",
+  LIGHT_ORANGE: "#FFB347",
+  GRAY: "#6c757d",
+};
 
 function miniTestAll(arr) {
   let miniTestResults = arr.map((item) => {
     const testResult = miniTest(item.description, item.function);
     return { ...item, result: testResult };
   });
-  // console.log(miniTestResults);
   miniTestDisplayResults(miniTestResults);
 }
 
 function miniTest(description, func) {
-  testCounter++;
+  M_T.testCounter++;
+  const { testCounter, FAILED_CSS, WARNING_CSS, PASSED_CSS } = M_T;
   let error;
   try {
     func();
@@ -105,7 +106,6 @@ function toBeSameArrayAs(x) {
 }
 
 function toBeSameObjectAs(x) {
-  console.log(x, this.value);
   if (!_.isEqual(x, this.value)) {
     throw new Error(`objects are not equal`);
   }
@@ -114,7 +114,6 @@ function toBeSameObjectAs(x) {
 miniTestAll(MINI_TESTS);
 
 function miniTestDisplayResults(miniTestResults) {
-  console.log(miniTestResults);
   let results = {};
   for (let item of miniTestResults) {
     let section = item.section;
@@ -123,31 +122,45 @@ function miniTestDisplayResults(miniTestResults) {
     }
     results[section].push(item);
   }
-  console.log(results);
+  // Create vertical Section list
+  const miniTestContainer = document.createElement("div");
+  miniTestContainer.style.cssText = `
+    display:inline-flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    height: 98vh;
+    align-items:start;
+    justify-content: flex-start;
+  `;
+  document.body.appendChild(miniTestContainer);
+  M_T.miniTestContainer = miniTestContainer;
+
+  // Iterate over test sections
   for (let key in results) {
-    console.log(key);
     populateSection(results[key]);
   }
 }
 
 function populateSection(arr) {
   // Create Div
-  let testConsole = document.createElement("div");
-  let anyTestFailed = arr.find((item) => !!item.result);
-  let allTestsFailed = arr.every((item) => !!item.result);
-  console.log("allTestsFailed", allTestsFailed);
-  let sectionBGColor = LIGHT_GREEN;
+  const sectionDiv = document.createElement("div");
+
+  // Assign bg color
+  const anyTestFailed = arr.find((item) => !!item.result);
+  const allTestsFailed = arr.every((item) => !!item.result);
+  let sectionBGColor = M_T.LIGHT_GREEN;
   if (allTestsFailed) {
-    sectionBGColor = GRAY;
+    sectionBGColor = M_T.LIGHT_RED;
   } else if (anyTestFailed) {
-    sectionBGColor = LIGHT_RED;
+    sectionBGColor = M_T.LIGHT_ORANGE;
   }
-  console.log("anyTestFailed", anyTestFailed);
-  testConsole.style.cssText = `
+
+  sectionDiv.style.cssText = `
     padding: 10px 10px; 
     margin: 5px; 
     background-color: ${sectionBGColor}; 
     border-radius: 10px;
+    width:300px;
   `;
 
   // Create Title
@@ -157,7 +170,7 @@ function populateSection(arr) {
     margin: 0px;
   `;
   h2.innerHTML = `${arr[0].section}`;
-  testConsole.appendChild(h2);
+  sectionDiv.appendChild(h2);
 
   // Go through tests
   arr.forEach((item) => {
@@ -171,7 +184,10 @@ function populateSection(arr) {
     // Add pass fail sticker
     const passFail = itemPassed ? "PASSED " : "FAILED ";
     let span = document.createElement("span");
-    span.style.color = itemPassed ? "green" : "red";
+    span.style.cssText =
+      "padding:2px 5px;display:inline-flex;margin:0 3px 0 0;border-radius:5px;";
+    span.style.backgroundColor = itemPassed ? "green" : "red";
+    span.style.color = "white";
     span.innerHTML = passFail;
     testContainer.appendChild(span);
 
@@ -186,9 +202,9 @@ function populateSection(arr) {
       testContainer.appendChild(errorSpan);
     }
 
-    // Append to testConsole
-    testConsole.appendChild(testContainer);
+    // Append to sectionDiv
+    sectionDiv.appendChild(testContainer);
   });
 
-  body.appendChild(testConsole);
+  M_T.miniTestContainer.appendChild(sectionDiv);
 }
