@@ -1,5 +1,6 @@
 const MT_GLOBALS = {
   testCounter: 0,
+  comletelyPassed: true,
   PASSED_CSS: "color:green",
   FAILED_CSS: "color:red",
   WARNING_CSS: "color:orange",
@@ -25,14 +26,18 @@ const MT_GLOBALS = {
 
 miniTestAll(MINI_TESTS);
 
-function miniTestAll(arr) {
-  let miniTestResults = arr.map((item) => {
+function miniTestAll(miniTests) {
+  let miniTestResults = miniTests.map((item) => {
     const testResult = miniTest(item.description, item.test);
     return { ...item, result: testResult };
   });
   miniTestDisplayResults(miniTestResults);
+  if (MT_GLOBALS.comletelyPassed) {
+    addBigCheckMark();
+  }
 }
 
+// Evaluates the test, logs in the console, provides a resulting error (or null, null is passing)
 function miniTest(description, test) {
   MT_GLOBALS.testCounter++;
   const { testCounter, FAILED_CSS, WARNING_CSS, PASSED_CSS } = MT_GLOBALS;
@@ -51,6 +56,7 @@ function miniTest(description, test) {
   return error || null;
 }
 
+// Sets a value and provides the function toolset. Makes for easier readability in test execution (i.e. expect(5).toBe(5) )
 function expect(value) {
   return {
     value,
@@ -68,6 +74,13 @@ function expect(value) {
     toHaveArrayLength,
     toBeBoolean,
   };
+
+  function toBe(x) {
+    if (!_.isEqual(x, this.value)) {
+      throw new Error(`not toBe ${x}`);
+    }
+  }
+
   function isDeclared() {
     if (typeof this.value === undefined) {
       throw new Error(`is not declared`);
@@ -98,14 +111,6 @@ function expect(value) {
     }
   }
 
-  function toUseMethod(x) {
-    if (typeof this.value !== "function") {
-      throw new Error(`is not function`);
-    } else if (!this.value.toString().includes(x)) {
-      throw new Error(`is not using the required method`);
-    }
-  }
-
   function toBeArray() {
     if (!Array.isArray(this.value)) {
       throw new Error(`is not array`);
@@ -122,6 +127,14 @@ function expect(value) {
     }
   }
 
+  function toUseMethod(x) {
+    if (typeof this.value !== "function") {
+      throw new Error(`is not function`);
+    } else if (!this.value.toString().includes(x)) {
+      throw new Error(`is not using the required method`);
+    }
+  }
+
   function toHaveObjectKeyCount(x) {
     if (Object.keys(this.value) !== x) {
       throw new Error(`incorrect object key count`);
@@ -131,12 +144,6 @@ function expect(value) {
   function toHaveArrayLength(x) {
     if (this.value.length !== x) {
       throw new Error(`incorrect array length`);
-    }
-  }
-
-  function toBe(x) {
-    if (this.value !== x) {
-      throw new Error(`not toBe ${x}`);
     }
   }
 
@@ -155,8 +162,11 @@ function expect(value) {
   }
 }
 
+// Displays the test results as divs on the page
 function miniTestDisplayResults(miniTestResults) {
   let results = {};
+
+  // Divide the tests by section
   for (let item of miniTestResults) {
     let section = item.section;
     if (!results[section]) {
@@ -164,6 +174,7 @@ function miniTestDisplayResults(miniTestResults) {
     }
     results[section].push(item);
   }
+
   // Create vertical Section list
   const miniTestContainer = document.createElement("div");
   miniTestContainer.style.cssText = `
@@ -183,6 +194,7 @@ function miniTestDisplayResults(miniTestResults) {
   }
 }
 
+// Displays each section as a colored box
 function populateSection(arr) {
   // Create Div
   const sectionDiv = document.createElement("div");
@@ -193,8 +205,10 @@ function populateSection(arr) {
   let sectionBGColor = MT_GLOBALS.LIGHT_GREEN;
   if (allTestsFailed) {
     sectionBGColor = MT_GLOBALS.LIGHT_RED;
+    MT_GLOBALS.comletelyPassed = false;
   } else if (anyTestFailed) {
     sectionBGColor = MT_GLOBALS.LIGHT_ORANGE;
+    MT_GLOBALS.comletelyPassed = false;
   }
 
   sectionDiv.style.cssText = `
@@ -249,4 +263,21 @@ function populateSection(arr) {
   });
 
   MT_GLOBALS.miniTestContainer.appendChild(sectionDiv);
+}
+
+function addBigCheckMark() {
+  const checkMark = document.createElement("div");
+  checkMark.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-size:50vw;
+    color:green;
+    z-index: 5000;
+    font-weight: bold;
+    opacity:.5;
+  `;
+  checkMark.innerHTML = "&check;";
+  document.body.appendChild(checkMark);
 }
