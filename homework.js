@@ -45,7 +45,15 @@ function divide(a, b) {
 // #9 ///////////////////////////////////////////
 // Create a function called "numberToString" that takes 1 parameter
 // it must return the number, converted to the data type string.
-// use the "String" method. You can find how here: https://www.w3schools.com/jsref/jsref_string.asp
+// use the "String" function. You can find how here: https://www.w3schools.com/jsref/jsref_string.asp
 function numberToString(num) {
   return String(num);
+}
+
+// #10 ///////////////////////////////////////////
+// Create a function called "stringToNumber" that takes 1 parameter
+// it must return the string, converted to the data type number.
+// use the "Number" function. You can find how here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+function stringToNumber(str) {
+  return Number(str);
 }

@@ -1,13 +1,13 @@
 const varXTests = [
   {
-    section: `variable X`,
+    section: `variable x`,
     description: `variable x exists`,
     test: () => {
       expect(x).isDeclared();
     },
   },
   {
-    section: `variable X`,
+    section: `variable x`,
     description: `variable x is not declared`,
     test: () => {
       expect(x).toBe(undefined);
@@ -30,6 +30,7 @@ const varFruitTests = [
     },
   },
 ];
+
 const functionAddTests = [
   {
     section: `function add`,
@@ -43,44 +44,6 @@ const functionAddTests = [
     description: `add(4,4) is 8`,
     test: () => {
       expect(add(4, 4)).toBe(8);
-    },
-  },
-];
-
-const objectComparisonTests = [
-  {
-    section: `object comparison`,
-    description: `object comparison {} and {}`,
-    test: () => {
-      expect({}).toBeSameObjectAs({});
-    },
-  },
-  {
-    section: `object comparison`,
-    description: `object comparison { a: 1 } and {}`,
-    test: () => {
-      expect({ a: 1 }).toBeSameObjectAs({});
-    },
-  },
-  {
-    section: `object comparison`,
-    description: `object comparison expect({ a: 1 }).toBeSameObjectAs({ a: 1 });`,
-    test: () => {
-      expect({ a: 1 }).toBeSameObjectAs({ a: 1 });
-    },
-  },
-  {
-    section: `object comparison`,
-    description: `object comparison   expect({ a: 1 }).toBeSameObjectAs({ a: 2 });`,
-    test: () => {
-      expect({ a: 1 }).toBeSameObjectAs({ a: 2 });
-    },
-  },
-  {
-    section: `object comparison`,
-    description: `object comparison   expect({ a: 1 }).toBeSameObjectAs({ b: 1 });`,
-    test: () => {
-      expect({ a: 1 }).toBeSameObjectAs({ b: 1 });
     },
   },
 ];
@@ -180,6 +143,37 @@ const numberToStringTests = [
     },
   },
 ];
+
+const stringToNumberTests = [
+  {
+    section: `String to Number`,
+    description: `stringToNumber is a function`,
+    test: () => {
+      expect(stringToNumber).toBeFunction();
+    },
+  },
+  {
+    section: `String to Number`,
+    description: `stringToNumber uses method "String"`,
+    test: () => {
+      expect(stringToNumber).toUseMethod("Number");
+    },
+  },
+  {
+    section: `String to Number`,
+    description: `stringToNumber returns a string`,
+    test: () => {
+      expect(stringToNumber("11")).toBeNumber();
+    },
+  },
+  {
+    section: `String to Number`,
+    description: `stringToNumber returns 11`,
+    test: () => {
+      expect(stringToNumber("11")).toBe(11);
+    },
+  },
+];
 // Function Method Check
 const arr3Tests = [
   {
@@ -239,4 +233,5 @@ const MINI_TESTS = [
   ...functionMultiplyTests,
   ...functionDivideTests,
   ...numberToStringTests,
+  ...stringToNumberTests,
 ];
