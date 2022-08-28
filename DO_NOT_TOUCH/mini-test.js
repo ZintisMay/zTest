@@ -27,18 +27,18 @@ miniTestAll(MINI_TESTS);
 
 function miniTestAll(arr) {
   let miniTestResults = arr.map((item) => {
-    const testResult = miniTest(item.description, item.function);
+    const testResult = miniTest(item.description, item.test);
     return { ...item, result: testResult };
   });
   miniTestDisplayResults(miniTestResults);
 }
 
-function miniTest(description, func) {
+function miniTest(description, test) {
   MT_GLOBALS.testCounter++;
   const { testCounter, FAILED_CSS, WARNING_CSS, PASSED_CSS } = MT_GLOBALS;
   let error;
   try {
-    func();
+    test();
     console.log(`Test #${testCounter}: ${description} %c PASSED`, PASSED_CSS);
   } catch (e) {
     error = e;
