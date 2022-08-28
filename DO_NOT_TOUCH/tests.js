@@ -1,25 +1,16 @@
-const varQTests = [
-  {
-    section: `variable Q`,
-    description: `variable Q exists`,
-    test: () => {
-      expect(q).isDeclared();
-    },
-  },
-];
 const varXTests = [
   {
     section: `variable X`,
-    description: `variable X exists`,
+    description: `variable x exists`,
     test: () => {
       expect(x).isDeclared();
     },
   },
   {
     section: `variable X`,
-    description: `variable X not.isDeclared`,
+    description: `variable x is not declared`,
     test: () => {
-      expect(x).not.isDeclared();
+      expect(x).toBe(undefined);
     },
   },
 ];
@@ -93,6 +84,7 @@ const objectComparisonTests = [
     },
   },
 ];
+
 const functionSubtractTests = [
   {
     section: `function subtract`,
@@ -117,64 +109,54 @@ const functionSubtractTests = [
   },
 ];
 
-const arrayComparisonTests = [
+const functionMultiplyTests = [
   {
-    section: `array comparison`,
-    description: `array comparison [] []`,
+    section: `function multiply`,
+    description: `multiply exists`,
     test: () => {
-      expect([]).toBeSameArrayAs([]);
+      expect(multiply).isDeclared();
     },
   },
   {
-    section: `array comparison`,
-    description: `array comparison [] [1]`,
+    section: `function multiply`,
+    description: `multiply is a function`,
     test: () => {
-      expect([]).toBeSameArrayAs([1]);
+      expect(multiply).toBeFunction();
     },
   },
   {
-    section: `array comparison`,
-    description: `array comparison [1] []`,
+    section: `function multiply`,
+    description: `multiply(3,4) is 12`,
     test: () => {
-      expect([1]).toBeSameArrayAs([]);
-    },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [1] [1]`,
-    test: () => {
-      expect([1]).toBeSameArrayAs([1]);
-    },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [1] [1,2]`,
-    test: () => {
-      expect([1]).toBeSameArrayAs([1, 2]);
-    },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [2,1] [2,1]`,
-    test: () => {
-      expect([2, 1]).toBeSameArrayAs([2, 1]);
-    },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [1,2] [1,2] `,
-    test: () => {
-      expect([1, 2]).toBeSameArrayAs([1, 2]);
-    },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [2,1] [1,2] `,
-    test: () => {
-      expect([2, 1]).toBeSameArrayAs([1, 2]);
+      expect(multiply(3, 4)).toBe(12);
     },
   },
 ];
+
+const functionDivideTests = [
+  {
+    section: `function divide`,
+    description: `divide exists`,
+    test: () => {
+      expect(divide).isDeclared();
+    },
+  },
+  {
+    section: `function divide`,
+    description: `divide is a function`,
+    test: () => {
+      expect(divide).toBeFunction();
+    },
+  },
+  {
+    section: `function divide`,
+    description: `divide(10,2) is 5`,
+    test: () => {
+      expect(divide(10, 2)).toBe(5);
+    },
+  },
+];
+
 const numberToStringTests = [
   {
     section: `Number To String`,
@@ -194,7 +176,7 @@ const numberToStringTests = [
     section: `Number To String`,
     description: `Number returns a string`,
     test: () => {
-      expect(numberToString(1)).isString();
+      expect(numberToString(1)).toBeString();
     },
   },
 ];
@@ -248,14 +230,13 @@ const boolTests = [
 ];
 
 const MINI_TESTS = [
-  ...varQTests,
   ...varXTests,
-  ...varFruitTests,
-  ...functionAddTests,
-  // ...objectComparisonTests,
-  ...functionSubtractTests,
-  // ...arrayComparisonTests,
-  ...numberToStringTests,
-  ...arr3Tests,
   ...boolTests,
+  ...varFruitTests,
+  ...arr3Tests,
+  ...functionAddTests,
+  ...functionSubtractTests,
+  ...functionMultiplyTests,
+  ...functionDivideTests,
+  ...numberToStringTests,
 ];
