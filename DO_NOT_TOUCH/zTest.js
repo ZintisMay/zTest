@@ -1,4 +1,6 @@
-const MT_GLOBALS = {
+const Z_T = {
+  targetDiv: document.getElementById("Z_T") || document.body,
+  testContainer: null,
   testCounter: 0,
   comletelyPassed: true,
   PASSED_CSS: "color:green",
@@ -11,36 +13,45 @@ const MT_GLOBALS = {
   GRAY: "#6c757d",
 };
 
-// MINI_TESTS should be defined in an earlier script.
+// zTests should be defined in an earlier script.
 
-// MINI_TEST example:
-// const MINI_TESTS = [
-//   {
-//     section: `variable X`,
-//     description: `variable X exists`,
-//     function: () => {
-//       expect(x).isDeclared();
+// zTest example:
+// const zTests = {
+//   variableTest: [
+//     {
+//       section: `variable X`,
+//       description: `variable X exists`,
+//       function: () => {
+//         expect(x).isDeclared();
+//       },
 //     },
-//   },
-// ];
+//   ],
+// };
 
-miniTestAll(MINI_TESTS);
+// Adding a time delay so page scripts can load
+setTimeout(() => {
+  Z_T.testAll(zTests);
+}, 100);
 
-function miniTestAll(miniTests) {
-  let miniTestResults = miniTests.map((item) => {
-    const testResult = miniTest(item.description, item.test);
-    return { ...item, result: testResult };
-  });
-  miniTestDisplayResults(miniTestResults);
-  if (MT_GLOBALS.comletelyPassed) {
-    addBigCheckMark();
+// Execute all categories and subtests, then display results
+Z_T.testAll = function (tests) {
+  let results = {};
+  for (let category in tests) {
+    results[category] = tests[category].map((test) => {
+      const testResult = Z_T.test(test.description, test.test);
+      return { ...test, result: testResult };
+    });
   }
-}
+  Z_T.displayResults(results);
+  if (Z_T.comletelyPassed) {
+    Z_T.addBigCheckMark();
+  }
+};
 
 // Evaluates the test, logs in the console, provides a resulting error (or null, null is passing)
-function miniTest(description, test) {
-  MT_GLOBALS.testCounter++;
-  const { testCounter, FAILED_CSS, WARNING_CSS, PASSED_CSS } = MT_GLOBALS;
+Z_T.test = function (description, test) {
+  Z_T.testCounter++;
+  const { testCounter, FAILED_CSS, WARNING_CSS, PASSED_CSS } = Z_T;
   let error;
   try {
     test();
@@ -54,7 +65,7 @@ function miniTest(description, test) {
     );
   }
   return error || null;
-}
+};
 
 // Sets a value and provides the function toolset. Makes for easier readability in test execution (i.e. expect(5).toBe(5) )
 function expect(value) {
@@ -163,21 +174,10 @@ function expect(value) {
 }
 
 // Displays the test results as divs on the page
-function miniTestDisplayResults(miniTestResults) {
-  let results = {};
-
-  // Divide the tests by section
-  for (let item of miniTestResults) {
-    let section = item.section;
-    if (!results[section]) {
-      results[section] = [];
-    }
-    results[section].push(item);
-  }
-
+Z_T.displayResults = function (results) {
   // Create vertical Section list
-  const miniTestContainer = document.createElement("div");
-  miniTestContainer.style.cssText = `
+  const testContainer = document.createElement("div");
+  testContainer.style.cssText = `
     display:inline-flex;
     flex-direction:column;
     flex-wrap:wrap;
@@ -185,30 +185,30 @@ function miniTestDisplayResults(miniTestResults) {
     align-items:start;
     justify-content: flex-start;
   `;
-  document.body.appendChild(miniTestContainer);
-  MT_GLOBALS.miniTestContainer = miniTestContainer;
+  Z_T.targetDiv.appendChild(testContainer);
+  Z_T.testContainer = testContainer;
 
   // Iterate over test sections
   for (let key in results) {
-    populateSection(results[key]);
+    Z_T.populateSection(results[key]);
   }
-}
+};
 
 // Displays each section as a colored box
-function populateSection(arr) {
+Z_T.populateSection = function (arr) {
   // Create Div
   const sectionDiv = document.createElement("div");
 
   // Assign bg color
-  const anyTestFailed = arr.find((item) => !!item.result);
   const allTestsFailed = arr.every((item) => !!item.result);
-  let sectionBGColor = MT_GLOBALS.LIGHT_GREEN;
+  const anyTestFailed = arr.find((item) => !!item.result);
+  let sectionBGColor = Z_T.LIGHT_GREEN; // All tests passed
   if (allTestsFailed) {
-    sectionBGColor = MT_GLOBALS.LIGHT_RED;
-    MT_GLOBALS.comletelyPassed = false;
+    sectionBGColor = Z_T.LIGHT_RED;
+    Z_T.comletelyPassed = false;
   } else if (anyTestFailed) {
-    sectionBGColor = MT_GLOBALS.LIGHT_ORANGE;
-    MT_GLOBALS.comletelyPassed = false;
+    sectionBGColor = Z_T.LIGHT_ORANGE;
+    Z_T.comletelyPassed = false;
   }
 
   sectionDiv.style.cssText = `
@@ -262,10 +262,10 @@ function populateSection(arr) {
     sectionDiv.appendChild(testContainer);
   });
 
-  MT_GLOBALS.miniTestContainer.appendChild(sectionDiv);
-}
+  Z_T.testContainer.appendChild(sectionDiv);
+};
 
-function addBigCheckMark() {
+Z_T.addBigCheckMark = function () {
   const checkMark = document.createElement("div");
   checkMark.style.cssText = `
     position: fixed;
@@ -280,4 +280,4 @@ function addBigCheckMark() {
   `;
   checkMark.innerHTML = "&check;";
   document.body.appendChild(checkMark);
-}
+};

@@ -247,15 +247,13 @@ const boolTests = [
   },
 ];
 
-const MINI_TESTS = [
-  ...varQTests,
-  ...varXTests,
-  ...varFruitTests,
-  ...functionAddTests,
-  // ...objectComparisonTests,
-  ...functionSubtractTests,
-  // ...arrayComparisonTests,
-  ...numberToStringTests,
-  ...arr3Tests,
-  ...boolTests,
-];
+const zTests = {
+  // varQTests,
+  // varXTests,
+  varFruitTests,
+  functionAddTests,
+  functionSubtractTests,
+  // numberToStringTests,
+  arr3Tests,
+  boolTests,
+};
