@@ -4,12 +4,14 @@ const Z_T = {
   testCounter: 0,
   comletelyPassed: true,
   PASSED_CSS: "color:green",
-  FAILED_CSS: "color:red",
+  FAILED_CSS: "color:#8b0000",
   WARNING_CSS: "color:orange",
   NORMAL_CSS: "color:default",
   LIGHT_RED: "#FF6961",
   LIGHT_GREEN: "#77DD77",
   LIGHT_ORANGE: "#FFB347",
+  DARK_GREEN: "green",
+  DARK_RED: "#8b0000",
   GRAY: "#6c757d",
 };
 
@@ -242,7 +244,7 @@ Z_T.populateSection = function (arr) {
     let span = document.createElement("span");
     span.style.cssText =
       "padding:2px 5px;display:inline-flex;margin:0 3px 0 0;border-radius:5px;";
-    span.style.backgroundColor = itemPassed ? "green" : "red";
+    span.style.backgroundColor = itemPassed ? Z_T.DARK_GREEN : Z_T.DARK_RED;
     span.style.color = "white";
     span.innerHTML = passFail;
     testContainer.appendChild(span);
@@ -253,7 +255,7 @@ Z_T.populateSection = function (arr) {
     // Add Test Error
     if (item.result) {
       let errorSpan = document.createElement("span");
-      errorSpan.style.color = "red";
+      errorSpan.style.color = Z_T.DARK_RED;
       errorSpan.textContent = " " + item.result;
       testContainer.appendChild(errorSpan);
     }
