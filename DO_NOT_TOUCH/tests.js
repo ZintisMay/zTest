@@ -1,259 +1,405 @@
-const varQTests = [
-  {
-    section: `variable Q`,
-    description: `variable Q exists`,
-    test: () => {
-      expect(q).isDeclared();
+const variableQTests = {
+  title: "var q tests",
+  tests: [
+    {
+      description: `variable Q exists`,
+      test: () => {
+        expect(q).toBeDeclared();
+      },
     },
-  },
-];
-const varXTests = [
-  {
-    section: `variable X`,
-    description: `variable X exists`,
-    test: () => {
-      expect(x).isDeclared();
-    },
-  },
-  {
-    section: `variable X`,
-    description: `variable X not.isDeclared`,
-    test: () => {
-      expect(x).not.isDeclared();
-    },
-  },
-];
-const varFruitTests = [
-  {
-    section: `variable fruit`,
-    description: `variable fruit exists`,
-    test: () => {
-      expect(fruit).isDeclared();
-    },
-  },
-  {
-    section: `variable fruit`,
-    description: `variable fruit is "apple"`,
-    test: () => {
-      expect(fruit).toBe(`apple`);
-    },
-  },
-];
-const functionAddTests = [
-  {
-    section: `function add`,
-    description: `add(3,1) is 4`,
-    test: () => {
-      expect(add(3, 1)).toBe(4);
-    },
-  },
-  {
-    section: `function add`,
-    description: `add(4,4) is 8`,
-    test: () => {
-      expect(add(4, 4)).toBe(8);
-    },
-  },
-];
+  ],
+};
 
-const objectComparisonTests = [
-  {
-    section: `object comparison`,
-    description: `object comparison {} and {}`,
-    test: () => {
-      expect({}).toBeSameObjectAs({});
+const variableXTests = {
+  title: "variable X",
+  tests: [
+    {
+      description: `variable X exists`,
+      test: () => {
+        expect(x).toBeDeclared();
+      },
     },
-  },
-  {
-    section: `object comparison`,
-    description: `object comparison { a: 1 } and {}`,
-    test: () => {
-      expect({ a: 1 }).toBeSameObjectAs({});
-    },
-  },
-  {
-    section: `object comparison`,
-    description: `object comparison expect({ a: 1 }).toBeSameObjectAs({ a: 1 });`,
-    test: () => {
-      expect({ a: 1 }).toBeSameObjectAs({ a: 1 });
-    },
-  },
-  {
-    section: `object comparison`,
-    description: `object comparison   expect({ a: 1 }).toBeSameObjectAs({ a: 2 });`,
-    test: () => {
-      expect({ a: 1 }).toBeSameObjectAs({ a: 2 });
-    },
-  },
-  {
-    section: `object comparison`,
-    description: `object comparison   expect({ a: 1 }).toBeSameObjectAs({ b: 1 });`,
-    test: () => {
-      expect({ a: 1 }).toBeSameObjectAs({ b: 1 });
-    },
-  },
-];
-const functionSubtractTests = [
-  {
-    section: `function subtract`,
-    description: `subtract exists`,
-    test: () => {
-      expect(subtract).isDeclared();
-    },
-  },
-  {
-    section: `function subtract`,
-    description: `subtract is a function`,
-    test: () => {
-      expect(subtract).toBeFunction();
-    },
-  },
-  {
-    section: `function subtract`,
-    description: `subtract(3,1) is 2`,
-    test: () => {
-      expect(subtract(3, 1)).toBe(2);
-    },
-  },
-];
+  ],
+};
 
-const arrayComparisonTests = [
-  {
-    section: `array comparison`,
-    description: `array comparison [] []`,
-    test: () => {
-      expect([]).toBeSameArrayAs([]);
+const varFruitTests = {
+  title: `Variable Fruit`,
+  tests: [
+    {
+      description: `variable fruit exists`,
+      test: () => {
+        expect(fruit).toBeDeclared();
+      },
     },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [] [1]`,
-    test: () => {
-      expect([]).toBeSameArrayAs([1]);
+    {
+      description: `variable fruit is "apple"`,
+      test: () => {
+        expect(fruit).toBe(`apple`);
+      },
     },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [1] []`,
-    test: () => {
-      expect([1]).toBeSameArrayAs([]);
+  ],
+};
+
+const functionAddTests = {
+  title: "function add",
+  tests: [
+    {
+      description: `var exists`,
+      test: () => {
+        expect(add).toBeDeclared();
+      },
     },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [1] [1]`,
-    test: () => {
-      expect([1]).toBeSameArrayAs([1]);
+    {
+      description: `function exists`,
+      test: () => {
+        expect(add).toBeFunction();
+      },
     },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [1] [1,2]`,
-    test: () => {
-      expect([1]).toBeSameArrayAs([1, 2]);
+    {
+      description: `add(3,1) is 4`,
+      test: () => {
+        expect(add).withArgs(3, 1).toReturn(4);
+      },
     },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [2,1] [2,1]`,
-    test: () => {
-      expect([2, 1]).toBeSameArrayAs([2, 1]);
+    {
+      description: `add(4,4) is 8`,
+      test: () => {
+        expect(add).withArgs(4, 4).toReturn(8);
+      },
     },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [1,2] [1,2] `,
-    test: () => {
-      expect([1, 2]).toBeSameArrayAs([1, 2]);
+  ],
+};
+
+const objectComparisonTests = {
+  title: "object comparison",
+  tests: [
+    {
+      description: `object comparison {} and {}`,
+      test: () => {
+        expect({}).toBeSameObjectAs({});
+      },
     },
-  },
-  {
-    section: `array comparison`,
-    description: `array comparison [2,1] [1,2] `,
-    test: () => {
-      expect([2, 1]).toBeSameArrayAs([1, 2]);
+    {
+      description: `object comparison { a: 1 } and {}`,
+      test: () => {
+        expect({ a: 1 }).toBeSameObjectAs({});
+      },
     },
-  },
-];
-const numberToStringTests = [
-  {
-    section: `Number To String`,
-    description: `numberToString is a function`,
-    test: () => {
-      expect(numberToString).toBeFunction();
+    {
+      description: `object comparison expect({ a: 1 }).toBeSameObjectAs({ a: 1 });`,
+      test: () => {
+        expect({ a: 1 }).toBeSameObjectAs({ a: 1 });
+      },
     },
-  },
-  {
-    section: `Number To String`,
-    description: `Number uses method "String"`,
-    test: () => {
-      expect(numberToString).toUseMethod("String");
+    {
+      description: `object comparison   expect({ a: 1 }).toBeSameObjectAs({ a: 2 });`,
+      test: () => {
+        expect({ a: 1 }).toBeSameObjectAs({ a: 2 });
+      },
     },
-  },
-  {
-    section: `Number To String`,
-    description: `Number returns a string`,
-    test: () => {
-      expect(numberToString(1)).isString();
+    {
+      description: `object comparison   expect({ a: 1 }).toBeSameObjectAs({ b: 1 });`,
+      test: () => {
+        expect({ a: 1 }).toBeSameObjectAs({ b: 1 });
+      },
     },
-  },
-];
+  ],
+};
+
+const functionSubtractTests = {
+  title: "function subtract",
+  tests: [
+    {
+      description: `subtract exists`,
+      test: () => {
+        expect(subtract).toBeDeclared();
+      },
+    },
+    {
+      description: `subtract is a function`,
+      test: () => {
+        expect(subtract).toBeFunction();
+      },
+    },
+    {
+      description: `subtract(3,1) is 2`,
+      test: () => {
+        expect(subtract).withArgs(3, 1).toReturn(2);
+      },
+    },
+  ],
+};
+
+const arrayComparisonTests = {
+  title: "array comparison",
+  tests: [
+    {
+      description: `(pass) [] []`,
+      test: () => {
+        expect([]).toBeSameArrayAs([]);
+      },
+    },
+    {
+      description: `(fail) [] [1] `,
+      test: () => {
+        expect([]).toBeSameArrayAs([1]);
+      },
+    },
+    {
+      description: `(fail) [1] []`,
+      test: () => {
+        expect([1]).toBeSameArrayAs([]);
+      },
+    },
+    {
+      description: `(pass) [1] [1]`,
+      test: () => {
+        expect([1]).toBeSameArrayAs([1]);
+      },
+    },
+    {
+      description: `(fail) [1] [1,2]`,
+      test: () => {
+        expect([1]).toBeSameArrayAs([1, 2]);
+      },
+    },
+    {
+      description: `(pass) [2,1] [2,1]`,
+      test: () => {
+        expect([2, 1]).toBeSameArrayAs([2, 1]);
+      },
+    },
+    {
+      description: `(pass) [1,2] [1,2] `,
+      test: () => {
+        expect([1, 2]).toBeSameArrayAs([1, 2]);
+      },
+    },
+    {
+      description: `(fail) [2,1] [1,2] `,
+      test: () => {
+        expect([2, 1]).toBeSameArrayAs([1, 2]);
+      },
+    },
+  ],
+};
+
+const numberToStringTests = {
+  title: "numberToString",
+  tests: [
+    {
+      description: `is a function`,
+      test: () => {
+        expect(numberToString).toBeFunction();
+      },
+    },
+    {
+      description: `uses method "String"`,
+      test: () => {
+        expect(numberToString).withArgs("1").toUseMethod("String");
+      },
+    },
+    {
+      description: `returns a string`,
+      test: () => {
+        expect(numberToString(1)).toBeString();
+      },
+    },
+    {
+      description: `returns "1"`,
+      test: () => {
+        expect(numberToString(1)).toBe("1");
+      },
+    },
+  ],
+};
+
 // Function Method Check
-const arr3Tests = [
-  {
-    section: `arr3`,
-    description: `arr3 exists`,
-    test: () => {
-      expect(arr3).isDeclared();
+const threeItemArrayTests = {
+  title: "arr3 exists",
+  tests: [
+    {
+      description: `arr3 exists`,
+      test: () => {
+        expect(arr3).toBeDeclared();
+      },
     },
-  },
-  {
-    section: `arr3`,
-    description: `arr3 is an array`,
-    test: () => {
-      expect(arr3).toBeArray();
+    {
+      description: `arr3 is an array`,
+      test: () => {
+        expect(arr3).toBeArray();
+      },
     },
-  },
-  {
-    section: `arr3`,
-    description: `arr3 has length of 3`,
-    test: () => {
-      expect(arr3).toHaveArrayLength(3);
+    {
+      description: `arr3 has length of 3`,
+      test: () => {
+        expect(arr3).toHaveArrayLength(3);
+      },
     },
-  },
-];
+  ],
+};
 
-const boolTests = [
-  {
-    section: `b`,
-    description: `b is declared`,
-    test: () => {
-      expect(b).isDeclared();
+const boolTests = {
+  title: "boolean tests",
+  tests: [
+    {
+      description: `b is declared`,
+      test: () => {
+        expect(b).toBeDeclared();
+      },
     },
-  },
-  {
-    section: `b`,
-    description: `b is a boolean`,
-    test: () => {
-      expect(b).toBeBoolean();
+    {
+      description: `b is a boolean`,
+      test: () => {
+        expect(b).toBeBoolean();
+      },
     },
-  },
-  {
-    section: `b`,
-    description: `b is true`,
-    test: () => {
-      expect(b).toBe(true);
+    {
+      description: `b is true`,
+      test: () => {
+        expect(b).toBe(true);
+      },
     },
-  },
-];
+  ],
+};
+const functionCallTests = {
+  title: "functionCallTests",
+  tests: [
+    {
+      description: `stringToNumber is declared`,
+      test: () => {
+        expect(stringToNumber).toBeDeclared();
+      },
+    },
+    {
+      description: `stringToNumber is a function`,
+      test: () => {
+        expect(stringToNumber).toBeFunction();
+      },
+    },
+    {
+      description: `stringToNumber returns a value`,
+      test: () => {
+        console.log(
+          `stringToNumber("1")`,
+          stringToNumber("1"),
+          !!stringToNumber("1")
+        );
+        expect(stringToNumber("1")).toBeTruthy();
+      },
+    },
+    {
+      description: `stringToNumber("1") returns 1`,
+      test: () => {
+        expect(stringToNumber("1")).toBe(1);
+      },
+    },
+  ],
+};
 
-const zTests = {
-  // varQTests,
-  // varXTests,
+const returnTypeTests = {
+  title: "returnTypeTests",
+  tests: [
+    {
+      description: `return bool`,
+      test: () => {
+        expect(() => true).toReturnBoolean();
+      },
+    },
+    {
+      description: `return number`,
+      test: () => {
+        expect(() => 1).toReturnNumber();
+      },
+    },
+    {
+      description: `return string`,
+      test: () => {
+        expect(() => "string").toReturnString();
+      },
+    },
+    {
+      description: `return function`,
+      test: () => {
+        expect(() => () => {}).toReturnFunction();
+      },
+    },
+    {
+      description: `return object`,
+      test: () => {
+        let o = {};
+        let f = () => o;
+        expect(f).toReturnObject();
+      },
+    },
+    {
+      description: `return array`,
+      test: () => {
+        let a = [];
+        let f = () => a;
+        expect(f).toReturnArray();
+      },
+    },
+  ],
+};
+
+const returnTypeTestFails = {
+  title: "returnTypeTestFails",
+  tests: [
+    {
+      description: `return bool`,
+      test: () => {
+        expect(() => undefined).toReturnBoolean();
+      },
+    },
+    {
+      description: `return number`,
+      test: () => {
+        expect(() => undefined).toReturnNumber();
+      },
+    },
+    {
+      description: `return string`,
+      test: () => {
+        expect(() => undefined).toReturnString();
+      },
+    },
+    {
+      description: `return function`,
+      test: () => {
+        expect(() => undefined).toReturnFunction();
+      },
+    },
+    {
+      description: `return object`,
+      test: () => {
+        let o = {};
+        let f = () => undefined;
+        expect(f).toReturnObject();
+      },
+    },
+    {
+      description: `return array`,
+      test: () => {
+        let a = [];
+        let f = () => undefined;
+        expect(f).toReturnArray();
+      },
+    },
+  ],
+};
+
+const zTestSuite = {
+  variableQTests,
+  variableXTests,
   varFruitTests,
   functionAddTests,
   functionSubtractTests,
-  // numberToStringTests,
-  arr3Tests,
+  numberToStringTests,
+  threeItemArrayTests,
   boolTests,
+  arrayComparisonTests,
+  functionCallTests,
+  returnTypeTests,
+  returnTypeTestFails,
 };

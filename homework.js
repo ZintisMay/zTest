@@ -1,13 +1,24 @@
-function add(a, b) {
-  return a + b;
+let q;
+let x;
+let fruit;
+fruit = "apple";
+
+function add(x, y) {
+  return x + y;
 }
-function subtract(a, b) {
-  return a - b;
+
+function subtract(x, y) {
+  return x - y;
 }
-var fruit = "apple";
-var x;
+
 function numberToString(n) {
   return String(n);
 }
-var arr3 = [1, 2, 3];
-var b = true;
+
+function stringToNumber(s) {
+  return Number(s);
+}
+
+let arr3 = [1, 2, 3];
+
+let b = true;
