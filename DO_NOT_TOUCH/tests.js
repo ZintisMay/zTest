@@ -2,9 +2,21 @@ const variableQTests = {
   title: "var q tests",
   tests: [
     {
-      description: `variable Q exists`,
+      description: `q is declared`,
       test: () => {
         expect(q).toBeDeclared();
+      },
+    },
+    {
+      description: `q has a value`,
+      test: () => {
+        expect(q).toHaveValue();
+      },
+    },
+    {
+      description: `q is "queue"`,
+      test: () => {
+        expect(q).toHaveValue("queue");
       },
     },
   ],
@@ -14,9 +26,15 @@ const variableXTests = {
   title: "variable X",
   tests: [
     {
-      description: `variable X exists`,
+      description: `x is declared`,
       test: () => {
         expect(x).toBeDeclared();
+      },
+    },
+    {
+      description: `x has a value`,
+      test: () => {
+        expect(x).toHaveValue();
       },
     },
   ],
@@ -26,15 +44,21 @@ const varFruitTests = {
   title: `Variable Fruit`,
   tests: [
     {
-      description: `variable fruit exists`,
+      description: `fruit is declared`,
       test: () => {
         expect(fruit).toBeDeclared();
       },
     },
     {
-      description: `variable fruit is "apple"`,
+      description: `fruit has a value`,
       test: () => {
-        expect(fruit).toBe(`apple`);
+        expect(fruit).toHaveValue();
+      },
+    },
+    {
+      description: `fruit is "apple"`,
+      test: () => {
+        expect(fruit).toBe("apple");
       },
     },
   ],
@@ -44,13 +68,19 @@ const functionAddTests = {
   title: "function add",
   tests: [
     {
-      description: `var exists`,
+      description: `add is declared`,
       test: () => {
         expect(add).toBeDeclared();
       },
     },
     {
-      description: `function exists`,
+      description: `add has a value`,
+      test: () => {
+        expect(add).toHaveValue();
+      },
+    },
+    {
+      description: `add is a function`,
       test: () => {
         expect(add).toBeFunction();
       },
@@ -110,9 +140,15 @@ const functionSubtractTests = {
   title: "function subtract",
   tests: [
     {
-      description: `subtract exists`,
+      description: `subtract is declared`,
       test: () => {
         expect(subtract).toBeDeclared();
+      },
+    },
+    {
+      description: `subtract has a value`,
+      test: () => {
+        expect(subtract).toHaveValue();
       },
     },
     {
@@ -131,7 +167,7 @@ const functionSubtractTests = {
 };
 
 const arrayComparisonTests = {
-  title: "array comparison",
+  title: "array comparison (some tests should fail)",
   tests: [
     {
       description: `(pass) [] []`,
@@ -188,7 +224,19 @@ const numberToStringTests = {
   title: "numberToString",
   tests: [
     {
-      description: `is a function`,
+      description: `numberToString is declared`,
+      test: () => {
+        expect(numberToString).toBeDeclared();
+      },
+    },
+    {
+      description: `numberToString has a value`,
+      test: () => {
+        expect(numberToString).toHaveValue();
+      },
+    },
+    {
+      description: `numberToString is a function`,
       test: () => {
         expect(numberToString).toBeFunction();
       },
@@ -202,13 +250,13 @@ const numberToStringTests = {
     {
       description: `returns a string`,
       test: () => {
-        expect(numberToString(1)).toBeString();
+        expect(numberToString).withArgs(1).toReturnString();
       },
     },
     {
-      description: `returns "1"`,
+      description: `numberToString(1) returns "1"`,
       test: () => {
-        expect(numberToString(1)).toBe("1");
+        expect(numberToString).withArgs(1).toReturn("1");
       },
     },
   ],
@@ -219,9 +267,15 @@ const threeItemArrayTests = {
   title: "arr3 exists",
   tests: [
     {
-      description: `arr3 exists`,
+      description: `arr3 is declared`,
       test: () => {
         expect(arr3).toBeDeclared();
+      },
+    },
+    {
+      description: `arr3 has a value`,
+      test: () => {
+        expect(arr3).toHaveValue();
       },
     },
     {
@@ -243,32 +297,45 @@ const boolTests = {
   title: "boolean tests",
   tests: [
     {
-      description: `b is declared`,
+      description: `bool is declared`,
       test: () => {
-        expect(b).toBeDeclared();
+        expect(bool).toBeDeclared();
       },
     },
     {
-      description: `b is a boolean`,
+      description: `bool has a value`,
       test: () => {
-        expect(b).toBeBoolean();
+        expect(bool).toHaveValue();
       },
     },
     {
-      description: `b is true`,
+      description: `bool is a boolean`,
       test: () => {
-        expect(b).toBe(true);
+        expect(bool).toBeBoolean();
+      },
+    },
+    {
+      description: `bool is true`,
+      test: () => {
+        expect(bool).toBe(true);
       },
     },
   ],
 };
+
 const functionCallTests = {
-  title: "functionCallTests",
+  title: "stringToNumber",
   tests: [
     {
       description: `stringToNumber is declared`,
       test: () => {
         expect(stringToNumber).toBeDeclared();
+      },
+    },
+    {
+      description: `stringToNumber has a value`,
+      test: () => {
+        expect(stringToNumber).toHaveValue();
       },
     },
     {
@@ -280,18 +347,13 @@ const functionCallTests = {
     {
       description: `stringToNumber returns a value`,
       test: () => {
-        console.log(
-          `stringToNumber("1")`,
-          stringToNumber("1"),
-          !!stringToNumber("1")
-        );
-        expect(stringToNumber("1")).toBeTruthy();
+        expect(stringToNumber).withArgs("1").toReturnSomething();
       },
     },
     {
       description: `stringToNumber("1") returns 1`,
       test: () => {
-        expect(stringToNumber("1")).toBe(1);
+        expect(stringToNumber).withArgs("1").toReturn(1);
       },
     },
   ],
@@ -344,7 +406,7 @@ const returnTypeTests = {
 };
 
 const returnTypeTestFails = {
-  title: "returnTypeTestFails",
+  title: "returnTypeTestFails (all should fail)",
   tests: [
     {
       description: `return bool`,
@@ -403,3 +465,5 @@ const zTestSuite = {
   returnTypeTests,
   returnTypeTestFails,
 };
+
+Z_T.testAll(zTestSuite);

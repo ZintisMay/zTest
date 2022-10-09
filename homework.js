@@ -1,24 +1,17 @@
-let q;
-let x;
-let fruit;
-fruit = "apple";
-
-function add(x, y) {
-  return x + y;
+var x = 1;
+var q = "queue";
+var fruit = "apple";
+function add(a, b) {
+  return a + b;
 }
-
-function subtract(x, y) {
-  return x - y;
+function subtract(a, b) {
+  return a - b;
 }
-
 function numberToString(n) {
   return String(n);
 }
-
+var arr3 = [1, 2, 3];
+var bool = true;
 function stringToNumber(s) {
   return Number(s);
 }
-
-let arr3 = [1, 2, 3];
-
-let b = true;

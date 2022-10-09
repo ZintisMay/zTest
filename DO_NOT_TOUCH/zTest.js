@@ -3,6 +3,7 @@ const Z_T = {
   testContainer: null,
   testCounter: [],
   comletelyPassed: true,
+  testGenerator: {},
   type: {
     BOOLEAN: "boolean",
     NUMBER: "number",
@@ -65,11 +66,6 @@ const Z_T = {
 //     ],
 //   },
 // };
-
-// Adding a time delay so page scripts can load
-setTimeout(() => {
-  Z_T.testAll(zTestSuite);
-}, 100);
 
 // execute all categories and subtests, then display results
 Z_T.testAll = function (testSuite) {
@@ -143,6 +139,7 @@ function expect(value) {
     exec,
     toBe,
     toBeDeclared,
+    toBeType,
     toBeBoolean,
     toBeNumber,
     toBeString,
@@ -163,6 +160,8 @@ function expect(value) {
     toHaveObjectKeyCount,
     toHaveArrayLength,
     toReturnBoolean,
+    toReturnSomething,
+    toHaveValue,
   };
 
   function toBe(x) {
@@ -173,8 +172,21 @@ function expect(value) {
   }
 
   function toBeDeclared() {
-    if (typeof this.value === undefined) {
+    if (typeof this.value == undefined) {
       throw new Error(`is not declared`);
+    }
+    return this;
+  }
+  function toHaveValue() {
+    if (this.value === undefined) {
+      throw new Error(`has no value`);
+    }
+    return this;
+  }
+
+  function toBeType(type) {
+    if (typeof this.value !== type) {
+      throw new Error(`is not a ${type}`);
     }
     return this;
   }
@@ -322,6 +334,12 @@ function expect(value) {
   function toReturnArray() {
     if (!Array.isArray(this.exec())) {
       throw new Error(`function does not return array type`);
+    }
+    return this;
+  }
+  function toReturnSomething() {
+    if (this.exec() === undefined) {
+      throw new Error(`returns value is undefined`);
     }
     return this;
   }
@@ -482,4 +500,37 @@ Z_T.addBigCheckMark = function () {
   `;
   checkMark.innerHTML = "&check;";
   document.body.appendChild(checkMark);
+};
+
+Z_T.testGenerator.variable = function (varName, type, value) {
+  return [];
+  let result = [
+    {
+      description: `variable ${varName} exists`,
+      test: () => {
+        expect(window[varName]).toBeDeclared();
+      },
+    },
+  ];
+  if (type !== undefined) {
+    let n = ["a", "e", "i", "o", "u"].includes(type[0]) ? "n" : "";
+    result.push({
+      description: `variable ${varName} is a${n} "${type}"`,
+      test: () => {
+        console.log(varName, window[varName]);
+        expect(window[varName]).toBeType(type);
+      },
+    });
+  }
+  if (value !== undefined) {
+    result.push({
+      description: `variable ${varName} is "${value}"`,
+      test: () => {
+        console.log(varName, window[varName]);
+        expect(window[varName]).toBe(value);
+      },
+    });
+  }
+
+  return result;
 };
