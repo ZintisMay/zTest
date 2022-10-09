@@ -3,7 +3,6 @@ const Z_T = {
   testContainer: null,
   testCounter: [],
   comletelyPassed: true,
-  testGenerator: {},
   type: {
     BOOLEAN: "boolean",
     NUMBER: "number",
@@ -150,7 +149,7 @@ function expect(value) {
     toBeSameObjectAs,
     toBeTruthy,
     toBeFalsey,
-    toUseMethod,
+    // toUseMethod,
     toReturn,
     toReturnNumber,
     toReturnString,
@@ -162,6 +161,7 @@ function expect(value) {
     toReturnBoolean,
     toReturnSomething,
     toHaveValue,
+    takesXArguments,
   };
 
   function toBe(x) {
@@ -343,47 +343,84 @@ function expect(value) {
     }
     return this;
   }
-
-  function toUseMethod(funcToUse) {
-    // Watch
-    let watcher = watchFunction(funcToUse);
-
-    // Call function
-    this.exec();
-
-    // How many times was it called? Should be 1
-    let countAfter = watcher.getCount();
-
-    // Reset to no watch, very important!
-    watcher.reset();
-
-    // Has the function not been called?
-    if (countAfter <= 0) {
-      throw new Error(`function "${funcToUse}" was not called`);
+  function takesXArguments(argumentCount) {
+    if (typeof this.value !== "function") {
+      throw new Error(
+        `should take ${argumentCount} arguments but isn't a function`
+      );
+    } else if (this.value.length !== argumentCount) {
+      throw new Error(
+        `should take ${argumentCount} arguments but takes ${this.value.length} instead`
+      );
     }
-    return this;
   }
 
-  function watchFunction(f) {
-    let originalFunction = window[f];
-    let counter = 0;
+  // function toUseMethod(funcToUse) {
+  //   // Watch
+  //   let watcher = watchFunction(funcToUse);
 
-    window[f] = function (...args) {
-      counter++;
-      return originalFunction(...args);
-    };
+  //   // Call function
+  //   this.exec();
 
-    console.log("f, counter", f, counter);
+  //   // How many times was it called? Should be 1
+  //   let countAfter = watcher.getCount();
 
-    return {
-      getCount: () => {
-        return counter;
-      },
-      reset: () => {
-        window[f] = originalFunction;
-      },
-    };
-  }
+  //   // Reset to no watch, very important!
+  //   watcher.reset();
+
+  //   // Has the function not been called?
+  //   if (countAfter <= 0) {
+  //     throw new Error(`function "${funcToUse}" was not called`);
+  //   }
+  //   return this;
+  // }
+
+  // function watchFunction(f) {
+  //   let originalFunction = f;
+  //   let counter = 0;
+
+  //   f = function (...args) {
+  //     counter++;
+  //     return originalFunction(...args);
+  //   };
+
+  //   // console.log("f, counter", f, counter);
+
+  //   return {
+  //     getCount: () => {
+  //       return counter;
+  //     },
+  //     reset: () => {
+  //       f = originalFunction;
+  //     },
+  //   };
+  // }
+
+  // function watchFunctionEval(f) {
+  //   eval(`;var originalFunction = ${f};`);
+  //   // console.log("originalFunction", originalFunction);
+
+  //   let counter = 0;
+
+  //   function wrapper(...args) {
+  //     counter++;
+  //     return originalFunction(...args);
+  //   }
+
+  //   eval(`;${f} = ${wrapper.toString()};`);
+
+  //   console.log("f, counter", f, counter);
+
+  //   return {
+  //     getCount: () => {
+  //       return counter;
+  //     },
+  //     reset: () => {
+  //       // window[f] = originalFunction;
+  //       eval(`;${f} = ${originalFunction.toString()};`);
+  //     },
+  //   };
+  // }
 }
 
 // Displays the test results as divs on the page
@@ -474,8 +511,10 @@ Z_T.populateSection = function (section) {
     if (item.result) {
       let errorSpan = document.createElement("span");
       errorSpan.style.color = DARK_RED;
+      // errorSpan.style.backgroundColor = "red";
+      errorSpan.style.fontWeight = 700;
       errorSpan.textContent = " " + item.result;
-      testContainer.appendChild(errorSpan);
+      testContainer.append(errorSpan);
     }
 
     // Append to sectionDiv
@@ -500,37 +539,4 @@ Z_T.addBigCheckMark = function () {
   `;
   checkMark.innerHTML = "&check;";
   document.body.appendChild(checkMark);
-};
-
-Z_T.testGenerator.variable = function (varName, type, value) {
-  return [];
-  let result = [
-    {
-      description: `variable ${varName} exists`,
-      test: () => {
-        expect(window[varName]).toBeDeclared();
-      },
-    },
-  ];
-  if (type !== undefined) {
-    let n = ["a", "e", "i", "o", "u"].includes(type[0]) ? "n" : "";
-    result.push({
-      description: `variable ${varName} is a${n} "${type}"`,
-      test: () => {
-        console.log(varName, window[varName]);
-        expect(window[varName]).toBeType(type);
-      },
-    });
-  }
-  if (value !== undefined) {
-    result.push({
-      description: `variable ${varName} is "${value}"`,
-      test: () => {
-        console.log(varName, window[varName]);
-        expect(window[varName]).toBe(value);
-      },
-    });
-  }
-
-  return result;
 };

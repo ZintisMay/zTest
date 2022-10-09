@@ -241,12 +241,12 @@ const numberToStringTests = {
         expect(numberToString).toBeFunction();
       },
     },
-    {
-      description: `uses method "String"`,
-      test: () => {
-        expect(numberToString).withArgs("1").toUseMethod("String");
-      },
-    },
+    // {
+    //   description: `uses method "String"`,
+    //   test: () => {
+    //     expect(numberToString).withArgs(1).toUseMethod(String);
+    //   },
+    // },
     {
       description: `returns a string`,
       test: () => {
@@ -451,6 +451,54 @@ const returnTypeTestFails = {
   ],
 };
 
+const mathTests = {
+  title: "round down",
+  tests: [
+    {
+      description: `roundDown is declared`,
+      test: () => {
+        expect(roundDown).toBeDeclared();
+      },
+    },
+    {
+      description: `roundDown has a value`,
+      test: () => {
+        expect(roundDown).toHaveValue();
+      },
+    },
+    {
+      description: `roundDown is a function`,
+      test: () => {
+        expect(roundDown).toBeFunction();
+      },
+    },
+    {
+      description: `roundDown returns a value`,
+      test: () => {
+        expect(roundDown).withArgs(1.1).toReturnSomething();
+      },
+    },
+    {
+      description: `roundDown takes 1 argument`,
+      test: () => {
+        expect(roundDown).takesXArguments(1);
+      },
+    },
+    {
+      description: `roundDown("1") returns 1`,
+      test: () => {
+        expect(roundDown).withArgs(1.1).toReturn(1);
+      },
+    },
+    // {
+    //   description: `roundDown("1") returns 1`,
+    //   test: () => {
+    //     expect(roundDown).withArgs(1.1).toUseMethod("Math.floor");
+    //   },
+    // },
+  ],
+};
+
 const zTestSuite = {
   variableQTests,
   variableXTests,
@@ -464,6 +512,7 @@ const zTestSuite = {
   functionCallTests,
   returnTypeTests,
   returnTypeTestFails,
+  mathTests,
 };
 
 Z_T.testAll(zTestSuite);

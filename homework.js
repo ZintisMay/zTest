@@ -1,4 +1,4 @@
-var x = 1;
+var x = 3;
 var q = "queue";
 var fruit = "apple";
 function add(a, b) {
@@ -14,4 +14,8 @@ var arr3 = [1, 2, 3];
 var bool = true;
 function stringToNumber(s) {
   return Number(s);
+}
+
+function roundDown(n) {
+  return Math.floor(n);
 }
