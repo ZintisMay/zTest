@@ -16,7 +16,7 @@ const variableQTests = {
     {
       description: `q is "queue"`,
       test: () => {
-        expect(q).toHaveValue("queue");
+        expect(q).toBe("queue");
       },
     },
   ],

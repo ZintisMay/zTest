@@ -134,6 +134,7 @@ function expect(value) {
   return {
     value,
     args: [],
+    // works with function
     withArgs,
     exec,
     toBe,
@@ -150,18 +151,23 @@ function expect(value) {
     toBeTruthy,
     toBeFalsey,
     // toUseMethod,
+
+    //checks function returns
     toReturn,
     toReturnNumber,
     toReturnString,
     toReturnObject,
     toReturnFunction,
     toReturnArray,
+
     toHaveObjectKeyCount,
     toHaveArrayLength,
     toReturnBoolean,
     toReturnSomething,
     toHaveValue,
     takesXArguments,
+    toHaveKey,
+    toHaveKeyValuePair,
   };
 
   function toBe(x) {
@@ -227,12 +233,10 @@ function expect(value) {
   }
 
   function toBeObject() {
-    if (
-      typeof this.value !== "object" ||
-      Array.isArray(this.value) ||
-      this.value === null
-    ) {
+    if (typeof this.value !== "object" || this.value === null) {
       throw new Error(`is not object`);
+    } else if (Array.isArray(this.value)) {
+      throw new Error(`is an array (technically an object)`);
     }
     return this;
   }
@@ -260,6 +264,19 @@ function expect(value) {
   function toHaveObjectKeyCount(x) {
     if (Object.keys(this.value) !== x) {
       throw new Error(`incorrect object key count`);
+    }
+    return this;
+  }
+
+  function toHaveKey(x) {
+    if (this.value[x] !== undefined) {
+      throw new Error(`object does not have key ${x}`);
+    }
+    return this;
+  }
+  function toHaveKeyValuePair(x, y) {
+    if (this.value[x] !== y) {
+      throw new Error(`object does not have key ${x} with value ${y}`);
     }
     return this;
   }
@@ -497,8 +514,7 @@ Z_T.populateSection = function (section) {
     // Add pass fail sticker
     const passFail = itemPassed ? "PASSED " : "FAILED ";
     let span = document.createElement("span");
-    span.style.cssText =
-      "padding:2px 5px;display:inline-flex;margin:0 3px 0 0;border-radius:5px;";
+    span.style.cssText = `padding:2px 5px;display:inline-flex;margin:0 3px 0 0;border-radius:5px;`;
     span.style.backgroundColor = itemPassed ? DARK_GREEN : DARK_RED;
     span.style.color = "white";
     span.innerHTML = passFail;
