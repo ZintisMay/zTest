@@ -134,8 +134,6 @@ function expect(value) {
   return {
     value,
     args: [],
-    // works with function
-    withArgs,
     exec,
     toBe,
     toBeDeclared,
@@ -150,9 +148,12 @@ function expect(value) {
     toBeSameObjectAs,
     toBeTruthy,
     toBeFalsey,
-    // toUseMethod,
 
+    // works with function
+    withArgs,
+    toUseMethod,
     //checks function returns
+    takesXArguments,
     toReturn,
     toReturnNumber,
     toReturnString,
@@ -160,12 +161,13 @@ function expect(value) {
     toReturnFunction,
     toReturnArray,
 
-    toHaveObjectKeyCount,
     toHaveArrayLength,
-    toReturnBoolean,
+
     toReturnSomething,
+    toReturnBoolean,
     toHaveValue,
-    takesXArguments,
+
+    toHaveObjectKeyCount,
     toHaveKey,
     toHaveKeyValuePair,
   };
@@ -372,46 +374,82 @@ function expect(value) {
     }
   }
 
-  // function toUseMethod(funcToUse) {
-  //   // Watch
-  //   let watcher = watchFunction(funcToUse);
+  function toUseMethod(a1, a2, a3) {
+    // Watch
+    let watcher = watchFunction(a1, a2, a3);
 
-  //   // Call function
-  //   this.exec();
+    // Call function
+    this.exec();
 
-  //   // How many times was it called? Should be 1
-  //   let countAfter = watcher.getCount();
+    // How many times was it called? Should be 1
+    let countAfter = watcher.getCount();
 
-  //   // Reset to no watch, very important!
-  //   watcher.reset();
+    // Reset to no watch, very important!
+    watcher.reset();
 
-  //   // Has the function not been called?
-  //   if (countAfter <= 0) {
-  //     throw new Error(`function "${funcToUse}" was not called`);
-  //   }
-  //   return this;
-  // }
+    // Has the function not been called?
+    if (countAfter === 0) {
+      throw new Error(`function "${[a1, a2, a3].join(".")}" was not called`);
+    }
+    return this;
+  }
 
-  // function watchFunction(f) {
-  //   let originalFunction = f;
-  //   let counter = 0;
+  function watchFunction(a1, a2, a3) {
+    let originalFunction;
+    let reset;
+    if (a1 && a2 && a3) {
+      console.log("a123");
+      originalFunction = window[a1][a2][a3];
+      window[a1][a2][a3] = function (...args) {
+        counter++;
+        return originalFunction(...args);
+      };
+      reset = () => {
+        window[a1][a2][a3] = originalFunction;
+      };
+    } else if (a1 && a2) {
+      console.log("a12");
+      originalFunction = window[a1][a2];
+      window[a1][a2] = function (...args) {
+        counter++;
+        return originalFunction(...args);
+      };
+      reset = () => {
+        window[a1][a2] = originalFunction;
+      };
+    } else if (a1) {
+      console.log("a1");
+      originalFunction = window[a1];
+      window[a1] = function (...args) {
+        counter++;
+        return originalFunction(...args);
+      };
+      reset = () => {
+        window[a1] = originalFunction;
+      };
+    } else {
+      throw new Error(
+        "watchFunction did not receive arguments (inform test maker)"
+      );
+    }
+    console.log("originalFunction", originalFunction);
 
-  //   f = function (...args) {
-  //     counter++;
-  //     return originalFunction(...args);
-  //   };
+    let counter = 0;
 
-  //   // console.log("f, counter", f, counter);
+    // window[f] = function (...args) {
+    //   counter++;
+    //   return originalFunction(...args);
+    // };
 
-  //   return {
-  //     getCount: () => {
-  //       return counter;
-  //     },
-  //     reset: () => {
-  //       f = originalFunction;
-  //     },
-  //   };
-  // }
+    // console.log("f, counter", f, counter);
+
+    return {
+      getCount: () => {
+        return counter;
+      },
+      reset,
+    };
+  }
 
   // function watchFunctionEval(f) {
   //   eval(`;var originalFunction = ${f};`);
