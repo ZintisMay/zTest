@@ -15,12 +15,6 @@ zTestSuite.randTests = {
       },
     },
     {
-      description: `rand uses parseInt`,
-      test: () => {
-        expect(rand).toUseFunction("parseInt");
-      },
-    },
-    {
       description: `rand uses Math.random`,
       test: () => {
         expect(rand).toUseFunction("Math", "random");
@@ -71,33 +65,54 @@ zTestSuite.changeToIntTests = {
     },
   ],
 };
+
 zTestSuite.concatArraysTests = {
   title: "function concatArraysTests",
   tests: [
     {
-      description: `concatArraysTests is declared`,
+      description: `concatArrays is declared`,
       test: () => {
-        expect(concatArraysTests).toBeDeclared();
+        expect(concatArrays).toBeDeclared();
       },
     },
     {
-      description: `concatArraysTests has a value`,
+      description: `concatArrays has a value`,
       test: () => {
-        expect(concatArraysTests).toHaveValue();
+        expect(concatArrays).toHaveValue();
       },
     },
     {
-      description: `concatArraysTests is a function`,
+      description: `concatArrays is a function`,
       test: () => {
-        expect(concatArraysTests).toBeFunction();
+        expect(concatArrays).toBeFunction();
       },
     },
     {
-      description: `concatArraysTests is declared`,
+      description: `concatArrays to use array.push`,
       test: () => {
-        expect(concatArrays)
-          .withArgs([1], [2])
-          .toUseMethod("Array", "prototype", "push");
+        expect(concatArrays).toUseFunction(".push(");
+      },
+    },
+    {
+      description: `concatArrays returns something`,
+      test: () => {
+        expect(concatArrays).withArgs([], []).toReturnSomething();
+      },
+    },
+    {
+      description: `concatArrays returns array`,
+      test: () => {
+        expect(concatArrays).withArgs([], []).toReturnArray();
+      },
+    },
+    {
+      description: `concatArrays returns correct value`,
+      test: () => {
+        expect(concatArrays).withArgs([1], [2]).toReturn([1, 2]);
+        expect(concatArrays).withArgs([12], [22]).toReturn([12, 22]);
+        expect(concatArrays).withArgs([1, 2], [2]).toReturn([1, 2, 2]);
+        expect(concatArrays).withArgs([1, 2, 3], []).toReturn([1, 2, 3]);
+        expect(concatArrays).withArgs([], [1, 2, 3]).toReturn([1, 2, 3]);
       },
     },
   ],

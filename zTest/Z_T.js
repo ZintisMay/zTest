@@ -100,8 +100,7 @@ Z_T.test = function (description, testFunc) {
   return error || null;
 };
 
-// Sets a value and provides the function toolset. Makes for easier readability in test execution (i.e. expect(5).toBe(5) )
-// (i.e. expect(functionAdd).withArgs(2,3).toReturn(5)))
+// Sets the object value and provides the function toolset.
 function expect(value) {
   return {
     // basics
@@ -321,7 +320,7 @@ function expect(value) {
 
   function toReturn(expectedValue) {
     const returnVal = this.exec();
-    if (returnVal !== expectedValue) {
+    if (!_.isEqual(returnVal, expectedValue)) {
       throw new Error(
         `expected return value ${expectedValue} but got ${returnVal}`
       );
