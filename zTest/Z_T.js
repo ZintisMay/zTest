@@ -159,9 +159,11 @@ function expect(value) {
     toReturnString,
     toReturnObject,
     toReturnFunction,
-    toReturnArray,
 
+    // Arrays
+    toReturnArray,
     toHaveArrayLength,
+    toBeArrayWithItemsOfType,
 
     toReturnSomething,
     toReturnBoolean,
@@ -170,6 +172,9 @@ function expect(value) {
     toHaveObjectKeyCount,
     toHaveKey,
     toHaveKeyValuePair,
+
+    // Custom
+    customTest,
   };
 
   function toBe(x) {
@@ -290,6 +295,13 @@ function expect(value) {
     return this;
   }
 
+  function toBeArrayWithItemsOfType(x) {
+    if (!this.value.every((item) => typeof item === x)) {
+      throw new Error(`items are not all type ${x}`);
+    }
+    return this;
+  }
+
   function toBeSameArrayAs(x) {
     if (!_.isEqual(x, this.value)) {
       throw new Error(
@@ -372,6 +384,11 @@ function expect(value) {
         `should take ${argumentCount} arguments but takes ${this.value.length} instead`
       );
     }
+  }
+
+  function customTest(f) {
+    this._customTest = f;
+    this._customTest();
   }
 
   function toUseMethod(a1, a2, a3) {

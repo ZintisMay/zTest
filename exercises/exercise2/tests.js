@@ -1,57 +1,78 @@
-const varATests = {
-  title: "var 'a' tests",
+const varSimpleArrayTests = {
+  title: "var simpleArray tests",
   tests: [
     {
-      description: `a is declared`,
+      description: `simpleArray is declared`,
       test: () => {
-        expect(a).toBeDeclared();
+        expect(simpleArray).toBeDeclared();
       },
     },
     {
-      description: `a has a value`,
+      description: `simpleArray has a value`,
       test: () => {
-        expect(a).toHaveValue();
+        expect(simpleArray).toHaveValue();
       },
     },
     {
-      description: `a is a number`,
+      description: `simpleArray is an array`,
       test: () => {
-        expect(a).toBeType("number");
+        expect(simpleArray).toBeArray();
       },
     },
     {
-      description: `a is 1`,
+      description: `simpleArray contains numbers only`,
       test: () => {
-        expect(a).toBe(1);
+        expect(simpleArray).toBeArrayWithItemsOfType("number");
+      },
+    },
+    {
+      description: `simpleArray contains numbers 1,2,3`,
+      test: () => {
+        expect(simpleArray).toBeSameArrayAs([1, 2, 3]);
       },
     },
   ],
 };
-const varArrayTests = {
-  title: "var array tests",
+
+const varFavoriteFoodsTest = {
+  title: "var favoriteFoods tests",
   tests: [
     {
-      description: `array is declared`,
+      description: `favoriteFoods is declared`,
       test: () => {
-        expect(array).toBeDeclared();
+        expect(favoriteFoods).toBeDeclared();
       },
     },
     {
-      description: `array has a value`,
+      description: `favoriteFoods has a value`,
       test: () => {
-        expect(array).toHaveValue();
+        expect(favoriteFoods).toHaveValue();
       },
     },
     {
-      description: `array is an array`,
+      description: `favoriteFoods is an array`,
       test: () => {
-        expect(array).toBeArray();
+        expect(favoriteFoods).toBeArray();
       },
     },
     {
-      description: `array contains numbers 1,2,3`,
+      description: `favoriteFoods contains strings only`,
       test: () => {
-        expect(array).toBeSameArrayAs([1, 2, 3]);
+        expect(favoriteFoods).toBeArrayWithItemsOfType("string");
+      },
+    },
+    {
+      description: `favoriteFoods contains words`,
+      test: () => {
+        expect(favoriteFoods).customTest(function () {
+          this.value.every((item) => {
+            console.log(item);
+            if (!(item.length > 2)) {
+              throw new Error("there are no foods with just 1 letter");
+            }
+            return this;
+          });
+        });
       },
     },
   ],
@@ -94,9 +115,8 @@ const varFunTests = {
 };
 
 const zTestSuite = {
-  varATests,
-  varArrayTests,
-  varFunTests,
+  varSimpleArrayTests,
+  varFavoriteFoodsTest,
 };
 
 Z_T.testAll(zTestSuite);
