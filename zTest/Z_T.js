@@ -38,34 +38,6 @@ const Z_T = {
   },
 };
 
-// zTestSuite should be defined in an earlier script.
-
-// zTest example:
-// const zTestSuite = {
-//   nameOfTest: {
-//     title: "someTitle",
-//     tests: [
-//       {
-//         description: `variable X exists`,
-//         function: () => {
-//           expect(x).toBeDeclared();
-//         },
-//       },
-//     ],
-//   },
-//   nameOfOtherTest: {
-//     title: "someOtherTitle",
-//     tests: [
-//       {
-//         description: `variable Y exists`,
-//         function: () => {
-//           expect(y).toBeDeclared();
-//         },
-//       },
-//     ],
-//   },
-// };
-
 // execute all categories and subtests, then display results
 Z_T.testAll = function (testSuite) {
   let results = {};
@@ -132,18 +104,25 @@ Z_T.test = function (description, testFunc) {
 // (i.e. expect(functionAdd).withArgs(2,3).toReturn(5)))
 function expect(value) {
   return {
+    // basics
     value,
     args: [],
-    exec,
+
+    // declared variables
     toBe,
     toBeDeclared,
-    toBeType,
+    toHaveValue,
+
+    // typing
+    toBeType, // generic (not for arrays)
     toBeBoolean,
     toBeNumber,
     toBeString,
     toBeFunction,
     toBeArray,
     toBeObject,
+
+    // comparison
     toBeSameArrayAs,
     toBeSameObjectAs,
     toBeTruthy,
@@ -151,7 +130,7 @@ function expect(value) {
 
     // works with function
     withArgs,
-    toUseMethod,
+    toUseFunction,
     //checks function returns
     takesXArguments,
     toReturn,
@@ -160,15 +139,17 @@ function expect(value) {
     toReturnObject,
     toReturnFunction,
 
-    // Arrays
+    // arrays
     toReturnArray,
-    toHaveArrayLength,
-    toBeArrayWithItemsOfType,
+    toHaveLength,
+    toOnlyContainType,
 
+    // functions
+    exec, // used to call function values and store result
     toReturnSomething,
     toReturnBoolean,
-    toHaveValue,
 
+    // Objects
     toHaveObjectKeyCount,
     toHaveKey,
     toHaveKeyValuePair,
@@ -199,7 +180,7 @@ function expect(value) {
 
   function toBeType(type) {
     if (typeof this.value !== type) {
-      throw new Error(`is not a ${type}`);
+      throw new Error(`is not ${type}`);
     }
     return this;
   }
@@ -288,14 +269,14 @@ function expect(value) {
     return this;
   }
 
-  function toHaveArrayLength(x) {
+  function toHaveLength(x) {
     if (this.value.length !== x) {
-      throw new Error(`incorrect array length`);
+      throw new Error(`length is ${this.value.length} but should be ${x}`);
     }
     return this;
   }
 
-  function toBeArrayWithItemsOfType(x) {
+  function toOnlyContainType(x) {
     if (!this.value.every((item) => typeof item === x)) {
       throw new Error(`items are not all type ${x}`);
     }
@@ -384,119 +365,27 @@ function expect(value) {
         `should take ${argumentCount} arguments but takes ${this.value.length} instead`
       );
     }
-  }
-
-  function customTest(f) {
-    this._customTest = f;
-    this._customTest();
-  }
-
-  function toUseMethod(a1, a2, a3) {
-    // Watch
-    let watcher = watchFunction(a1, a2, a3);
-
-    // Call function
-    this.exec();
-
-    // How many times was it called? Should be 1
-    let countAfter = watcher.getCount();
-
-    // Reset to no watch, very important!
-    watcher.reset();
-
-    // Has the function not been called?
-    if (countAfter === 0) {
-      throw new Error(`function "${[a1, a2, a3].join(".")}" was not called`);
-    }
     return this;
   }
 
-  function watchFunction(a1, a2, a3) {
-    let originalFunction;
-    let reset;
-    if (a1 && a2 && a3) {
-      console.log("a123");
-      originalFunction = window[a1][a2][a3];
-      window[a1][a2][a3] = function (...args) {
-        counter++;
-        return originalFunction(...args);
-      };
-      reset = () => {
-        window[a1][a2][a3] = originalFunction;
-      };
-    } else if (a1 && a2) {
-      console.log("a12");
-      originalFunction = window[a1][a2];
-      window[a1][a2] = function (...args) {
-        counter++;
-        return originalFunction(...args);
-      };
-      reset = () => {
-        window[a1][a2] = originalFunction;
-      };
-    } else if (a1) {
-      console.log("a1");
-      originalFunction = window[a1];
-      window[a1] = function (...args) {
-        counter++;
-        return originalFunction(...args);
-      };
-      reset = () => {
-        window[a1] = originalFunction;
-      };
-    } else {
-      throw new Error(
-        "watchFunction did not receive arguments (inform test maker)"
-      );
-    }
-    console.log("originalFunction", originalFunction);
-
-    let counter = 0;
-
-    // window[f] = function (...args) {
-    //   counter++;
-    //   return originalFunction(...args);
-    // };
-
-    // console.log("f, counter", f, counter);
-
-    return {
-      getCount: () => {
-        return counter;
-      },
-      reset,
-    };
+  function customTest(f) {
+    this._CUSTOM_TEST = f;
+    this._CUSTOM_TEST();
+    return this;
   }
 
-  // function watchFunctionEval(f) {
-  //   eval(`;var originalFunction = ${f};`);
-  //   // console.log("originalFunction", originalFunction);
-
-  //   let counter = 0;
-
-  //   function wrapper(...args) {
-  //     counter++;
-  //     return originalFunction(...args);
-  //   }
-
-  //   eval(`;${f} = ${wrapper.toString()};`);
-
-  //   console.log("f, counter", f, counter);
-
-  //   return {
-  //     getCount: () => {
-  //       return counter;
-  //     },
-  //     reset: () => {
-  //       // window[f] = originalFunction;
-  //       eval(`;${f} = ${originalFunction.toString()};`);
-  //     },
-  //   };
-  // }
+  function toUseFunction() {
+    if (this.value.toString().includes(x)) {
+      throw new Error(
+        `should use ${x} (this test is not exact, may give false positives)`
+      );
+    }
+    return this;
+  }
 }
 
 // Displays the test results as divs on the page
-Z_T.displayResults = function (results) {
+Z_T.displayResults = function (section) {
   // Create vertical Section list
   const testContainer = document.createElement("div");
   testContainer.style.cssText = `
@@ -511,15 +400,17 @@ Z_T.displayResults = function (results) {
   Z_T.testContainer = testContainer;
 
   // Iterate over test sections
-  for (let key in results) {
-    console.log(results[key]);
-    Z_T.populateSection(results[key]);
+  let resultCounter = 0;
+  for (let key in section) {
+    section[key].id = ++resultCounter;
+    console.log(section[key]);
+    Z_T.populateSection(section[key]);
   }
 };
 
 // Displays each section as a colored box
 Z_T.populateSection = function (section) {
-  const { results = [], title = "NO TITLE" } = section;
+  const { id, results = [], title = "NO TITLE" } = section;
   const {
     colors: { LIGHT_GREEN, LIGHT_ORANGE, LIGHT_RED, DARK_GREEN, DARK_RED },
   } = Z_T;
@@ -554,7 +445,7 @@ Z_T.populateSection = function (section) {
     padding: 0px;
     margin: 0px;
   `;
-  h2.innerHTML = `${title}`;
+  h2.innerHTML = `${id}: ${title}`;
   sectionDiv.appendChild(h2);
 
   // Go through tests

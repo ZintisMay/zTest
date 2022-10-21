@@ -16,7 +16,7 @@ const varATests = {
     {
       description: `a is a number`,
       test: () => {
-        expect(a).toBeType("number");
+        expect(a).toBeNumber();
       },
     },
     {
@@ -45,7 +45,7 @@ const varBTests = {
     {
       description: `b is a number`,
       test: () => {
-        expect(b).toBeType("number");
+        expect(b).toBeNumber();
       },
     },
     {
@@ -74,7 +74,7 @@ const varCTests = {
     {
       description: `c is a number`,
       test: () => {
-        expect(c).toBeType("number");
+        expect(c).toBeNumber();
       },
     },
     {
@@ -103,7 +103,7 @@ const varDTests = {
     {
       description: `d is a number`,
       test: () => {
-        expect(d).toBeType("number");
+        expect(d).toBeNumber();
       },
     },
     {
@@ -132,7 +132,7 @@ const varETests = {
     {
       description: `e is a number`,
       test: () => {
-        expect(e).toBeType("number");
+        expect(e).toBeNumber();
       },
     },
     {
@@ -161,7 +161,7 @@ const varIsHavingFunTests = {
     {
       description: `isHavingFun is a boolean`,
       test: () => {
-        expect(isHavingFun).toBeType("boolean");
+        expect(isHavingFun).toBeBoolean();
       },
     },
     {
@@ -190,7 +190,7 @@ const varIsDifficultTests = {
     {
       description: `isDifficult is a boolean`,
       test: () => {
-        expect(isDifficult).toBeType("boolean");
+        expect(isDifficult).toBeBoolean();
       },
     },
     {
@@ -219,7 +219,7 @@ const varLetterATests = {
     {
       description: `letterA is a string`,
       test: () => {
-        expect(letterA).toBeType("string");
+        expect(letterA).toBeString();
       },
     },
     {
@@ -248,7 +248,7 @@ const varWordTests = {
     {
       description: `word is a string`,
       test: () => {
-        expect(word).toBeType("string");
+        expect(word).toBeString();
       },
     },
     {
@@ -277,7 +277,7 @@ const varSentenceTests = {
     {
       description: `sentence is a string`,
       test: () => {
-        expect(sentence).toBeType("string");
+        expect(sentence).toBeString();
       },
     },
     {
@@ -306,7 +306,7 @@ const varParagraphTests = {
     {
       description: `paragraph is a string`,
       test: () => {
-        expect(paragraph).toBeType("string");
+        expect(paragraph).toBeString();
       },
     },
     {
