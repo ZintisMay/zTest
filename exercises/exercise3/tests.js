@@ -1,4 +1,5 @@
-const randTests = {
+const zTestSuite = {};
+zTestSuite.randTests = {
   title: "function rand",
   tests: [
     {
@@ -16,29 +17,61 @@ const randTests = {
     {
       description: `rand uses parseInt`,
       test: () => {
-        expect(rand).withArgs(5).toUseMethod("parseInt");
+        expect(rand).toUseFunction("parseInt");
       },
     },
     {
       description: `rand uses Math.random`,
       test: () => {
-        expect(rand).withArgs(5).toUseMethod("Math", "random");
+        expect(rand).toUseFunction("Math", "random");
+      },
+    },
+    {
+      description: `rand returns within range`,
+      test: () => {
+        expect(rand).withArgs(5).toReturnBetween(1, 5);
+        expect(rand).withArgs(5).toReturnBetween(1, 5);
+        expect(rand).withArgs(5).toReturnBetween(1, 5);
+        expect(rand).withArgs(5).toReturnBetween(1, 5);
+        expect(rand).withArgs(5).toReturnBetween(1, 5);
       },
     },
   ],
 };
-const changeToIntTests = {
-  title: "function changeToIntTests",
+zTestSuite.changeToIntTests = {
+  title: "function changeToInt",
   tests: [
     {
-      description: `changeToIntTests is declared`,
+      description: `changeToInt is declared`,
       test: () => {
-        expect(changeToIntTests).toBeDeclared();
+        expect(changeToInt).toBeDeclared();
+      },
+    },
+    {
+      description: `changeToInt returns something`,
+      test: () => {
+        expect(changeToInt).toReturnSomething();
+      },
+    },
+    {
+      description: `changeToInt returns a number`,
+      test: () => {
+        expect(changeToInt).toReturnNumber();
+      },
+    },
+    {
+      description: `changeToInt returns correct value`,
+      test: () => {
+        expect(changeToInt).withArgs("3").toReturn(3);
+        expect(changeToInt).withArgs("100").toReturn(100);
+        expect(changeToInt).withArgs("1122").toReturn(1122);
+        expect(changeToInt).withArgs("789123").toReturn(789123);
+        expect(changeToInt).withArgs("0").toReturn(0);
       },
     },
   ],
 };
-const concatArraysTests = {
+zTestSuite.concatArraysTests = {
   title: "function concatArraysTests",
   tests: [
     {
@@ -68,16 +101,6 @@ const concatArraysTests = {
       },
     },
   ],
-};
-
-// rand;
-// changeToInt;
-// concatArrays;
-
-const zTestSuite = {
-  randTests,
-  changeToIntTests,
-  concatArraysTests,
 };
 
 Z_T.testAll(zTestSuite);

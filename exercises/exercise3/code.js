@@ -1,5 +1,4 @@
 function rand(x) {
-  let d = parseInt("4");
   return Math.floor(Math.random() * x + 1);
 }
 

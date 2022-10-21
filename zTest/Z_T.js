@@ -127,6 +127,7 @@ function expect(value) {
     toBeSameObjectAs,
     toBeTruthy,
     toBeFalsey,
+    toBeBetween,
 
     // works with function
     withArgs,
@@ -138,6 +139,7 @@ function expect(value) {
     toReturnString,
     toReturnObject,
     toReturnFunction,
+    toReturnBetween,
 
     // arrays
     toReturnArray,
@@ -243,6 +245,20 @@ function expect(value) {
     return this;
   }
 
+  function toBeBetween(x, y) {
+    if (!(this.value >= x) || !(this.value <= y)) {
+      throw new Error(`is not between ${x} and ${y}`);
+    }
+    return this;
+  }
+  function toReturnBetween(x, y) {
+    const result = this.exec();
+    if (!(result >= x) || !(result <= y)) {
+      throw new Error(`did not return between ${x} and ${y}`);
+    }
+    return this;
+  }
+
   function withArgs(...args) {
     this.args = [...args];
 
@@ -304,7 +320,7 @@ function expect(value) {
   }
 
   function toReturn(expectedValue) {
-    returnVal = this.exec();
+    const returnVal = this.exec();
     if (returnVal !== expectedValue) {
       throw new Error(
         `expected return value ${expectedValue} but got ${returnVal}`
@@ -374,8 +390,8 @@ function expect(value) {
     return this;
   }
 
-  function toUseFunction() {
-    if (this.value.toString().includes(x)) {
+  function toUseFunction(x) {
+    if (!this.value.toString().includes(x)) {
       throw new Error(
         `should use ${x} (this test is not exact, may give false positives)`
       );
