@@ -17,7 +17,7 @@ zTestSuite.randTests = {
     {
       description: `rand uses Math.random`,
       test: () => {
-        expect(rand).toUseFunction("Math", "random");
+        expect(rand).callsFunction(Math, "random");
       },
     },
     {
@@ -90,7 +90,7 @@ zTestSuite.concatArraysTests = {
     {
       description: `concatArrays to use array.push`,
       test: () => {
-        expect(concatArrays).toUseFunction(".push(");
+        expect(concatArrays).callsFunction(Array.prototype, "push");
       },
     },
     {

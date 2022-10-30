@@ -130,7 +130,8 @@ function expect(value) {
 
     // works with function
     withArgs,
-    toUseFunction,
+    callsFunction,
+
     //checks function returns
     takesXArguments,
     toReturn,
@@ -139,6 +140,7 @@ function expect(value) {
     toReturnObject,
     toReturnFunction,
     toReturnBetween,
+    toReturnUndefined,
 
     // arrays
     toReturnArray,
@@ -167,7 +169,7 @@ function expect(value) {
   }
 
   function toBeDeclared() {
-    if (typeof this.value == undefined) {
+    if (typeof this.value === undefined) {
       throw new Error(`is not declared`);
     }
     return this;
@@ -256,6 +258,12 @@ function expect(value) {
       throw new Error(`did not return between ${x} and ${y}`);
     }
     return this;
+  }
+  function toReturnUndefined() {
+    const result = this.exec();
+    if (result !== undefined) {
+      throw new Error(`did not return undefined`);
+    }
   }
 
   function withArgs(...args) {
@@ -389,13 +397,47 @@ function expect(value) {
     return this;
   }
 
-  function toUseFunction(x) {
-    if (!this.value.toString().includes(x)) {
-      throw new Error(
-        `should use ${x} (this test is not exact, may give false positives)`
-      );
+  function callsFunction(obj, fName) {
+    let callCount = 0;
+    const originalFunction = obj[fName];
+
+    obj[fName] = (...args) => {
+      callCount++;
+      return originalFunction.bind(obj)(...args);
+    };
+
+    // try catch needed to reset function watcher
+    try {
+      this.exec();
+    } catch (e) {
+      // This error bubbles up to Z_T
+      throw new Error(e);
+    } finally {
+      // reset function watcher
+      obj[fName] = originalFunction;
+    }
+
+    // was function called?
+    if (callCount === 0) {
+      throw new Error(`${fName} was not called`);
     }
     return this;
+  }
+
+  function watchFunction(obj, fName) {
+    let counter = 0;
+
+    const originalFunction = obj[fName];
+    obj[fName] = (...args) => {
+      counter++;
+      return originalFunction.bind(obj)(...args);
+    };
+
+    return {
+      removeWatcher: () => (obj[fName] = originalFunction),
+      resetCount: () => (counter = 0),
+      getCount: () => counter,
+    };
   }
 }
 
