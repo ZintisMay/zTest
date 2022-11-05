@@ -128,9 +128,19 @@ function expect(value) {
     toBeFalsey,
     toBeBetween,
 
-    // works with function
+    // arrays
+    toHaveLength,
+    toOnlyContainType,
+
+    // objects
+    toHaveObjectKeyCount,
+    toHaveKey,
+    toHaveKeyValuePair,
+
+    // functions
     withArgs,
     callsFunction,
+    exec, // used to call function values and store result
 
     //checks function returns
     takesXArguments,
@@ -141,21 +151,9 @@ function expect(value) {
     toReturnFunction,
     toReturnBetween,
     toReturnUndefined,
-
-    // arrays
-    toReturnArray,
-    toHaveLength,
-    toOnlyContainType,
-
-    // functions
-    exec, // used to call function values and store result
     toReturnSomething,
     toReturnBoolean,
-
-    // Objects
-    toHaveObjectKeyCount,
-    toHaveKey,
-    toHaveKeyValuePair,
+    toReturnArray,
 
     // Custom
     customTest,
@@ -174,6 +172,7 @@ function expect(value) {
     }
     return this;
   }
+
   function toHaveValue() {
     if (this.value === undefined) {
       throw new Error(`has no value`);
@@ -252,6 +251,7 @@ function expect(value) {
     }
     return this;
   }
+
   function toReturnBetween(x, y) {
     const result = this.exec();
     if (!(result >= x) || !(result <= y)) {
@@ -259,6 +259,7 @@ function expect(value) {
     }
     return this;
   }
+
   function toReturnUndefined() {
     const result = this.exec();
     if (result !== undefined) {
@@ -273,7 +274,7 @@ function expect(value) {
   }
 
   function toHaveObjectKeyCount(x) {
-    if (Object.keys(this.value) !== x) {
+    if (Object.keys(this.value).length !== x) {
       throw new Error(`incorrect object key count`);
     }
     return this;

@@ -13,3 +13,7 @@ function concatArrays(a, b) {
   });
   return result;
 }
+
+function reverseString(s) {
+  return s.split("").reverse().join("");
+}
