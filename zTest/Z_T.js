@@ -114,12 +114,12 @@ function expect(value) {
 
     // typing
     toBeType, // generic (not for arrays)
-    toBeBoolean,
     toBeNumber,
     toBeString,
-    toBeFunction,
+    toBeBoolean,
     toBeArray,
     toBeObject,
+    toBeFunction,
 
     // comparison
     toBeSameArrayAs,
@@ -144,16 +144,16 @@ function expect(value) {
 
     //checks function returns
     takesXArguments,
+    toReturnSomething,
     toReturn,
     toReturnNumber,
     toReturnString,
+    toReturnBoolean,
+    toReturnArray,
     toReturnObject,
     toReturnFunction,
     toReturnBetween,
     toReturnUndefined,
-    toReturnSomething,
-    toReturnBoolean,
-    toReturnArray,
 
     // Custom
     customTest,
@@ -269,7 +269,6 @@ function expect(value) {
 
   function withArgs(...args) {
     this.args = [...args];
-
     return this;
   }
 
@@ -281,7 +280,7 @@ function expect(value) {
   }
 
   function toHaveKey(x) {
-    if (this.value[x] !== undefined) {
+    if (this.value[x] === undefined) {
       throw new Error(`object does not have key ${x}`);
     }
     return this;
@@ -424,22 +423,6 @@ function expect(value) {
     }
     return this;
   }
-
-  function watchFunction(obj, fName) {
-    let counter = 0;
-
-    const originalFunction = obj[fName];
-    obj[fName] = (...args) => {
-      counter++;
-      return originalFunction.bind(obj)(...args);
-    };
-
-    return {
-      removeWatcher: () => (obj[fName] = originalFunction),
-      resetCount: () => (counter = 0),
-      getCount: () => counter,
-    };
-  }
 }
 
 // Displays the test results as divs on the page
@@ -460,7 +443,7 @@ Z_T.displayResults = function (section) {
   // Iterate over test sections
   let resultCounter = 0;
   for (let key in section) {
-    section[key].id = ++resultCounter;
+    section[key].testId = ++resultCounter;
     console.log(section[key]);
     Z_T.populateSection(section[key]);
   }
@@ -468,7 +451,7 @@ Z_T.displayResults = function (section) {
 
 // Displays each section as a colored box
 Z_T.populateSection = function (section) {
-  const { id, results = [], title = "NO TITLE" } = section;
+  const { testId, results = [], title = "NO TITLE" } = section;
   const {
     colors: { LIGHT_GREEN, LIGHT_ORANGE, LIGHT_RED, DARK_GREEN, DARK_RED },
   } = Z_T;
@@ -503,7 +486,7 @@ Z_T.populateSection = function (section) {
     padding: 0px;
     margin: 0px;
   `;
-  h2.innerHTML = `${id}: ${title}`;
+  h2.innerHTML = `${testId}: ${title}`;
   sectionDiv.appendChild(h2);
 
   // Go through tests
