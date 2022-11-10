@@ -96,7 +96,9 @@ zTestSuite.concatArraysTests = {
     {
       description: `concatArrays to use array.push`,
       test: () => {
-        expect(concatArrays).callsFunction(Array.prototype, "push");
+        expect(concatArrays)
+          .withArgs([1], [1])
+          .callsFunction(Array.prototype, "push");
       },
     },
     {
@@ -142,6 +144,30 @@ zTestSuite.reverseStringTests = {
       description: `reverseString returns a string`,
       test: () => {
         expect(reverseString).withArgs("word").toReturnString();
+      },
+    },
+    {
+      description: `reverseString calls split()`,
+      test: () => {
+        expect(reverseString)
+          .withArgs("word")
+          .callsFunction(String.prototype, "split");
+      },
+    },
+    {
+      description: `reverseString calls reverse`,
+      test: () => {
+        expect(reverseString)
+          .withArgs("word")
+          .toReturnString(Array.prototype, "reverse");
+      },
+    },
+    {
+      description: `reverseString calls join`,
+      test: () => {
+        expect(reverseString)
+          .withArgs("word")
+          .toReturnString(Array.prototype, "join");
       },
     },
     {

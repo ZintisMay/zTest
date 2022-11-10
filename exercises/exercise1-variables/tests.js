@@ -1,4 +1,6 @@
-const varATests = {
+const testSuite = {};
+
+testSuite.varATests = {
   title: "var 'a' tests",
   tests: [
     {
@@ -27,7 +29,7 @@ const varATests = {
     },
   ],
 };
-const varBTests = {
+testSuite.varBTests = {
   title: "var 'b' tests",
   tests: [
     {
@@ -56,7 +58,7 @@ const varBTests = {
     },
   ],
 };
-const varCTests = {
+testSuite.varCTests = {
   title: "var 'c' tests",
   tests: [
     {
@@ -85,7 +87,7 @@ const varCTests = {
     },
   ],
 };
-const varDTests = {
+testSuite.varDTests = {
   title: "var 'd' tests",
   tests: [
     {
@@ -114,7 +116,7 @@ const varDTests = {
     },
   ],
 };
-const varETests = {
+testSuite.varETests = {
   title: "var 'e' tests",
   tests: [
     {
@@ -143,7 +145,7 @@ const varETests = {
     },
   ],
 };
-const varIsHavingFunTests = {
+testSuite.varIsHavingFunTests = {
   title: "var 'isHavingFun' tests",
   tests: [
     {
@@ -172,7 +174,7 @@ const varIsHavingFunTests = {
     },
   ],
 };
-const varIsDifficultTests = {
+testSuite.varIsDifficultTests = {
   title: "var 'isDifficult' tests",
   tests: [
     {
@@ -201,7 +203,7 @@ const varIsDifficultTests = {
     },
   ],
 };
-const varLetterATests = {
+testSuite.varLetterATests = {
   title: "var 'letterA' tests",
   tests: [
     {
@@ -230,7 +232,7 @@ const varLetterATests = {
     },
   ],
 };
-const varWordTests = {
+testSuite.varWordTests = {
   title: "var 'word' tests",
   tests: [
     {
@@ -259,7 +261,7 @@ const varWordTests = {
     },
   ],
 };
-const varSentenceTests = {
+testSuite.varSentenceTests = {
   title: "var 'sentence' tests",
   tests: [
     {
@@ -288,7 +290,7 @@ const varSentenceTests = {
     },
   ],
 };
-const varParagraphTests = {
+testSuite.varParagraphTests = {
   title: "var 'paragraph' tests",
   tests: [
     {
@@ -320,18 +322,4 @@ const varParagraphTests = {
   ],
 };
 
-const zTestSuite = {
-  varATests,
-  varBTests,
-  varCTests,
-  varDTests,
-  varETests,
-  varIsHavingFunTests,
-  varIsDifficultTests,
-  varLetterATests,
-  varWordTests,
-  varSentenceTests,
-  varParagraphTests,
-};
-
-Z_T.testAll(zTestSuite);
+Z_T.testAll(testSuite);
