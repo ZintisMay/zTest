@@ -1,5 +1,20 @@
-var simpleArray = [1, 2, 3];
-var favoriteFoods = ["banana", "apple", "cherry"];
-var bigNumbers = [12345, 1000000, 3000000000];
-var arrayOf10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var arrayOfBooleans = [true, true, false, false, true];
+function returnNumber() {
+  return 1;
+  // Value not important only type
+}
+function returnString() {
+  return "Hi!";
+  // Value not important only type
+}
+function returnTrue() {
+  return true;
+}
+function returnFalse() {
+  return false;
+}
+function returnArray() {
+  return [];
+}
+function returnObject() {
+  return {};
+}

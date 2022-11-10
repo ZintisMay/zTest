@@ -1,5 +1,24 @@
-var simpleArray = [1, 2, 3];
-var favoriteFoods = ["banana", "apple", "cherry"];
-var bigNumbers = [12345, 1000000, 3000000000];
-var arrayOf10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var arrayOfBooleans = [true, true, false, false, true];
+function add(x, y) {
+  return x + y;
+}
+function subtract(x, y) {
+  return x - y;
+}
+function multiply(x, y) {
+  return x * y;
+}
+function divide(x, y) {
+  return x / y;
+}
+function exponent(x, y) {
+  return x ** y;
+}
+function combineStrings(x, y) {
+  return x + y;
+}
+function combineArrays(x, y) {
+  return [...x, ...y];
+}
+function combineObjects(x, y) {
+  return { ...x, ...y };
+}
