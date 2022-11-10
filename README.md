@@ -18,5 +18,4 @@
 
 # Contributors:
 
-Aleksis Lesieur
-Joshua Rosario
+Aleksis Lesieur, Joshua Rosario
