@@ -76,6 +76,14 @@ function removeWordsOfLengthXPlus(wordList, size) {
   return result;
 }
 
+function calculateAverage(arr) {
+  var sum = 0;
+  for (var x = 0; x < arr.length; x++) {
+    sum += arr[x];
+  }
+  return sum / arr.length;
+}
+
 //Might be too hard
 // function shortenName(name) {
 //   var nameParts = name.replaceAll(/\.\,/g, "").split(" ");
