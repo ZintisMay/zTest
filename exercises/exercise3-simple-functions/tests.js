@@ -1,5 +1,5 @@
 let zTestSuite = {};
-zTestSuite.returnNumber = {
+zTestSuite.returnNumberTests = {
   title: "function returnNumber",
   tests: [
     {
@@ -29,7 +29,7 @@ zTestSuite.returnNumber = {
   ],
 };
 
-zTestSuite.returnString = {
+zTestSuite.returnStringTests = {
   title: "function returnString",
   tests: [
     {
@@ -59,7 +59,7 @@ zTestSuite.returnString = {
   ],
 };
 
-zTestSuite.returnTrue = {
+zTestSuite.returnTrueTests = {
   title: "function returnTrue",
   tests: [
     {
@@ -95,7 +95,7 @@ zTestSuite.returnTrue = {
   ],
 };
 
-zTestSuite.returnFalse = {
+zTestSuite.returnFalseTests = {
   title: "function returnFalse",
   tests: [
     {
@@ -131,7 +131,7 @@ zTestSuite.returnFalse = {
   ],
 };
 
-zTestSuite.returnArray = {
+zTestSuite.returnArrayTests = {
   title: "function returnArray",
   tests: [
     {
@@ -161,7 +161,7 @@ zTestSuite.returnArray = {
   ],
 };
 
-zTestSuite.returnObject = {
+zTestSuite.returnObjectTests = {
   title: "function returnObject",
   tests: [
     {
