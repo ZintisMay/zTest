@@ -307,17 +307,35 @@ function expect(value) {
   }
 
   function toBeSameArrayAs(x) {
-    if (!_.isEqual(x, this.value)) {
+    if (!Array.isArray(x)) {
       throw new Error(
-        `not same arrays ${JSON.stringify(x)} ${JSON.stringify(this.value)}`
+        `There is a problem with the test (value to compare to is not array type), please contact the test creator.`
+      );
+    } else if (!Array.isArray(this.value)) {
+      throw new Error(`Value is not array type`);
+    } else if (!_.isEqual(x, this.value)) {
+      throw new Error(
+        `your array ${JSON.stringify(
+          this.value
+        )} is not the same as ${JSON.stringify(x)}`
       );
     }
     return this;
   }
 
   function toBeSameObjectAs(x) {
-    if (!_.isEqual(x, this.value)) {
-      throw new Error(`objects are not equal`);
+    if (typeof x !== Z_T.type.OBJECT) {
+      throw new Error(
+        `There is a problem with the test (value to compare to is not object type), please contact the test creator.`
+      );
+    } else if (Array.isArray(x)) {
+      throw new Error(`value is an array, but should be object.`);
+    } else if (!_.isEqual(x, this.value)) {
+      throw new Error(
+        `your object ${JSON.stringify(
+          this.value
+        )} is not the same as ${JSON.stringify(x)}`
+      );
     }
     return this;
   }
