@@ -1,46 +1,191 @@
-zTestSuite = {};
-zTestSuite.REPLACEME = {
-  title: "function REPLACEME",
+let zTestSuite = {};
+zTestSuite.returnNumberTests = {
+  title: "function returnNumber",
   tests: [
     {
-      description: `REPLACEME is declared`,
+      description: `returnNumber is declared`,
       test: () => {
-        expect(REPLACEME).toBeDeclared();
+        expect(returnNumber).toBeDeclared();
       },
     },
     {
-      description: `REPLACEME has a value`,
+      description: `returnNumber has a value`,
       test: () => {
-        expect(REPLACEME).toHaveValue();
+        expect(returnNumber).toHaveValue();
       },
     },
     {
-      description: `REPLACEME is a function`,
+      description: `returnNumber is a function`,
       test: () => {
-        expect(REPLACEME).toBeFunction();
+        expect(returnNumber).toBeFunction();
       },
     },
     {
-      description: `REPLACEME takes two arguments`,
+      description: `returnNumber returns a number`,
       test: () => {
-        expect(REPLACEME).takesXArguments(2);
+        expect(returnNumber).toReturnNumber();
+      },
+    },
+  ],
+};
+
+zTestSuite.returnStringTests = {
+  title: "function returnString",
+  tests: [
+    {
+      description: `returnString is declared`,
+      test: () => {
+        expect(returnString).toBeDeclared();
       },
     },
     {
-      description: `REPLACEME returns a number`,
+      description: `returnString has a value`,
       test: () => {
-        expect(REPLACEME).withArgs(1, 1).toReturnNumber();
+        expect(returnString).toHaveValue();
       },
     },
     {
-      description: `REPLACEME returns correct values`,
+      description: `returnString is a function`,
       test: () => {
-        expect(REPLACEME).withArgs(1, 1).toReturn(2);
-        expect(REPLACEME).withArgs(-1, 1).toReturn(0);
-        expect(REPLACEME).withArgs(1000, 234).toReturn(1234);
-        expect(REPLACEME).withArgs(1, 1).toReturn(2);
-        expect(REPLACEME).withArgs(1, 1).toReturn(2);
-        expect(REPLACEME).withArgs(1, 1).toReturn(2);
+        expect(returnString).toBeFunction();
+      },
+    },
+    {
+      description: `returnString returns a string`,
+      test: () => {
+        expect(returnString).toReturnString();
+      },
+    },
+  ],
+};
+
+zTestSuite.returnTrueTests = {
+  title: "function returnTrue",
+  tests: [
+    {
+      description: `returnTrue is declared`,
+      test: () => {
+        expect(returnTrue).toBeDeclared();
+      },
+    },
+    {
+      description: `returnTrue has a value`,
+      test: () => {
+        expect(returnTrue).toHaveValue();
+      },
+    },
+    {
+      description: `returnTrue is a function`,
+      test: () => {
+        expect(returnTrue).toBeFunction();
+      },
+    },
+    {
+      description: `returnTrue returns a boolean`,
+      test: () => {
+        expect(returnTrue).toReturnBoolean();
+      },
+    },
+    {
+      description: `returnTrue returns correct value ("true")`,
+      test: () => {
+        expect(returnTrue).toReturn(true);
+      },
+    },
+  ],
+};
+
+zTestSuite.returnFalseTests = {
+  title: "function returnFalse",
+  tests: [
+    {
+      description: `returnFalse is declared`,
+      test: () => {
+        expect(returnFalse).toBeDeclared();
+      },
+    },
+    {
+      description: `returnFalse has a value`,
+      test: () => {
+        expect(returnFalse).toHaveValue();
+      },
+    },
+    {
+      description: `returnFalse is a function`,
+      test: () => {
+        expect(returnFalse).toBeFunction();
+      },
+    },
+    {
+      description: `returnFalse returns a boolean`,
+      test: () => {
+        expect(returnFalse).toReturnBoolean();
+      },
+    },
+    {
+      description: `returnFalse returns correct value ("false")`,
+      test: () => {
+        expect(returnFalse).toReturn(false);
+      },
+    },
+  ],
+};
+
+zTestSuite.returnArrayTests = {
+  title: "function returnArray",
+  tests: [
+    {
+      description: `returnArray is declared`,
+      test: () => {
+        expect(returnArray).toBeDeclared();
+      },
+    },
+    {
+      description: `returnArray has a value`,
+      test: () => {
+        expect(returnArray).toHaveValue();
+      },
+    },
+    {
+      description: `returnArray is a function`,
+      test: () => {
+        expect(returnArray).toBeFunction();
+      },
+    },
+    {
+      description: `returnArray returns an array`,
+      test: () => {
+        expect(returnArray).toReturnArray();
+      },
+    },
+  ],
+};
+
+zTestSuite.returnObjectTests = {
+  title: "function returnObject",
+  tests: [
+    {
+      description: `returnObject is declared`,
+      test: () => {
+        expect(returnObject).toBeDeclared();
+      },
+    },
+    {
+      description: `returnObject has a value`,
+      test: () => {
+        expect(returnObject).toHaveValue();
+      },
+    },
+    {
+      description: `returnObject is a function`,
+      test: () => {
+        expect(returnObject).toBeFunction();
+      },
+    },
+    {
+      description: `returnObject returns an object`,
+      test: () => {
+        expect(returnObject).toReturnObject();
       },
     },
   ],
