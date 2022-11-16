@@ -2,6 +2,7 @@ const testSuite = {};
 
 testSuite.varATests = {
   title: "var 'a' tests",
+  instructions: "Declare a variable 'a' and set it to the number 1",
   tests: [
     {
       description: `a is declared`,

@@ -43,7 +43,7 @@ Z_T.testAll = function (testSuite) {
   let results = {};
 
   for (let sectionKey in testSuite) {
-    let { tests = [], title } = testSuite[sectionKey];
+    let { tests = [], title, instructions } = testSuite[sectionKey];
 
     console.log(
       `%cSection: ${title}`,
@@ -58,6 +58,7 @@ Z_T.testAll = function (testSuite) {
     });
 
     sectionResult.title = title;
+    sectionResult.instructions = instructions;
     sectionResult.results = finishedTests;
 
     results[sectionKey] = sectionResult;
@@ -469,7 +470,7 @@ Z_T.displayResults = function (section) {
 
 // Displays each section as a colored box
 Z_T.populateSection = function (section) {
-  const { testId, results = [], title = "NO TITLE" } = section;
+  const { testId, results = [], title = "NO TITLE", instructions } = section;
   const {
     colors: { LIGHT_GREEN, LIGHT_ORANGE, LIGHT_RED, DARK_GREEN, DARK_RED },
   } = Z_T;
@@ -506,6 +507,17 @@ Z_T.populateSection = function (section) {
   `;
   h2.innerHTML = `${testId}: ${title}`;
   sectionDiv.appendChild(h2);
+
+  // Create Instructions
+  if (instructions) {
+    let instructionText = document.createElement("span");
+    let b = document.createElement("b");
+    b.textContent = "Instructions: ";
+    instructionText.appendChild(b);
+    instructionText.innerHTML += instructions;
+
+    sectionDiv.appendChild(instructionText);
+  }
 
   // Go through tests
   results.forEach((item) => {
