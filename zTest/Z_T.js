@@ -136,6 +136,7 @@ function expect(value) {
     // objects
     toHaveObjectKeyCount,
     toHaveKey,
+    toHaveKeys,
     toHaveKeyValuePair,
 
     // functions
@@ -286,6 +287,15 @@ function expect(value) {
     }
     return this;
   }
+
+  function toHaveKeys(...keys) {
+    let missingKeys = keys.filter((key) => this.value[key] === undefined);
+    if (missingKeys.length > 0) {
+      throw new Error(`object does not have keys: ${missingKeys.join(", ")}`);
+    }
+    return this;
+  }
+
   function toHaveKeyValuePair(x, y) {
     if (this.value[x] !== y) {
       throw new Error(`object does not have key ${x} with value ${y}`);
