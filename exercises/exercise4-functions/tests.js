@@ -1,5 +1,4 @@
 zTestSuite = {};
-
 zTestSuite.addTests = {
   title: "function add",
   tests: [
