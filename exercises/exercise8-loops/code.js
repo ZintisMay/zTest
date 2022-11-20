@@ -85,6 +85,9 @@ function calculateAverage(arr) {
 }
 
 //Might be too hard
+
+//it is
+
 // function shortenName(name) {
 //   var nameParts = name.replaceAll(/\.\,/g, "").split(" ");
 //   if (nameParts.length == 1) {
