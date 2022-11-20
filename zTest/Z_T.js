@@ -152,6 +152,7 @@ function expect(value) {
     toReturnString,
     toReturnBoolean,
     toReturnArray,
+    toReturnArrayOfType,
     toReturnObject,
     toReturnFunction,
     toReturnBetween,
@@ -401,6 +402,19 @@ function expect(value) {
     }
     return this;
   }
+  function toReturnArrayOfType(type) {
+    let result = this.exec();
+    if (!Array.isArray(result)) {
+      throw new Error(`function does not return array type`);
+    }
+    result.forEach((item) => {
+      if (typeof item !== type) {
+        throw new Error(`array item ${item} is not of type ${type}`);
+      }
+    });
+
+    return this;
+  }
   function toReturnSomething() {
     if (this.exec() === undefined) {
       throw new Error(`returns value is undefined`);
@@ -520,12 +534,14 @@ Z_T.populateSection = function (section) {
 
   // Create Instructions
   if (instructions) {
-    let instructionText = document.createElement("span");
+    let instructionText = document.createElement("p");
     let b = document.createElement("b");
     b.textContent = "Instructions: ";
     instructionText.appendChild(b);
     instructionText.innerHTML += instructions;
-
+    instructionText.style.cssText = `
+      margin: 10px 0;
+    `;
     sectionDiv.appendChild(instructionText);
   }
 

@@ -1,4 +1,4 @@
-function makeArrayOfThings(length, item) {
+function makeArrayOfX(length, item) {
   var arr = [];
   for (let x = 0; x < length; x++) {
     arr.push(item);
