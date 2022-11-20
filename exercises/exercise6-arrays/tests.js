@@ -52,7 +52,7 @@ zTestSuite.varSimpleArrayTests = {
       },
     },
     {
-      description: `simpleArray contains numbers only`,
+      description: `simpleArray contains only numbers`,
       test: () => {
         expect(simpleArray).toOnlyContainType("number");
       },
@@ -88,7 +88,7 @@ zTestSuite.varFavoriteFoodsTest = {
       },
     },
     {
-      description: `favoriteFoods contains strings only`,
+      description: `favoriteFoods contains only strings`,
       test: () => {
         expect(favoriteFoods).toOnlyContainType("string");
       },
@@ -132,7 +132,7 @@ zTestSuite.bigNumbers = {
       },
     },
     {
-      description: `bigNumbers is an array`,
+      description: `bigNumbers contains only numbers`,
       test: () => {
         expect(bigNumbers).toOnlyContainType("number");
       },
@@ -180,6 +180,12 @@ zTestSuite.arrayOf10 = {
         expect(arrayOf10).toHaveLength(10);
       },
     },
+    {
+      description: `arrayOf10 contains only numbers`,
+      test: () => {
+        expect(arrayOf10).toOnlyContainType("number");
+      },
+    },
   ],
 };
 zTestSuite.arrayOfBooleans = {
@@ -204,13 +210,13 @@ zTestSuite.arrayOfBooleans = {
       },
     },
     {
-      description: `arrayOfBooleans is an array`,
+      description: `arrayOfBooleans contains only booleans`,
       test: () => {
         expect(arrayOfBooleans).toOnlyContainType("boolean");
       },
     },
     {
-      description: `arrayOfBooleans has 10 items`,
+      description: `arrayOfBooleans has 5 items`,
       test: () => {
         expect(arrayOfBooleans).toHaveLength(5);
       },
