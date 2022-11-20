@@ -6,7 +6,7 @@ function makeXAsterisks(length) {
   return word;
 }
 
-function makeArrayOfNumbersUpToX(x) {
+function allNumbersUpToX(x) {
   var numbers = [];
   for (var y = 1; y <= x; y++) {
     numbers.push(y);
@@ -14,7 +14,7 @@ function makeArrayOfNumbersUpToX(x) {
   return numbers;
 }
 
-function makeWordWithXLetterY(x, y) {
+function makeStringWithXLetterY(x, y) {
   var word = "";
   for (var c = 0; c < x; c++) {
     word += y;
@@ -83,19 +83,3 @@ function calculateAverage(arr) {
   }
   return sum / arr.length;
 }
-
-//Might be too hard
-// function shortenName(name) {
-//   var nameParts = name.replaceAll(/\.\,/g, "").split(" ");
-//   if (nameParts.length == 1) {
-//     return nameParts.pop();
-//   }
-//   var initials = [];
-//   for (var x = 0; x < nameParts.length - 1; x++) {
-//     var letter = nameParts[x][0];
-//     initials.push(letter.toUpperCase() + ".");
-//   }
-//   initials.push(nameParts.pop());
-//   var shortName = initials.join(" ");
-//   return shortName;
-// }

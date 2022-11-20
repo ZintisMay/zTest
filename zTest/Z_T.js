@@ -136,6 +136,7 @@ function expect(value) {
     // objects
     toHaveObjectKeyCount,
     toHaveKey,
+    toHaveKeys,
     toHaveKeyValuePair,
 
     // functions
@@ -151,6 +152,7 @@ function expect(value) {
     toReturnString,
     toReturnBoolean,
     toReturnArray,
+    toReturnArrayOfType,
     toReturnObject,
     toReturnFunction,
     toReturnBetween,
@@ -286,6 +288,15 @@ function expect(value) {
     }
     return this;
   }
+
+  function toHaveKeys(...keys) {
+    let missingKeys = keys.filter((key) => this.value[key] === undefined);
+    if (missingKeys.length > 0) {
+      throw new Error(`object does not have keys: ${missingKeys.join(", ")}`);
+    }
+    return this;
+  }
+
   function toHaveKeyValuePair(x, y) {
     if (this.value[x] !== y) {
       throw new Error(`object does not have key ${x} with value ${y}`);
@@ -389,6 +400,19 @@ function expect(value) {
     if (!Array.isArray(this.exec())) {
       throw new Error(`function does not return array type`);
     }
+    return this;
+  }
+  function toReturnArrayOfType(type) {
+    let result = this.exec();
+    if (!Array.isArray(result)) {
+      throw new Error(`function does not return array type`);
+    }
+    result.forEach((item) => {
+      if (typeof item !== type) {
+        throw new Error(`array item ${item} is not of type ${type}`);
+      }
+    });
+
     return this;
   }
   function toReturnSomething() {
@@ -510,12 +534,14 @@ Z_T.populateSection = function (section) {
 
   // Create Instructions
   if (instructions) {
-    let instructionText = document.createElement("span");
+    let instructionText = document.createElement("p");
     let b = document.createElement("b");
     b.textContent = "Instructions: ";
     instructionText.appendChild(b);
     instructionText.innerHTML += instructions;
-
+    instructionText.style.cssText = `
+      margin: 10px 0;
+    `;
     sectionDiv.appendChild(instructionText);
   }
 

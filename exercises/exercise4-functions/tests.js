@@ -1,39 +1,45 @@
 zTestSuite = {};
 zTestSuite.addTests = {
-  title: "function add",
+  title: `function "add"`,
   tests: [
     {
-      description: `add is declared`,
+      description: `is declared`,
       test: () => {
         expect(add).toBeDeclared();
       },
     },
     {
-      description: `add has a value`,
+      description: `has a value`,
       test: () => {
         expect(add).toHaveValue();
       },
     },
     {
-      description: `add is a function`,
+      description: `is a function`,
       test: () => {
         expect(add).toBeFunction();
       },
     },
     {
-      description: `add takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(add).takesXArguments(2);
       },
     },
     {
-      description: `add returns a number`,
+      description: `returns something`,
+      test: () => {
+        expect(add).withArgs(1, 1).toReturnSomething();
+      },
+    },
+    {
+      description: `returns a number`,
       test: () => {
         expect(add).withArgs(1, 1).toReturnNumber();
       },
     },
     {
-      description: `add returns correct values`,
+      description: `returns correct values`,
       test: () => {
         expect(add).withArgs(1, 1).toReturn(2);
         expect(add).withArgs(-1, 1).toReturn(0);
@@ -47,40 +53,46 @@ zTestSuite.addTests = {
 };
 
 zTestSuite.subtractTests = {
-  title: "function subtract",
+  title: `function "subtract"`,
   tests: [
     {
-      description: `subtract is declared`,
+      description: `is declared`,
       test: () => {
         expect(subtract).toBeDeclared();
       },
     },
     {
-      description: `subtract has a value`,
+      description: `has a value`,
       test: () => {
         expect(subtract).toHaveValue();
       },
     },
     {
-      description: `subtract is a function`,
+      description: `is a function`,
       test: () => {
         expect(subtract).toBeFunction();
       },
     },
     {
-      description: `subtract takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(subtract).takesXArguments(2);
       },
     },
     {
-      description: `subtract returns a number`,
+      description: `returns something`,
+      test: () => {
+        expect(subtract).withArgs(1, 1).toReturnSomething();
+      },
+    },
+    {
+      description: `returns a number`,
       test: () => {
         expect(subtract).withArgs(1, 1).toReturnNumber();
       },
     },
     {
-      description: `subtract returns correct values`,
+      description: `returns correct values`,
       test: () => {
         expect(subtract).withArgs(1, 1).toReturn(0);
         expect(subtract).withArgs(-1, 1).toReturn(-2);
@@ -94,40 +106,46 @@ zTestSuite.subtractTests = {
 };
 
 zTestSuite.multiplyTests = {
-  title: "function multiply",
+  title: `function "multiply"`,
   tests: [
     {
-      description: `multiply is declared`,
+      description: `is declared`,
       test: () => {
         expect(multiply).toBeDeclared();
       },
     },
     {
-      description: `multiply has a value`,
+      description: `has a value`,
       test: () => {
         expect(multiply).toHaveValue();
       },
     },
     {
-      description: `multiply is a function`,
+      description: `is a function`,
       test: () => {
         expect(multiply).toBeFunction();
       },
     },
     {
-      description: `multiply takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(multiply).takesXArguments(2);
       },
     },
     {
-      description: `multiply returns a number`,
+      description: `returns something`,
+      test: () => {
+        expect(multiply).withArgs(1, 1).toReturnSomething();
+      },
+    },
+    {
+      description: `returns a number`,
       test: () => {
         expect(multiply).withArgs(1, 1).toReturnNumber();
       },
     },
     {
-      description: `multiply returns correct values`,
+      description: `returns correct values`,
       test: () => {
         expect(multiply).withArgs(2, 3).toReturn(6);
         expect(multiply).withArgs(-2, 3).toReturn(-6);
@@ -141,40 +159,46 @@ zTestSuite.multiplyTests = {
 };
 
 zTestSuite.divideTests = {
-  title: "function divide",
+  title: `function "divide"`,
   tests: [
     {
-      description: `divide is declared`,
+      description: `is declared`,
       test: () => {
         expect(divide).toBeDeclared();
       },
     },
     {
-      description: `divide has a value`,
+      description: `has a value`,
       test: () => {
         expect(divide).toHaveValue();
       },
     },
     {
-      description: `divide is a function`,
+      description: `is a function`,
       test: () => {
         expect(divide).toBeFunction();
       },
     },
     {
-      description: `divide takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(divide).takesXArguments(2);
       },
     },
     {
-      description: `divide returns a number`,
+      description: `returns something`,
+      test: () => {
+        expect(divide).withArgs(1, 1).toReturnSomething();
+      },
+    },
+    {
+      description: `returns a number`,
       test: () => {
         expect(divide).withArgs(1, 1).toReturnNumber();
       },
     },
     {
-      description: `divide returns correct values`,
+      description: `returns correct values`,
       test: () => {
         expect(divide).withArgs(1, 1).toReturn(1);
         expect(divide).withArgs(10, 20).toReturn(0.5);
@@ -188,40 +212,46 @@ zTestSuite.divideTests = {
 };
 
 zTestSuite.exponentTests = {
-  title: "function exponent",
+  title: `function "exponent"`,
   tests: [
     {
-      description: `exponent is declared`,
+      description: `is declared`,
       test: () => {
         expect(exponent).toBeDeclared();
       },
     },
     {
-      description: `exponent has a value`,
+      description: `has a value`,
       test: () => {
         expect(exponent).toHaveValue();
       },
     },
     {
-      description: `exponent is a function`,
+      description: `is a function`,
       test: () => {
         expect(exponent).toBeFunction();
       },
     },
     {
-      description: `exponent takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(exponent).takesXArguments(2);
       },
     },
     {
-      description: `exponent returns a number`,
+      description: `returns something`,
+      test: () => {
+        expect(exponent).withArgs(1, 1).toReturnSomething();
+      },
+    },
+    {
+      description: `returns a number`,
       test: () => {
         expect(exponent).withArgs(1, 1).toReturnNumber();
       },
     },
     {
-      description: `exponent returns correct values`,
+      description: `returns correct values`,
       test: () => {
         expect(exponent).withArgs(4, 3).toReturn(64);
         expect(exponent).withArgs(5, 5).toReturn(3125);
@@ -235,139 +265,157 @@ zTestSuite.exponentTests = {
 };
 
 zTestSuite.combineStringsTests = {
-  title: "combine strings",
+  title: `function "combineStrings"`,
   tests: [
     {
-      description: `combineStrings is declared`,
+      description: `is declared`,
       test: () => {
         expect(combineStrings).toBeDeclared();
       },
     },
     {
-      description: `combineStrings has a value`,
+      description: `has a value`,
       test: () => {
         expect(combineStrings).toHaveValue();
       },
     },
     {
-      description: `combineStrings is a function`,
+      description: `is a function`,
       test: () => {
         expect(combineStrings).toBeFunction();
       },
     },
     {
-      description: `combineStrings takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(combineStrings).takesXArguments(2);
       },
     },
     {
-      description: `combineStrings returns a string`,
+      description: `returns something`,
       test: () => {
-        expect(combineStrings).withArgs("a", "b").toReturnString();
+        expect(combineStrings).withArgs(`a`, `b`).toReturnSomething();
       },
     },
     {
-      description: `combineStrings returns correct values`,
+      description: `returns a string`,
       test: () => {
-        expect(combineStrings).withArgs("a", "b").toReturn("ab");
-        expect(combineStrings).withArgs("cat", "").toReturn("cat");
-        expect(combineStrings).withArgs("", "").toReturn("");
-        expect(combineStrings).withArgs("cat", null).toReturn("catnull");
-        expect(combineStrings).withArgs("b", "a").toReturn("ba");
-        expect(combineStrings).withArgs("4", "2").toReturn("42");
+        expect(combineStrings).withArgs(`a`, `b`).toReturnString();
+      },
+    },
+    {
+      description: `returns correct values`,
+      test: () => {
+        expect(combineStrings).withArgs(`a`, `b`).toReturn(`ab`);
+        expect(combineStrings).withArgs(`cat`, ``).toReturn(`cat`);
+        expect(combineStrings).withArgs(``, ``).toReturn(``);
+        expect(combineStrings).withArgs(`cat`, null).toReturn(`catnull`);
+        expect(combineStrings).withArgs(`b`, `a`).toReturn(`ba`);
+        expect(combineStrings).withArgs(`4`, `2`).toReturn(`42`);
       },
     },
   ],
 };
 
 zTestSuite.combineArraysTests = {
-  title: "combine arrays",
+  title: `function "combineArrays"`,
   tests: [
     {
-      description: `combineArrays is declared`,
+      description: `is declared`,
       test: () => {
         expect(combineArrays).toBeDeclared();
       },
     },
     {
-      description: `combineArrays has a value`,
+      description: `has a value`,
       test: () => {
         expect(combineArrays).toHaveValue();
       },
     },
     {
-      description: `combineArrays is a function`,
+      description: `is a function`,
       test: () => {
         expect(combineArrays).toBeFunction();
       },
     },
     {
-      description: `combineArrays takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(combineArrays).takesXArguments(2);
       },
     },
     {
-      description: `combineArrays returns an array`,
+      description: `returns something`,
+      test: () => {
+        expect(combineArrays).withArgs([1], [2]).toReturnSomething();
+      },
+    },
+    {
+      description: `returns an array`,
       test: () => {
         expect(combineArrays).withArgs([1], [2]).toReturnArray();
       },
     },
     {
-      description: `combineArrays returns correct values`,
+      description: `returns correct values`,
       test: () => {
         expect(combineArrays).withArgs([1], [2]).toReturn([1, 2]);
         expect(combineArrays)
-          .withArgs(["cat"], ["dog"])
-          .toReturn(["cat", "dog"]);
+          .withArgs([`cat`], [`dog`])
+          .toReturn([`cat`, `dog`]);
       },
     },
   ],
 };
 
 zTestSuite.combineObjectsTests = {
-  title: "combine objects",
+  title: `function "combineObjects"`,
   tests: [
     {
-      description: `combineObjects is declared`,
+      description: `is declared`,
       test: () => {
         expect(combineObjects).toBeDeclared();
       },
     },
     {
-      description: `combineObjects has a value`,
+      description: `has a value`,
       test: () => {
         expect(combineObjects).toHaveValue();
       },
     },
     {
-      description: `combineObjects is a function`,
+      description: `is a function`,
       test: () => {
         expect(combineObjects).toBeFunction();
       },
     },
     {
-      description: `combineObjects takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(combineObjects).takesXArguments(2);
       },
     },
     {
-      description: `combineObjects returns an`,
+      description: `returns something`,
+      test: () => {
+        expect(combineObjects).withArgs(1, 1).toReturnSomething();
+      },
+    },
+    {
+      description: `returns an object`,
       test: () => {
         expect(combineObjects).withArgs(1, 1).toReturnObject();
       },
     },
     {
-      description: `combineObjects returns correct values`,
+      description: `returns correct values`,
       test: () => {
         expect(combineObjects)
-          .withArgs({ 1: "1" }, { 2: "2" })
-          .toReturn({ 1: "1", 2: "2" });
+          .withArgs({ 1: `1` }, { 2: `2` })
+          .toReturn({ 1: `1`, 2: `2` });
         expect(combineObjects)
-          .withArgs({ name: "John" }, { age: "50" })
-          .toReturn({ name: "John", age: "50" });
+          .withArgs({ name: `John` }, { age: `50` })
+          .toReturn({ name: `John`, age: `50` });
       },
     },
   ],
