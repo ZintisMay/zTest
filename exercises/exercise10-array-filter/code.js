@@ -6,7 +6,7 @@ function removeNumbersLessThan3(arr) {
   return arr.filter((num) => num > 3);
 }
 
-function removeLetterFromArray(arr, letterToRemove) {
+function removeWordsFromArray(arr, letterToRemove) {
   return arr.filter((letter) => letter != letterToRemove);
 }
 
