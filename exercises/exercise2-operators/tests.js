@@ -1,28 +1,28 @@
 const testSuite = {};
 
 testSuite.plusTests = {
-  title: "var 'a' tests",
+  title: `var "a" `,
   tests: [
     {
-      description: `'a' is declared`,
+      description: `is declared`,
       test: () => {
         expect(a).toBeDeclared();
       },
     },
     {
-      description: `'a' has a value`,
+      description: `has a value`,
       test: () => {
         expect(a).toHaveValue();
       },
     },
     {
-      description: `'a' is a number`,
+      description: `is a number`,
       test: () => {
         expect(a).toBeNumber();
       },
     },
     {
-      description: `'a' is 654321 + 123456`,
+      description: `is 654321 + 123456`,
       test: () => {
         expect(a).toBe(654321 + 123456);
       },
@@ -30,28 +30,28 @@ testSuite.plusTests = {
   ],
 };
 testSuite.minusTests = {
-  title: "var 'b' tests",
+  title: `var "b" `,
   tests: [
     {
-      description: `'b' is declared`,
+      description: `is declared`,
       test: () => {
         expect(b).toBeDeclared();
       },
     },
     {
-      description: `'b' has a value`,
+      description: `has a value`,
       test: () => {
         expect(b).toHaveValue();
       },
     },
     {
-      description: `'b' is a number`,
+      description: `is a number`,
       test: () => {
         expect(b).toBeNumber();
       },
     },
     {
-      description: `'b' is 654321 - 123456`,
+      description: `is 654321 - 123456`,
       test: () => {
         expect(b).toBe(654321 - 123456);
       },
@@ -59,28 +59,28 @@ testSuite.minusTests = {
   ],
 };
 testSuite.multiplyTests = {
-  title: "var 'c' tests",
+  title: `var "c" `,
   tests: [
     {
-      description: `'c' is declared`,
+      description: `is declared`,
       test: () => {
         expect(c).toBeDeclared();
       },
     },
     {
-      description: `'c' has a value`,
+      description: `has a value`,
       test: () => {
         expect(c).toHaveValue();
       },
     },
     {
-      description: `'c' is a number`,
+      description: `is a number`,
       test: () => {
         expect(c).toBeNumber();
       },
     },
     {
-      description: `'c' is 654321 * 123456`,
+      description: `is 654321 * 123456`,
       test: () => {
         expect(c).toBe(654321 * 123456);
       },
@@ -88,28 +88,28 @@ testSuite.multiplyTests = {
   ],
 };
 testSuite.divideTests = {
-  title: "var 'd' tests",
+  title: `var "d" `,
   tests: [
     {
-      description: `'d' is declared`,
+      description: `is declared`,
       test: () => {
         expect(d).toBeDeclared();
       },
     },
     {
-      description: `'d' has a value`,
+      description: `has a value`,
       test: () => {
         expect(d).toHaveValue();
       },
     },
     {
-      description: `'d' is a number`,
+      description: `is a number`,
       test: () => {
         expect(d).toBeNumber();
       },
     },
     {
-      description: `'d' is 654321 / 123456`,
+      description: `is 654321 / 123456`,
       test: () => {
         expect(d).toBe(654321 / 123456);
       },
@@ -117,28 +117,28 @@ testSuite.divideTests = {
   ],
 };
 testSuite.modulusTests = {
-  title: "var 'e' tests",
+  title: `var "e" `,
   tests: [
     {
-      description: `'e' is declared`,
+      description: `is declared`,
       test: () => {
         expect(e).toBeDeclared();
       },
     },
     {
-      description: `'e' has a value`,
+      description: `has a value`,
       test: () => {
         expect(e).toHaveValue();
       },
     },
     {
-      description: `'e' is a number`,
+      description: `is a number`,
       test: () => {
         expect(e).toBeNumber();
       },
     },
     {
-      description: `'e' is 654321 % 123456`,
+      description: `is 654321 % 123456`,
       test: () => {
         expect(e).toBe(654321 % 123456);
       },
@@ -146,28 +146,28 @@ testSuite.modulusTests = {
   ],
 };
 testSuite.exponentTests = {
-  title: "var 'f' tests",
+  title: `var "f" `,
   tests: [
     {
-      description: `'f' is declared`,
+      description: `is declared`,
       test: () => {
         expect(f).toBeDeclared();
       },
     },
     {
-      description: `'f' has a value`,
+      description: `has a value`,
       test: () => {
         expect(f).toHaveValue();
       },
     },
     {
-      description: `'f' is a number`,
+      description: `is a number`,
       test: () => {
         expect(f).toBeNumber();
       },
     },
     {
-      description: `'f' is 2 ** 20`,
+      description: `is 2 ** 20`,
       test: () => {
         expect(f).toBe(2 ** 20);
       },

@@ -1,40 +1,40 @@
 zTestSuite = {};
 zTestSuite.makeArrayOfX = {
-  title: "function makeArrayOfX",
+  title: `function "makeArrayOfX"`,
   instructions: `Create a function that takes 2 arguments. First argument is how many. 2nd argument is what will be in the array. Example: makeArrayOfX( 4, 'a' ) returns ['a', 'a', 'a', 'a']`,
   tests: [
     {
-      description: `"makeArrayOfX" is declared`,
+      description: `is declared`,
       test: () => {
         expect(makeArrayOfX).toBeDeclared();
       },
     },
     {
-      description: `"makeArrayOfX" is a function`,
+      description: `is a function`,
       test: () => {
         expect(makeArrayOfX).toBeFunction();
       },
     },
     {
-      description: `"makeArrayOfX" takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(makeArrayOfX).takesXArguments(2);
       },
     },
     {
-      description: `"makeArrayOfX" returns something`,
+      description: `returns something`,
       test: () => {
         expect(makeArrayOfX).withArgs(3, 3).toReturnSomething();
       },
     },
     {
-      description: `"makeArrayOfX" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(makeArrayOfX).withArgs(3, 3).toReturnArray();
       },
     },
     {
-      description: `"makeArrayOfX" return array contains correct type`,
+      description: `return array contains correct type`,
       test: () => {
         expect(makeArrayOfX).withArgs(3, 3).toReturnArrayOfType("number");
         expect(makeArrayOfX).withArgs(3, "a").toReturnArrayOfType("string");
@@ -53,42 +53,42 @@ zTestSuite.makeArrayOfX = {
 };
 
 zTestSuite.reverseArray = {
-  title: "function reverseArray",
+  title: `function "reverseArray"`,
   instructions:
     "Create a function that takes an array as an argument. It should return the array in reverse order. Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']",
   tests: [
     {
-      description: `"reverseArray" is declared`,
+      description: `is declared`,
       test: () => {
         expect(reverseArray).toBeDeclared();
       },
     },
     {
-      description: `"reverseArray" is a function`,
+      description: `is a function`,
       test: () => {
         expect(reverseArray).toBeFunction();
       },
     },
     {
-      description: `"reverseArray" takes one argument`,
+      description: `takes one argument`,
       test: () => {
         expect(reverseArray).takesXArguments(1);
       },
     },
     {
-      description: `"reverseArray" returns something`,
+      description: `returns something`,
       test: () => {
         expect(reverseArray).withArgs([]).toReturnSomething();
       },
     },
     {
-      description: `"reverseArray" returns array`,
+      description: `returns array`,
       test: () => {
         expect(reverseArray).withArgs([]).toReturnArray();
       },
     },
     {
-      description: `"reverseArray" returns array of correct type`,
+      description: `returns array of correct type`,
       test: () => {
         expect(reverseArray).withArgs([1, 2, 3]).toReturnArrayOfType("number");
         expect(reverseArray)
@@ -109,42 +109,42 @@ zTestSuite.reverseArray = {
 };
 
 zTestSuite.sortLetters = {
-  title: "function sortLetters",
+  title: `function "sortLetters"`,
   instructions:
     "Create a function that takes one argument, an array of letters. It should return the array of letters in alphabetical order. Example: reverseArray( ['d', 'a', 'c'] ) returns ['a', 'c', 'd']",
   tests: [
     {
-      description: `"sortLetters" is declared`,
+      description: `is declared`,
       test: () => {
         expect(sortLetters).toBeDeclared();
       },
     },
     {
-      description: `"sortLetters" is a function`,
+      description: `is a function`,
       test: () => {
         expect(sortLetters).toBeFunction();
       },
     },
     {
-      description: `"sortLetters" takes one argument`,
+      description: `takes one argument`,
       test: () => {
         expect(sortLetters).takesXArguments(1);
       },
     },
     {
-      description: `"sortLetters" returns something`,
+      description: `returns something`,
       test: () => {
         expect(sortLetters).withArgs(["a", "z", "b"]).toReturnSomething();
       },
     },
     {
-      description: `"sortLetters" returns array`,
+      description: `returns array`,
       test: () => {
         expect(sortLetters).withArgs(["a", "z", "b"]).toReturnArray();
       },
     },
     {
-      description: `"sortLetters" returns array with string items`,
+      description: `returns array with string items`,
       test: () => {
         expect(sortLetters)
           .withArgs(["a", "z", "b"])
@@ -162,41 +162,41 @@ zTestSuite.sortLetters = {
 };
 
 zTestSuite.sortNumbers = {
-  title: "function sortNumbers",
+  title: `function "sortNumbers"`,
   instructions: `Create a function that takes one argument, an array of numbers. It should return the numbers from smallest to biggest. Example: sortNumbers([1, 3, 30, 2, 5]) returns [1, 2, 3, 5, 30]`,
   tests: [
     {
-      description: `"sortNumbers" is declared`,
+      description: `is declared`,
       test: () => {
         expect(sortNumbers).toBeDeclared();
       },
     },
     {
-      description: `"sortNumbers" is a function`,
+      description: `is a function`,
       test: () => {
         expect(sortNumbers).toBeFunction();
       },
     },
     {
-      description: `"sortNumbers" takes one argument`,
+      description: `takes one argument`,
       test: () => {
         expect(sortNumbers).takesXArguments(1);
       },
     },
     {
-      description: `"sortNumbers" returns something`,
+      description: `returns something`,
       test: () => {
         expect(sortNumbers).withArgs([3, 2, 1]).toReturnSomething();
       },
     },
     {
-      description: `"sortNumbers" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(sortNumbers).withArgs([3, 2, 1]).toReturnArray();
       },
     },
     {
-      description: `"sortNumbers" returns an array of number items`,
+      description: `returns an array of number items`,
       test: () => {
         expect(sortNumbers).withArgs([3, 2, 1]).toReturnArrayOfType("number");
       },
@@ -214,42 +214,42 @@ zTestSuite.sortNumbers = {
 };
 
 zTestSuite.sortByWordLength = {
-  title: "function sortByWordLength",
+  title: `function "sortByWordLength"`,
   instructions:
     "Create a function that takes one argument, an array of words. Return the words in an array from shortest to longest. Example: sortByWordLength(['wash', 'cat', 'brother', 'throw'] returns ['cat', 'wash', 'throw','brother' ]",
   tests: [
     {
-      description: `"sortByWordLength" is declared`,
+      description: `is declared`,
       test: () => {
         expect(sortByWordLength).toBeDeclared();
       },
     },
     {
-      description: `"sortByWordLength" is a function`,
+      description: `is a function`,
       test: () => {
         expect(sortByWordLength).toBeFunction();
       },
     },
     {
-      description: `"sortByWordLength" takes one argument`,
+      description: `takes one argument`,
       test: () => {
         expect(sortByWordLength).takesXArguments(1);
       },
     },
     {
-      description: `"sortByWordLength" returns something`,
+      description: `returns something`,
       test: () => {
         expect(sortByWordLength).withArgs(["bob", "bill"]).toReturnSomething();
       },
     },
     {
-      description: `"sortByWordLength" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(sortByWordLength).withArgs(["bob", "bill"]).toReturnArray();
       },
     },
     {
-      description: `"sortByWordLength" returns an array with string items`,
+      description: `returns an array with string items`,
       test: () => {
         expect(sortByWordLength)
           .withArgs(["bob", "bill"])
@@ -257,7 +257,7 @@ zTestSuite.sortByWordLength = {
       },
     },
     {
-      description: `"sortByWordLength" returns the correct result`,
+      description: `returns the correct result`,
       test: () => {
         var result = sortByWordLength(["throw", "jungle", "longest", "cat"]);
         expect(result).toBeSameArrayAs(["cat", "throw", "jungle", "longest"]);

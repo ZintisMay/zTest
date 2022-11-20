@@ -1,53 +1,53 @@
 zTestSuite = {};
 
 zTestSuite.removeOddNumbers = {
-  title: "function removeOddNumbers",
+  title: `function "removeOddNumbers"`,
   instructions: `Make a function that takes one argument, an array of numbers. It should call the "array.filter" method, and return an array with no odd numbers. Example: removeOddNumbers([1, 2, 3, 4, 5, 6, 7, 8]) returns [2, 4, 6, 8]`,
   tests: [
     {
-      description: `"removeOddNumbers" is declared`,
+      description: `is declared`,
       test: () => {
         expect(removeOddNumbers).toBeDeclared();
       },
     },
     {
-      description: `"removeOddNumbers" has a value`,
+      description: `has a value`,
       test: () => {
         expect(removeOddNumbers).toHaveValue();
       },
     },
     {
-      description: `"removeOddNumbers" is a function`,
+      description: `is a function`,
       test: () => {
         expect(removeOddNumbers).toBeFunction();
       },
     },
     {
-      description: `"removeOddNumbers" takes one argument`,
+      description: `takes one argument`,
       test: () => {
         expect(removeOddNumbers).takesXArguments(1);
       },
     },
     {
-      description: `"removeOddNumbers" returns something`,
+      description: `returns something`,
       test: () => {
         expect(removeOddNumbers).withArgs([1, 2]).toReturnSomething();
       },
     },
     {
-      description: `"removeOddNumbers" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(removeOddNumbers).withArgs([1, 2]).toReturnArray();
       },
     },
     {
-      description: `"removeOddNumbers" returns an array of numbers`,
+      description: `returns an array of numbers`,
       test: () => {
         expect(removeOddNumbers).withArgs([1, 2]).toReturnArrayOfType("number");
       },
     },
     {
-      description: `"removeOddNumbers" calls the "array.filter" method`,
+      description: `calls the "array.filter" method`,
       test: () => {
         expect(removeOddNumbers)
           .withArgs([1, 2, 3])
@@ -55,7 +55,7 @@ zTestSuite.removeOddNumbers = {
       },
     },
     {
-      description: `"removeOddNumbers" returns the correct value`,
+      description: `returns the correct value`,
       test: () => {
         var result = removeOddNumbers([1, 2, 3, 4, 5, 6, 7]);
         expect(result).toBeSameArrayAs([2, 4, 6]);
@@ -71,47 +71,47 @@ zTestSuite.removeOddNumbers = {
 };
 
 zTestSuite.removeEvenNumbers = {
-  title: "function removeEvenNumbers",
+  title: `function "removeEvenNumbers"`,
   instructions: `Make a function that takes one argument, an array of numbers. It should call the "array.filter" method, and return an array with no even numbers. Example: removeEvenNumbers( [ 1, 2, 3, 4, 5, 6, 7, 8 ] ) returns [ 1, 3, 5, 7 ]`,
   tests: [
     {
-      description: `"removeEvenNumbers" is declared`,
+      description: `is declared`,
       test: () => {
         expect(removeEvenNumbers).toBeDeclared();
       },
     },
     {
-      description: `"removeEvenNumbers" has a value`,
+      description: `has a value`,
       test: () => {
         expect(removeEvenNumbers).toHaveValue();
       },
     },
     {
-      description: `"removeEvenNumbers" is a function`,
+      description: `is a function`,
       test: () => {
         expect(removeEvenNumbers).toBeFunction();
       },
     },
     {
-      description: `"removeEvenNumbers" takes one argument`,
+      description: `takes one argument`,
       test: () => {
         expect(removeEvenNumbers).takesXArguments(1);
       },
     },
     {
-      description: `"removeEvenNumbers" returns something`,
+      description: `returns something`,
       test: () => {
         expect(removeEvenNumbers).withArgs([1, 2]).toReturnSomething();
       },
     },
     {
-      description: `"removeEvenNumbers" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(removeEvenNumbers).withArgs([1, 2]).toReturnArray();
       },
     },
     {
-      description: `"removeEvenNumbers" returns an array of numbers`,
+      description: `returns an array of numbers`,
       test: () => {
         expect(removeEvenNumbers)
           .withArgs([1, 2])
@@ -119,7 +119,7 @@ zTestSuite.removeEvenNumbers = {
       },
     },
     {
-      description: `"removeEvenNumbers" calls the "array.filter" method`,
+      description: `calls the "array.filter" method`,
       test: () => {
         expect(removeEvenNumbers)
           .withArgs([1, 2, 3])
@@ -127,7 +127,7 @@ zTestSuite.removeEvenNumbers = {
       },
     },
     {
-      description: `"removeEvenNumbers" returns the correct value`,
+      description: `returns the correct value`,
       test: () => {
         var result = removeEvenNumbers([1, 2, 3, 4, 5, 6, 7]);
         expect(result).toBeSameArrayAs([1, 3, 5, 7]);
@@ -143,47 +143,47 @@ zTestSuite.removeEvenNumbers = {
 };
 
 zTestSuite.removeNumbersLessThan3 = {
-  title: "function removeNumbersLessThan3",
+  title: `function "removeNumbersLessThan3"`,
   instructions: `Make a function that takes one argument, an array of numbers. It should call the "array.filter" method to remove numbers that are less than 3, returning the rest as an array. Example: removeNumbersLessThan3( [ 1, 2, 3, 4, 5, 6, 7, 8 ] ) returns [ 3, 4, 5, 6, 7, 8 ]`,
   tests: [
     {
-      description: `"removeNumbersLessThan3" is declared`,
+      description: `is declared`,
       test: () => {
         expect(removeNumbersLessThan3).toBeDeclared();
       },
     },
     {
-      description: `"removeNumbersLessThan3" has a value`,
+      description: `has a value`,
       test: () => {
         expect(removeNumbersLessThan3).toHaveValue();
       },
     },
     {
-      description: `"removeNumbersLessThan3" is a function`,
+      description: `is a function`,
       test: () => {
         expect(removeNumbersLessThan3).toBeFunction();
       },
     },
     {
-      description: `"removeNumbersLessThan3" takes one argument`,
+      description: `takes one argument`,
       test: () => {
         expect(removeNumbersLessThan3).takesXArguments(1);
       },
     },
     {
-      description: `"removeNumbersLessThan3" returns something`,
+      description: `returns something`,
       test: () => {
         expect(removeNumbersLessThan3).withArgs([1, 2, 3]).toReturnSomething();
       },
     },
     {
-      description: `"removeNumbersLessThan3" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(removeNumbersLessThan3).withArgs([1, 2, 3]).toReturnArray();
       },
     },
     {
-      description: `"removeNumbersLessThan3" returns an array of numbers`,
+      description: `returns an array of numbers`,
       test: () => {
         expect(removeNumbersLessThan3)
           .withArgs([1, 2, 3])
@@ -191,7 +191,7 @@ zTestSuite.removeNumbersLessThan3 = {
       },
     },
     {
-      description: `"removeNumbersLessThan3" calls the "filter" method`,
+      description: `calls the "filter" method`,
       test: () => {
         expect(removeNumbersLessThan3)
           .withArgs([1, 2, 3])
@@ -199,7 +199,7 @@ zTestSuite.removeNumbersLessThan3 = {
       },
     },
     {
-      description: `"removeNumbersLessThan3" returns the correct value`,
+      description: `returns the correct value`,
       test: () => {
         var result = removeNumbersLessThan3([1, 2, 3, 4, 5, 6, 7]);
         expect(result).toBeSameArrayAs([3, 4, 5, 6, 7]);
@@ -213,47 +213,47 @@ zTestSuite.removeNumbersLessThan3 = {
 };
 
 zTestSuite.removeNumbersLessThanX = {
-  title: "function removeNumbersLessThanX",
+  title: `function "removeNumbersLessThanX"`,
   instructions: `Make a function that takes two arguments, an array of numbers and a number. It should call the "array.filter" method to remove numbers that are less than the 2nd argument, returning the rest as an array. Example: removeNumbersLessThanX( [ 1, 2, 3, 4, 5, 6, 7, 8 ], 7 ) returns [ 7, 8 ]`,
   tests: [
     {
-      description: `"removeNumbersLessThanX" is declared`,
+      description: `is declared`,
       test: () => {
         expect(removeNumbersLessThanX).toBeDeclared();
       },
     },
     {
-      description: `"removeNumbersLessThanX" has a value`,
+      description: `has a value`,
       test: () => {
         expect(removeNumbersLessThanX).toHaveValue();
       },
     },
     {
-      description: `"removeNumbersLessThanX" is a function`,
+      description: `is a function`,
       test: () => {
         expect(removeNumbersLessThanX).toBeFunction();
       },
     },
     {
-      description: `"removeNumbersLessThanX" takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(removeNumbersLessThanX).takesXArguments(2);
       },
     },
     {
-      description: `"removeNumbersLessThanX" returns something`,
+      description: `returns something`,
       test: () => {
         expect(removeNumbersLessThanX).withArgs([1, 2, 3]).toReturnSomething();
       },
     },
     {
-      description: `"removeNumbersLessThanX" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(removeNumbersLessThanX).withArgs([1, 2, 3]).toReturnArray();
       },
     },
     {
-      description: `"removeNumbersLessThanX" returns an array of numbers`,
+      description: `returns an array of numbers`,
       test: () => {
         expect(removeNumbersLessThanX)
           .withArgs([1, 2, 3])
@@ -261,7 +261,7 @@ zTestSuite.removeNumbersLessThanX = {
       },
     },
     {
-      description: `"removeNumbersLessThanX" calls the "filter" method`,
+      description: `calls the "filter" method`,
       test: () => {
         expect(removeNumbersLessThanX)
           .withArgs([1, 2, 3])
@@ -269,7 +269,7 @@ zTestSuite.removeNumbersLessThanX = {
       },
     },
     {
-      description: `"removeNumbersLessThanX" returns the correct value`,
+      description: `returns the correct value`,
       test: () => {
         var result = removeNumbersLessThanX([1, 2, 3, 4, 5, 6, 7], 4);
         expect(result).toBeSameArrayAs([4, 5, 6, 7]);
@@ -287,47 +287,47 @@ zTestSuite.removeNumbersLessThanX = {
 };
 
 zTestSuite.removeEmptyStrings = {
-  title: "function removeEmptyStrings",
+  title: `function "removeEmptyStrings"`,
   instructions: `Make a function that takes one argument, an array of strings. It should call the "array.filter" method and remove any empty strings (""). Example: removeEmptyStrings([ "", "", "Phone", "Josh", "e" ]) returns [ "Phone", "Josh", "e" ]`,
   tests: [
     {
-      description: `"removeEmptyStrings" is declared`,
+      description: `is declared`,
       test: () => {
         expect(removeEmptyStrings).toBeDeclared();
       },
     },
     {
-      description: `"removeEmptyStrings" has a value`,
+      description: `has a value`,
       test: () => {
         expect(removeEmptyStrings).toHaveValue();
       },
     },
     {
-      description: `"removeEmptyStrings" is a function`,
+      description: `is a function`,
       test: () => {
         expect(removeEmptyStrings).toBeFunction();
       },
     },
     {
-      description: `"removeEmptyStrings" takes one argument`,
+      description: `takes one argument`,
       test: () => {
         expect(removeEmptyStrings).takesXArguments(1);
       },
     },
     {
-      description: `"removeEmptyStrings" returns something`,
+      description: `returns something`,
       test: () => {
         expect(removeEmptyStrings).withArgs(["a", ""]).toReturnSomething();
       },
     },
     {
-      description: `"removeEmptyStrings" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(removeEmptyStrings).withArgs(["a", ""]).toReturnArray();
       },
     },
     {
-      description: `"removeEmptyStrings" returns an array of strings`,
+      description: `returns an array of strings`,
       test: () => {
         expect(removeEmptyStrings)
           .withArgs(["a", ""])
@@ -335,7 +335,7 @@ zTestSuite.removeEmptyStrings = {
       },
     },
     {
-      description: `"removeEmptyStrings" calls "array.filter" method`,
+      description: `calls "array.filter" method`,
       test: () => {
         expect(removeEmptyStrings)
           .withArgs([1, 2, 3])
@@ -343,7 +343,7 @@ zTestSuite.removeEmptyStrings = {
       },
     },
     {
-      description: `"removeEmptyStrings" returns the correct value`,
+      description: `returns the correct value`,
       test: () => {
         var result = removeEmptyStrings(["", "", "dog", "document", "cat"]);
         expect(result).toBeSameArrayAs(["dog", "document", "cat"]);
@@ -359,47 +359,47 @@ zTestSuite.removeEmptyStrings = {
 };
 
 zTestSuite.removeVowelsFromArray = {
-  title: "function removeVowelsFromArray",
+  title: `function "removeVowelsFromArray"`,
   instructions: `Make a function that takes one argument, an array of strings. It should call the "array.filter" method and remove all strings in the array that are a vowel. Example: removeVowelsFromArray( [ "a", "b", "c", "d", "e" ] ) returns [ "b", "c", "d" ]`,
   tests: [
     {
-      description: `"removeVowelsFromArray" is declared`,
+      description: `is declared`,
       test: () => {
         expect(removeVowelsFromArray).toBeDeclared();
       },
     },
     {
-      description: `"removeVowelsFromArray" has a value`,
+      description: `has a value`,
       test: () => {
         expect(removeVowelsFromArray).toHaveValue();
       },
     },
     {
-      description: `"removeVowelsFromArray" is a function`,
+      description: `is a function`,
       test: () => {
         expect(removeVowelsFromArray).toBeFunction();
       },
     },
     {
-      description: `"removeVowelsFromArray" takes one arguments`,
+      description: `takes one arguments`,
       test: () => {
         expect(removeVowelsFromArray).takesXArguments(1);
       },
     },
     {
-      description: `"removeVowelsFromArray" returns something`,
+      description: `returns something`,
       test: () => {
         expect(removeVowelsFromArray).withArgs(["a", "z"]).toReturnSomething();
       },
     },
     {
-      description: `"removeVowelsFromArray" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(removeVowelsFromArray).withArgs(["a", "z"]).toReturnArray();
       },
     },
     {
-      description: `"removeVowelsFromArray" returns an array of strings`,
+      description: `returns an array of strings`,
       test: () => {
         expect(removeVowelsFromArray)
           .withArgs(["a", "z"])
@@ -407,7 +407,7 @@ zTestSuite.removeVowelsFromArray = {
       },
     },
     {
-      description: `"removeVowelsFromArray" calls the "array.filter" method`,
+      description: `calls the "array.filter" method`,
       test: () => {
         expect(removeVowelsFromArray)
           .withArgs([1, 2, 3])
@@ -415,7 +415,7 @@ zTestSuite.removeVowelsFromArray = {
       },
     },
     {
-      description: `"removeVowelsFromArray" returns the correct value`,
+      description: `returns the correct value`,
       test: () => {
         var result = removeVowelsFromArray(["a", "b", "c"]);
         expect(result).toBeSameArrayAs(["b", "c"]);
@@ -431,35 +431,35 @@ zTestSuite.removeVowelsFromArray = {
 };
 
 zTestSuite.removeConsonantsFromArray = {
-  title: "function removeConsonantsFromArray",
+  title: `function "removeConsonantsFromArray"`,
   instructions: `Make a function that takes one argument, an array of strings. It should call the "array.filter" method and remove all strings in the array that are a vowel. Example: removeConsonantsFromArray( [ "a", "b", "c", "d", "e" ] ) returns [ "b", "c", "d" ]`,
   tests: [
     {
-      description: `"removeConsonantsFromArray" is declared`,
+      description: `is declared`,
       test: () => {
         expect(removeConsonantsFromArray).toBeDeclared();
       },
     },
     {
-      description: `"removeConsonantsFromArray" has a value`,
+      description: `has a value`,
       test: () => {
         expect(removeConsonantsFromArray).toHaveValue();
       },
     },
     {
-      description: `"removeConsonantsFromArray" is a function`,
+      description: `is a function`,
       test: () => {
         expect(removeConsonantsFromArray).toBeFunction();
       },
     },
     {
-      description: `"removeConsonantsFromArray" takes one arguments`,
+      description: `takes one arguments`,
       test: () => {
         expect(removeConsonantsFromArray).takesXArguments(1);
       },
     },
     {
-      description: `"removeConsonantsFromArray" returns something`,
+      description: `returns something`,
       test: () => {
         expect(removeConsonantsFromArray)
           .withArgs(["a", "z"])
@@ -467,13 +467,13 @@ zTestSuite.removeConsonantsFromArray = {
       },
     },
     {
-      description: `"removeConsonantsFromArray" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(removeConsonantsFromArray).withArgs(["a", "z"]).toReturnArray();
       },
     },
     {
-      description: `"removeConsonantsFromArray" returns an array of strings`,
+      description: `returns an array of strings`,
       test: () => {
         expect(removeConsonantsFromArray)
           .withArgs(["a", "z"])
@@ -481,7 +481,7 @@ zTestSuite.removeConsonantsFromArray = {
       },
     },
     {
-      description: `"removeConsonantsFromArray" calls the "array.filter" method`,
+      description: `calls the "array.filter" method`,
       test: () => {
         expect(removeConsonantsFromArray)
           .withArgs([1, 2, 3])
@@ -489,7 +489,7 @@ zTestSuite.removeConsonantsFromArray = {
       },
     },
     {
-      description: `"removeConsonantsFromArray" returns the correct value`,
+      description: `returns the correct value`,
       test: () => {
         var result = removeConsonantsFromArray(["a", "b", "c"]);
         expect(result).toBeSameArrayAs(["a"]);
@@ -505,35 +505,35 @@ zTestSuite.removeConsonantsFromArray = {
 };
 
 zTestSuite.removeWordFromArray = {
-  title: "function removeWordFromArray",
+  title: `function "removeWordFromArray"`,
   instructions: `Make a function that takes two arguments, an array of strings and a word(string). It should call the "array.filter" method to remove all strings in the array that match the word. Example: removeWordFromArray([ "cat", "dog", "fish" ], "fish" ) returns [ "cat", "dog" ])`,
   tests: [
     {
-      description: `"removeWordFromArray" is declared`,
+      description: `is declared`,
       test: () => {
         expect(removeWordFromArray).toBeDeclared();
       },
     },
     {
-      description: `"removeWordFromArray" has a value`,
+      description: `has a value`,
       test: () => {
         expect(removeWordFromArray).toHaveValue();
       },
     },
     {
-      description: `"removeWordFromArray" is a function`,
+      description: `is a function`,
       test: () => {
         expect(removeWordFromArray).toBeFunction();
       },
     },
     {
-      description: `"removeWordFromArray" takes two arguments`,
+      description: `takes two arguments`,
       test: () => {
         expect(removeWordFromArray).takesXArguments(2);
       },
     },
     {
-      description: `"removeWordFromArray" returns something`,
+      description: `returns something`,
       test: () => {
         expect(removeWordFromArray)
           .withArgs(["a", "b"], "a")
@@ -541,13 +541,13 @@ zTestSuite.removeWordFromArray = {
       },
     },
     {
-      description: `"removeWordFromArray" returns an array`,
+      description: `returns an array`,
       test: () => {
         expect(removeWordFromArray).withArgs(["a", "b"], "a").toReturnArray();
       },
     },
     {
-      description: `"removeWordFromArray" returns an array of strings`,
+      description: `returns an array of strings`,
       test: () => {
         expect(removeWordFromArray)
           .withArgs(["a", "b"], "a")
@@ -555,7 +555,7 @@ zTestSuite.removeWordFromArray = {
       },
     },
     {
-      description: `"removeWordFromArray" calls the "array.filter" method`,
+      description: `calls the "array.filter" method`,
       test: () => {
         expect(removeWordFromArray)
           .withArgs([1, 2, 3])
@@ -563,7 +563,7 @@ zTestSuite.removeWordFromArray = {
       },
     },
     {
-      description: `"removeWordFromArray" returns the correct value`,
+      description: `returns the correct value`,
       test: () => {
         var result = removeWordFromArray(
           ["joke", "documentation"],

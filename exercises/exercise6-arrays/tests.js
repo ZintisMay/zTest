@@ -1,28 +1,28 @@
 zTestSuite = {};
 zTestSuite.emptyArray = {
-  title: "var emptyArray",
+  title: `var "emptyArray"`,
   tests: [
     {
-      description: `emptyArray is declared`,
+      description: `is declared`,
       test: () => {
         expect(emptyArray).toBeDeclared();
       },
     },
     {
-      description: `emptyArray has a value`,
+      description: `has a value`,
       test: () => {
         expect(emptyArray).toHaveValue();
       },
     },
     {
-      description: `emptyArray is an array`,
+      description: `is an array`,
       test: () => {
         expect(emptyArray).toBeArray();
       },
     },
 
     {
-      description: `emptyArray has 0 items`,
+      description: `has 0 items`,
       test: () => {
         expect(emptyArray).toHaveLength(0);
       },
@@ -31,34 +31,34 @@ zTestSuite.emptyArray = {
 };
 
 zTestSuite.varSimpleArrayTests = {
-  title: "var simpleArray",
+  title: `var "simpleArray"`,
   tests: [
     {
-      description: `simpleArray is declared`,
+      description: `is declared`,
       test: () => {
         expect(simpleArray).toBeDeclared();
       },
     },
     {
-      description: `simpleArray has a value`,
+      description: `has a value`,
       test: () => {
         expect(simpleArray).toHaveValue();
       },
     },
     {
-      description: `simpleArray is an array`,
+      description: `is an array`,
       test: () => {
         expect(simpleArray).toBeArray();
       },
     },
     {
-      description: `simpleArray contains numbers only`,
+      description: `contains numbers only`,
       test: () => {
         expect(simpleArray).toOnlyContainType("number");
       },
     },
     {
-      description: `simpleArray contains numbers 1,2,3`,
+      description: `contains numbers 1,2,3`,
       test: () => {
         expect(simpleArray).toBeSameArrayAs([1, 2, 3]);
       },
@@ -67,34 +67,34 @@ zTestSuite.varSimpleArrayTests = {
 };
 
 zTestSuite.varFavoriteFoodsTest = {
-  title: "var favoriteFoods",
+  title: `var "favoriteFoods"`,
   tests: [
     {
-      description: `favoriteFoods is declared`,
+      description: `is declared`,
       test: () => {
         expect(favoriteFoods).toBeDeclared();
       },
     },
     {
-      description: `favoriteFoods has a value`,
+      description: `has a value`,
       test: () => {
         expect(favoriteFoods).toHaveValue();
       },
     },
     {
-      description: `favoriteFoods is an array`,
+      description: `is an array`,
       test: () => {
         expect(favoriteFoods).toBeArray();
       },
     },
     {
-      description: `favoriteFoods contains strings only`,
+      description: `contains strings only`,
       test: () => {
         expect(favoriteFoods).toOnlyContainType("string");
       },
     },
     {
-      description: `favoriteFoods contains words`,
+      description: `contains words`,
       test: () => {
         expect(favoriteFoods).customTest(function () {
           this.value.every((item) => {
@@ -111,34 +111,34 @@ zTestSuite.varFavoriteFoodsTest = {
 };
 
 zTestSuite.bigNumbers = {
-  title: "var bigNumbers",
+  title: `var "bigNumbers"`,
   tests: [
     {
-      description: `bigNumbers is declared`,
+      description: `is declared`,
       test: () => {
         expect(bigNumbers).toBeDeclared();
       },
     },
     {
-      description: `bigNumbers has a value`,
+      description: `has a value`,
       test: () => {
         expect(bigNumbers).toHaveValue();
       },
     },
     {
-      description: `bigNumbers is an array`,
+      description: `is an array`,
       test: () => {
         expect(bigNumbers).toBeArray();
       },
     },
     {
-      description: `bigNumbers is an array`,
+      description: `is an array`,
       test: () => {
         expect(bigNumbers).toOnlyContainType("number");
       },
     },
     {
-      description: `bigNumbers only contains numbers over 9000`,
+      description: `only contains numbers over 9000`,
       test: () => {
         expect(bigNumbers).customTest(function () {
           this.value.every((item) => {
@@ -154,28 +154,28 @@ zTestSuite.bigNumbers = {
   ],
 };
 zTestSuite.arrayOf10 = {
-  title: "var arrayOf10",
+  title: `var "arrayOf10"`,
   tests: [
     {
-      description: `arrayOf10 is declared`,
+      description: `is declared`,
       test: () => {
         expect(arrayOf10).toBeDeclared();
       },
     },
     {
-      description: `arrayOf10 has a value`,
+      description: `has a value`,
       test: () => {
         expect(arrayOf10).toHaveValue();
       },
     },
     {
-      description: `arrayOf10 is an array`,
+      description: `is an array`,
       test: () => {
         expect(arrayOf10).toBeArray();
       },
     },
     {
-      description: `arrayOf10 has 10 items`,
+      description: `has 10 items`,
       test: () => {
         expect(arrayOf10).toHaveLength(10);
       },
@@ -183,34 +183,34 @@ zTestSuite.arrayOf10 = {
   ],
 };
 zTestSuite.arrayOfBooleans = {
-  title: "var arrayOfBooleans",
+  title: `var "arrayOfBooleans"`,
   tests: [
     {
-      description: `arrayOfBooleans is declared`,
+      description: `is declared`,
       test: () => {
         expect(arrayOfBooleans).toBeDeclared();
       },
     },
     {
-      description: `arrayOfBooleans has a value`,
+      description: `has a value`,
       test: () => {
         expect(arrayOfBooleans).toHaveValue();
       },
     },
     {
-      description: `arrayOfBooleans is an array`,
+      description: `is an array`,
       test: () => {
         expect(arrayOfBooleans).toBeArray();
       },
     },
     {
-      description: `arrayOfBooleans is an array`,
+      description: `is an array`,
       test: () => {
         expect(arrayOfBooleans).toOnlyContainType("boolean");
       },
     },
     {
-      description: `arrayOfBooleans has 10 items`,
+      description: `has 10 items`,
       test: () => {
         expect(arrayOfBooleans).toHaveLength(5);
       },
