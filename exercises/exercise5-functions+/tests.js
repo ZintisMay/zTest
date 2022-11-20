@@ -1,75 +1,4 @@
 zTestSuite = {};
-/* 
-Total 9 exercises. All functions.
-
-Tests
-* is declared
-* has a value
-* is a function
-* takes n arguments
-* returns value type t
-* returns correct values/does the right thing
-
-===============================================
-
- zTestSuite.REPLACEME = {
-  title: "function REPLACEME",
-  tests: [
-    {
-      description: `REPLACEME is declared`,
-      test: () => {
-        expect(REPLACEME).toBeDeclared();
-      },
-    },
-    {
-      description: `REPLACEME has a value`,
-      test: () => {
-        expect(REPLACEME).toHaveValue();
-      },
-    },
-    {
-      description: `REPLACEME is a function`,
-      test: () => {
-        expect(REPLACEME).toBeFunction();
-      },
-    },
-    {
-      description: `REPLACEME takes two arguments`,
-      test: () => {
-        expect(REPLACEME).takesXArguments(2);
-      },
-    },
-    {
-      description: `REPLACEME returns a number`,
-      test: () => {
-        expect(REPLACEME).withArgs(1, 1).toReturnNumber();
-      },
-    },
-    {
-      description: `REPLACEME returns correct values`,
-      test: () => {
-        expect(REPLACEME).withArgs(1, 1).toReturn(2);
-        expect(REPLACEME).withArgs(-1, 1).toReturn(0);
-        expect(REPLACEME).withArgs(1000, 234).toReturn(1234);
-        expect(REPLACEME).withArgs(1, 1).toReturn(2);
-        expect(REPLACEME).withArgs(1, 1).toReturn(2);
-        expect(REPLACEME).withArgs(1, 1).toReturn(2);
-      },
-    },
-  ],
-};
- */
-/*
- * Exercise 1
- *
- * is declared
- * has a value
- * is a function
- * takes one argument
- * returns value type string
- * tests: string includes `Hello ${name}!`
- */
-
 zTestSuite.greeting = {
   title: "function greeting",
   tests: [
@@ -112,17 +41,6 @@ zTestSuite.greeting = {
     },
   ],
 };
-
-/*
- * Exercise 2
- *
- * is declared
- * has a value
- * is a function
- * takes one argument
- * returns value type bool
- * tests: bool output is accurate. True arguments return bool:true, false arguments return bool:false
- */
 zTestSuite.isThisValueTrue = {
   title: "function isThisValueTrue",
   tests: [
@@ -156,7 +74,6 @@ zTestSuite.isThisValueTrue = {
         expect(isThisValueTrue).withArgs().toReturnBoolean();
       },
     },
-    // I initially had some concerns about this test. It was a function call, and variable 'val' was not assigned a value. But it seems the below tests work.
     {
       description: `isThisValueTrue returns correct values`,
       test: () => {
@@ -167,17 +84,6 @@ zTestSuite.isThisValueTrue = {
     },
   ],
 };
-/*
- * Exercise 3
- *
- * is declared
- * has a value
- * is a function
- * takes one argument
- * returns value type string
- * returns values "even" or "odd"
- * tests: output is accurate. even cases, odd cases, a clever 0 case.
- */
 zTestSuite.isThisNumberEven = {
   title: "function isThisNumberEven",
   tests: [
@@ -222,16 +128,6 @@ zTestSuite.isThisNumberEven = {
     },
   ],
 };
-/*
- * Exercise 4
- *
- * is declared
- * has a value
- * is a function
- * takes one argument
- * returns a positive or negative number.
- * tests: input n, output -n. input -n, output n
- */
 zTestSuite.makeNumberNegative = {
   title: "function makeNumberNegative",
   tests: [
@@ -275,16 +171,6 @@ zTestSuite.makeNumberNegative = {
     },
   ],
 };
-/*
- * Exercise 5
- *
- * is declared
- * has a value
- * is a function
- * takes one argument
- * returns a string, either "yes" or "no"
- * tests:
- */
 zTestSuite.doYouWantCake = {
   title: "function doYouWantCake",
   tests: [
@@ -328,16 +214,6 @@ zTestSuite.doYouWantCake = {
     },
   ],
 };
-/*
- * Exercise 6
- *
- * is declared
- * has a value
- * is a function
- * takes one argument
- * returns a number, value of word.length
- * tests:
- */
 zTestSuite.wordLength = {
   title: "function wordLength",
   tests: [
@@ -381,19 +257,6 @@ zTestSuite.wordLength = {
     },
   ],
 };
-/*
- * Exercise 7
- *
- * is declared
- * has a value
- * is a function
- * takes three args
- * returns an object
- * To have object key count (3) ?
- * To have key x
- * tests:
- * Problems here: It seems like keys are treated as properties and not keys or key:value pairs. We seem to have no test for properties.
- */
 zTestSuite.carBuilder = {
   title: "function carBuilder",
   tests: [
@@ -427,43 +290,133 @@ zTestSuite.carBuilder = {
         expect(carBuilder).withArgs().toReturnObject();
       },
     },
-    // The below tests need to be revisited.
     {
       description: `carBuilder returns correct values`,
       test: () => {
-        expect(carBuilder).withArgs().toReturn();
-        expect(carBuilder).withArgs(-1, 1).toReturn(0);
-        expect(carBuilder).withArgs(1000, 234).toReturn(1234);
-        expect(carBuilder).withArgs(1, 1).toReturn(2);
-        expect(carBuilder).withArgs(1, 1).toReturn(2);
-        expect(carBuilder).withArgs(1, 1).toReturn(2);
+        expect(carBuilder)
+          .withArgs("Volkswagen", "Beetle", "1963")
+          .toReturn({ make: "Volkswagen", model: "Beetle", year: "1963" });
+        expect(carBuilder)
+          .withArgs("Lotus", "Esprit S1", "1976")
+          .toReturn({ make: "Lotus", model: "Esprit S1", year: "1976" });
+        expect(carBuilder)
+          .withArgs("Ford", "Mustang GT 390", "1968")
+          .toReturn({ make: "Ford", model: "Mustang GT 390", year: "1968" });
+        expect(carBuilder)
+          .withArgs("Ford", "Falcon GT XB", "1973")
+          .toReturn({ make: "Ford", model: "Falcon GT XB", year: "1973" });
+        expect(carBuilder)
+          .withArgs("Cadillac", "Miller-meteor", "1959")
+          .toReturn({ make: "Cadillac", model: "Miller-meteor", year: "1959" });
+        expect(carBuilder)
+          .withArgs("Delorean", "DMC-12", "1981")
+          .toReturn({ make: "Delorean", model: "DMC-12", year: "1981" });
       },
     },
   ],
 };
-
-/*
- * Exercise 8
- *
- * is declared
- * has a value
- * is a function
- * takes 4 args
- * returns an object
- * To have object key count (3) ?
- * To have key x
- * tests:
- */
-
-/*
- * Exercise 9
- *
- * is declared
- * has a value
- * is a function
- * takes 2 args
- * returns a number
- * tests:
- */
+zTestSuite.createStudent = {
+  title: "function createStudent",
+  tests: [
+    {
+      description: `createStudent is declared`,
+      test: () => {
+        expect(createStudent).toBeDeclared();
+      },
+    },
+    {
+      description: `createStudent has a value`,
+      test: () => {
+        expect(createStudent).toHaveValue();
+      },
+    },
+    {
+      description: `createStudent is a function`,
+      test: () => {
+        expect(createStudent).toBeFunction();
+      },
+    },
+    {
+      description: `createStudent takes four arguments`,
+      test: () => {
+        expect(createStudent).takesXArguments(4);
+      },
+    },
+    {
+      description: `createStudent returns an object`,
+      test: () => {
+        expect(createStudent).withArgs().toReturnObject();
+      },
+    },
+    {
+      description: `createStudent returns correct values`,
+      test: () => {
+        expect(createStudent)
+          .withArgs("1", "2", "3", "4")
+          .toReturn({
+            name: {
+              first: "1",
+              last: "2",
+            },
+            yearBorn: "3",
+            schoolName: "4",
+          });
+        expect(createStudent)
+          .withArgs("Walter Jr.", "White", "1993", "J.P. Wynne High School")
+          .toReturn({
+            name: {
+              first: "Walter Jr.",
+              last: "White",
+            },
+            yearBorn: "1993",
+            schoolName: "J.P. Wynne High School",
+          });
+      },
+    },
+  ],
+};
+zTestSuite.teachersNeeded = {
+  title: "function teachersNeeded",
+  tests: [
+    {
+      description: `teachersNeeded is declared`,
+      test: () => {
+        expect(teachersNeeded).toBeDeclared();
+      },
+    },
+    {
+      description: `teachersNeeded has a value`,
+      test: () => {
+        expect(teachersNeeded).toHaveValue();
+      },
+    },
+    {
+      description: `teachersNeeded is a function`,
+      test: () => {
+        expect(teachersNeeded).toBeFunction();
+      },
+    },
+    {
+      description: `teachersNeeded takes two arguments`,
+      test: () => {
+        expect(teachersNeeded).takesXArguments(2);
+      },
+    },
+    {
+      description: `teachersNeeded returns a number`,
+      test: () => {
+        expect(teachersNeeded).withArgs(1, 1).toReturnNumber();
+      },
+    },
+    {
+      description: `teachersNeeded returns correct values`,
+      test: () => {
+        expect(teachersNeeded).withArgs(10, 5).toReturn(2);
+        expect(teachersNeeded).withArgs(18, 7).toReturn(3);
+        expect(teachersNeeded).withArgs(1000, 234).toReturn(5);
+      },
+    },
+  ],
+};
 
 Z_T.testAll(zTestSuite);
