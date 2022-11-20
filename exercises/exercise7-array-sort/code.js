@@ -10,14 +10,14 @@ function reverseArray(arr) {
   return arr.reverse();
 }
 
+function sortLetters(arr) {
+  return arr.sort();
+}
+
 function sortNumbers(arr) {
   return arr.sort((a, b) => {
     return a - b;
   });
-}
-
-function sortLetters(arr) {
-  return arr.sort();
 }
 
 function sortByWordLength(arr) {
