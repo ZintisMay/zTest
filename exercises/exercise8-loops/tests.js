@@ -1,8 +1,7 @@
 zTestSuite = {};
 zTestSuite.makeXAsterisks = {
   title: "function makeXAsterisks",
-  instructions: `create a function that will take one argument, inside of it declare a variable that's an empty string, make a for loop so that you will add to the variable the amount of asterisks to the number that was passed as an argument and return that said variable
-  example: makeXAsterisk(5) returns "*****"`,
+  instructions: `Make a function that takes one argument, a number. It should return a string with that many asterisks in it. Example: makeXAsterisk(5) returns "*****"`,
   tests: [
     {
       description: `"makeXAsterisks" is declared`,
@@ -23,75 +22,129 @@ zTestSuite.makeXAsterisks = {
       },
     },
     {
+      description: `"makeXAsterisks" returns something`,
+      test: () => {
+        expect(makeXAsterisks).withArgs(3).toReturnSomething();
+      },
+    },
+    {
+      description: `"makeXAsterisks" returns a string`,
+      test: () => {
+        expect(makeXAsterisks).withArgs(3).toReturnString();
+      },
+    },
+    {
       description: `"makeXAsterisks" returns the correct result`,
       test: () => {
         var result = makeXAsterisks(5);
         expect(result).toBe("*****");
+        var result2 = makeXAsterisks(3);
+        expect(result2).toBe("***");
+        var result3 = makeXAsterisks(12);
+        expect(result3).toBe("************");
       },
     },
   ],
 };
 
-zTestSuite.makeArrayOfNumbersUpToX = {
-  title: "function makeArrayOfNumbersUpToX",
-  instructions: `create a function called makeArrayOfNumbersUpToX that takes one argument, inside the function create a variable with an empty array, afterwards create a for loop that will begin at number 1 and end at the number you pass as an argument, inside your for loop you want to push the numbers inside the empty array and then return the array, 
-  example: makeArrayOfNumbersUpToX(5) return [1,2,3,4,5]`,
+zTestSuite.allNumbersUpToX = {
+  title: "function allNumbersUpToX",
+  instructions: `Make a function that takes one argument, a number. It should return an array of every number up to that number, starting at 1. 
+  example: allNumbersUpToX(5) return [1,2,3,4,5]`,
   tests: [
     {
-      description: `"makeArrayOfNumbersUpToX" is declared`,
+      description: `"allNumbersUpToX" is declared`,
       test: () => {
-        expect(makeArrayOfNumbersUpToX).toBeDeclared();
+        expect(allNumbersUpToX).toBeDeclared();
       },
     },
     {
-      description: `"makeArrayOfNumbersUpToX" is a function`,
+      description: `"allNumbersUpToX" is a function`,
       test: () => {
-        expect(makeArrayOfNumbersUpToX).toBeFunction();
+        expect(allNumbersUpToX).toBeFunction();
       },
     },
     {
-      description: `"makeArrayOfNumbersUpToX" takes one argument`,
+      description: `"allNumbersUpToX" takes one argument`,
       test: () => {
-        expect(makeArrayOfNumbersUpToX).takesXArguments(1);
+        expect(allNumbersUpToX).takesXArguments(1);
       },
     },
     {
-      description: `returns the correct result`,
+      description: `"allNumbersUpToX" returns something`,
       test: () => {
-        var result = makeArrayOfNumbersUpToX(8);
+        expect(allNumbersUpToX).withArgs(4).toReturnSomething();
+      },
+    },
+    {
+      description: `"allNumbersUpToX" returns array`,
+      test: () => {
+        expect(allNumbersUpToX).withArgs(4).toReturnArray();
+      },
+    },
+    {
+      description: `"allNumbersUpToX" returns array of numbers`,
+      test: () => {
+        expect(allNumbersUpToX).withArgs(4).toReturnArrayOfType("number");
+      },
+    },
+    {
+      description: `"allNumbersUpToX" returns the correct result`,
+      test: () => {
+        var result = allNumbersUpToX(8);
         expect(result).toBeSameArrayAs([1, 2, 3, 4, 5, 6, 7, 8]);
+        var result2 = allNumbersUpToX(1);
+        expect(result2).toBeSameArrayAs([1]);
+        var result2 = allNumbersUpToX(3);
+        expect(result2).toBeSameArrayAs([1, 2, 3]);
       },
     },
   ],
 };
 
-zTestSuite.makeWordWithXLetterY = {
-  title: "function makeWordWithXLetterY",
-  instructions: `make a function that will take 2 arguments, 1st argument will define the length of the string, and the 2nd argument will fill the string with said character, example: makeWordWithXLetterY(4, "b") returns "bbbb"`,
+zTestSuite.makeStringWithXLetterY = {
+  title: "function makeStringWithXLetterY",
+  instructions: `Make a function that takes two arguments, a number and a character. It should return a string with X copies of Y character. Example: makeStringWithXLetterY( 4, "b" ) returns "bbbb"`,
   tests: [
     {
-      description: `"makeWordWithXLetterY" is declared`,
+      description: `"makeStringWithXLetterY" is declared`,
       test: () => {
-        expect(makeWordWithXLetterY).toBeDeclared();
+        expect(makeStringWithXLetterY).toBeDeclared();
       },
     },
     {
-      description: `"makeWordWithXLetterY" is a function`,
+      description: `"makeStringWithXLetterY" is a function`,
       test: () => {
-        expect(makeWordWithXLetterY).toBeFunction();
+        expect(makeStringWithXLetterY).toBeFunction();
       },
     },
     {
-      description: `"makeWordWithXLetterY" takes two arguments`,
+      description: `"makeStringWithXLetterY" takes two arguments`,
       test: () => {
-        expect(makeWordWithXLetterY).takesXArguments(2);
+        expect(makeStringWithXLetterY).takesXArguments(2);
       },
     },
     {
-      description: `returns the correct result`,
+      description: `"makeStringWithXLetterY" returns something`,
       test: () => {
-        var result = makeWordWithXLetterY(5, "a");
+        expect(makeStringWithXLetterY).withArgs(3, "b").toReturnSomething();
+      },
+    },
+    {
+      description: `"makeStringWithXLetterY" returns a string`,
+      test: () => {
+        expect(makeStringWithXLetterY).withArgs(3, "b").toReturnString();
+      },
+    },
+    {
+      description: `"makeStringWithXLetterY" returns the correct result`,
+      test: () => {
+        var result = makeStringWithXLetterY(5, "a");
         expect(result).toBe("aaaaa");
+        var result2 = makeStringWithXLetterY(10, "x");
+        expect(result2).toBe("xxxxxxxxxx");
+        var result3 = makeStringWithXLetterY(0, "q");
+        expect(result3).toBe("");
       },
     },
   ],
@@ -99,7 +152,7 @@ zTestSuite.makeWordWithXLetterY = {
 
 zTestSuite.reverseWord = {
   title: "function reverseWord",
-  instructions: `create a function that will pass in 1 argument and will reverse the word, example: reverseWord("cat") returns "tac"`,
+  instructions: `Make a function that takes one argument, a string. It should return the string in reverse order. Example: reverseWord("cat") returns "tac"`,
   tests: [
     {
       description: `"reverseWord" is declared`,
@@ -120,10 +173,26 @@ zTestSuite.reverseWord = {
       },
     },
     {
+      description: `"reverseWord" returns something`,
+      test: () => {
+        expect(reverseWord).withArgs("bill").toReturnSomething();
+      },
+    },
+    {
+      description: `"reverseWord" returns a string`,
+      test: () => {
+        expect(reverseWord).withArgs("bill").toReturnString();
+      },
+    },
+    {
       description: `"reverseWord" returns the correct result`,
       test: () => {
         var result = reverseWord("towel");
         expect(result).toBe("lewot");
+        var result2 = reverseWord("aba");
+        expect(result2).toBe("aba");
+        var result3 = reverseWord("cow");
+        expect(result3).toBe("woc");
       },
     },
   ],
@@ -131,7 +200,7 @@ zTestSuite.reverseWord = {
 
 zTestSuite.removeVowels = {
   title: "function removeVowels",
-  instructions: `create a function that will remove vowels from a word, example: removeVowels('thank you') returns 'thnk y'`,
+  instructions: `Make a function that takes one argument, a string. It should return a string with the vowels removed. Example: removeVowels( 'opportunity' ) returns 'pprtnty'`,
   tests: [
     {
       description: `"removeVowels" is declared`,
@@ -152,10 +221,26 @@ zTestSuite.removeVowels = {
       },
     },
     {
+      description: `"removeVowels" returns something`,
+      test: () => {
+        expect(removeVowels).withArgs("ca").toReturnSomething();
+      },
+    },
+    {
+      description: `"removeVowels" returns a string`,
+      test: () => {
+        expect(removeVowels).withArgs("ca").toReturnString();
+      },
+    },
+    {
       description: `"removeVowels" returns the correct result`,
       test: () => {
-        var result = removeVowels("Presidentofusa");
-        expect(result).toBe("Prsdntfs");
+        var result = removeVowels("behaviour");
+        expect(result).toBe("bhvr");
+        var result2 = removeVowels("aeiou");
+        expect(result2).toBe("");
+        var result3 = removeVowels("bcdfghjklmnpqrstvwxyz");
+        expect(result3).toBe("bcdfghjklmnpqrstvwxyz");
       },
     },
   ],
@@ -163,7 +248,7 @@ zTestSuite.removeVowels = {
 
 zTestSuite.removeConsonants = {
   title: "function removeConsonants",
-  instructions: `same as above but this time it's consonants, example: removeConsonants('thank you') returns ('a ou')`,
+  instructions: `Make a function that takes one argument, a string. It should return a string with the consonants removed. Example: removeConsonants( 'opportunity' ) returns 'oouiy'`,
   tests: [
     {
       description: `"removeConsonants" is declared`,
@@ -184,10 +269,26 @@ zTestSuite.removeConsonants = {
       },
     },
     {
+      description: `"removeConsonants" returns something`,
+      test: () => {
+        expect(removeConsonants).withArgs("ab").toReturnSomething();
+      },
+    },
+    {
+      description: `"removeConsonants" returns a string`,
+      test: () => {
+        expect(removeConsonants).withArgs("ab").toReturnString();
+      },
+    },
+    {
       description: `"removeConsonants" returns the correct result`,
       test: () => {
-        var result = removeConsonants("Presidentofusa");
-        expect(result).toBe("eieoua");
+        var result = removeConsonants("abcdefghijklmnopqrstuvwxyz");
+        expect(result).toBe("aeiou");
+        var result2 = removeConsonants("aeiou");
+        expect(result2).toBe("aeiou");
+        var result3 = removeConsonants("xyz");
+        expect(result3).toBe("");
       },
     },
   ],
@@ -197,7 +298,7 @@ zTestSuite.removeConsonants = {
 
 zTestSuite.removeWordsOfLengthXPlus = {
   title: "function removeWordsOfLengthXPlus",
-  instructions: `create a function that will take 2 arguments, the 1st one will be an array with a list of words, the 2nd one will have a number, the function must remove any words that are longer than the number passed as a 2nd argument, example: removeWordsOfLengthXPlus(["homelander", "billyButcher", "ant", "cat", "dog"], 5) returns ["cat", "dog"]`,
+  instructions: `Make a function that takes two arguments, an array of strings and a number. It should remove any string in the array that is as long or longer than the number, and return that. Example: removeWordsOfLengthXPlus( ["homeland", "accordion", "cat", "drop", "fresh"], 5 ) returns [ "cat", "drop" ]`,
   tests: [
     {
       description: `"removeWordsOfLengthXPlus" is declared`,
@@ -218,13 +319,45 @@ zTestSuite.removeWordsOfLengthXPlus = {
       },
     },
     {
+      description: `"removeWordsOfLengthXPlus" returns something`,
+      test: () => {
+        expect(removeWordsOfLengthXPlus)
+          .withArgs(["cat"], 5)
+          .toReturnSomething();
+      },
+    },
+    {
+      description: `"removeWordsOfLengthXPlus" returns array`,
+      test: () => {
+        expect(removeWordsOfLengthXPlus).withArgs(["cat"], 5).toReturnArray();
+      },
+    },
+    {
+      description: `"removeWordsOfLengthXPlus" returns array of strings`,
+      test: () => {
+        expect(removeWordsOfLengthXPlus)
+          .withArgs(["cat"], 5)
+          .toReturnArrayOfType("string");
+      },
+    },
+    {
       description: `"removeWordsOfLengthXPlus" returns the correct result`,
       test: () => {
         var result = removeWordsOfLengthXPlus(
-          ["President", "Leader", "cat", "dog"],
+          ["president", "leader", "cat", "dog"],
           4
         );
         expect(result).toBeSameArrayAs(["cat", "dog"]);
+        var result2 = removeWordsOfLengthXPlus(
+          ["president", "leader", "cat", "dog"],
+          1
+        );
+        expect(result2).toBeSameArrayAs([]);
+        var result3 = removeWordsOfLengthXPlus(
+          ["president", "leader", "cat", "dog"],
+          12
+        );
+        expect(result3).toBeSameArrayAs(["president", "leader", "cat", "dog"]);
       },
     },
   ],
@@ -232,7 +365,7 @@ zTestSuite.removeWordsOfLengthXPlus = {
 
 zTestSuite.calculateAverage = {
   title: "function calculateAverage",
-  instructions: `create a function that will pass one array as its argument and returns the total sum of the array divided by its length, example: calculateAverage([1,5,9,8,17]) returns 8`,
+  instructions: `Make a function that takes one argument, an array of numbers. It should return a number that is the average of all numbers in the array. Example: calculateAverage( [ 2, 4, 6, 8, 10 ] ) returns 6`,
   tests: [
     {
       description: `"calculateAverage" is declared`,
@@ -253,10 +386,26 @@ zTestSuite.calculateAverage = {
       },
     },
     {
+      description: `"calculateAverage" returns something`,
+      test: () => {
+        expect(calculateAverage).withArgs([1, 2, 3]).toReturnSomething();
+      },
+    },
+    {
+      description: `"calculateAverage" returns a number`,
+      test: () => {
+        expect(calculateAverage).withArgs([1, 2, 3]).toReturnNumber();
+      },
+    },
+    {
       description: `"calculateAverage" returns the correct result`,
       test: () => {
         var result = calculateAverage([1, 8, 5, 20, 16]);
         expect(result).toBe(10);
+        var result2 = calculateAverage([2]);
+        expect(result2).toBe(2);
+        var result3 = calculateAverage([1, 2]);
+        expect(result3).toBe(1.5);
       },
     },
   ],
