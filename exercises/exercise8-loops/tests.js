@@ -294,8 +294,6 @@ zTestSuite.removeConsonants = {
   ],
 };
 
-// I don't get the function below ↓ ↓
-
 zTestSuite.removeWordsOfLengthXPlus = {
   title: "function removeWordsOfLengthXPlus",
   instructions: `Make a function that takes two arguments, an array of strings and a number. It should remove any string in the array that is as long or longer than the number, and return that. Example: removeWordsOfLengthXPlus( ["homeland", "accordion", "cat", "drop", "fresh"], 5 ) returns [ "cat", "drop" ]`,
@@ -410,7 +408,5 @@ zTestSuite.calculateAverage = {
     },
   ],
 };
-
-// I don't get the function above ^^
 
 Z_T.testAll(zTestSuite);
