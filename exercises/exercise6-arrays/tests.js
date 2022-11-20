@@ -93,6 +93,7 @@ zTestSuite.varFavoriteFoodsTest = {
         expect(favoriteFoods).toOnlyContainType("string");
       },
     },
+    // I see what you're going for here. But the test description says it's checking for words, while the error message says it's checking for food names, which are two different sets of terms. Maybe it's not such a big deal...
     {
       description: `favoriteFoods contains words`,
       test: () => {
