@@ -296,7 +296,7 @@ zTestSuite.removeConsonants = {
 
 zTestSuite.removeWordsOfLengthXPlus = {
   title: "function removeWordsOfLengthXPlus",
-  instructions: `Make a function that takes two arguments, an array of strings and a number. It should remove any string in the array that is as long or longer than the number, and return that. Example: removeWordsOfLengthXPlus( ["homeland", "accordion", "cat", "drop", "fresh"], 5 ) returns [ "cat", "drop" ]`,
+  instructions: `Make a function that takes two arguments, an array of strings and a number. It should remove any string in the array that is as long or longer than the number, and return the remaining strings in an array. Example: removeWordsOfLengthXPlus( ["homeland", "accordion", "cat", "drop", "fresh"], 5 ) returns [ "cat", "drop" ]`,
   tests: [
     {
       description: `"removeWordsOfLengthXPlus" is declared`,
