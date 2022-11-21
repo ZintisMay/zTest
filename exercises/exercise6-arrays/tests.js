@@ -1,4 +1,5 @@
 zTestSuite = {};
+
 zTestSuite.emptyArray = {
   title: `var "emptyArray"`,
   tests: [
@@ -52,9 +53,15 @@ zTestSuite.varSimpleArrayTests = {
       },
     },
     {
-      description: `contains numbers only`,
+      description: `contains only numbers`,
       test: () => {
-        expect(simpleArray).toOnlyContainType("number");
+        expect(simpleArray).toOnlyContainType(`number`);
+      },
+    },
+    {
+      description: `has 3 items`,
+      test: () => {
+        expect(simpleArray).toHaveLength(3);
       },
     },
     {
@@ -88,22 +95,22 @@ zTestSuite.varFavoriteFoodsTest = {
       },
     },
     {
-      description: `contains strings only`,
+      description: `contains only strings`,
       test: () => {
-        expect(favoriteFoods).toOnlyContainType("string");
+        expect(favoriteFoods).toOnlyContainType(`string`);
       },
     },
     {
-      description: `contains words`,
+      description: `contains only words of 3+ letters`,
       test: () => {
         expect(favoriteFoods).customTest(function () {
-          this.value.every((item) => {
+          this.value.forEach((item) => {
             console.log(item);
-            if (!(item.length > 2)) {
-              throw new Error("there are no foods with just 1 letter");
+            if (item.length < 3) {
+              throw new Error(`words must be 3 or more letters`);
             }
-            return this;
           });
+          return this;
         });
       },
     },
@@ -132,19 +139,18 @@ zTestSuite.bigNumbers = {
       },
     },
     {
-      description: `is an array`,
+      description: `contains only numbers`,
       test: () => {
-        expect(bigNumbers).toOnlyContainType("number");
+        expect(bigNumbers).toOnlyContainType(`number`);
       },
     },
     {
       description: `only contains numbers over 9000`,
       test: () => {
         expect(bigNumbers).customTest(function () {
-          this.value.every((item) => {
-            console.log(item);
+          this.value.forEach((item) => {
             if (!(item > 9000)) {
-              throw new Error("not all numbers are over 9000");
+              throw new Error(`not all numbers are over 9000`);
             }
             return this;
           });
@@ -153,6 +159,7 @@ zTestSuite.bigNumbers = {
     },
   ],
 };
+
 zTestSuite.arrayOf10 = {
   title: `var "arrayOf10"`,
   tests: [
@@ -175,6 +182,12 @@ zTestSuite.arrayOf10 = {
       },
     },
     {
+      description: `contains only numbers`,
+      test: () => {
+        expect(arrayOf10).toOnlyContainType(`number`);
+      },
+    },
+    {
       description: `has 10 items`,
       test: () => {
         expect(arrayOf10).toHaveLength(10);
@@ -182,6 +195,7 @@ zTestSuite.arrayOf10 = {
     },
   ],
 };
+
 zTestSuite.arrayOfBooleans = {
   title: `var "arrayOfBooleans"`,
   tests: [
@@ -204,13 +218,13 @@ zTestSuite.arrayOfBooleans = {
       },
     },
     {
-      description: `is an array`,
+      description: `contains only booleans`,
       test: () => {
-        expect(arrayOfBooleans).toOnlyContainType("boolean");
+        expect(arrayOfBooleans).toOnlyContainType(`boolean`);
       },
     },
     {
-      description: `has 10 items`,
+      description: `has 5 items`,
       test: () => {
         expect(arrayOfBooleans).toHaveLength(5);
       },
