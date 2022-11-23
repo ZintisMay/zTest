@@ -1,6 +1,7 @@
 zTestSuite = {};
 zTestSuite.addTests = {
   title: `function "add"`,
+  instructions: `Make a function named "add" that takes two arguments, both numbers. It should return the sum of those numbers.`,
   tests: [
     {
       description: `is declared`,
@@ -54,6 +55,7 @@ zTestSuite.addTests = {
 
 zTestSuite.subtractTests = {
   title: `function "subtract"`,
+  instructions: `Make a function named "subtract" that takes two arguments, both numbers. It should return the first number minus the second.`,
   tests: [
     {
       description: `is declared`,
@@ -107,6 +109,8 @@ zTestSuite.subtractTests = {
 
 zTestSuite.multiplyTests = {
   title: `function "multiply"`,
+  instructions: `Make a function named "multiply" that takes two arguments, both numbers. It should return the numbers multiplied together.`,
+
   tests: [
     {
       description: `is declared`,
@@ -160,6 +164,7 @@ zTestSuite.multiplyTests = {
 
 zTestSuite.divideTests = {
   title: `function "divide"`,
+  instructions: `Make a function named "divide" that takes two arguments, both numbers. It should return the first number divided by the second.`,
   tests: [
     {
       description: `is declared`,
@@ -213,6 +218,7 @@ zTestSuite.divideTests = {
 
 zTestSuite.exponentTests = {
   title: `function "exponent"`,
+  instructions: `Make a function named "exponent" that takes two arguments, both numbers. It should return the first number to the power of the second.`,
   tests: [
     {
       description: `is declared`,
@@ -266,6 +272,7 @@ zTestSuite.exponentTests = {
 
 zTestSuite.combineStringsTests = {
   title: `function "combineStrings"`,
+  instructions: `Make a function named "combineStrings" that takes two arguments, both strings. It should return a string that is both arguments combined.`,
   tests: [
     {
       description: `is declared`,
@@ -319,6 +326,7 @@ zTestSuite.combineStringsTests = {
 
 zTestSuite.combineArraysTests = {
   title: `function "combineArrays"`,
+  instructions: `Make a function named "combineArrays" that takes two arguments, both arrays. It should return an array with the contents of the first, then second array within it.`,
   tests: [
     {
       description: `is declared`,
@@ -370,6 +378,7 @@ zTestSuite.combineArraysTests = {
 
 zTestSuite.combineObjectsTests = {
   title: `function "combineObjects"`,
+  instructions: `Make a function named "combineObjects" that takes two arguments, both objects. It should return an object with the key/value pairs of both arguments. (Look up "spread operator" or "Object.assign()")`,
   tests: [
     {
       description: `is declared`,

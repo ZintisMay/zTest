@@ -1,7 +1,7 @@
 zTestSuite = {};
 zTestSuite.makeArrayOfX = {
   title: `function "makeArrayOfX"`,
-  instructions: `Create a function that takes 2 arguments. First argument is how many. 2nd argument is what will be in the array. Example: makeArrayOfX( 4, 'a' ) returns ['a', 'a', 'a', 'a']`,
+  instructions: `Make a function that takes 2 arguments. First argument is how many. 2nd argument is what will be in the array. Example: makeArrayOfX( 4, 'a' ) returns ['a', 'a', 'a', 'a']`,
   tests: [
     {
       description: `is declared`,
@@ -55,7 +55,7 @@ zTestSuite.makeArrayOfX = {
 zTestSuite.reverseArray = {
   title: `function "reverseArray"`,
   instructions:
-    "Create a function that takes an array as an argument. It should return the array in reverse order. Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']",
+    "Make a function that takes an array as an argument. It should return the array in reverse order. Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']",
   tests: [
     {
       description: `is declared`,
@@ -111,7 +111,7 @@ zTestSuite.reverseArray = {
 zTestSuite.sortLetters = {
   title: `function "sortLetters"`,
   instructions:
-    "Create a function that takes one argument, an array of letters. It should return the array of letters in alphabetical order. Example: reverseArray( ['d', 'a', 'c'] ) returns ['a', 'c', 'd']",
+    "Make a function that takes one argument, an array of letters. It should return the array of letters in alphabetical order. Example: reverseArray( ['d', 'a', 'c'] ) returns ['a', 'c', 'd']",
   tests: [
     {
       description: `is declared`,
@@ -163,7 +163,7 @@ zTestSuite.sortLetters = {
 
 zTestSuite.sortNumbers = {
   title: `function "sortNumbers"`,
-  instructions: `Create a function that takes one argument, an array of numbers. It should return the numbers from smallest to biggest. Example: sortNumbers([1, 3, 30, 2, 5]) returns [1, 2, 3, 5, 30]`,
+  instructions: `Make a function that takes one argument, an array of numbers. It should return the numbers from smallest to biggest. Example: sortNumbers([1, 3, 30, 2, 5]) returns [1, 2, 3, 5, 30]`,
   tests: [
     {
       description: `is declared`,
@@ -216,7 +216,7 @@ zTestSuite.sortNumbers = {
 zTestSuite.sortByWordLength = {
   title: `function "sortByWordLength"`,
   instructions:
-    "Create a function that takes one argument, an array of words. Return the words in an array from shortest to longest. Example: sortByWordLength(['wash', 'cat', 'brother', 'throw'] returns ['cat', 'wash', 'throw','brother' ]",
+    "Make a function that takes one argument, an array of words. Return the words in an array from shortest to longest. Example: sortByWordLength(['wash', 'cat', 'brother', 'throw'] returns ['cat', 'wash', 'throw','brother' ]",
   tests: [
     {
       description: `is declared`,

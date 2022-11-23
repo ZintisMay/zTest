@@ -2,6 +2,7 @@ zTestSuite = {};
 
 zTestSuite.emptyArray = {
   title: `var "emptyArray"`,
+  instructions: `Declare a variable named "emptyArray", an array with no values`,
   tests: [
     {
       description: `is declared`,
@@ -33,6 +34,7 @@ zTestSuite.emptyArray = {
 
 zTestSuite.varSimpleArrayTests = {
   title: `var "simpleArray"`,
+  instructions: `Declare a variable named "simpleArray", an array whose values are the numbers 1, 2 and 3`,
   tests: [
     {
       description: `is declared`,
@@ -75,6 +77,7 @@ zTestSuite.varSimpleArrayTests = {
 
 zTestSuite.varFavoriteFoodsTest = {
   title: `var "favoriteFoods"`,
+  instructions: `Declare a variable named "favoriteFoods", an array whose values are three words (your favorite foods!).`,
   tests: [
     {
       description: `is declared`,
@@ -119,6 +122,7 @@ zTestSuite.varFavoriteFoodsTest = {
 
 zTestSuite.bigNumbers = {
   title: `var "bigNumbers"`,
+  instructions: `Declare a variable named "bigNumbers", an array with 3 numbers all greater than 9000.`,
   tests: [
     {
       description: `is declared`,
@@ -162,6 +166,7 @@ zTestSuite.bigNumbers = {
 
 zTestSuite.arrayOf10 = {
   title: `var "arrayOf10"`,
+  instructions: `Declare a variable named "arrayOf10", an array of 10 numbers.`,
   tests: [
     {
       description: `is declared`,
@@ -198,6 +203,7 @@ zTestSuite.arrayOf10 = {
 
 zTestSuite.arrayOfBooleans = {
   title: `var "arrayOfBooleans"`,
+  instructions: `Declare a variable named "arrayOfBooleans", an array of 5 booleans.`,
   tests: [
     {
       description: `is declared`,

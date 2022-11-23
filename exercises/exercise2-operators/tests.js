@@ -2,6 +2,8 @@ const testSuite = {};
 
 testSuite.plusTests = {
   title: `var "a" `,
+  instructions: `Declare a variable "a" and it should be the number equal to 654321 plus 123456`,
+
   tests: [
     {
       description: `is declared`,
@@ -31,6 +33,7 @@ testSuite.plusTests = {
 };
 testSuite.minusTests = {
   title: `var "b" `,
+  instructions: `Declare a variable "b" and it should be the number equal to 654321 minus 123456`,
   tests: [
     {
       description: `is declared`,
@@ -60,6 +63,7 @@ testSuite.minusTests = {
 };
 testSuite.multiplyTests = {
   title: `var "c" `,
+  instructions: `Declare a variable "c" and it should be the number equal to 654321 times 123456`,
   tests: [
     {
       description: `is declared`,
@@ -89,6 +93,7 @@ testSuite.multiplyTests = {
 };
 testSuite.divideTests = {
   title: `var "d" `,
+  instructions: `Declare a variable "d" and it should be the number equal to 654321 divided by 123456`,
   tests: [
     {
       description: `is declared`,
@@ -118,6 +123,7 @@ testSuite.divideTests = {
 };
 testSuite.modulusTests = {
   title: `var "e" `,
+  instructions: `Declare a variable "e" and it should be the number equal to 654321 modulus 123456`,
   tests: [
     {
       description: `is declared`,
@@ -147,6 +153,7 @@ testSuite.modulusTests = {
 };
 testSuite.exponentTests = {
   title: `var "f" `,
+  instructions: `Declare a variable "f" and it should be the number equal to 2 to the 20th power`,
   tests: [
     {
       description: `is declared`,

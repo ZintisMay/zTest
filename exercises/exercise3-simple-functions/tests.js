@@ -1,6 +1,7 @@
 let zTestSuite = {};
 zTestSuite.returnNumberTests = {
   title: `function "returnNumber"`,
+  instructions: `Make a function named "returnNumber" that returns a number (any number).`,
   tests: [
     {
       description: `is declared`,
@@ -31,6 +32,7 @@ zTestSuite.returnNumberTests = {
 
 zTestSuite.returnStringTests = {
   title: `function "returnString"`,
+  instructions: `Make a function named "returnString" that returns a string (any string).`,
   tests: [
     {
       description: `is declared`,
@@ -61,6 +63,7 @@ zTestSuite.returnStringTests = {
 
 zTestSuite.returnTrueTests = {
   title: `function "returnTrue"`,
+  instructions: `Make a function named "returnTrue" that returns the boolean true.`,
   tests: [
     {
       description: `is declared`,
@@ -97,6 +100,7 @@ zTestSuite.returnTrueTests = {
 
 zTestSuite.returnFalseTests = {
   title: `function "returnFalse"`,
+  instructions: `Make a function named "returnFalse" that returns the boolean false.`,
   tests: [
     {
       description: `is declared`,
@@ -133,6 +137,7 @@ zTestSuite.returnFalseTests = {
 
 zTestSuite.returnArrayTests = {
   title: `function "returnArray"`,
+  instructions: `Make a function named "returnArray" that returns an array.`,
   tests: [
     {
       description: `is declared`,
@@ -163,6 +168,7 @@ zTestSuite.returnArrayTests = {
 
 zTestSuite.returnObjectTests = {
   title: `function "returnObject"`,
+  instructions: `Make a function named "returnObject" that returns an object.`,
   tests: [
     {
       description: `is declared`,

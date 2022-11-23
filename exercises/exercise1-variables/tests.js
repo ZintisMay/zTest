@@ -32,6 +32,7 @@ testSuite.varATests = {
 };
 testSuite.varBTests = {
   title: `var "b"`,
+  instructions: `Declare a variable "b" and set it to the number 2.2`,
   tests: [
     {
       description: `is declared`,
@@ -61,6 +62,7 @@ testSuite.varBTests = {
 };
 testSuite.varCTests = {
   title: `var "c"`,
+  instructions: `Declare a variable "c" and set it to the number 5000`,
   tests: [
     {
       description: `is declared`,
@@ -90,6 +92,7 @@ testSuite.varCTests = {
 };
 testSuite.varDTests = {
   title: `var "d"`,
+  instructions: `Declare a variable "d" and set it to the number 900000`,
   tests: [
     {
       description: `is declared`,
@@ -119,6 +122,7 @@ testSuite.varDTests = {
 };
 testSuite.varETests = {
   title: `var "e"`,
+  instructions: `Declare a variable "e" and set it to the number 111222333444`,
   tests: [
     {
       description: `is declared`,
@@ -148,6 +152,7 @@ testSuite.varETests = {
 };
 testSuite.varIsHavingFunTests = {
   title: `var "isHavingFun"`,
+  instructions: `Declare a variable "isHavingFun" and set it to the boolean true`,
   tests: [
     {
       description: `is declared`,
@@ -177,6 +182,7 @@ testSuite.varIsHavingFunTests = {
 };
 testSuite.varIsDifficultTests = {
   title: `var "isDifficult"`,
+  instructions: `Declare a variable "isDifficult" and set it to the boolean false`,
   tests: [
     {
       description: `is declared`,
@@ -206,6 +212,7 @@ testSuite.varIsDifficultTests = {
 };
 testSuite.varLetterATests = {
   title: `var "letterA"`,
+  instructions: `Declare a variable "letterA" and set it to the string "a"`,
   tests: [
     {
       description: `is declared`,
@@ -235,6 +242,7 @@ testSuite.varLetterATests = {
 };
 testSuite.varWordTests = {
   title: `var "word"`,
+  instructions: `Declare a variable "word" and set it to the string "banana"`,
   tests: [
     {
       description: `is declared`,
@@ -264,6 +272,7 @@ testSuite.varWordTests = {
 };
 testSuite.varSentenceTests = {
   title: `var "sentence"`,
+  instructions: `Declare a variable "sentence" and set it to the string "I ate breakfast."`,
   tests: [
     {
       description: `is declared`,
@@ -293,6 +302,7 @@ testSuite.varSentenceTests = {
 };
 testSuite.varParagraphTests = {
   title: `var "paragraph"`,
+  instructions: `Declare a variable "sentence" and set it to the string "The code in the computer is so hard to understand. It is like magic. If I keep studying maybe one day I'll know."`,
   tests: [
     {
       description: `is declared`,
