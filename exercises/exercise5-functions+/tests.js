@@ -1,6 +1,7 @@
 zTestSuite = {};
 zTestSuite.greeting = {
-  title: "function greeting",
+  title: `function greeting`,
+  instructions: `Make a function that takes one argument. It should return a string like "Hello Zintis!" when passed the argument "Zintis"`,
   tests: [
     {
       description: `greeting is declared`,
@@ -42,7 +43,8 @@ zTestSuite.greeting = {
   ],
 };
 zTestSuite.isThisValueTrue = {
-  title: "function isThisValueTrue",
+  title: `function isThisValueTrue`,
+  instructions: `Make a function that takes one argument (of any type). It should return true if the argument is truthy, and false otherwise.`,
   tests: [
     {
       description: `isThisValueTrue is declared`,
@@ -85,7 +87,8 @@ zTestSuite.isThisValueTrue = {
   ],
 };
 zTestSuite.isThisNumberEven = {
-  title: "function isThisNumberEven",
+  title: `function isThisNumberEven`,
+  instructions: `Make a function that takes one argument, a number. It should return true if the number is even, and false if odd.`,
   tests: [
     {
       description: `isThisNumberEven is declared`,
@@ -130,6 +133,7 @@ zTestSuite.isThisNumberEven = {
 };
 zTestSuite.makeNumberNegative = {
   title: "function makeNumberNegative",
+  instructions: `Make a function that takes one argument, a number. It should return the same number, but negative.`,
   tests: [
     {
       description: `makeNumberNegative is declared`,
@@ -173,6 +177,7 @@ zTestSuite.makeNumberNegative = {
 };
 zTestSuite.doYouWantCake = {
   title: "function doYouWantCake",
+  instructions: `Make a function that takes one argument, a boolean. If the boolean is true, return "yes". Otherwise return "no".`,
   tests: [
     {
       description: `doYouWantCake is declared`,
@@ -215,7 +220,8 @@ zTestSuite.doYouWantCake = {
   ],
 };
 zTestSuite.wordLength = {
-  title: "function wordLength",
+  title: `function wordLength`,
+  instructions: `Make a function that takes one argument, a string. It should return the length of the string as a number.`,
   tests: [
     {
       description: `wordLength is declared`,
@@ -259,6 +265,7 @@ zTestSuite.wordLength = {
 };
 zTestSuite.carBuilder = {
   title: "function carBuilder",
+  instructions: `Make a function that takes 3 arguments, string, string, and number. It should return an object that has 3 keys: "make", "model", and "year", with the first/second/third arguments as the "make", "model", and "year" values.`,
   tests: [
     {
       description: `carBuilder is declared`,
@@ -291,32 +298,82 @@ zTestSuite.carBuilder = {
       },
     },
     {
+      description: `carBuilder returns an object with 3 keys`,
+      test: () => {
+        var car = carBuilder(1, 2, 3);
+        expect(car).toHaveObjectKeyCount(3);
+      },
+    },
+    {
+      description: `carBuilder returns an object with key "make"`,
+      test: () => {
+        var car = carBuilder(1, 2, 3);
+        expect(car).toHaveKey(`make`);
+      },
+    },
+    {
+      description: `carBuilder returns an object with key "model"`,
+      test: () => {
+        var car = carBuilder(1, 2, 3);
+        expect(car).toHaveKey(`model`);
+      },
+    },
+    {
+      description: `carBuilder returns an object with key "year"`,
+      test: () => {
+        var car = carBuilder(1, 2, 3);
+        expect(car).toHaveKey(`year`);
+      },
+    },
+    {
+      description: `carBuilder("Hyundai", "Accent", 2010) returns an object with key "make" having first argument of "Hyundai"`,
+      test: () => {
+        var car = carBuilder(`Hyundai`, `Accent`, 2010);
+        expect(car).toHaveKeyValuePair(`make`, `Hyundai`);
+      },
+    },
+    {
+      description: `carBuilder("Hyundai", "Accent", 2010) returns an object with key "model" having second argument of "Accent"`,
+      test: () => {
+        var car = carBuilder(`Hyundai`, `Accent`, 2010);
+        expect(car).toHaveKeyValuePair(`model`, `Accent`);
+      },
+    },
+    {
+      description: `carBuilder("Hyundai", "Accent", 2010) returns an object with key "year" having third argument of "2010"`,
+      test: () => {
+        var car = carBuilder(`Hyundai`, `Accent`, 2010);
+        expect(car).toHaveKeyValuePair(`year`, 2010);
+      },
+    },
+    {
       description: `carBuilder returns correct values`,
       test: () => {
         expect(carBuilder)
-          .withArgs("Volkswagen", "Beetle", "1963")
-          .toReturn({ make: "Volkswagen", model: "Beetle", year: "1963" });
+          .withArgs(`Volkswagen`, `Beetle`, `1963`)
+          .toReturn({ make: `Volkswagen`, model: `Beetle`, year: `1963` });
         expect(carBuilder)
-          .withArgs("Lotus", "Esprit S1", "1976")
-          .toReturn({ make: "Lotus", model: "Esprit S1", year: "1976" });
+          .withArgs(`Lotus`, `Esprit S1`, `1976`)
+          .toReturn({ make: `Lotus`, model: `Esprit S1`, year: `1976` });
         expect(carBuilder)
-          .withArgs("Ford", "Mustang GT 390", "1968")
-          .toReturn({ make: "Ford", model: "Mustang GT 390", year: "1968" });
+          .withArgs(`Ford`, `Mustang GT 390`, `1968`)
+          .toReturn({ make: `Ford`, model: `Mustang GT 390`, year: `1968` });
         expect(carBuilder)
-          .withArgs("Ford", "Falcon GT XB", "1973")
-          .toReturn({ make: "Ford", model: "Falcon GT XB", year: "1973" });
+          .withArgs(`Ford`, `Falcon GT XB`, `1973`)
+          .toReturn({ make: `Ford`, model: `Falcon GT XB`, year: `1973` });
         expect(carBuilder)
-          .withArgs("Cadillac", "Miller-meteor", "1959")
-          .toReturn({ make: "Cadillac", model: "Miller-meteor", year: "1959" });
+          .withArgs(`Cadillac`, `Miller-meteor`, `1959`)
+          .toReturn({ make: `Cadillac`, model: `Miller-meteor`, year: `1959` });
         expect(carBuilder)
-          .withArgs("Delorean", "DMC-12", "1981")
-          .toReturn({ make: "Delorean", model: "DMC-12", year: "1981" });
+          .withArgs(`Delorean`, `DMC-12`, `1981`)
+          .toReturn({ make: `Delorean`, model: `DMC-12`, year: `1981` });
       },
     },
   ],
 };
 zTestSuite.createStudent = {
-  title: "function createStudent",
+  title: `function createStudent`,
+  instructions: `Make a function that takes 4 arguments, string, string, number, and string. It should return an object with the keys: "name", "yearBorn", and "schoolName". "name" should ALSO be an object, with the keys "first" and "last". The first and second arguments should be the values of "first" and "last". the third argument should be "yearBorn", and the last argument should be "schoolName".`,
   tests: [
     {
       description: `createStudent is declared`,
@@ -349,6 +406,90 @@ zTestSuite.createStudent = {
       },
     },
     {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with 3 keys`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student).toHaveObjectKeyCount(3);
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "name"`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student).toHaveKey("name");
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "name" that is an object`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student.name).toBeObject();
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "name" that is an object with 2 keys`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student.name).toHaveObjectKeyCount(2);
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "name" that is an object with key "first"`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student.name).toHaveKey("first");
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "name" that is an object with key/value of "first"/"Zintis"`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student.name).toHaveKeyValuePair("first", "Zintis");
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "name" that is an object with key "last"`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student.name).toHaveKey("last");
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "name" that is an object with key/value of "last"/"May"`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student.name).toHaveKeyValuePair("last", "May");
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "yearBorn"`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student).toHaveKey("yearBorn");
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key/value of "yearBorn"/1999`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student).toHaveKeyValuePair("yearBorn", 1999);
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key "schoolName"`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student).toHaveKey("schoolName");
+      },
+    },
+    {
+      description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key/value of "schoolName"/Rutgers`,
+      test: () => {
+        var student = createStudent("Zintis", "May", 1999, "Rutgers");
+        expect(student).toHaveKeyValuePair("Rutgers");
+      },
+    },
+    {
       description: `createStudent returns correct values`,
       test: () => {
         expect(createStudent)
@@ -376,7 +517,8 @@ zTestSuite.createStudent = {
   ],
 };
 zTestSuite.teachersNeeded = {
-  title: "function teachersNeeded",
+  title: `function teachersNeeded`,
+  instructions: `Make a function that takes 2 arguments, a number and a number. The first number is how many students there are. The second number is how many students there should be per teacher. It should return the minimum number of teachers required for that many students (integer, no decimals. google "Math.ceil")`,
   tests: [
     {
       description: `teachersNeeded is declared`,
@@ -409,7 +551,14 @@ zTestSuite.teachersNeeded = {
       },
     },
     {
-      description: `teachersNeeded returns correct values`,
+      description: `teachersNeeded returns an integer`,
+      test: () => {
+        // var teacherCount = teachersNeeded(3, 2);
+        expect(teachersNeeded).withArgs(3, 2).toReturnInteger();
+      },
+    },
+    {
+      description: `teachersNeeded returns correct values (example: teachersNeeded(10,3) = 4. teachersNeeded(20,8) = 3.)`,
       test: () => {
         expect(teachersNeeded).withArgs(10, 5).toReturn(2);
         expect(teachersNeeded).withArgs(18, 7).toReturn(3);

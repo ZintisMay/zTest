@@ -116,6 +116,8 @@ function expect(value) {
     // typing
     toBeType, // generic (not for arrays)
     toBeNumber,
+    toBeDecimal,
+    toBeInteger,
     toBeString,
     toBeBoolean,
     toBeArray,
@@ -149,6 +151,8 @@ function expect(value) {
     toReturnSomething,
     toReturn,
     toReturnNumber,
+    toReturnDecimal,
+    toReturnInteger,
     toReturnString,
     toReturnBoolean,
     toReturnArray,
@@ -193,6 +197,20 @@ function expect(value) {
   function toBeNumber() {
     if (typeof this.value !== "number") {
       throw new Error(`is not a number`);
+    }
+    return this;
+  }
+
+  function toBeDecimal() {
+    if (typeof this.value !== "number" || this.value % 1 === 0) {
+      throw new Error(`is not a decimal`);
+    }
+    return this;
+  }
+
+  function toBeInteger() {
+    if (typeof this.value !== "number" || this.value % 1 !== 0) {
+      throw new Error(`is not an integer`);
     }
     return this;
   }
@@ -356,12 +374,18 @@ function expect(value) {
     return this.value(...this.args);
   }
 
-  function toReturn(expectedValue) {
+  function toReturn(expectedVal) {
     const returnVal = this.exec();
-    if (!_.isEqual(returnVal, expectedValue)) {
-      throw new Error(
-        `expected return value ${expectedValue} but got ${returnVal}`
-      );
+    if (!_.isEqual(returnVal, expectedVal)) {
+      let ev = expectedVal;
+      let rv = returnVal;
+      if (typeof ev === "object") {
+        ev = JSON.stringify(ev, null, " ");
+      }
+      if (typeof rv === "object") {
+        rv = JSON.stringify(rv, null, " ");
+      }
+      throw new Error(`expected return value ${ev} but got ${rv}`);
     }
     return this;
   }
@@ -375,6 +399,20 @@ function expect(value) {
   function toReturnNumber() {
     if (typeof this.exec() !== Z_T.type.NUMBER) {
       throw new Error(`function does not return number type`);
+    }
+    return this;
+  }
+  function toReturnDecimal() {
+    var result = this.exec();
+    if (typeof result !== Z_T.type.NUMBER && result % 1 === 0) {
+      throw new Error(`function does not return a decimal number`);
+    }
+    return this;
+  }
+  function toReturnInteger() {
+    var result = this.exec();
+    if (typeof result !== Z_T.type.NUMBER && result % 1 !== 0) {
+      throw new Error(`function does not return an integer number`);
     }
     return this;
   }
