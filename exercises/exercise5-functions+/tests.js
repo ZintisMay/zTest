@@ -373,7 +373,11 @@ zTestSuite.carBuilder = {
 };
 zTestSuite.createStudent = {
   title: `function createStudent`,
-  instructions: `Make a function that takes 4 arguments, string, string, number, and string. It should return an object with the keys: "name", "yearBorn", and "schoolName". "name" should ALSO be an object, with the keys "first" and "last". The first and second arguments should be the values of "first" and "last". the third argument should be "yearBorn", and the last argument should be "schoolName".`,
+  // instructions: `Make a function that takes 4 arguments, string, string, number, and string. It should return an object with the keys: "name", "yearBorn", and "schoolName". "name" should ALSO be an object, with the keys "first" and "last". The first and second arguments should be the values of "first" and "last". the third argument should be "yearBorn", and the last argument should be "schoolName".`,
+  instructions: `Make a function that takes 4 arguments, 1st argument is a string, 2nd is also a string, 3rd argument is a number, and the last one, once again a string. The function should return an object with the keys: "name", "yearBorn", and "schoolName". Inside our first key called "name" the value should ALSO be an object, 1st key of this object is called "first", while the 2nd one is called "last", the function will return with values for these keys that are the 1st and 2nd arguments of our function. The function  third key is "yearBorn" with the value of the 3rd argument (number), while the last key is "schoolName" with the value of our function 4th argument. Example: createStudent("Zintis", "May", 1999, "Rutgers") returns {name: {first: 'Zintis', last: 'May'},
+  yearBorn: 1999,
+  schoolName: 'Rutgers',
+} (copy paste this example to your code editor so that you could format it nicely)`,
   tests: [
     {
       description: `createStudent is declared`,
