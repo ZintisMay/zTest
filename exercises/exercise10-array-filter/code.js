@@ -22,7 +22,7 @@ function removeVowelsFromArray(arr) {
   return arr.filter((letter) => !["a", "e", "i", "o", "u"].includes(letter));
 }
 
-function removeConsonantsFromArray(arr) {
+function removeConsonantsInArray(arr) {
   return arr.filter((letter) => ["a", "e", "i", "o", "u"].includes(letter));
 }
 
