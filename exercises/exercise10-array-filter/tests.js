@@ -430,38 +430,38 @@ zTestSuite.removeVowelsFromArray = {
   ],
 };
 
-zTestSuite.removeConsonantsFromArray = {
-  title: `function "removeConsonantsFromArray"`,
-  instructions: `Make a function that takes one argument, an array of strings. It should call the "array.filter" method and remove all strings in the array that are a vowel. Example: removeConsonantsFromArray( [ "a", "b", "c", "d", "e" ] ) returns [ "b", "c", "d" ]`,
+zTestSuite.removeConsonantsInArray = {
+  title: `function "removeConsonantsInArray"`,
+  instructions: `Make a function that takes one argument, an array of strings. It should call the "array.filter" method and remove all strings in the array that are a vowel. Example: removeConsonantsInArray( [ "a", "b", "c", "d", "e" ] ) returns [ "b", "c", "d" ]`,
   tests: [
     {
       description: `is declared`,
       test: () => {
-        expect(removeConsonantsFromArray).toBeDeclared();
+        expect(removeConsonantsInArray).toBeDeclared();
       },
     },
     {
       description: `has a value`,
       test: () => {
-        expect(removeConsonantsFromArray).toHaveValue();
+        expect(removeConsonantsInArray).toHaveValue();
       },
     },
     {
       description: `is a function`,
       test: () => {
-        expect(removeConsonantsFromArray).toBeFunction();
+        expect(removeConsonantsInArray).toBeFunction();
       },
     },
     {
       description: `takes one arguments`,
       test: () => {
-        expect(removeConsonantsFromArray).takesXArguments(1);
+        expect(removeConsonantsInArray).takesXArguments(1);
       },
     },
     {
       description: `returns something`,
       test: () => {
-        expect(removeConsonantsFromArray)
+        expect(removeConsonantsInArray)
           .withArgs(["a", "z"])
           .toReturnSomething();
       },
@@ -469,13 +469,13 @@ zTestSuite.removeConsonantsFromArray = {
     {
       description: `returns an array`,
       test: () => {
-        expect(removeConsonantsFromArray).withArgs(["a", "z"]).toReturnArray();
+        expect(removeConsonantsInArray).withArgs(["a", "z"]).toReturnArray();
       },
     },
     {
       description: `returns an array of strings`,
       test: () => {
-        expect(removeConsonantsFromArray)
+        expect(removeConsonantsInArray)
           .withArgs(["a", "z"])
           .toReturnArrayOfType("string");
       },
@@ -483,7 +483,7 @@ zTestSuite.removeConsonantsFromArray = {
     {
       description: `calls the "array.filter" method`,
       test: () => {
-        expect(removeConsonantsFromArray)
+        expect(removeConsonantsInArray)
           .withArgs([1, 2, 3])
           .callsFunction(Array.prototype, "filter");
       },
@@ -491,13 +491,13 @@ zTestSuite.removeConsonantsFromArray = {
     {
       description: `returns the correct value`,
       test: () => {
-        var result = removeConsonantsFromArray(["a", "b", "c"]);
+        var result = removeConsonantsInArray(["a", "b", "c"]);
         expect(result).toBeSameArrayAs(["a"]);
-        var result2 = removeConsonantsFromArray(["a", "e", "i", "o", "u"]);
+        var result2 = removeConsonantsInArray(["a", "e", "i", "o", "u"]);
         expect(result2).toBeSameArrayAs(["a", "e", "i", "o", "u"]);
-        var result3 = removeConsonantsFromArray([]);
+        var result3 = removeConsonantsInArray([]);
         expect(result3).toBeSameArrayAs([]);
-        var result4 = removeConsonantsFromArray(["b", "x", "z"]);
+        var result4 = removeConsonantsInArray(["b", "x", "z"]);
         expect(result4).toBeSameArrayAs([]);
       },
     },

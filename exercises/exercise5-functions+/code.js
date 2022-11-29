@@ -40,10 +40,8 @@ function carBuilder(make, model, year) {
 
 function createStudent(firstName, lastName, yearBorn, schoolName) {
   return {
-    name: {
-      first: firstName,
-      last: lastName,
-    },
+    firstName,
+    lastName,
     yearBorn,
     schoolName,
   };
