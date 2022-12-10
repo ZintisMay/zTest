@@ -502,7 +502,7 @@ zTestSuite.movieTitle = {
 // };
 zTestSuite.bitcoinPrice = {
   title: `function bitcoinPrice`,
-  instructions: `You're having a discussion with your friend about bitcoin price and suddenly he asks you "how much is Bitcoin currently worth in the thousands?" You've decided to write him function that will take the entire bitcoin price and return it's current worth in the thousands, example: bitcoinPrice(16922) returns 16 (google "Math.floor")`,
+  instructions: `You're having a discussion with your friend about bitcoin price and suddenly he asks you "how much is Bitcoin currently worth?" Since the bitcoin price constantly changes, you've decided it would be best to just write him a small function that would print out in the thousands, no matter how close it is to the next thousand, example: bitcoinPrice(16922) returns "The bitcoin price is currently set at 16 thousands" (google "Math.floor" and "template literals")`,
   tests: [
     {
       description: `is declared`,
@@ -529,17 +529,25 @@ zTestSuite.bitcoinPrice = {
       },
     },
     {
-      description: `returns a number`,
+      description: `returns a string`,
       test: () => {
-        expect(bitcoinPrice).toReturnNumber();
+        expect(bitcoinPrice).toReturnString();
       },
     },
     {
-      description: `returns correct values (example: bitcoinPrice(16987) = 16`,
+      description: `returns correct values, example: bitcoinPrice(18999) = 16`,
       test: () => {
-        expect(bitcoinPrice).withArgs(18999).toReturn(18);
-        expect(bitcoinPrice).withArgs(12000).toReturn(12);
-        expect(bitcoinPrice).withArgs(1111).toReturn(1);
+        expect(bitcoinPrice)
+          .withArgs(18999)
+          .toReturn(`The bitcoin price is currently set at ${18} thousands`);
+      },
+    },
+    {
+      description: `returns correct values, example: bitcoinPrice(11000) = 11`,
+      test: () => {
+        expect(bitcoinPrice)
+          .withArgs(11000)
+          .toReturn(`The bitcoin price is currently set at ${11} thousands`);
       },
     },
   ],

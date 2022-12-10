@@ -38,9 +38,11 @@ function movieTitle(title, yearOfRelease, mainCharacter) {
 //     lastName,
 //     yearBorn,
 //     schoolName,
-//   };
+//   }; return Math.floor(cost / 1000);
 // }
 
 function bitcoinPrice(cost) {
-  return Math.floor(cost / 1000);
+  return `The bitcoin price is currently set at ${Math.floor(
+    cost / 1000
+  )} thousands`;
 }
