@@ -324,10 +324,10 @@ testSuite.varPredictionTests = {
       },
     },
     {
-      description: `is "Someday I'll become a full-fledged programmer that is able to develop softwares and websites"`,
+      description: `is "Someday I'll become a full-fledged programmer that is able to develop softwares and websites."`,
       test: () => {
         expect(prediction).toBe(
-          `Someday I'll become a full-fledged programmer that is able to develop softwares and websites`
+          `Someday I'll become a full-fledged programmer that is able to develop softwares and websites.`
         );
       },
     },

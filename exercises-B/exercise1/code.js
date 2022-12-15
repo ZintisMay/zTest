@@ -11,4 +11,4 @@ var letterZ = "z";
 var fruit = "apple";
 var statement = "I love programming";
 var prediction =
-  "Someday I'll become a full-fledged programmer that is able to develop softwares and websites";
+  "Someday I'll become a full-fledged programmer that is able to develop softwares and websites.";
