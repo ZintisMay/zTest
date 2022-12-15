@@ -10,10 +10,7 @@ function isThisValueTrue(val) {
 }
 
 function isThisNumberEven(n) {
-  if (n % 2 === 0) {
-    return "even";
-  }
-  return "odd";
+  return n % 2 === 0;
 }
 
 function makeNumberNegative(n) {

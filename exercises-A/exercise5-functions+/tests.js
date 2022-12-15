@@ -115,18 +115,18 @@ zTestSuite.isThisNumberEven = {
       },
     },
     {
-      description: `returns a string`,
+      description: `returns a boolean`,
       test: () => {
-        expect(isThisNumberEven).withArgs(1).toReturnString();
+        expect(isThisNumberEven).toReturnBoolean();
       },
     },
     {
       description: `returns correct values`,
       test: () => {
-        expect(isThisNumberEven).withArgs(1).toReturn("odd");
-        expect(isThisNumberEven).withArgs(2).toReturn("even");
-        expect(isThisNumberEven).withArgs(-1).toReturn("odd");
-        expect(isThisNumberEven).withArgs(0).toReturn("even");
+        expect(isThisNumberEven).withArgs(1).toReturn(false);
+        expect(isThisNumberEven).withArgs(2).toReturn(true);
+        expect(isThisNumberEven).withArgs(-1).toReturn(false);
+        expect(isThisNumberEven).withArgs(0).toReturn(true);
       },
     },
   ],
