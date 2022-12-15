@@ -119,7 +119,7 @@ zTestSuite.isThisNumberOdd = {
     {
       description: `returns a boolean`,
       test: () => {
-        expect(isThisTruthy).withArgs().toReturnBoolean();
+        expect(isThisNumberOdd).withArgs(1).toReturnBoolean();
       },
     },
     {
@@ -127,7 +127,7 @@ zTestSuite.isThisNumberOdd = {
       test: () => {
         expect(isThisNumberOdd).withArgs(1).toReturn(true);
         expect(isThisNumberOdd).withArgs(2).toReturn(false);
-        expect(isThisNumberOdd).withArgs(-1).toReturn(true);
+        expect(isThisNumberOdd).withArgs(5).toReturn(true);
         expect(isThisNumberOdd).withArgs(0).toReturn(false);
       },
     },
@@ -179,7 +179,7 @@ zTestSuite.makeNumberPositive = {
 };
 zTestSuite.doYouLikeCats = {
   title: "function doYouLikeCats",
-  instructions: `Make a function named "doYouLikeCats" that takes one argument, a boolean. If the boolean is true, return "yes". Otherwise return "no".`,
+  instructions: `Make a function named "doYouLikeCats" that takes one argument, a boolean. If the boolean is true, return "I love cats!". Otherwise return "I don't really like cats.".`,
   tests: [
     {
       description: `is declared`,
@@ -217,10 +217,8 @@ zTestSuite.doYouLikeCats = {
         expect(doYouLikeCats).withArgs(true).toReturn("I love cats!");
         expect(doYouLikeCats)
           .withArgs(false)
-          .toReturn("I don't really like cats :(");
-        expect(doYouLikeCats)
-          .withArgs()
-          .toReturn("I don't really like cats :(");
+          .toReturn("I don't really like cats.");
+        expect(doYouLikeCats).withArgs().toReturn("I don't really like cats.");
       },
     },
   ],
@@ -306,203 +304,76 @@ zTestSuite.movieTitle = {
     {
       description: `returns an object with 3 keys`,
       test: () => {
-        var car = movieTitle(1, 2, 3);
-        expect(car).toHaveObjectKeyCount(3);
+        var movieDetails = movieTitle(1, 2, 3);
+        expect(movieDetails).toHaveObjectKeyCount(3);
       },
     },
     {
       description: `returns an object with key "title"`,
       test: () => {
-        var car = movieTitle(1, 2, 3);
-        expect(car).toHaveKey(`title`);
-      },
-    },
-    {
-      description: `returns an object with key "mainCharacter"`,
-      test: () => {
-        var car = movieTitle(1, 2, 3);
-        expect(car).toHaveKey(`mainCharacter`);
+        var movieDetails = movieTitle(1, 2, 3);
+        expect(movieDetails).toHaveKey(`title`);
       },
     },
     {
       description: `returns an object with key "yearOfRelease"`,
       test: () => {
-        var car = movieTitle(1, 2, 3);
-        expect(car).toHaveKey(`yearOfRelease`);
+        var movieDetails = movieTitle(1, 2, 3);
+        expect(movieDetails).toHaveKey(`yearOfRelease`);
+      },
+    },
+    {
+      description: `returns an object with key "mainCharacter"`,
+      test: () => {
+        var movieDetails = movieTitle(1, 2, 3);
+        expect(movieDetails).toHaveKey(`mainCharacter`);
       },
     },
     {
       description: `movieTitle("The Shawshank Redemption", 1994, 'Andy Dufresne') returns an object with key "title" having the value "The Shawshank Redemption"`,
       test: () => {
-        var car = movieTitle("The Shawshank Redemption", 1994, "Andy Dufresne");
-        expect(car).toHaveKeyValuePair(`title`, `The Shawshank Redemption`);
+        var movieDetails = movieTitle(
+          "The Shawshank Redemption",
+          1994,
+          "Andy Dufresne"
+        );
+        expect(movieDetails).toHaveKeyValuePair(
+          `title`,
+          `The Shawshank Redemption`
+        );
       },
     },
     {
       description: `movieTitle("The Shawshank Redemption", 1994, 'Andy Dufresne') returns an object with key "yearOfRelease" having the value 1994`,
       test: () => {
-        var car = movieTitle("The Shawshank Redemption", 1994, "Andy Dufresne");
-        expect(car).toHaveKeyValuePair(`yearOfRelease`, 1994);
+        var movieDetails = movieTitle(
+          "The Shawshank Redemption",
+          1994,
+          "Andy Dufresne"
+        );
+        expect(movieDetails).toHaveKeyValuePair(`yearOfRelease`, 1994);
       },
     },
     {
-      description: `movieTitle("The Shawshank Redemption", "Accent", 'mainCharacter') returns an object with key "yearOfRelease" having the value 'mainCharacter'`,
+      description: `movieTitle("The Shawshank Redemption", 1994, 'Andy Dufresne') returns an object with key "mainCharacter" having the value 'Andy Dufresne'`,
       test: () => {
-        var car = movieTitle("The Shawshank Redemption", 1994, "Andy Dufresne");
-        expect(car).toHaveKeyValuePair("mainCharacter", "Andy Dufresne");
+        var movieDetails = movieTitle(
+          "The Shawshank Redemption",
+          1994,
+          "Andy Dufresne"
+        );
+        expect(movieDetails).toHaveKeyValuePair(
+          "mainCharacter",
+          "Andy Dufresne"
+        );
       },
     },
   ],
 };
-// zTestSuite.createStudent = {
-//   title: `function createStudent`,
-//   instructions: `Make a function that takes 4 arguments: string, string, number, and string. It should return an object with the keys: "firstName", "lastName", "yearBorn", and "schoolName". The first argument should become the value of "firstName". 2nd is "lastName", 3rd is "yearBorn", and last is "schoolName". Example: createStudent("Zintis", "May", 1999, "Rutgers") returns {firstName: 'Zintis', lastName: 'May',yearBorn: 1999, schoolName: 'Rutgers'}`,
-//   tests: [
-//     {
-//       description: `createStudent is declared`,
-//       test: () => {
-//         expect(createStudent).toBeDeclared();
-//       },
-//     },
-//     {
-//       description: `createStudent has a value`,
-//       test: () => {
-//         expect(createStudent).toHaveValue();
-//       },
-//     },
-//     {
-//       description: `createStudent is a function`,
-//       test: () => {
-//         expect(createStudent).toBeFunction();
-//       },
-//     },
-//     {
-//       description: `createStudent takes four arguments`,
-//       test: () => {
-//         expect(createStudent).takesXArguments(4);
-//       },
-//     },
-//     {
-//       description: `createStudent returns an object`,
-//       test: () => {
-//         expect(createStudent).withArgs().toReturnObject();
-//       },
-//     },
-//     {
-//       description: `returns an object with 4 keys`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveObjectKeyCount(4);
-//       },
-//     },
-//     {
-//       description: `returns an object with key "firstname"`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveKey("firstName");
-//       },
-//     },
-//     {
-//       description: `returns an object with key "firstName" that is a string`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student.firstName).toBeString();
-//       },
-//     },
-//     {
-//       description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key/value pair of "firstName"/"Zintis"`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveKeyValuePair("firstName", "Zintis");
-//       },
-//     },
-//     {
-//       description: `returns an object with key "lastName"`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveKey("lastName");
-//       },
-//     },
-//     {
-//       description: `returns an object with key "lastName" that is a string`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student.lastName).toBeString();
-//       },
-//     },
-//     {
-//       description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key/value pair of "lastName"/"May"`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveKeyValuePair("lastName", "May");
-//       },
-//     },
-//     {
-//       description: `returns an object with key "yearBorn"`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveKey("yearBorn");
-//       },
-//     },
-//     {
-//       description: `returns an object with key of "yearBorn" that is a number`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student.yearBorn).toBeNumber();
-//       },
-//     },
-//     {
-//       description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key/value of "yearBorn"/1999`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveKeyValuePair("yearBorn", 1999);
-//       },
-//     },
-//     {
-//       description: `returns an object with key "schoolName"`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveKey("schoolName");
-//       },
-//     },
-//     {
-//       description: `returns an object with key "schoolName" that is a string`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student.schoolName).toBeString();
-//       },
-//     },
-//     {
-//       description: `createStudent("Zintis", "May", 1999, "Rutgers") returns an object with key/value of "schoolName"/"Rutgers"`,
-//       test: () => {
-//         var student = createStudent("Zintis", "May", 1999, "Rutgers");
-//         expect(student).toHaveKeyValuePair("schoolName", "Rutgers");
-//       },
-//     },
-//     {
-//       description: `createStudent returns correct values`,
-//       test: () => {
-//         expect(createStudent).withArgs("1", "2", "3", "4").toReturn({
-//           firstName: "1",
-//           lastName: "2",
-//           yearBorn: "3",
-//           schoolName: "4",
-//         });
-//         expect(createStudent)
-//           .withArgs("Walter", "White", "1993", "J.P. Wynne High School")
-//           .toReturn({
-//             firstName: "Walter",
-//             lastName: "White",
-//             yearBorn: "1993",
-//             schoolName: "J.P. Wynne High School",
-//           });
-//       },
-//     },
-//   ],
-// };
+
 zTestSuite.bitcoinPrice = {
   title: `function bitcoinPrice`,
-  instructions: `You're having a discussion with your friend about bitcoin price and suddenly he asks you "how much is Bitcoin currently worth?" Since the bitcoin price constantly changes, you've decided it would be best to just write him a small function that would print out in the thousands, no matter how close it is to the next thousand, example: bitcoinPrice(16922) returns "The bitcoin price is currently set at 16 thousands" (google "Math.floor" and "template literals")`,
+  instructions: `Since cryptocurrency changes in price all the time, you decide to write a function that tells you how many thousands it is worth. Write a function that takes one argument, a number. Example: bitcoinPrice(16922) returns "The bitcoin price is currently set at 16 thousand." (google "Math.floor" and "template literals")`,
   tests: [
     {
       description: `is declared`,
@@ -535,19 +406,19 @@ zTestSuite.bitcoinPrice = {
       },
     },
     {
-      description: `returns correct values, example: bitcoinPrice(18999) = 16`,
+      description: `bitcoinPrice(18999) returns "The bitcoin price is currently set at 18 thousand."`,
       test: () => {
         expect(bitcoinPrice)
           .withArgs(18999)
-          .toReturn(`The bitcoin price is currently set at ${18} thousands`);
+          .toReturn(`The bitcoin price is currently set at ${18} thousand.`);
       },
     },
     {
-      description: `returns correct values, example: bitcoinPrice(11000) = 11`,
+      description: `bitcoinPrice(333333) returns "The bitcoin price is currently set at 333 thousand."`,
       test: () => {
         expect(bitcoinPrice)
-          .withArgs(11000)
-          .toReturn(`The bitcoin price is currently set at ${11} thousands`);
+          .withArgs(333333)
+          .toReturn(`The bitcoin price is currently set at ${333} thousand.`);
       },
     },
   ],

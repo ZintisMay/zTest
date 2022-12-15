@@ -62,137 +62,137 @@ zTestSuite.returnAStringTests = {
   ],
 };
 
-zTestSuite.returnTrueTests = {
-  title: `function "returnTrue"`,
-  instructions: `Make a function named "returnTrue" that returns the boolean true.`,
+zTestSuite.returnsTrueTests = {
+  title: `function "returnsTrue"`,
+  instructions: `Make a function named "returnsTrue" that returns the boolean true.`,
   tests: [
     {
       description: `is declared`,
       test: () => {
-        expect(returnTrue).toBeDeclared();
+        expect(returnsTrue).toBeDeclared();
       },
     },
     {
       description: `has a value`,
       test: () => {
-        expect(returnTrue).toHaveValue();
+        expect(returnsTrue).toHaveValue();
       },
     },
     {
       description: `is a function`,
       test: () => {
-        expect(returnTrue).toBeFunction();
+        expect(returnsTrue).toBeFunction();
       },
     },
     {
       description: `returns a boolean`,
       test: () => {
-        expect(returnTrue).toReturnBoolean();
+        expect(returnsTrue).toReturnBoolean();
       },
     },
     {
       description: `returns correct value true`,
       test: () => {
-        expect(returnTrue).toReturn(true);
+        expect(returnsTrue).toReturn(true);
       },
     },
   ],
 };
 
-zTestSuite.returnFalseTests = {
-  title: `function "returnFalse"`,
-  instructions: `Make a function named "returnFalse" that returns the boolean false.`,
+zTestSuite.returnsFalseTests = {
+  title: `function "returnsFalse"`,
+  instructions: `Make a function named "returnsFalse" that returns the boolean false.`,
   tests: [
     {
       description: `is declared`,
       test: () => {
-        expect(returnFalse).toBeDeclared();
+        expect(returnsFalse).toBeDeclared();
       },
     },
     {
       description: `has a value`,
       test: () => {
-        expect(returnFalse).toHaveValue();
+        expect(returnsFalse).toHaveValue();
       },
     },
     {
       description: `is a function`,
       test: () => {
-        expect(returnFalse).toBeFunction();
+        expect(returnsFalse).toBeFunction();
       },
     },
     {
       description: `returns a boolean`,
       test: () => {
-        expect(returnFalse).toReturnBoolean();
+        expect(returnsFalse).toReturnBoolean();
       },
     },
     {
       description: `returns correct value false`,
       test: () => {
-        expect(returnFalse).toReturn(false);
+        expect(returnsFalse).toReturn(false);
       },
     },
   ],
 };
 
-zTestSuite.returnArrayTests = {
-  title: `function "returnArray"`,
-  instructions: `Make a function named "returnArray" that returns an array.`,
+zTestSuite.returnAnArrayTests = {
+  title: `function "returnAnArray"`,
+  instructions: `Make a function named "returnAnArray" that returns an array.`,
   tests: [
     {
       description: `is declared`,
       test: () => {
-        expect(returnArray).toBeDeclared();
+        expect(returnAnArray).toBeDeclared();
       },
     },
     {
       description: `has a value`,
       test: () => {
-        expect(returnArray).toHaveValue();
+        expect(returnAnArray).toHaveValue();
       },
     },
     {
       description: `is a function`,
       test: () => {
-        expect(returnArray).toBeFunction();
+        expect(returnAnArray).toBeFunction();
       },
     },
     {
       description: `returns an array`,
       test: () => {
-        expect(returnArray).toReturnArray();
+        expect(returnAnArray).toReturnArray();
       },
     },
   ],
 };
 
-zTestSuite.returnObjectTests = {
-  title: `function "returnObject"`,
-  instructions: `Make a function named "returnObject" that returns an object.`,
+zTestSuite.returnAnObjectTests = {
+  title: `function "returnAnObject"`,
+  instructions: `Make a function named "returnAnObject" that returns an object.`,
   tests: [
     {
       description: `is declared`,
       test: () => {
-        expect(returnObject).toBeDeclared();
+        expect(returnAnObject).toBeDeclared();
       },
     },
     {
       description: `has a value`,
       test: () => {
-        expect(returnObject).toHaveValue();
+        expect(returnAnObject).toHaveValue();
       },
     },
     {
       description: `is a function`,
       test: () => {
-        expect(returnObject).toBeFunction();
+        expect(returnAnObject).toBeFunction();
       },
     },
     {
       description: `returns an object`,
       test: () => {
-        expect(returnObject).toReturnObject();
+        expect(returnAnObject).toReturnObject();
       },
     },
   ],

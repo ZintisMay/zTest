@@ -6,15 +6,15 @@ function returnAString() {
   return "Hello";
   // Value not important only type
 }
-function returnTrue() {
+function returnsTrue() {
   return true;
 }
-function returnFalse() {
+function returnsFalse() {
   return false;
 }
-function returnArray() {
+function returnAnArray() {
   return [];
 }
-function returnObject() {
+function returnAnObject() {
   return {};
 }

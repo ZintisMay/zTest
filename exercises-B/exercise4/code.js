@@ -1,24 +1,25 @@
-function addition(x, y) {
-  return x + y;
+function addition(a, b) {
+  return a + b;
 }
-function subtraction(x, y) {
-  return x - y;
+
+function subtraction(a, b) {
+  return a - b;
 }
-function multiplication(x, y) {
-  return x * y;
+function multiplication(a, b) {
+  return a * b;
 }
-function division(x, y) {
-  return x / y;
+function division(a, b) {
+  return a / b;
 }
-function exponential(x, y) {
-  return x ** y;
+function exponential(a, b) {
+  return a ** b;
 }
-function addStringsTogether(x, y) {
-  return x.concat(y);
+function addStringsTogether(a, b) {
+  return a + b;
 }
-function combineTwoArrays(x, y) {
-  return x.concat(y);
+function combineTwoArrays(a, b) {
+  return [...a, ...b];
 }
-function combineTwoObjects(x, y) {
-  return Object.assign(x, y);
+function combineTwoObjects(a, b) {
+  return { ...a, ...b };
 }

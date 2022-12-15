@@ -1,48 +1,37 @@
-function welcome(name) {
-  return `Hey there ${name}!`;
+function welcome(x) {
+  return `Hey there ${x}!`;
 }
 
-function isThisTruthy(val) {
-  return !!val;
+function isThisTruthy(x) {
+  return !!x;
 }
 
-function isThisNumberOdd(n) {
-  return n % 2 !== 0;
+function isThisNumberOdd(x) {
+  return x % 2 === 1;
 }
 
-function makeNumberPositive(n) {
-  if (n < 0) {
-    return n * -1;
-  }
-  return n;
+function makeNumberPositive(x) {
+  return Math.abs(x);
 }
 
-function doYouLikeCats(hungry) {
-  if (hungry) {
-    return "I love cats!";
-  }
-  return "I don't really like cats :(";
+function doYouLikeCats(x) {
+  return x ? "I love cats!" : "I don't really like cats.";
 }
 
-function stringLength(string) {
-  return string.length;
+function stringLength(x) {
+  return x.length;
 }
 
-function movieTitle(title, yearOfRelease, mainCharacter) {
-  return { title, yearOfRelease, mainCharacter };
+function movieTitle(x, y, z) {
+  return {
+    title: x,
+    yearOfRelease: y,
+    mainCharacter: z,
+  };
 }
 
-// function createStudent(firstName, lastName, yearBorn, schoolName) {
-//   return {
-//     firstName,
-//     lastName,
-//     yearBorn,
-//     schoolName,
-//   }; return Math.floor(cost / 1000);
-// }
-
-function bitcoinPrice(cost) {
+function bitcoinPrice(x) {
   return `The bitcoin price is currently set at ${Math.floor(
-    cost / 1000
-  )} thousands`;
+    x / 1000
+  )} thousand.`;
 }
