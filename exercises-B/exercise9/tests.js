@@ -346,7 +346,7 @@ zTestSuite.onlySecondLetterOfWords = {
 
 zTestSuite.onlyFirstAndLastLettersOfWords = {
   title: `function "onlyFirstAndLastLettersOfWords"`,
-  instructions: `Make a function that takes one argument, an array of strings. It should use the "array.map" method to return an array that is the last letter of each string. Example: onlyFirstAndLastLettersOfWords( [ "cat", "dog", "mind", "child" ] ) should return [ "t", "g", "d", "d" ]`,
+  instructions: `Make a function that takes one argument, an array of strings. It should use the "array.map" method to return an array that is the first and last letter of each string. Example: onlyFirstAndLastLettersOfWords( [ "cat", "dog", "mind", "child" ] ) should return [ "ct", "dg", "md", "cd" ]`,
   tests: [
     {
       description: `is declared`,
