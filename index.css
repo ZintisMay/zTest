@@ -126,6 +126,24 @@ body {
   border-radius: 4px;
 }
 
+.test-pane.test-pass {
+  background-color: #0a2a0f;
+  border-color: #2ecc71;
+  color: #fff;
+}
+
+.test-pane.test-fail {
+  background-color: #2a0a0a;
+  border-color: #e74c3c;
+  color: #fff;
+}
+
+.test-error {
+  font-size: 11px;
+  color: #ff6961;
+  margin-top: 4px;
+}
+
 .panel:first-child {
   flex: 1;
   overflow-y: scroll;
