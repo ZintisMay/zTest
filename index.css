@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -86,9 +88,47 @@ body {
   border-radius: 4px;
 }
 
+.panel-tests {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.test-pane-header {
+  width: 90%;
+  margin: 5% auto 0;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #a8c8f0;
+  background-color: #0a1a2a;
+  border: 1px solid #2a5a8a;
+  border-radius: 4px;
+}
+
+.test-pane-header-instructions {
+  font-size: 13px;
+  font-weight: normal;
+  color: #7aadd4;
+  margin-top: 6px;
+}
+
+.test-pane {
+  width: 90%;
+  margin: 5% auto 0;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #ccc;
+  background-color: #2a0f0f;
+  border: 1px solid #7a2020;
+  border-radius: 4px;
+}
+
 .panel:first-child {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
   max-height: 100%;
 }
 
@@ -230,7 +270,6 @@ body {
   border: 1px solid #7a2020;
   border-radius: 4px;
   background-color: #1a0808;
-  overflow: hidden;
 }
 
 .question-group-header {

@@ -43,12 +43,47 @@ window.addEventListener("hashchange", () => {
     for (const [key, section] of Object.entries(group.sections)) {
       if (hash === `#${group.id}-${key}`) {
         topCenter.textContent = `${group.id}: ${group.title} — ${section.title}`;
+        renderTests(section);
+        const saved = localStorage.getItem(hash);
+        editor.setValue(saved ? JSON.parse(saved) : "");
         return;
       }
     }
   }
   topCenter.textContent = "";
+  renderTests(null);
 });
+
+function renderTests(section) {
+  const testsPanel = document.querySelector(".panel-tests");
+  testsPanel.innerHTML = "";
+
+  if (!section) return;
+
+  testsPanel.style.alignItems = "";
+  testsPanel.style.justifyContent = "";
+
+  const header = document.createElement("div");
+  header.classList.add("test-pane-header");
+
+  const headerTitle = document.createElement("div");
+  headerTitle.textContent = section.title;
+
+  const headerInstructions = document.createElement("div");
+  headerInstructions.classList.add("test-pane-header-instructions");
+  headerInstructions.textContent = section.instructions;
+
+  header.appendChild(headerTitle);
+  header.appendChild(headerInstructions);
+  testsPanel.appendChild(header);
+
+  section.tests.forEach((t) => {
+    const pane = document.createElement("div");
+    pane.classList.add("test-pane");
+    pane.textContent = t.description;
+    testsPanel.appendChild(pane);
+  });
+}
 
 const editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
   mode: "javascript",
@@ -59,7 +94,13 @@ const editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
   lineWrapping: true,
 });
 
-editor.setValue("console.log('zintis');");
+editor.setValue("");
+
+editor.on("change", () => {
+  const hash = window.location.hash;
+  if (!hash) return;
+  localStorage.setItem(hash, JSON.stringify(editor.getValue()));
+});
 
 let messageHandler = null;
 
