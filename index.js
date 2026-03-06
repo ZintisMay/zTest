@@ -24,7 +24,17 @@ function renderQuestionCards() {
 
     const header = document.createElement("div");
     header.classList.add("question-group-header");
-    header.textContent = `${group.id}: ${group.title}`;
+
+    const headerLabel = document.createElement("span");
+    headerLabel.textContent = `${group.id}: ${group.title}`;
+
+    const headerCount = document.createElement("span");
+    headerCount.classList.add("question-group-count");
+    const total = Object.keys(group.sections).length;
+    headerCount.textContent = `0/${total}`;
+
+    header.appendChild(headerLabel);
+    header.appendChild(headerCount);
     header.addEventListener("click", () => {
       groupEl.classList.toggle("open");
     });
@@ -120,7 +130,7 @@ const editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
   tabSize: 2,
   lineWrapping: true,
   gutters: ["CodeMirror-lint-markers"],
-  lint: true,
+  lint: { esversion: 11 },
 });
 
 editor.setValue("");
@@ -151,6 +161,16 @@ document.addEventListener("keydown", (e) => {
 });
 
 function runCode() {
+  try {
+    const formatted = prettier.format(editor.getValue(), {
+      parser: "babel",
+      plugins: prettierPlugins,
+    });
+    editor.setValue(formatted);
+  } catch (e) {
+    // syntax error — skip formatting, let the run proceed to show the error
+  }
+
   const code = editor.getValue();
   const terminalPanel = document.querySelector(".terminal-output");
 
@@ -236,9 +256,14 @@ function updateNavState() {
   });
 
   document.querySelectorAll(".question-group").forEach((group) => {
-    const items = group.querySelectorAll(".question-item");
-    const allComplete = [...items].every((item) => item.classList.contains("question-item-complete"));
-    group.classList.toggle("question-group-complete", allComplete && items.length > 0);
+    const items = [...group.querySelectorAll(".question-item")];
+    const completeCount = items.filter((item) => item.classList.contains("question-item-complete")).length;
+    const allComplete = completeCount === items.length && items.length > 0;
+    const someComplete = completeCount > 0 && !allComplete;
+    group.classList.toggle("question-group-complete", allComplete);
+    group.classList.toggle("question-group-partial", someComplete);
+    const countEl = group.querySelector(".question-group-count");
+    if (countEl) countEl.textContent = `${completeCount}/${items.length}`;
   });
 }
 
