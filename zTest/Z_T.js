@@ -1,3 +1,23 @@
+function isEqual(a, b) {
+  if (a === b) return true;
+  if (a === null || b === null) return false;
+  if (typeof a !== typeof b) return false;
+
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return false;
+    return a.every((item, i) => isEqual(item, b[i]));
+  }
+
+  if (typeof a === "object") {
+    const keysA = Object.keys(a);
+    const keysB = Object.keys(b);
+    if (keysA.length !== keysB.length) return false;
+    return keysA.every((key) => isEqual(a[key], b[key]));
+  }
+
+  return false;
+}
+
 const Z_T = {
   containerParent: document.getElementById("Z_T") || document.body,
   testContainer: null,
@@ -167,7 +187,7 @@ function expect(value) {
   };
 
   function toBe(x) {
-    if (!_.isEqual(x, this.value)) {
+    if (!isEqual(x, this.value)) {
       throw new Error(`not toBe ${x}`);
     }
     return this;
@@ -343,7 +363,7 @@ function expect(value) {
       );
     } else if (!Array.isArray(this.value)) {
       throw new Error(`Value is not array type`);
-    } else if (!_.isEqual(x, this.value)) {
+    } else if (!isEqual(x, this.value)) {
       throw new Error(
         `your array ${JSON.stringify(
           this.value
@@ -360,7 +380,7 @@ function expect(value) {
       );
     } else if (Array.isArray(x)) {
       throw new Error(`value is an array, but should be object.`);
-    } else if (!_.isEqual(x, this.value)) {
+    } else if (!isEqual(x, this.value)) {
       throw new Error(
         `your object ${JSON.stringify(
           this.value
@@ -376,7 +396,7 @@ function expect(value) {
 
   function toReturn(expectedVal) {
     const returnVal = this.exec();
-    if (!_.isEqual(returnVal, expectedVal)) {
+    if (!isEqual(returnVal, expectedVal)) {
       let ev = expectedVal;
       let rv = returnVal;
       if (typeof ev === "object") {

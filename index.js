@@ -1,15 +1,12 @@
 let ZT_SOURCE = "";
 let ALLTESTS_SOURCE = "";
-let LODASH_SOURCE = "";
 
 Promise.all([
   fetch("zTest/Z_T.js").then((r) => r.text()),
   fetch("allTests.js").then((r) => r.text()),
-  fetch("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js").then((r) => r.text()),
-]).then(([zt, at, lo]) => {
+]).then(([zt, at]) => {
   ZT_SOURCE = zt;
   ALLTESTS_SOURCE = at;
-  LODASH_SOURCE = lo;
 });
 
 let activeGroupId = null;
@@ -40,6 +37,7 @@ function renderQuestionCards() {
       const route = `#${group.id}-${key}`;
       const item = document.createElement("div");
       item.classList.add("question-item");
+      item.dataset.hash = route;
       item.textContent = section.title;
       item.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -48,6 +46,7 @@ function renderQuestionCards() {
       subList.appendChild(item);
     });
 
+    groupEl.dataset.groupId = group.id;
     groupEl.appendChild(subList);
     leftPanel.appendChild(groupEl);
   });
@@ -65,8 +64,9 @@ window.addEventListener("hashchange", () => {
         activeSectionKey = key;
         activeSection = section;
         renderTests(section);
-        const saved = localStorage.getItem(hash);
-        editor.setValue(saved ? JSON.parse(saved) : "");
+        const entry = getSaves()[hash] || {};
+        editor.setValue(entry.code || "");
+        if (entry.results) applyTestResults(entry.results);
         return;
       }
     }
@@ -76,13 +76,10 @@ window.addEventListener("hashchange", () => {
 });
 
 function renderTests(section) {
-  const testsPanel = document.querySelector(".panel-tests");
+  const testsPanel = document.querySelector(".tests-content");
   testsPanel.innerHTML = "";
 
   if (!section) return;
-
-  testsPanel.style.alignItems = "";
-  testsPanel.style.justifyContent = "";
 
   const header = document.createElement("div");
   header.classList.add("test-pane-header");
@@ -120,13 +117,23 @@ editor.setValue("");
 editor.on("change", () => {
   const hash = window.location.hash;
   if (!hash) return;
-  localStorage.setItem(hash, JSON.stringify(editor.getValue()));
+  saveEntry(hash, { code: editor.getValue() });
 });
+
+function getSaves() {
+  return JSON.parse(localStorage.getItem("Z_T_saves") || "{}");
+}
+
+function saveEntry(hash, patch) {
+  const saves = getSaves();
+  saves[hash] = { ...saves[hash], ...patch };
+  localStorage.setItem("Z_T_saves", JSON.stringify(saves));
+}
 
 let messageHandler = null;
 
 document.addEventListener("keydown", (e) => {
-  if (e.ctrlKey && e.key === "s") {
+  if (e.ctrlKey && (e.key === "s" || e.key === "Enter")) {
     e.preventDefault();
     runCode();
   }
@@ -154,7 +161,7 @@ function runCode() {
     } else if (e.data.type === "error") {
       appendToTerminal(e.data.data, "terminal-error");
     } else if (e.data.type === "results") {
-      applyTestResults(e.data.data);
+      applyTestResults(e.data.data, true);
     }
   };
 
@@ -187,7 +194,6 @@ function runCode() {
         return true;
       };
     <\/script>
-    <script>${LODASH_SOURCE}<\/script>
     <script>${ZT_SOURCE}<\/script>
     <script>${ALLTESTS_SOURCE}<\/script>
     <script>${code}<\/script>
@@ -196,10 +202,41 @@ function runCode() {
   iframeDoc.close();
 }
 
-function applyTestResults(data) {
+function getNextHash() {
+  let found = false;
+  for (const group of allTests) {
+    for (const key of Object.keys(group.sections)) {
+      if (found) return `#${group.id}-${key}`;
+      if (group.id === activeGroupId && key === activeSectionKey) found = true;
+    }
+  }
+  return null;
+}
+
+function updateNavState() {
+  const saves = getSaves();
+
+  document.querySelectorAll(".question-item").forEach((item) => {
+    const hash = item.dataset.hash;
+    const sectionKey = hash.substring(hash.indexOf("-") + 1);
+    const entry = saves[hash];
+    const complete = entry?.results?.[sectionKey]?.results?.every((r) => r.result === null);
+    item.classList.toggle("question-item-complete", !!complete);
+  });
+
+  document.querySelectorAll(".question-group").forEach((group) => {
+    const items = group.querySelectorAll(".question-item");
+    const allComplete = [...items].every((item) => item.classList.contains("question-item-complete"));
+    group.classList.toggle("question-group-complete", allComplete && items.length > 0);
+  });
+}
+
+function applyTestResults(data, shouldAdvance = false) {
   if (!activeSectionKey || !data[activeSectionKey]) return;
+  const existingEntry = getSaves()[window.location.hash];
+  const alreadyPassed = existingEntry?.results?.[activeSectionKey]?.results?.every((r) => r.result === null);
   const results = data[activeSectionKey].results;
-  const panes = document.querySelectorAll(".test-pane");
+  const panes = document.querySelector(".tests-content").querySelectorAll(".test-pane");
   panes.forEach((pane, i) => {
     if (!results[i]) return;
     const passed = results[i].result === null;
@@ -217,6 +254,23 @@ function applyTestResults(data) {
       errEl.remove();
     }
   });
+
+  saveEntry(window.location.hash, { results: data });
+  updateNavState();
+
+  const allPassed = data[activeSectionKey].results.every((r) => r.result === null);
+  if (shouldAdvance && allPassed && alreadyPassed) {
+    const next = getNextHash();
+    if (next) window.location.hash = next;
+  }
+}
+
+function resetQuestion() {
+  const hash = window.location.hash;
+  if (!hash) return;
+  editor.setValue("");
+  saveEntry(hash, { code: "", results: null });
+  runCode();
 }
 
 function clearTerminal() {
@@ -232,6 +286,7 @@ function appendToTerminal(text, className) {
 }
 
 renderQuestionCards();
+updateNavState();
 initDivider();
 
 function initDivider() {
