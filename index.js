@@ -119,6 +119,8 @@ const editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
   indentUnit: 2,
   tabSize: 2,
   lineWrapping: true,
+  gutters: ["CodeMirror-lint-markers"],
+  lint: true,
 });
 
 editor.setValue("");
