@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Z_Test</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+  </head>
+  <body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="top-left">
+        <div class="logo">Z</div>
+        <span class="lesson-title">Placeholder</span>
+      </div>
+
+      <div class="top-center"></div>
+
+      <div class="top-right">
+        <button class="icon-btn hamburger">&#9776;</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="panel"></div>
+      <div class="panel"></div>
+      <div class="panel panel-right">
+        <div class="panel-sub panel-code">
+          <textarea id="code-editor"></textarea>
+          <button class="run-btn" onclick="runCode()">Run</button>
+        </div>
+        <div class="divider-handle">
+          <div class="divider-knob">
+            <span>&#9650;</span>
+            <span>&#9660;</span>
+          </div>
+        </div>
+        <div class="panel-sub panel-terminal">
+          <div class="terminal-output"></div>
+          <div class="terminal-footer">
+            <button class="clear-btn" onclick="clearTerminal()">Clear</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Bar -->
+    <footer class="bottom-bar">
+      <div class="bottom-left"></div>
+      <div class="bottom-center">
+        <span class="progress">0 / 0</span>
+      </div>
+      <div class="bottom-right">
+        <button class="nav-btn">Back</button>
+        <button class="nav-btn">Next</button>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="allTests.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
