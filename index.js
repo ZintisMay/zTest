@@ -63,6 +63,15 @@ window.addEventListener("hashchange", () => {
         activeGroupId = group.id;
         activeSectionKey = key;
         activeSection = section;
+        document.querySelectorAll(".question-item").forEach((el) => el.classList.remove("question-item-active"));
+        document.querySelectorAll(".question-group").forEach((el) => el.classList.remove("open"));
+
+        const activeItem = document.querySelector(`.question-item[data-hash="#${group.id}-${key}"]`);
+        if (activeItem) {
+          activeItem.classList.add("question-item-active");
+          activeItem.closest(".question-group").classList.add("open");
+        }
+
         renderTests(section);
         const entry = getSaves()[hash] || {};
         editor.setValue(entry.code || "");

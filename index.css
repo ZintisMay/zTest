@@ -358,6 +358,18 @@ body {
   color: #fff;
 }
 
+.question-item.question-item-active {
+  background-color: #3d1515;
+  border-color: #cc4444;
+  color: #fff;
+}
+
+.question-item.question-item-active.question-item-complete {
+  background-color: #0f3a15;
+  border-color: #44cc66;
+  color: #fff;
+}
+
 .question-item.question-item-complete {
   background-color: #0a2a0f;
   border-color: #1a7a30;
