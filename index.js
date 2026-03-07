@@ -83,6 +83,7 @@ window.addEventListener("hashchange", () => {
         }
 
         renderTests(section);
+        updateProgress();
         const entry = getSaves()[hash] || {};
         editor.setValue(entry.code || "");
         if (entry.results) applyTestResults(entry.results);
@@ -92,6 +93,7 @@ window.addEventListener("hashchange", () => {
   }
   topCenter.textContent = "";
   renderTests(null);
+  updateProgress();
 });
 
 function renderTests(section) {
@@ -244,6 +246,41 @@ function getNextHash() {
   return null;
 }
 
+function getPrevHash() {
+  let prev = null;
+  for (const group of allTests) {
+    for (const key of Object.keys(group.sections)) {
+      if (group.id === activeGroupId && key === activeSectionKey) return prev;
+      prev = `#${group.id}-${key}`;
+    }
+  }
+  return null;
+}
+
+function goNext() {
+  const next = getNextHash();
+  if (next) window.location.hash = next;
+}
+
+function goBack() {
+  const prev = getPrevHash();
+  if (prev) window.location.hash = prev;
+}
+
+function updateProgress() {
+  const progressEl = document.querySelector(".progress");
+  if (!activeGroupId || !activeSectionKey) {
+    progressEl.textContent = "0 / 0";
+    return;
+  }
+  const group = allTests.find((g) => g.id === activeGroupId);
+  if (!group) return;
+  const keys = Object.keys(group.sections);
+  const current = keys.indexOf(activeSectionKey) + 1;
+  const total = keys.length;
+  progressEl.textContent = `${current} / ${total}`;
+}
+
 function updateNavState() {
   const saves = getSaves();
 
@@ -323,6 +360,7 @@ function appendToTerminal(text, className) {
 
 renderQuestionCards();
 updateNavState();
+updateProgress();
 initDivider();
 
 function initDivider() {
