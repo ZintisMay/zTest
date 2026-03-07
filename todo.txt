@@ -1,0 +1,22 @@
+== LOW EFFORT ==
+
+[ ] Debounce editor.on("change") — currently saves to localStorage on every keystroke, should wait ~300ms after typing stops
+
+[ ] resetQuestion() calls runCode() with empty editor — this overwrites saved results with failures. Should clear test pane visually instead of running
+
+[ ] initDivider() is called before it is defined (line 361 vs 366) — move function definitions above the init calls at the bottom
+
+[ ] querySelector(".terminal-output") is called twice — once in runCode() and once in appendToTerminal(). Minor redundancy.
+
+[ ] postMessage origin is "*" — low risk for a local tool but worth tightening eventually
+
+
+== HIGHER EFFORT ==
+
+[ ] Race condition in iframe — clicking Run twice quickly can cause two iframes to fire postMessage. Old handler is removed but timing isn't guaranteed.
+
+[ ] Hash parsing is inconsistent — sectionKey extracted differently in updateNavState vs elsewhere. A parseHash(hash) helper returning { groupId, sectionKey } would unify this.
+
+[ ] No loading guard on ZT_SOURCE / ALLTESTS_SOURCE — if user clicks Run before fetch resolves, iframe runs with no test framework. Disable Run button until sources are loaded.
+
+[ ] No URL-driven initial load — if page is opened with a hash already in the URL (e.g. bookmarked link), nothing loads. Need to fire hashchange logic on page load.
