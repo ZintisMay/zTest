@@ -9,14 +9,16 @@ Promise.all([
   ALLTESTS_SOURCE = at;
 });
 
+function toggleMenu() {
+  document.getElementById("side-menu").classList.toggle("open");
+}
+
 let activeGroupId = null;
 let activeSectionKey = null;
 let activeSection = null;
 
 function renderQuestionCards() {
-  const leftPanel = document.querySelector(".panel:first-child");
-  leftPanel.style.display = "flex";
-  leftPanel.style.flexDirection = "column";
+  const leftPanel = document.querySelector(".panel-nav-content");
 
   allTests.forEach((group) => {
     const groupEl = document.createElement("div");

@@ -51,8 +51,8 @@ body {
   font-weight: 500;
 }
 
-.hamburger {
-  font-size: 18px;
+.hamburger-btn {
+  font-size: 32px;
   background: none;
   border: none;
   color: #aaa;
@@ -68,6 +68,49 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+/* ── Side Menu ── */
+.side-menu {
+  position: fixed;
+  top: 52px;
+  right: -240px;
+  width: 240px;
+  background-color: #1a1a1a;
+  border-left: 1px solid #333;
+  border-bottom: 1px solid #333;
+  z-index: 1000;
+  transition: right 0.25s ease;
+  padding: 12px 0;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu-list {
+  list-style: disc;
+  padding: 0 16px 0 32px;
+  margin: 0;
+}
+
+.side-menu-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.side-menu-list li:last-child {
+  border-bottom: none;
+}
+
+.side-menu-list a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.side-menu-list a:hover {
+  color: #f5c518;
 }
 
 /* ── Main Content ── */
@@ -86,6 +129,18 @@ body {
   background-color: #1a1a1a;
   border: 1px solid #f5c518;
   border-radius: 4px;
+}
+
+.panel-header {
+  flex-shrink: 0;
+  background-color: #2a2a2a;
+  color: #888;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #333;
 }
 
 .panel-tests {
@@ -175,8 +230,17 @@ body {
 
 .panel:first-child {
   flex: 1;
-  overflow-y: scroll;
   max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.panel-nav-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .panel-right {
@@ -229,15 +293,29 @@ body {
 }
 
 .panel-code {
+  flex: 2;
   padding: 0;
   align-items: stretch;
+  flex-direction: column;
   position: relative;
 }
 
-.run-btn {
+.run-controls {
   position: absolute;
   bottom: 8px;
   right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.run-hint {
+  font-size: 11px;
+  color: #666;
+  font-weight: normal;
+}
+
+.run-btn {
   background-color: #2ecc71;
   color: #000;
   border: none;
@@ -259,6 +337,11 @@ body {
   padding: 0;
   overflow: hidden;
   position: relative;
+}
+
+.panel-terminal .panel-header {
+  align-self: stretch;
+  text-align: left;
 }
 
 .terminal-output {
