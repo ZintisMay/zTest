@@ -15,45 +15,54 @@ function toggleMenu() {
 
 function startTour() {
   toggleMenu();
-  introJs().setOptions({
-    steps: [
-      {
-        element: document.querySelector('.panel:first-child'),
-        title: 'Lessons',
-        intro: 'This panel lists all available lessons and exercises. Click a group to expand it, then select a question to begin.',
-      },
-      {
-        element: document.querySelector('.question-group'),
-        title: 'Question Groups',
-        intro: 'Questions are organised into groups. Click a group header to expand it and see the individual questions inside.',
-      },
-      {
-        element: document.querySelector('.panel-tests'),
-        title: 'Question',
-        intro: 'This panel shows the active question — its title, instructions, and the individual tests your code must pass.',
-      },
-      {
-        element: document.querySelector('.panel-code'),
-        title: 'Code Editor',
-        intro: 'Write your solution here. The editor supports syntax highlighting and will auto-format your code when you run it.',
-      },
-      {
-        element: document.getElementById('run-btn'),
-        title: 'Run Button',
-        intro: 'Click Run (or press Ctrl+Enter) to execute your code against the tests. Results appear instantly in the Question panel.',
-      },
-      {
-        element: document.querySelector('.panel-terminal'),
-        title: 'Terminal',
-        intro: 'Any console.log output or runtime errors from your code appear here.',
-      },
-      {
-        element: document.querySelector('.save-indicator'),
-        title: 'Auto-Save',
-        intro: 'Your code and progress are automatically saved in the browser. You can close the page and pick up right where you left off.',
-      },
-    ],
-  }).start();
+  introJs()
+    .setOptions({
+      steps: [
+        {
+          element: document.querySelector('.panel:first-child'),
+          title: 'Lessons',
+          intro:
+            'This panel lists all available lessons and exercises. Click a group to expand it, then select a question to begin.',
+        },
+        {
+          element: document.querySelector('.question-group'),
+          title: 'Question Groups',
+          intro:
+            'Questions are organised into groups. Click a group header to expand it and see the individual questions inside.',
+        },
+        {
+          element: document.querySelector('.panel-tests'),
+          title: 'Question',
+          intro:
+            'This panel shows the active question — its title, instructions, and the individual tests your code must pass.',
+        },
+        {
+          element: document.querySelector('.panel-code'),
+          title: 'Code Editor',
+          intro:
+            'Write your solution here. The editor supports syntax highlighting and will auto-format your code when you run it.',
+        },
+        {
+          element: document.getElementById('run-btn'),
+          title: 'Run Button',
+          intro:
+            'Click Run (or press Ctrl+Enter) to execute your code against the tests. Results appear instantly in the Question panel.',
+        },
+        {
+          element: document.querySelector('.panel-terminal'),
+          title: 'Terminal',
+          intro:
+            'Any console.log output or runtime errors from your code appear here.',
+        },
+        {
+          element: document.querySelector('.save-indicator'),
+          title: 'Auto-Save',
+          intro:
+            'Your code and progress are automatically saved in the browser. You can close the page and pick up right where you left off.',
+        },
+      ],
+    })
+    .start();
 }
 
 const modalContent = {
@@ -71,8 +80,8 @@ const modalContent = {
   },
   About: {
     title: 'About',
-    body: `<p>Z_Test is an open source project.</p><a href="https://github.com/ZintisMay/zTest" target="_blank" rel="noopener">Find the code here: github.com/ZintisMay/zTest</a>
-        <p>Released under the <strong>MIT License</strong>.</p>
+    body: `<p>Z_Test is an open source project.</p>        <p>Released under the <strong>MIT License</strong>.</p>
+<a href="https://github.com/ZintisMay/zTest" target="_blank" rel="noopener">Find the code here: github.com/ZintisMay/zTest</a>
         <p>Contact me here: <a href="https://bsky.app/profile/zintismay.bsky.social" target="_blank" rel="noopener">@zintismay.bsky.social</a></p>`,
   },
 };
@@ -87,6 +96,11 @@ function openModal(key) {
 
 function closeModal() {
   document.getElementById('modal-backdrop').classList.remove('open');
+}
+
+function parseHash(hash) {
+  const [groupId, sectionKey] = hash.replace('#', '').split('-');
+  return { groupId, sectionKey };
 }
 
 let activeGroupId = null;
@@ -222,6 +236,8 @@ function renderTests(section, helpUrl) {
   }
 }
 
+const terminalOutput = document.querySelector('.terminal-output');
+
 const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
   mode: 'javascript',
   theme: 'dracula',
@@ -266,19 +282,19 @@ document.addEventListener('keydown', (e) => {
 
 function runCode() {
   try {
+    const cursor = editor.getCursor();
     const formatted = prettier.format(editor.getValue(), {
       parser: 'babel',
       plugins: prettierPlugins,
     });
     editor.setValue(formatted);
+    editor.setCursor(cursor);
   } catch (e) {
     // syntax error — skip formatting, let the run proceed to show the error
   }
 
   const code = editor.getValue();
-  const terminalPanel = document.querySelector('.terminal-output');
-
-  terminalPanel.innerHTML = '';
+  terminalOutput.innerHTML = '';
 
   const existing = document.getElementById('sandbox');
   if (existing) existing.remove();
@@ -346,7 +362,7 @@ function runCode() {
 }
 
 function isQuestionComplete(hash) {
-  const sectionKey = hash.substring(hash.indexOf('-') + 1);
+  const { sectionKey } = parseHash(hash);
   const entry = getSaves()[hash];
   return !!entry?.results?.[sectionKey]?.results?.every(
     (r) => r.result === null,
@@ -405,7 +421,7 @@ function updateNavState() {
 
   document.querySelectorAll('.question-item').forEach((item) => {
     const hash = item.dataset.hash;
-    const sectionKey = hash.substring(hash.indexOf('-') + 1);
+    const { sectionKey } = parseHash(hash);
     const entry = saves[hash];
     const complete = entry?.results?.[sectionKey]?.results?.every(
       (r) => r.result === null,
@@ -477,15 +493,14 @@ function resetQuestion() {
 }
 
 function clearTerminal() {
-  document.querySelector('.terminal-output').innerHTML = '';
+  terminalOutput.innerHTML = '';
 }
 
 function appendToTerminal(text, className) {
-  const terminalPanel = document.querySelector('.terminal-output');
   const line = document.createElement('div');
   line.classList.add(className);
   line.textContent = text;
-  terminalPanel.appendChild(line);
+  terminalOutput.appendChild(line);
 }
 
 renderQuestionCards();
@@ -514,7 +529,9 @@ document.getElementById('reset-btn').addEventListener('click', resetQuestion);
 document.getElementById('run-btn').addEventListener('click', runCode);
 document.getElementById('clear-btn').addEventListener('click', clearTerminal);
 document.getElementById('collapse-btn').addEventListener('click', () => {
-  document.querySelectorAll('.question-group.open').forEach((g) => g.classList.remove('open'));
+  document
+    .querySelectorAll('.question-group.open')
+    .forEach((g) => g.classList.remove('open'));
 });
 
 document.getElementById('clear-save-btn').addEventListener('click', () => {
@@ -535,8 +552,12 @@ document.getElementById('confirm-delete-btn').addEventListener('click', () => {
   activeSectionKey = null;
   activeSection = null;
   history.replaceState(null, '', window.location.pathname);
-  document.querySelectorAll('.question-group.open').forEach((g) => g.classList.remove('open'));
-  document.querySelectorAll('.question-item-active').forEach((el) => el.classList.remove('question-item-active'));
+  document
+    .querySelectorAll('.question-group.open')
+    .forEach((g) => g.classList.remove('open'));
+  document
+    .querySelectorAll('.question-item-active')
+    .forEach((el) => el.classList.remove('question-item-active'));
   document.querySelector('.top-center').textContent = '';
   renderTests(null);
   updateNavState();
@@ -548,8 +569,12 @@ document.getElementById('logo').addEventListener('click', () => {
   activeGroupId = null;
   activeSectionKey = null;
   activeSection = null;
-  document.querySelectorAll('.question-group.open').forEach((g) => g.classList.remove('open'));
-  document.querySelectorAll('.question-item-active').forEach((el) => el.classList.remove('question-item-active'));
+  document
+    .querySelectorAll('.question-group.open')
+    .forEach((g) => g.classList.remove('open'));
+  document
+    .querySelectorAll('.question-item-active')
+    .forEach((el) => el.classList.remove('question-item-active'));
   document.querySelector('.top-center').textContent = '';
   renderTests(null);
   updateProgress();
