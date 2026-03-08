@@ -13,6 +13,37 @@ function toggleMenu() {
   document.getElementById("side-menu").classList.toggle("open");
 }
 
+const modalContent = {
+  "What is Z_Test?": {
+    title: "What is Z_Test?",
+    body: "Z_Test is a browser-based JavaScript teaching and exercise framework.",
+  },
+  "How to use Z_Test": {
+    title: "How to use Z_Test",
+    body: "Select a question from the Lessons panel, write your solution in the Code editor, then press Ctrl+Enter to run.",
+  },
+  "Problems / Feedback": {
+    title: "Problems / Feedback",
+    body: "If you encounter a problem or have feedback, please let us know.",
+  },
+  "Contact": {
+    title: "Contact",
+    body: "Contact information goes here.",
+  },
+};
+
+function openModal(key) {
+  const content = modalContent[key];
+  document.getElementById("modal-title").textContent = content.title;
+  document.getElementById("modal-content").textContent = content.body;
+  document.getElementById("modal-backdrop").classList.add("open");
+  toggleMenu();
+}
+
+function closeModal() {
+  document.getElementById("modal-backdrop").classList.remove("open");
+}
+
 let activeGroupId = null;
 let activeSectionKey = null;
 let activeSection = null;
@@ -241,11 +272,18 @@ function runCode() {
   iframeDoc.close();
 }
 
+function isQuestionComplete(hash) {
+  const sectionKey = hash.substring(hash.indexOf("-") + 1);
+  const entry = getSaves()[hash];
+  return !!entry?.results?.[sectionKey]?.results?.every((r) => r.result === null);
+}
+
 function getNextHash() {
   let found = false;
   for (const group of allTests) {
     for (const key of Object.keys(group.sections)) {
-      if (found) return `#${group.id}-${key}`;
+      const hash = `#${group.id}-${key}`;
+      if (found && !isQuestionComplete(hash)) return hash;
       if (group.id === activeGroupId && key === activeSectionKey) found = true;
     }
   }
@@ -368,6 +406,19 @@ renderQuestionCards();
 updateNavState();
 updateProgress();
 initDivider();
+
+document.getElementById("hamburger-btn").addEventListener("click", toggleMenu);
+document.getElementById("modal-backdrop").addEventListener("click", (e) => {
+  if (e.target === document.getElementById("modal-backdrop")) closeModal();
+});
+document.querySelectorAll(".side-menu-item").forEach((item) => {
+  item.addEventListener("click", () => openModal(item.dataset.modal));
+});
+document.getElementById("reset-btn").addEventListener("click", resetQuestion);
+document.getElementById("run-btn").addEventListener("click", runCode);
+document.getElementById("clear-btn").addEventListener("click", clearTerminal);
+document.getElementById("back-btn").addEventListener("click", goBack);
+document.getElementById("next-btn").addEventListener("click", goNext);
 
 function initDivider() {
   const handle = document.querySelector(".divider-handle");
