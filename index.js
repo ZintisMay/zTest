@@ -1,47 +1,49 @@
-let ZT_SOURCE = "";
-let ALLTESTS_SOURCE = "";
+let ZT_SOURCE = '';
+let ALLTESTS_SOURCE = '';
 
 Promise.all([
-  fetch("zTest/Z_T.js").then((r) => r.text()),
-  fetch("allTests.js").then((r) => r.text()),
+  fetch('zTest/Z_T.js').then((r) => r.text()),
+  fetch('allTests.js').then((r) => r.text()),
 ]).then(([zt, at]) => {
   ZT_SOURCE = zt;
   ALLTESTS_SOURCE = at;
 });
 
 function toggleMenu() {
-  document.getElementById("side-menu").classList.toggle("open");
+  document.getElementById('side-menu').classList.toggle('open');
 }
 
 const modalContent = {
-  "What is Z_Test?": {
-    title: "What is Z_Test?",
-    body: "Z_Test is a browser-based JavaScript teaching and exercise framework.",
+  'What is Z_Test?': {
+    title: 'What is Z_Test?',
+    body: '<p>Z_Test is a browser-based JavaScript teaching and exercise framework.</p><p>It is best for beginning Javascript students who are just learning the syntax, and for more advanced students who want some quick practice.</p><p>If you find Z_Test easy and finish it quickly, congrats!<br>You are no longer a beginner :)</p>',
   },
-  "How to use Z_Test": {
-    title: "How to use Z_Test",
-    body: "Select a question from the Lessons panel, write your solution in the Code editor, then press Ctrl+Enter to run.",
+  'How to use Z_Test': {
+    title: 'How to use Z_Test',
+    body: 'Select a question from the Lessons panel, write your solution in the Code editor, then press Ctrl+Enter to run.',
   },
-  "Problems / Feedback": {
-    title: "Problems / Feedback",
-    body: "If you encounter a problem or have feedback, please let us know.",
+  'Problems / Feedback': {
+    title: 'Problems / Feedback',
+    body: `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeR7BFQTAhtvxfI8UrqF3iHyi-z9m6GGX3lrlwgnK_Re11xLg/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
   },
-  "Contact": {
-    title: "Contact",
-    body: "Contact information goes here.",
+  About: {
+    title: 'About',
+    body: `<p>Z_Test is an open source project.</p><a href="https://github.com/ZintisMay/zTest" target="_blank" rel="noopener">Find the code here: github.com/ZintisMay/zTest</a>
+        <p>Released under the <strong>MIT License</strong>.</p>
+        <p>Contact me here: <a href="https://bsky.app/profile/zintismay.bsky.social" target="_blank" rel="noopener">@zintismay.bsky.social</a></p>`,
   },
 };
 
 function openModal(key) {
   const content = modalContent[key];
-  document.getElementById("modal-title").textContent = content.title;
-  document.getElementById("modal-content").textContent = content.body;
-  document.getElementById("modal-backdrop").classList.add("open");
+  document.getElementById('modal-title').textContent = content.title;
+  document.getElementById('modal-content').innerHTML = content.body;
+  document.getElementById('modal-backdrop').classList.add('open');
   toggleMenu();
 }
 
 function closeModal() {
-  document.getElementById("modal-backdrop").classList.remove("open");
+  document.getElementById('modal-backdrop').classList.remove('open');
 }
 
 let activeGroupId = null;
@@ -49,40 +51,40 @@ let activeSectionKey = null;
 let activeSection = null;
 
 function renderQuestionCards() {
-  const leftPanel = document.querySelector(".panel-nav-content");
+  const leftPanel = document.querySelector('.panel-nav-content');
 
   allTests.forEach((group) => {
-    const groupEl = document.createElement("div");
-    groupEl.classList.add("question-group");
+    const groupEl = document.createElement('div');
+    groupEl.classList.add('question-group');
 
-    const header = document.createElement("div");
-    header.classList.add("question-group-header");
+    const header = document.createElement('div');
+    header.classList.add('question-group-header');
 
-    const headerLabel = document.createElement("span");
+    const headerLabel = document.createElement('span');
     headerLabel.textContent = `${group.id}: ${group.title}`;
 
-    const headerCount = document.createElement("span");
-    headerCount.classList.add("question-group-count");
+    const headerCount = document.createElement('span');
+    headerCount.classList.add('question-group-count');
     const total = Object.keys(group.sections).length;
     headerCount.textContent = `0/${total}`;
 
     header.appendChild(headerLabel);
     header.appendChild(headerCount);
-    header.addEventListener("click", () => {
-      groupEl.classList.toggle("open");
+    header.addEventListener('click', () => {
+      groupEl.classList.toggle('open');
     });
     groupEl.appendChild(header);
 
-    const subList = document.createElement("div");
-    subList.classList.add("question-sublist");
+    const subList = document.createElement('div');
+    subList.classList.add('question-sublist');
 
     Object.entries(group.sections).forEach(([key, section]) => {
       const route = `#${group.id}-${key}`;
-      const item = document.createElement("div");
-      item.classList.add("question-item");
+      const item = document.createElement('div');
+      item.classList.add('question-item');
       item.dataset.hash = route;
       item.textContent = section.title;
-      item.addEventListener("click", (e) => {
+      item.addEventListener('click', (e) => {
         e.stopPropagation();
         window.location.hash = route;
       });
@@ -95,9 +97,9 @@ function renderQuestionCards() {
   });
 }
 
-window.addEventListener("hashchange", () => {
+window.addEventListener('hashchange', () => {
   const hash = window.location.hash;
-  const topCenter = document.querySelector(".top-center");
+  const topCenter = document.querySelector('.top-center');
 
   for (const group of allTests) {
     for (const [key, section] of Object.entries(group.sections)) {
@@ -106,43 +108,49 @@ window.addEventListener("hashchange", () => {
         activeGroupId = group.id;
         activeSectionKey = key;
         activeSection = section;
-        document.querySelectorAll(".question-item").forEach((el) => el.classList.remove("question-item-active"));
-        document.querySelectorAll(".question-group").forEach((el) => el.classList.remove("open"));
+        document
+          .querySelectorAll('.question-item')
+          .forEach((el) => el.classList.remove('question-item-active'));
+        document
+          .querySelectorAll('.question-group')
+          .forEach((el) => el.classList.remove('open'));
 
-        const activeItem = document.querySelector(`.question-item[data-hash="#${group.id}-${key}"]`);
+        const activeItem = document.querySelector(
+          `.question-item[data-hash="#${group.id}-${key}"]`,
+        );
         if (activeItem) {
-          activeItem.classList.add("question-item-active");
-          activeItem.closest(".question-group").classList.add("open");
+          activeItem.classList.add('question-item-active');
+          activeItem.closest('.question-group').classList.add('open');
         }
 
         renderTests(section);
         updateProgress();
         const entry = getSaves()[hash] || {};
-        editor.setValue(entry.code || "");
+        editor.setValue(entry.code || '');
         if (entry.results) applyTestResults(entry.results);
         return;
       }
     }
   }
-  topCenter.textContent = "";
+  topCenter.textContent = '';
   renderTests(null);
   updateProgress();
 });
 
 function renderTests(section) {
-  const testsPanel = document.querySelector(".tests-content");
-  testsPanel.innerHTML = "";
+  const testsPanel = document.querySelector('.tests-content');
+  testsPanel.innerHTML = '';
 
   if (!section) return;
 
-  const header = document.createElement("div");
-  header.classList.add("test-pane-header");
+  const header = document.createElement('div');
+  header.classList.add('test-pane-header');
 
-  const headerTitle = document.createElement("div");
+  const headerTitle = document.createElement('div');
   headerTitle.textContent = section.title;
 
-  const headerInstructions = document.createElement("div");
-  headerInstructions.classList.add("test-pane-header-instructions");
+  const headerInstructions = document.createElement('div');
+  headerInstructions.classList.add('test-pane-header-instructions');
   headerInstructions.textContent = section.instructions;
 
   header.appendChild(headerTitle);
@@ -150,28 +158,28 @@ function renderTests(section) {
   testsPanel.appendChild(header);
 
   section.tests.forEach((t) => {
-    const pane = document.createElement("div");
-    pane.classList.add("test-pane");
+    const pane = document.createElement('div');
+    pane.classList.add('test-pane');
     pane.textContent = t.description;
     testsPanel.appendChild(pane);
   });
 }
 
-const editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
-  mode: "javascript",
-  theme: "dracula",
+const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+  mode: 'javascript',
+  theme: 'dracula',
   lineNumbers: true,
   indentUnit: 2,
   tabSize: 2,
   lineWrapping: true,
-  gutters: ["CodeMirror-lint-markers"],
+  gutters: ['CodeMirror-lint-markers'],
   lint: { esversion: 11 },
 });
 
-editor.setValue("");
+editor.setValue('');
 
 let saveTimer;
-editor.on("change", () => {
+editor.on('change', () => {
   const hash = window.location.hash;
   if (!hash) return;
   clearTimeout(saveTimer);
@@ -181,19 +189,19 @@ editor.on("change", () => {
 });
 
 function getSaves() {
-  return JSON.parse(localStorage.getItem("Z_T_saves") || "{}");
+  return JSON.parse(localStorage.getItem('Z_T_saves') || '{}');
 }
 
 function saveEntry(hash, patch) {
   const saves = getSaves();
   saves[hash] = { ...saves[hash], ...patch };
-  localStorage.setItem("Z_T_saves", JSON.stringify(saves));
+  localStorage.setItem('Z_T_saves', JSON.stringify(saves));
 }
 
 let messageHandler = null;
 
-document.addEventListener("keydown", (e) => {
-  if (e.ctrlKey && (e.key === "s" || e.key === "Enter")) {
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && (e.key === 's' || e.key === 'Enter')) {
     e.preventDefault();
     runCode();
   }
@@ -202,7 +210,7 @@ document.addEventListener("keydown", (e) => {
 function runCode() {
   try {
     const formatted = prettier.format(editor.getValue(), {
-      parser: "babel",
+      parser: 'babel',
       plugins: prettierPlugins,
     });
     editor.setValue(formatted);
@@ -211,33 +219,34 @@ function runCode() {
   }
 
   const code = editor.getValue();
-  const terminalPanel = document.querySelector(".terminal-output");
+  const terminalPanel = document.querySelector('.terminal-output');
 
-  terminalPanel.innerHTML = "";
+  terminalPanel.innerHTML = '';
 
-  const existing = document.getElementById("sandbox");
+  const existing = document.getElementById('sandbox');
   if (existing) existing.remove();
 
-  const iframe = document.createElement("iframe");
-  iframe.id = "sandbox";
-  iframe.style.display = "none";
+  const iframe = document.createElement('iframe');
+  iframe.id = 'sandbox';
+  iframe.style.display = 'none';
   document.body.appendChild(iframe);
 
-  if (messageHandler) window.removeEventListener("message", messageHandler);
+  if (messageHandler) window.removeEventListener('message', messageHandler);
 
   messageHandler = (e) => {
-    if (e.data.type === "log") {
-      appendToTerminal(e.data.data.join(" "), "terminal-line");
-    } else if (e.data.type === "error") {
-      appendToTerminal(e.data.data, "terminal-error");
-    } else if (e.data.type === "results") {
+    if (e.data.type === 'log') {
+      appendToTerminal(e.data.data.join(' '), 'terminal-line');
+    } else if (e.data.type === 'error') {
+      appendToTerminal(e.data.data, 'terminal-error');
+    } else if (e.data.type === 'results') {
       applyTestResults(e.data.data, true);
     }
   };
 
-  window.addEventListener("message", messageHandler);
+  window.addEventListener('message', messageHandler);
 
-  const testRunnerScript = activeSection ? `
+  const testRunnerScript = activeSection
+    ? `
     Z_T.displayResults = function(results) {
       const clean = JSON.parse(JSON.stringify(results, (key, val) => {
         if (val instanceof Error) return val.message;
@@ -249,7 +258,8 @@ function runCode() {
     Z_T.addBigCheckMark = function() {};
     const _suite = { "${activeSectionKey}": allTests.find(g => g.id === "${activeGroupId}").sections["${activeSectionKey}"] };
     Z_T.testAll(_suite);
-  ` : "";
+  `
+    : '';
 
   const iframeDoc = iframe.contentDocument;
   iframeDoc.open();
@@ -273,9 +283,11 @@ function runCode() {
 }
 
 function isQuestionComplete(hash) {
-  const sectionKey = hash.substring(hash.indexOf("-") + 1);
+  const sectionKey = hash.substring(hash.indexOf('-') + 1);
   const entry = getSaves()[hash];
-  return !!entry?.results?.[sectionKey]?.results?.every((r) => r.result === null);
+  return !!entry?.results?.[sectionKey]?.results?.every(
+    (r) => r.result === null,
+  );
 }
 
 function getNextHash() {
@@ -312,9 +324,9 @@ function goBack() {
 }
 
 function updateProgress() {
-  const progressEl = document.querySelector(".progress");
+  const progressEl = document.querySelector('.progress');
   if (!activeGroupId || !activeSectionKey) {
-    progressEl.textContent = "0 / 0";
+    progressEl.textContent = '0 / 0';
     return;
   }
   const group = allTests.find((g) => g.id === activeGroupId);
@@ -328,22 +340,26 @@ function updateProgress() {
 function updateNavState() {
   const saves = getSaves();
 
-  document.querySelectorAll(".question-item").forEach((item) => {
+  document.querySelectorAll('.question-item').forEach((item) => {
     const hash = item.dataset.hash;
-    const sectionKey = hash.substring(hash.indexOf("-") + 1);
+    const sectionKey = hash.substring(hash.indexOf('-') + 1);
     const entry = saves[hash];
-    const complete = entry?.results?.[sectionKey]?.results?.every((r) => r.result === null);
-    item.classList.toggle("question-item-complete", !!complete);
+    const complete = entry?.results?.[sectionKey]?.results?.every(
+      (r) => r.result === null,
+    );
+    item.classList.toggle('question-item-complete', !!complete);
   });
 
-  document.querySelectorAll(".question-group").forEach((group) => {
-    const items = [...group.querySelectorAll(".question-item")];
-    const completeCount = items.filter((item) => item.classList.contains("question-item-complete")).length;
+  document.querySelectorAll('.question-group').forEach((group) => {
+    const items = [...group.querySelectorAll('.question-item')];
+    const completeCount = items.filter((item) =>
+      item.classList.contains('question-item-complete'),
+    ).length;
     const allComplete = completeCount === items.length && items.length > 0;
     const someComplete = completeCount > 0 && !allComplete;
-    group.classList.toggle("question-group-complete", allComplete);
-    group.classList.toggle("question-group-partial", someComplete);
-    const countEl = group.querySelector(".question-group-count");
+    group.classList.toggle('question-group-complete', allComplete);
+    group.classList.toggle('question-group-partial', someComplete);
+    const countEl = group.querySelector('.question-group-count');
     if (countEl) countEl.textContent = `${completeCount}/${items.length}`;
   });
 }
@@ -351,19 +367,23 @@ function updateNavState() {
 function applyTestResults(data, shouldAdvance = false) {
   if (!activeSectionKey || !data[activeSectionKey]) return;
   const existingEntry = getSaves()[window.location.hash];
-  const alreadyPassed = existingEntry?.results?.[activeSectionKey]?.results?.every((r) => r.result === null);
+  const alreadyPassed = existingEntry?.results?.[
+    activeSectionKey
+  ]?.results?.every((r) => r.result === null);
   const results = data[activeSectionKey].results;
-  const panes = document.querySelector(".tests-content").querySelectorAll(".test-pane");
+  const panes = document
+    .querySelector('.tests-content')
+    .querySelectorAll('.test-pane');
   panes.forEach((pane, i) => {
     if (!results[i]) return;
     const passed = results[i].result === null;
-    pane.classList.remove("test-pass", "test-fail");
-    pane.classList.add(passed ? "test-pass" : "test-fail");
-    let errEl = pane.querySelector(".test-error");
+    pane.classList.remove('test-pass', 'test-fail');
+    pane.classList.add(passed ? 'test-pass' : 'test-fail');
+    let errEl = pane.querySelector('.test-error');
     if (!passed) {
       if (!errEl) {
-        errEl = document.createElement("div");
-        errEl.classList.add("test-error");
+        errEl = document.createElement('div');
+        errEl.classList.add('test-error');
         pane.appendChild(errEl);
       }
       errEl.textContent = results[i].result;
@@ -375,7 +395,9 @@ function applyTestResults(data, shouldAdvance = false) {
   saveEntry(window.location.hash, { results: data });
   updateNavState();
 
-  const allPassed = data[activeSectionKey].results.every((r) => r.result === null);
+  const allPassed = data[activeSectionKey].results.every(
+    (r) => r.result === null,
+  );
   if (shouldAdvance && allPassed && alreadyPassed) {
     const next = getNextHash();
     if (next) window.location.hash = next;
@@ -385,18 +407,18 @@ function applyTestResults(data, shouldAdvance = false) {
 function resetQuestion() {
   const hash = window.location.hash;
   if (!hash) return;
-  editor.setValue("");
-  saveEntry(hash, { code: "", results: null });
+  editor.setValue('');
+  saveEntry(hash, { code: '', results: null });
   runCode();
 }
 
 function clearTerminal() {
-  document.querySelector(".terminal-output").innerHTML = "";
+  document.querySelector('.terminal-output').innerHTML = '';
 }
 
 function appendToTerminal(text, className) {
-  const terminalPanel = document.querySelector(".terminal-output");
-  const line = document.createElement("div");
+  const terminalPanel = document.querySelector('.terminal-output');
+  const line = document.createElement('div');
   line.classList.add(className);
   line.textContent = text;
   terminalPanel.appendChild(line);
@@ -407,28 +429,28 @@ updateNavState();
 updateProgress();
 initDivider();
 
-document.getElementById("hamburger-btn").addEventListener("click", toggleMenu);
-document.getElementById("modal-backdrop").addEventListener("click", (e) => {
-  if (e.target === document.getElementById("modal-backdrop")) closeModal();
+document.getElementById('hamburger-btn').addEventListener('click', toggleMenu);
+document.getElementById('modal-backdrop').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('modal-backdrop')) closeModal();
 });
-document.querySelectorAll(".side-menu-item").forEach((item) => {
-  item.addEventListener("click", () => openModal(item.dataset.modal));
+document.querySelectorAll('.side-menu-item').forEach((item) => {
+  item.addEventListener('click', () => openModal(item.dataset.modal));
 });
-document.getElementById("reset-btn").addEventListener("click", resetQuestion);
-document.getElementById("run-btn").addEventListener("click", runCode);
-document.getElementById("clear-btn").addEventListener("click", clearTerminal);
-document.getElementById("back-btn").addEventListener("click", goBack);
-document.getElementById("next-btn").addEventListener("click", goNext);
+document.getElementById('reset-btn').addEventListener('click', resetQuestion);
+document.getElementById('run-btn').addEventListener('click', runCode);
+document.getElementById('clear-btn').addEventListener('click', clearTerminal);
+document.getElementById('back-btn').addEventListener('click', goBack);
+document.getElementById('next-btn').addEventListener('click', goNext);
 
 function initDivider() {
-  const handle = document.querySelector(".divider-handle");
-  const codePanel = document.querySelector(".panel-code");
-  const terminalPanel = document.querySelector(".panel-terminal");
+  const handle = document.querySelector('.divider-handle');
+  const codePanel = document.querySelector('.panel-code');
+  const terminalPanel = document.querySelector('.panel-terminal');
 
   let isDragging = false;
   let startY, startCodeHeight, startTerminalHeight;
 
-  handle.addEventListener("mousedown", (e) => {
+  handle.addEventListener('mousedown', (e) => {
     isDragging = true;
     startY = e.clientY;
     startCodeHeight = codePanel.getBoundingClientRect().height;
@@ -436,19 +458,19 @@ function initDivider() {
     e.preventDefault();
   });
 
-  document.addEventListener("mousemove", (e) => {
+  document.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
     const delta = e.clientY - startY;
     const newCodeHeight = startCodeHeight + delta;
     const newTerminalHeight = startTerminalHeight - delta;
     if (newCodeHeight < 50 || newTerminalHeight < 50) return;
-    codePanel.style.flex = "none";
-    codePanel.style.height = newCodeHeight + "px";
-    terminalPanel.style.flex = "none";
-    terminalPanel.style.height = newTerminalHeight + "px";
+    codePanel.style.flex = 'none';
+    codePanel.style.height = newCodeHeight + 'px';
+    terminalPanel.style.flex = 'none';
+    terminalPanel.style.height = newTerminalHeight + 'px';
   });
 
-  document.addEventListener("mouseup", () => {
+  document.addEventListener('mouseup', () => {
     isDragging = false;
   });
 }

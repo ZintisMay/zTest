@@ -133,8 +133,8 @@ body {
   border: 1px solid #333;
   border-radius: 6px;
   padding: 32px 40px;
-  width: 66vw;
-  height: 66vh;
+  width: 66vmin;
+  height: 66vmin;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,9 +143,18 @@ body {
   text-align: center;
 }
 
+.modal-content a {
+  color: #f5c518;
+  text-decoration: none;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
 .modal-title {
   color: #f5c518;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 16px;
   flex-shrink: 0;
@@ -155,11 +164,14 @@ body {
   flex: 1;
   overflow-y: auto;
   color: #ccc;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.8;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  gap: 1em;
+  align-items: center;
+  text-align: center;
   width: 100%;
 }
 
