@@ -47,6 +47,11 @@ function startTour() {
         title: 'Terminal',
         intro: 'Any console.log output or runtime errors from your code appear here.',
       },
+      {
+        element: document.querySelector('.save-indicator'),
+        title: 'Auto-Save',
+        intro: 'Your code and progress are automatically saved in the browser. You can close the page and pick up right where you left off.',
+      },
     ],
   }).start();
 }
@@ -483,6 +488,20 @@ document.querySelectorAll('.side-menu-item').forEach((item) => {
 document.getElementById('reset-btn').addEventListener('click', resetQuestion);
 document.getElementById('run-btn').addEventListener('click', runCode);
 document.getElementById('clear-btn').addEventListener('click', clearTerminal);
+document.getElementById('collapse-btn').addEventListener('click', () => {
+  document.querySelectorAll('.question-group.open').forEach((g) => g.classList.remove('open'));
+});
+document.getElementById('logo').addEventListener('click', () => {
+  history.replaceState(null, '', window.location.pathname);
+  activeGroupId = null;
+  activeSectionKey = null;
+  activeSection = null;
+  document.querySelectorAll('.question-group.open').forEach((g) => g.classList.remove('open'));
+  document.querySelectorAll('.question-item-active').forEach((el) => el.classList.remove('question-item-active'));
+  document.querySelector('.top-center').textContent = '';
+  renderTests(null);
+  updateProgress();
+});
 document.getElementById('back-btn').addEventListener('click', goBack);
 document.getElementById('next-btn').addEventListener('click', goNext);
 
