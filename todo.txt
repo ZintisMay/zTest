@@ -1,6 +1,6 @@
 == LOW EFFORT ==
 
-[ ] Debounce editor.on("change") — currently saves to localStorage on every keystroke, should wait ~300ms after typing stops
+[x] Debounce editor.on("change") — currently saves to localStorage on every keystroke, should wait ~300ms after typing stops
 
 [ ] resetQuestion() calls runCode() with empty editor — this overwrites saved results with failures. Should clear test pane visually instead of running
 

@@ -137,10 +137,14 @@ const editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
 
 editor.setValue("");
 
+let saveTimer;
 editor.on("change", () => {
   const hash = window.location.hash;
   if (!hash) return;
-  saveEntry(hash, { code: editor.getValue() });
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    saveEntry(hash, { code: editor.getValue() });
+  }, 300);
 });
 
 function getSaves() {
