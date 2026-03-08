@@ -19,4 +19,4 @@
 
 [ ] No loading guard on ZT_SOURCE / ALLTESTS_SOURCE — if user clicks Run before fetch resolves, iframe runs with no test framework. Disable Run button until sources are loaded.
 
-[ ] No URL-driven initial load — if page is opened with a hash already in the URL (e.g. bookmarked link), nothing loads. Need to fire hashchange logic on page load.
+[x] No URL-driven initial load — if page is opened with a hash already in the URL (e.g. bookmarked link), nothing loads. Need to fire hashchange logic on page load.

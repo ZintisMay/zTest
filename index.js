@@ -493,6 +493,10 @@ updateNavState();
 updateProgress();
 initDivider();
 
+if (window.location.hash) {
+  window.dispatchEvent(new Event('hashchange'));
+}
+
 document.getElementById('hamburger-btn').addEventListener('click', toggleMenu);
 document.getElementById('modal-backdrop').addEventListener('click', (e) => {
   if (e.target === document.getElementById('modal-backdrop')) closeModal();
