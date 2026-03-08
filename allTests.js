@@ -3,7 +3,7 @@ const allTests = [
     id: 'A1',
     title: 'Variables',
     series: 'A',
-    help: 'https://www.w3schools.com/js/js_variables.asp',
+    help: ['https://www.w3schools.com/js/js_variables.asp'],
     sections: {
       varATests: {
         title: `var "a"`,
@@ -343,6 +343,7 @@ const allTests = [
     id: 'A2',
     title: 'Operators',
     series: 'A',
+    help: ['https://www.w3schools.com/js/js_operators.asp'],
     sections: {
       plusTests: {
         title: `var "a"`,
@@ -530,6 +531,7 @@ const allTests = [
     id: 'A3',
     title: 'Return Values',
     series: 'A',
+    help: ['https://www.w3schools.com/jsref/jsref_return.asp'],
     sections: {
       returnNumberTests: {
         title: `function "returnNumber"`,
@@ -729,6 +731,8 @@ const allTests = [
     id: 'A4',
     title: 'Basic Functions',
     series: 'A',
+
+    help: ['https://www.w3schools.com/js/js_function_intro.asp'],
     sections: {
       addTests: {
         title: `function "add"`,
@@ -1152,6 +1156,8 @@ const allTests = [
     id: 'A5',
     title: 'Functions with Logic',
     series: 'A',
+
+    help: ['https://www.w3schools.com/js/js_conditionals.asp'],
     sections: {
       greeting: {
         title: `function greeting`,
@@ -1573,237 +1579,10 @@ const allTests = [
   },
   {
     id: 'A6',
-    title: 'Arrays & Objects',
+    title: 'Objects',
     series: 'A',
+    help: ['https://www.w3schools.com/js/js_objects.asp'],
     sections: {
-      emptyArray: {
-        title: `var "emptyArray"`,
-        instructions: `Declare a variable named "emptyArray", an array with no values`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(emptyArray).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(emptyArray).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
-              expect(emptyArray).toBeArray();
-            },
-          },
-          {
-            description: `has 0 items`,
-            test: () => {
-              expect(emptyArray).toHaveLength(0);
-            },
-          },
-        ],
-      },
-      varSimpleArrayTests: {
-        title: `var "simpleArray"`,
-        instructions: `Declare a variable named "simpleArray", an array whose values are the numbers 1, 2 and 3`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(simpleArray).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(simpleArray).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
-              expect(simpleArray).toBeArray();
-            },
-          },
-          {
-            description: `contains only numbers`,
-            test: () => {
-              expect(simpleArray).toOnlyContainType(`number`);
-            },
-          },
-          {
-            description: `has 3 items`,
-            test: () => {
-              expect(simpleArray).toHaveLength(3);
-            },
-          },
-          {
-            description: `contains numbers 1,2,3`,
-            test: () => {
-              expect(simpleArray).toBeSameArrayAs([1, 2, 3]);
-            },
-          },
-        ],
-      },
-      varFavoriteFoodsTest: {
-        title: `var "favoriteFoods"`,
-        instructions: `Declare a variable named "favoriteFoods", an array whose values are three words (your favorite foods!).`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(favoriteFoods).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(favoriteFoods).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
-              expect(favoriteFoods).toBeArray();
-            },
-          },
-          {
-            description: `contains only strings`,
-            test: () => {
-              expect(favoriteFoods).toOnlyContainType(`string`);
-            },
-          },
-          {
-            description: `contains only words of 3+ letters`,
-            test: () => {
-              expect(favoriteFoods).customTest(function () {
-                this.value.forEach((item) => {
-                  if (item.length < 3)
-                    throw new Error(`words must be 3 or more letters`);
-                });
-                return this;
-              });
-            },
-          },
-        ],
-      },
-      bigNumbers: {
-        title: `var "bigNumbers"`,
-        instructions: `Declare a variable named "bigNumbers", an array with 3 numbers all greater than 9000.`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(bigNumbers).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(bigNumbers).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
-              expect(bigNumbers).toBeArray();
-            },
-          },
-          {
-            description: `contains only numbers`,
-            test: () => {
-              expect(bigNumbers).toOnlyContainType(`number`);
-            },
-          },
-          {
-            description: `only contains numbers over 9000`,
-            test: () => {
-              expect(bigNumbers).customTest(function () {
-                this.value.forEach((item) => {
-                  if (!(item > 9000))
-                    throw new Error(`not all numbers are over 9000`);
-                  return this;
-                });
-              });
-            },
-          },
-        ],
-      },
-      arrayOf10: {
-        title: `var "arrayOf10"`,
-        instructions: `Declare a variable named "arrayOf10", an array of 10 numbers.`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(arrayOf10).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(arrayOf10).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
-              expect(arrayOf10).toBeArray();
-            },
-          },
-          {
-            description: `contains only numbers`,
-            test: () => {
-              expect(arrayOf10).toOnlyContainType(`number`);
-            },
-          },
-          {
-            description: `has 10 items`,
-            test: () => {
-              expect(arrayOf10).toHaveLength(10);
-            },
-          },
-        ],
-      },
-      arrayOfBooleans: {
-        title: `var "arrayOfBooleans"`,
-        instructions: `Declare a variable named "arrayOfBooleans", an array of 5 booleans.`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(arrayOfBooleans).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(arrayOfBooleans).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
-              expect(arrayOfBooleans).toBeArray();
-            },
-          },
-          {
-            description: `contains only booleans`,
-            test: () => {
-              expect(arrayOfBooleans).toOnlyContainType(`boolean`);
-            },
-          },
-          {
-            description: `has 5 items`,
-            test: () => {
-              expect(arrayOfBooleans).toHaveLength(5);
-            },
-          },
-        ],
-      },
       personObject: {
         title: `var "person"`,
         instructions: `Declare a variable named "person", an object. Read tests closely for keys and values.`,
@@ -2066,8 +1845,246 @@ const allTests = [
   },
   {
     id: 'A7',
+    title: 'Arrays',
+    series: 'A',
+    help: ['https://www.w3schools.com/js/js_arrays.asp'],
+    sections: {
+      emptyArray: {
+        title: `var "emptyArray"`,
+        instructions: `Declare a variable named "emptyArray", an array with no values`,
+        tests: [
+          {
+            description: `is declared`,
+            test: () => {
+              expect(emptyArray).toBeDeclared();
+            },
+          },
+          {
+            description: `has a value`,
+            test: () => {
+              expect(emptyArray).toHaveValue();
+            },
+          },
+          {
+            description: `is an array`,
+            test: () => {
+              expect(emptyArray).toBeArray();
+            },
+          },
+          {
+            description: `has 0 items`,
+            test: () => {
+              expect(emptyArray).toHaveLength(0);
+            },
+          },
+        ],
+      },
+      varSimpleArrayTests: {
+        title: `var "simpleArray"`,
+        instructions: `Declare a variable named "simpleArray", an array whose values are the numbers 1, 2 and 3`,
+        tests: [
+          {
+            description: `is declared`,
+            test: () => {
+              expect(simpleArray).toBeDeclared();
+            },
+          },
+          {
+            description: `has a value`,
+            test: () => {
+              expect(simpleArray).toHaveValue();
+            },
+          },
+          {
+            description: `is an array`,
+            test: () => {
+              expect(simpleArray).toBeArray();
+            },
+          },
+          {
+            description: `contains only numbers`,
+            test: () => {
+              expect(simpleArray).toOnlyContainType(`number`);
+            },
+          },
+          {
+            description: `has 3 items`,
+            test: () => {
+              expect(simpleArray).toHaveLength(3);
+            },
+          },
+          {
+            description: `contains numbers 1,2,3`,
+            test: () => {
+              expect(simpleArray).toBeSameArrayAs([1, 2, 3]);
+            },
+          },
+        ],
+      },
+      varFavoriteFoodsTest: {
+        title: `var "favoriteFoods"`,
+        instructions: `Declare a variable named "favoriteFoods", an array whose values are three words (your favorite foods!).`,
+        tests: [
+          {
+            description: `is declared`,
+            test: () => {
+              expect(favoriteFoods).toBeDeclared();
+            },
+          },
+          {
+            description: `has a value`,
+            test: () => {
+              expect(favoriteFoods).toHaveValue();
+            },
+          },
+          {
+            description: `is an array`,
+            test: () => {
+              expect(favoriteFoods).toBeArray();
+            },
+          },
+          {
+            description: `contains only strings`,
+            test: () => {
+              expect(favoriteFoods).toOnlyContainType(`string`);
+            },
+          },
+          {
+            description: `contains only words of 3+ letters`,
+            test: () => {
+              expect(favoriteFoods).customTest(function () {
+                this.value.forEach((item) => {
+                  if (item.length < 3)
+                    throw new Error(`words must be 3 or more letters`);
+                });
+                return this;
+              });
+            },
+          },
+        ],
+      },
+      bigNumbers: {
+        title: `var "bigNumbers"`,
+        instructions: `Declare a variable named "bigNumbers", an array with 3 numbers all greater than 9000.`,
+        tests: [
+          {
+            description: `is declared`,
+            test: () => {
+              expect(bigNumbers).toBeDeclared();
+            },
+          },
+          {
+            description: `has a value`,
+            test: () => {
+              expect(bigNumbers).toHaveValue();
+            },
+          },
+          {
+            description: `is an array`,
+            test: () => {
+              expect(bigNumbers).toBeArray();
+            },
+          },
+          {
+            description: `contains only numbers`,
+            test: () => {
+              expect(bigNumbers).toOnlyContainType(`number`);
+            },
+          },
+          {
+            description: `only contains numbers over 9000`,
+            test: () => {
+              expect(bigNumbers).customTest(function () {
+                this.value.forEach((item) => {
+                  if (!(item > 9000))
+                    throw new Error(`not all numbers are over 9000`);
+                  return this;
+                });
+              });
+            },
+          },
+        ],
+      },
+      arrayOf10: {
+        title: `var "arrayOf10"`,
+        instructions: `Declare a variable named "arrayOf10", an array of 10 numbers.`,
+        tests: [
+          {
+            description: `is declared`,
+            test: () => {
+              expect(arrayOf10).toBeDeclared();
+            },
+          },
+          {
+            description: `has a value`,
+            test: () => {
+              expect(arrayOf10).toHaveValue();
+            },
+          },
+          {
+            description: `is an array`,
+            test: () => {
+              expect(arrayOf10).toBeArray();
+            },
+          },
+          {
+            description: `contains only numbers`,
+            test: () => {
+              expect(arrayOf10).toOnlyContainType(`number`);
+            },
+          },
+          {
+            description: `has 10 items`,
+            test: () => {
+              expect(arrayOf10).toHaveLength(10);
+            },
+          },
+        ],
+      },
+      arrayOfBooleans: {
+        title: `var "arrayOfBooleans"`,
+        instructions: `Declare a variable named "arrayOfBooleans", an array of 5 booleans.`,
+        tests: [
+          {
+            description: `is declared`,
+            test: () => {
+              expect(arrayOfBooleans).toBeDeclared();
+            },
+          },
+          {
+            description: `has a value`,
+            test: () => {
+              expect(arrayOfBooleans).toHaveValue();
+            },
+          },
+          {
+            description: `is an array`,
+            test: () => {
+              expect(arrayOfBooleans).toBeArray();
+            },
+          },
+          {
+            description: `contains only booleans`,
+            test: () => {
+              expect(arrayOfBooleans).toOnlyContainType(`boolean`);
+            },
+          },
+          {
+            description: `has 5 items`,
+            test: () => {
+              expect(arrayOfBooleans).toHaveLength(5);
+            },
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: 'A8',
     title: 'Array Methods',
     series: 'A',
+
+    help: ['https://www.w3schools.com/js/js_array_methods.asp'],
     sections: {
       makeArrayOfX: {
         title: `function "makeArrayOfX"`,
@@ -2346,9 +2363,11 @@ const allTests = [
     },
   },
   {
-    id: 'A8',
+    id: 'A9',
     title: 'Loops & Strings',
     series: 'A',
+
+    help: ['https://www.w3schools.com/js/js_loops.asp'],
     sections: {
       makeXAsterisks: {
         title: `function "makeXAsterisks"`,
@@ -2746,9 +2765,11 @@ const allTests = [
     },
   },
   {
-    id: 'A9',
+    id: 'A10',
     title: 'Array.map',
     series: 'A',
+
+    help: ['https://www.w3schools.com/jsref/jsref_map.asp'],
     sections: {
       arrayValuesPlusOne: {
         title: `function "arrayValuesPlusOne"`,
@@ -3164,9 +3185,11 @@ const allTests = [
     },
   },
   {
-    id: 'A10',
+    id: 'A11',
     title: 'Array.filter',
     series: 'A',
+
+    help: ['https://www.w3schools.com/jsref/jsref_filter.asp'],
     sections: {
       removeOddNumbers: {
         title: `function "removeOddNumbers"`,
