@@ -13,6 +13,44 @@ function toggleMenu() {
   document.getElementById('side-menu').classList.toggle('open');
 }
 
+function startTour() {
+  toggleMenu();
+  introJs().setOptions({
+    steps: [
+      {
+        element: document.querySelector('.panel:first-child'),
+        title: 'Lessons',
+        intro: 'This panel lists all available lessons and exercises. Click a group to expand it, then select a question to begin.',
+      },
+      {
+        element: document.querySelector('.question-group'),
+        title: 'Question Groups',
+        intro: 'Questions are organised into groups. Click a group header to expand it and see the individual questions inside.',
+      },
+      {
+        element: document.querySelector('.panel-tests'),
+        title: 'Question',
+        intro: 'This panel shows the active question — its title, instructions, and the individual tests your code must pass.',
+      },
+      {
+        element: document.querySelector('.panel-code'),
+        title: 'Code Editor',
+        intro: 'Write your solution here. The editor supports syntax highlighting and will auto-format your code when you run it.',
+      },
+      {
+        element: document.getElementById('run-btn'),
+        title: 'Run Button',
+        intro: 'Click Run (or press Ctrl+Enter) to execute your code against the tests. Results appear instantly in the Question panel.',
+      },
+      {
+        element: document.querySelector('.panel-terminal'),
+        title: 'Terminal',
+        intro: 'Any console.log output or runtime errors from your code appear here.',
+      },
+    ],
+  }).start();
+}
+
 const modalContent = {
   'What is Z_Test?': {
     title: 'What is Z_Test?',
@@ -434,7 +472,13 @@ document.getElementById('modal-backdrop').addEventListener('click', (e) => {
   if (e.target === document.getElementById('modal-backdrop')) closeModal();
 });
 document.querySelectorAll('.side-menu-item').forEach((item) => {
-  item.addEventListener('click', () => openModal(item.dataset.modal));
+  item.addEventListener('click', () => {
+    if (item.dataset.modal === 'How to use Z_Test') {
+      startTour();
+    } else {
+      openModal(item.dataset.modal);
+    }
+  });
 });
 document.getElementById('reset-btn').addEventListener('click', resetQuestion);
 document.getElementById('run-btn').addEventListener('click', runCode);
