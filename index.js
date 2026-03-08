@@ -166,7 +166,7 @@ window.addEventListener('hashchange', () => {
           activeItem.closest('.question-group').classList.add('open');
         }
 
-        renderTests(section);
+        renderTests(section, group.help);
         updateProgress();
         const entry = getSaves()[hash] || {};
         editor.setValue(entry.code || '');
@@ -180,7 +180,7 @@ window.addEventListener('hashchange', () => {
   updateProgress();
 });
 
-function renderTests(section) {
+function renderTests(section, helpUrl) {
   const testsPanel = document.querySelector('.tests-content');
   testsPanel.innerHTML = '';
 
@@ -202,10 +202,24 @@ function renderTests(section) {
 
   section.tests.forEach((t) => {
     const pane = document.createElement('div');
-    pane.classList.add('test-pane');
+    if (t.intro) {
+      pane.classList.add('test-pane', 'test-pane-intro');
+    } else {
+      pane.classList.add('test-pane');
+    }
     pane.textContent = t.description;
     testsPanel.appendChild(pane);
   });
+
+  if (helpUrl) {
+    const helpLink = document.createElement('a');
+    helpLink.classList.add('help-link');
+    helpLink.href = helpUrl;
+    helpLink.target = '_blank';
+    helpLink.rel = 'noopener';
+    helpLink.textContent = 'Need help? Look it up →';
+    testsPanel.appendChild(helpLink);
+  }
 }
 
 const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
@@ -299,7 +313,13 @@ function runCode() {
       window.parent.postMessage({ type: "results", data: clean }, "*");
     };
     Z_T.addBigCheckMark = function() {};
-    const _suite = { "${activeSectionKey}": allTests.find(g => g.id === "${activeGroupId}").sections["${activeSectionKey}"] };
+    const _rawSection = allTests.find(g => g.id === "${activeGroupId}").sections["${activeSectionKey}"];
+    const _suite = {
+      "${activeSectionKey}": {
+        ..._rawSection,
+        tests: _rawSection.tests.map(t => t.intro ? { ...t, test: () => {} } : t),
+      }
+    };
     Z_T.testAll(_suite);
   `
     : '';
@@ -419,6 +439,7 @@ function applyTestResults(data, shouldAdvance = false) {
     .querySelectorAll('.test-pane');
   panes.forEach((pane, i) => {
     if (!results[i]) return;
+    if (pane.classList.contains('test-pane-intro')) return;
     const passed = results[i].result === null;
     pane.classList.remove('test-pass', 'test-fail');
     pane.classList.add(passed ? 'test-pass' : 'test-fail');

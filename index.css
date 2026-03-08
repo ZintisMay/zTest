@@ -282,6 +282,28 @@ body {
   border-radius: 4px;
 }
 
+.test-pane.test-pane-intro {
+  background-color: #1a1a2e;
+  border-color: #3a3a6a;
+  color: #a8a8cc;
+  font-style: italic;
+  text-align: center;
+}
+
+.help-link {
+  display: block;
+  width: 90%;
+  margin: 12px auto 8px;
+  text-align: center;
+  font-size: 12px;
+  color: #f5c518;
+  text-decoration: none;
+}
+
+.help-link:hover {
+  text-decoration: underline;
+}
+
 .test-pane.test-pass {
   background-color: #0a2a0f;
   border-color: #2ecc71;
