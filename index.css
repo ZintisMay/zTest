@@ -225,7 +225,7 @@ body {
 .lessons-footer {
   flex-shrink: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 6px 8px;
   background-color: #1a1a1a;
 }
@@ -624,6 +624,84 @@ body {
 .nav-btn:hover {
   background-color: #f5c518;
   color: #000;
+}
+
+/* ── Clear Save ── */
+.clear-save-btn {
+  background-color: #7a2020;
+  color: #ffaaaa;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clear-save-btn:hover {
+  background-color: #a02828;
+}
+
+.confirm-body {
+  background-color: #1a1a1a;
+  border: 1px solid #7a2020;
+  border-radius: 6px;
+  padding: 32px 40px;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.confirm-title {
+  color: #ff6961;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.confirm-message {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.confirm-cancel-btn {
+  background-color: #333;
+  color: #aaa;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.confirm-cancel-btn:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+.confirm-delete-btn {
+  background-color: #7a2020;
+  color: #ffaaaa;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-delete-btn:hover {
+  background-color: #a02828;
 }
 
 /* ── Intro.js Tour ── */

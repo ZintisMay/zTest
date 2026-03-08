@@ -491,6 +491,33 @@ document.getElementById('clear-btn').addEventListener('click', clearTerminal);
 document.getElementById('collapse-btn').addEventListener('click', () => {
   document.querySelectorAll('.question-group.open').forEach((g) => g.classList.remove('open'));
 });
+
+document.getElementById('clear-save-btn').addEventListener('click', () => {
+  document.getElementById('confirm-backdrop').classList.add('open');
+});
+document.getElementById('confirm-cancel-btn').addEventListener('click', () => {
+  document.getElementById('confirm-backdrop').classList.remove('open');
+});
+document.getElementById('confirm-backdrop').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('confirm-backdrop')) {
+    document.getElementById('confirm-backdrop').classList.remove('open');
+  }
+});
+document.getElementById('confirm-delete-btn').addEventListener('click', () => {
+  localStorage.removeItem('Z_T_saves');
+  document.getElementById('confirm-backdrop').classList.remove('open');
+  activeGroupId = null;
+  activeSectionKey = null;
+  activeSection = null;
+  history.replaceState(null, '', window.location.pathname);
+  document.querySelectorAll('.question-group.open').forEach((g) => g.classList.remove('open'));
+  document.querySelectorAll('.question-item-active').forEach((el) => el.classList.remove('question-item-active'));
+  document.querySelector('.top-center').textContent = '';
+  renderTests(null);
+  updateNavState();
+  updateProgress();
+  editor.setValue('');
+});
 document.getElementById('logo').addEventListener('click', () => {
   history.replaceState(null, '', window.location.pathname);
   activeGroupId = null;

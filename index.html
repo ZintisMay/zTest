@@ -35,6 +35,18 @@
       </ul>
     </nav>
 
+    <!-- Confirm Modal -->
+    <div class="modal-backdrop" id="confirm-backdrop">
+      <div class="confirm-body">
+        <h2 class="confirm-title">Clear All Progress?</h2>
+        <p class="confirm-message">This will permanently delete all your saved code and results. This cannot be undone.</p>
+        <div class="confirm-buttons">
+          <button class="confirm-cancel-btn" id="confirm-cancel-btn">Cancel</button>
+          <button class="confirm-delete-btn" id="confirm-delete-btn">Yes, Please Delete My Progress</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Modal -->
     <div class="modal-backdrop" id="modal-backdrop">
       <div class="modal-body" id="modal-body">
@@ -49,6 +61,7 @@
         <div class="panel-header">Lessons</div>
         <div class="panel-nav-content"></div>
         <div class="lessons-footer">
+          <button class="clear-save-btn" id="clear-save-btn">Clear Save</button>
           <button class="clear-btn" id="collapse-btn">Collapse</button>
         </div>
       </div>
