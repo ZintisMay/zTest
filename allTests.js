@@ -3,7 +3,7 @@ const allTests = [
     id: 'A1',
     title: 'Variables',
     series: 'A',
-    help: ['https://www.w3schools.com/js/js_variables.asp'],
+    help: 'https://www.w3schools.com/js/js_variables.asp',
     sections: {
       varATests: {
         title: `var "a"`,
@@ -343,7 +343,7 @@ const allTests = [
     id: 'A2',
     title: 'Operators',
     series: 'A',
-    help: ['https://www.w3schools.com/js/js_operators.asp'],
+    help: 'https://www.w3schools.com/js/js_operators.asp',
     sections: {
       plusTests: {
         title: `var "a"`,
@@ -531,7 +531,7 @@ const allTests = [
     id: 'A3',
     title: 'Return Values',
     series: 'A',
-    help: ['https://www.w3schools.com/jsref/jsref_return.asp'],
+    help: 'https://www.w3schools.com/jsref/jsref_return.asp',
     sections: {
       returnNumberTests: {
         title: `function "returnNumber"`,
@@ -732,7 +732,7 @@ const allTests = [
     title: 'Basic Functions',
     series: 'A',
 
-    help: ['https://www.w3schools.com/js/js_function_intro.asp'],
+    help: 'https://www.w3schools.com/js/js_function_intro.asp',
     sections: {
       addTests: {
         title: `function "add"`,
@@ -1157,7 +1157,7 @@ const allTests = [
     title: 'Functions with Logic',
     series: 'A',
 
-    help: ['https://www.w3schools.com/js/js_conditionals.asp'],
+    help: 'https://www.w3schools.com/js/js_conditionals.asp',
     sections: {
       greeting: {
         title: `function greeting`,
@@ -1581,7 +1581,7 @@ const allTests = [
     id: 'A6',
     title: 'Objects',
     series: 'A',
-    help: ['https://www.w3schools.com/js/js_objects.asp'],
+    help: 'https://www.w3schools.com/js/js_objects.asp',
     sections: {
       personObject: {
         title: `var "person"`,
@@ -1847,7 +1847,7 @@ const allTests = [
     id: 'A7',
     title: 'Arrays',
     series: 'A',
-    help: ['https://www.w3schools.com/js/js_arrays.asp'],
+    help: 'https://www.w3schools.com/js/js_arrays.asp',
     sections: {
       emptyArray: {
         title: `var "emptyArray"`,
@@ -2084,7 +2084,7 @@ const allTests = [
     title: 'Array Methods',
     series: 'A',
 
-    help: ['https://www.w3schools.com/js/js_array_methods.asp'],
+    help: 'https://www.w3schools.com/js/js_array_methods.asp',
     sections: {
       makeArrayOfX: {
         title: `function "makeArrayOfX"`,
@@ -2367,7 +2367,7 @@ const allTests = [
     title: 'Loops & Strings',
     series: 'A',
 
-    help: ['https://www.w3schools.com/js/js_loops.asp'],
+    help: 'https://www.w3schools.com/js/js_loops.asp',
     sections: {
       makeXAsterisks: {
         title: `function "makeXAsterisks"`,
@@ -2769,7 +2769,7 @@ const allTests = [
     title: 'Array.map',
     series: 'A',
 
-    help: ['https://www.w3schools.com/jsref/jsref_map.asp'],
+    help: 'https://www.w3schools.com/jsref/jsref_map.asp',
     sections: {
       arrayValuesPlusOne: {
         title: `function "arrayValuesPlusOne"`,
@@ -3189,7 +3189,7 @@ const allTests = [
     title: 'Array.filter',
     series: 'A',
 
-    help: ['https://www.w3schools.com/jsref/jsref_filter.asp'],
+    help: 'https://www.w3schools.com/jsref/jsref_filter.asp',
     sections: {
       removeOddNumbers: {
         title: `function "removeOddNumbers"`,

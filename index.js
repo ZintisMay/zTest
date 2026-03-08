@@ -212,15 +212,13 @@ function renderTests(section, helpUrl) {
   });
 
   if (helpUrl) {
-    helpUrl.forEach((url) => {
-      const helpLink = document.createElement('a');
-      helpLink.classList.add('help-link');
-      helpLink.href = url;
-      helpLink.target = '_blank';
-      helpLink.rel = 'noopener';
-      helpLink.textContent = 'Need help? Look it up →';
-      testsPanel.appendChild(helpLink);
-    });
+    const helpLink = document.createElement('a');
+    helpLink.classList.add('help-link');
+    helpLink.href = helpUrl;
+    helpLink.target = '_blank';
+    helpLink.rel = 'noopener';
+    helpLink.textContent = 'Need help? Look it up →';
+    testsPanel.appendChild(helpLink);
   }
 }
 
