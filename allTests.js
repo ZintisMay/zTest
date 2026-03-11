@@ -368,6 +368,12 @@ const allTests = [
             },
           },
           {
+            description: `uses the + operator`,
+            test: () => {
+              expectCode().toUseOperator('+');
+            },
+          },
+          {
             description: `is 654321 + 123456`,
             test: () => {
               expect(a).toBe(654321 + 123456);
@@ -395,6 +401,12 @@ const allTests = [
             description: `is a number`,
             test: () => {
               expect(b).toBeNumber();
+            },
+          },
+          {
+            description: `uses the - operator`,
+            test: () => {
+              expectCode().toUseOperator('-');
             },
           },
           {
@@ -428,6 +440,12 @@ const allTests = [
             },
           },
           {
+            description: `uses the * operator`,
+            test: () => {
+              expectCode().toUseOperator('*');
+            },
+          },
+          {
             description: `is 654321 * 123456`,
             test: () => {
               expect(c).toBe(654321 * 123456);
@@ -455,6 +473,12 @@ const allTests = [
             description: `is a number`,
             test: () => {
               expect(d).toBeNumber();
+            },
+          },
+          {
+            description: `uses the / operator`,
+            test: () => {
+              expectCode().toUseOperator('/');
             },
           },
           {
@@ -488,6 +512,12 @@ const allTests = [
             },
           },
           {
+            description: `uses the % operator`,
+            test: () => {
+              expectCode().toUseOperator('%');
+            },
+          },
+          {
             description: `is 654321 % 123456`,
             test: () => {
               expect(e).toBe(654321 % 123456);
@@ -515,6 +545,12 @@ const allTests = [
             description: `is a number`,
             test: () => {
               expect(f).toBeNumber();
+            },
+          },
+          {
+            description: `uses the ** operator`,
+            test: () => {
+              expectCode().toUseOperator('**');
             },
           },
           {
