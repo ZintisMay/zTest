@@ -164,6 +164,7 @@ function expect(value) {
     // functions
     withArgs,
     callsFunction,
+    callsFunctionWithArgs,
     exec, // used to call function values and store result
 
     //checks function returns
@@ -521,6 +522,34 @@ function expect(value) {
     // was function called?
     if (callCount === 0) {
       throw new Error(`${fName} was not called`);
+    }
+    return this;
+  }
+
+  function callsFunctionWithArgs(obj, fName, ...expectedArgs) {
+    const calls = [];
+    const originalFunction = obj[fName];
+
+    obj[fName] = (...args) => {
+      calls.push(args);
+      return originalFunction.bind(obj)(...args);
+    };
+
+    try {
+      this.exec();
+    } catch (e) {
+      throw new Error(e);
+    } finally {
+      obj[fName] = originalFunction;
+    }
+
+    if (calls.length === 0) {
+      throw new Error(`${fName} was not called`);
+    }
+    if (!calls.some((args) => isEqual(args, expectedArgs))) {
+      throw new Error(
+        `${fName} was not called with ${JSON.stringify(expectedArgs)}`
+      );
     }
     return this;
   }

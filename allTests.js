@@ -4623,4 +4623,34 @@ const allTests = [
       },
     },
   },
+  {
+    id: 'A15',
+    title: 'If Statements',
+    series: 'A',
+    help: 'https://www.w3schools.com/js/js_if_else.asp',
+    sections: {
+      ifTrueTests: {
+        title: `if (true)`,
+        instructions: `Write an if statement with the condition true. Inside it, console.log the string "it's true".`,
+        tests: [
+          {
+            description: `uses an if statement`,
+            test: () => {
+              expectCode().toUseIfStatement();
+            },
+          },
+          {
+            description: `logs "it's true"`,
+            test: () => {
+              expect(() => eval(__src)).callsFunctionWithArgs(
+                console,
+                'log',
+                "it's true",
+              );
+            },
+          },
+        ],
+      },
+    },
+  },
 ];
