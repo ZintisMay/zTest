@@ -630,6 +630,11 @@ function expectCode() {
         throw new Error('does not use the ! operator inside an if condition');
       }
     },
+    toUseVariableInIfCondition(name) {
+      if (!flags?.ifConditionIdentifiers.includes(name)) {
+        throw new Error(`variable "${name}" is not used in an if condition`);
+      }
+    },
     toUseForLoop() {
       if (!flags?.statements.includes('ForStatement')) {
         throw new Error('does not use a for loop');

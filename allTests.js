@@ -346,7 +346,7 @@ const allTests = [
     help: 'https://www.w3schools.com/js/js_operators.asp',
     sections: {
       plusTests: {
-        title: `var "a"`,
+        title: `var "a" +`,
         instructions: `Declare a variable "a" and it should be the number equal to 654321 plus 123456`,
         tests: [
           {
@@ -382,7 +382,7 @@ const allTests = [
         ],
       },
       minusTests: {
-        title: `var "b"`,
+        title: `var "b" -`,
         instructions: `Declare a variable "b" and it should be the number equal to 654321 minus 123456`,
         tests: [
           {
@@ -418,7 +418,7 @@ const allTests = [
         ],
       },
       multiplyTests: {
-        title: `var "c"`,
+        title: `var "c" *`,
         instructions: `Declare a variable "c" and it should be the number equal to 654321 times 123456`,
         tests: [
           {
@@ -454,7 +454,7 @@ const allTests = [
         ],
       },
       divideTests: {
-        title: `var "d"`,
+        title: `var "d" /`,
         instructions: `Declare a variable "d" and it should be the number equal to 654321 divided by 123456`,
         tests: [
           {
@@ -490,7 +490,7 @@ const allTests = [
         ],
       },
       modulusTests: {
-        title: `var "e"`,
+        title: `var "e" %`,
         instructions: `Declare a variable "e" and it should be the number equal to 654321 modulus 123456`,
         tests: [
           {
@@ -526,7 +526,7 @@ const allTests = [
         ],
       },
       exponentTests: {
-        title: `var "f"`,
+        title: `var "f" **`,
         instructions: `Declare a variable "f" and it should be the number equal to 2 to the 20th power`,
         tests: [
           {
@@ -4710,6 +4710,174 @@ const allTests = [
             description: `logs "you should see this"`,
             test: () => {
               expectConsole().toHaveLogged('you should see this');
+            },
+          },
+        ],
+      },
+      numberComparisonTests: {
+        title: `number comparison`,
+        instructions: `Write if (5 > 3) and inside it console.log the string "five is greater than three".`,
+        tests: [
+          {
+            description: `uses an if statement`,
+            test: () => {
+              expectCode().toUseIfStatement();
+            },
+          },
+          {
+            description: `uses the > operator`,
+            test: () => {
+              expectCode().toUseOperator('>');
+            },
+          },
+          {
+            description: `logs "five is greater than three"`,
+            test: () => {
+              expectConsole().toHaveLogged('five is greater than three');
+            },
+          },
+        ],
+      },
+      variableComparisonTests: {
+        title: `variable comparison`,
+        instructions: `Declare a variable "a" set to 5 and a variable "b" set to 3. Write if (a > b) and inside it console.log the string "five is greater than three".`,
+        tests: [
+          {
+            description: `"a" is 5`,
+            test: () => {
+              expect(a).toBe(5);
+            },
+          },
+          {
+            description: `"b" is 3`,
+            test: () => {
+              expect(b).toBe(3);
+            },
+          },
+          {
+            description: `uses an if statement`,
+            test: () => {
+              expectCode().toUseIfStatement();
+            },
+          },
+          {
+            description: `uses the > operator`,
+            test: () => {
+              expectCode().toUseOperator('>');
+            },
+          },
+          {
+            description: `uses "a" in the if condition`,
+            test: () => {
+              expectCode().toUseVariableInIfCondition('a');
+            },
+          },
+          {
+            description: `uses "b" in the if condition`,
+            test: () => {
+              expectCode().toUseVariableInIfCondition('b');
+            },
+          },
+          {
+            description: `logs "five is greater than three"`,
+            test: () => {
+              expectConsole().toHaveLogged('five is greater than three');
+            },
+          },
+        ],
+      },
+      equalsComparisonTests: {
+        title: `equals ==`,
+        instructions: `Declare a variable "a" set to 5 and a variable "b" set to 5. Write if (a == b) and inside it console.log the string "a and b are equal".`,
+        tests: [
+          {
+            description: `uses an if statement`,
+            test: () => {
+              expectCode().toUseIfStatement();
+            },
+          },
+          {
+            description: `uses the == operator`,
+            test: () => {
+              expectCode().toUseOperator('==');
+            },
+          },
+          {
+            description: `uses "a" in the if condition`,
+            test: () => {
+              expectCode().toUseVariableInIfCondition('a');
+            },
+          },
+          {
+            description: `uses "b" in the if condition`,
+            test: () => {
+              expectCode().toUseVariableInIfCondition('b');
+            },
+          },
+          {
+            description: `"a" is 5`,
+            test: () => {
+              expect(a).toBe(5);
+            },
+          },
+          {
+            description: `"b" is 5`,
+            test: () => {
+              expect(b).toBe(5);
+            },
+          },
+          {
+            description: `logs "a and b are equal"`,
+            test: () => {
+              expectConsole().toHaveLogged('a and b are equal');
+            },
+          },
+        ],
+      },
+      notEqualsComparisonTests: {
+        title: `not equals !=`,
+        instructions: `Declare a variable "a" set to 5 and a variable "b" set to 3. Write if (a != b) and inside it console.log the string "a and b are not equal".`,
+        tests: [
+          {
+            description: `"a" is 5`,
+            test: () => {
+              expect(a).toBe(5);
+            },
+          },
+          {
+            description: `"b" is 3`,
+            test: () => {
+              expect(b).toBe(3);
+            },
+          },
+          {
+            description: `uses an if statement`,
+            test: () => {
+              expectCode().toUseIfStatement();
+            },
+          },
+          {
+            description: `uses the != operator`,
+            test: () => {
+              expectCode().toUseOperator('!=');
+            },
+          },
+          {
+            description: `uses "a" in the if condition`,
+            test: () => {
+              expectCode().toUseVariableInIfCondition('a');
+            },
+          },
+          {
+            description: `uses "b" in the if condition`,
+            test: () => {
+              expectCode().toUseVariableInIfCondition('b');
+            },
+          },
+          {
+            description: `logs "a and b are not equal"`,
+            test: () => {
+              expectConsole().toHaveLogged('a and b are not equal');
             },
           },
         ],

@@ -301,6 +301,17 @@ function buildAstFlags(code) {
     let hasIfTrue = false;
     let hasIfFalse = false;
     let hasIfWithNot = false;
+    const ifConditionIdentifiers = new Set();
+
+    function containsIdentifier(node, name) {
+      if (!node || typeof node !== 'object' || !node.type) return false;
+      if (node.type === 'Identifier' && node.name === name) return true;
+      return Object.values(node).some((val) => {
+        if (Array.isArray(val)) return val.some((n) => containsIdentifier(n, name));
+        if (val && typeof val === 'object' && val.type) return containsIdentifier(val, name);
+        return false;
+      });
+    }
 
     function containsNot(node) {
       if (!node || typeof node !== 'object' || !node.type) return false;
@@ -331,6 +342,17 @@ function buildAstFlags(code) {
             if (node.test.value === false) hasIfFalse = true;
           }
           if (containsNot(node.test)) hasIfWithNot = true;
+          if (node.test) {
+            const collectIdentifiers = (n) => {
+              if (!n || typeof n !== 'object' || !n.type) return;
+              if (n.type === 'Identifier') ifConditionIdentifiers.add(n.name);
+              Object.values(n).forEach((val) => {
+                if (Array.isArray(val)) val.forEach(collectIdentifiers);
+                else if (val && typeof val === 'object' && val.type) collectIdentifiers(val);
+              });
+            };
+            collectIdentifiers(node.test);
+          }
           stmts.add(node.type);
           break;
         case 'ForStatement':
@@ -391,6 +413,7 @@ function buildAstFlags(code) {
       hasIfTrue,
       hasIfFalse,
       hasIfWithNot,
+      ifConditionIdentifiers: [...ifConditionIdentifiers],
     };
   } catch (e) {
     return null;
