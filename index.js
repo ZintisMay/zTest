@@ -298,6 +298,19 @@ function buildAstFlags(code) {
     let hasSpread = false;
     let hasRest = false;
     let hasDestructuring = false;
+    let hasIfTrue = false;
+    let hasIfFalse = false;
+    let hasIfWithNot = false;
+
+    function containsNot(node) {
+      if (!node || typeof node !== 'object' || !node.type) return false;
+      if (node.type === 'UnaryExpression' && node.operator === '!') return true;
+      return Object.values(node).some((val) => {
+        if (Array.isArray(val)) return val.some(containsNot);
+        if (val && typeof val === 'object' && val.type) return containsNot(val);
+        return false;
+      });
+    }
 
     function walk(node) {
       if (!node || typeof node !== 'object' || !node.type) return;
@@ -313,6 +326,13 @@ function buildAstFlags(code) {
           assignOps.add(node.operator);
           break;
         case 'IfStatement':
+          if (node.test?.type === 'BooleanLiteral') {
+            if (node.test.value === true) hasIfTrue = true;
+            if (node.test.value === false) hasIfFalse = true;
+          }
+          if (containsNot(node.test)) hasIfWithNot = true;
+          stmts.add(node.type);
+          break;
         case 'ForStatement':
         case 'ForInStatement':
         case 'ForOfStatement':
@@ -368,6 +388,9 @@ function buildAstFlags(code) {
       hasSpread,
       hasRest,
       hasDestructuring,
+      hasIfTrue,
+      hasIfFalse,
+      hasIfWithNot,
     };
   } catch (e) {
     return null;
@@ -441,8 +464,10 @@ function runCode() {
     <script>
       const __src = ${JSON.stringify(code)};
       const __astFlags = ${JSON.stringify(astFlags)};
+      const __logs = [];
       window.console.log = function(...args) {
         if (typeof args[0] === "string" && args[0].startsWith("%c")) return;
+        __logs.push(args);
         window.parent.postMessage({ type: "log", data: args.map(String) }, "*");
       };
       window.onerror = function(message, source, line) {

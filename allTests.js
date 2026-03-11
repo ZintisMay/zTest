@@ -4631,7 +4631,7 @@ const allTests = [
     sections: {
       ifTrueTests: {
         title: `if (true)`,
-        instructions: `Write an if statement with the condition true. Inside it, console.log the string "it's true".`,
+        instructions: `Write an if statement with the condition "true". Inside it, console.log the string "it's true".`,
         tests: [
           {
             description: `uses an if statement`,
@@ -4640,13 +4640,76 @@ const allTests = [
             },
           },
           {
-            description: `logs "it's true"`,
+            description: `if statement has "true" argument`,
             test: () => {
-              expect(() => eval(__src)).callsFunctionWithArgs(
-                console,
-                'log',
-                "it's true",
-              );
+              expectCode().toUseIfTrue();
+            },
+          },
+        ],
+      },
+      ifFalseTests: {
+        title: `if (false)`,
+        instructions: `Write an if statement with the condition "false". Inside it, console.log the string "you shouldn't see this". Nothing should appear in the terminal.`,
+        tests: [
+          {
+            description: `uses an if statement`,
+            test: () => {
+              expectCode().toUseIfStatement();
+            },
+          },
+          {
+            description: `has a console.log inside it`,
+            test: () => {
+              expectCode().toContain(`console.log(`);
+            },
+          },
+          {
+            description: `has "you shouldn't see this" as argument for console.log()`,
+            test: () => {
+              expectCode().toContain(`console.log("you shouldn't see this")`);
+            },
+          },
+          {
+            description: `does not log anything`,
+            test: () => {
+              expectConsole().notToHaveLogged();
+            },
+          },
+        ],
+      },
+
+      ifNotFalseTests: {
+        title: `if NOT (false)`,
+        instructions: `Write an if statement with the condition "!false". Inside it, console.log the string "you should see this!".`,
+        tests: [
+          {
+            description: `uses an if statement`,
+            test: () => {
+              expectCode().toUseIfStatement();
+            },
+          },
+          {
+            description: `if statement has "!" (NOT) before the "false" argument`,
+            test: () => {
+              expectCode().toUseIfWithNot();
+            },
+          },
+          {
+            description: `has a console.log`,
+            test: () => {
+              expectCode().toContain(`console.log(`);
+            },
+          },
+          {
+            description: `has "you should see this" as argument for console.log()`,
+            test: () => {
+              expectCode().toContain(`console.log("you should see this")`);
+            },
+          },
+          {
+            description: `logs "you should see this"`,
+            test: () => {
+              expectConsole().toHaveLogged('you should see this');
             },
           },
         ],

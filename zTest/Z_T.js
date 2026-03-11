@@ -555,6 +555,45 @@ function expect(value) {
   }
 }
 
+// Checks console.log calls captured during student code execution
+function expectConsole() {
+  const logs = typeof __logs !== 'undefined' ? __logs : [];
+  return {
+    toHaveLogged(...expected) {
+      if (!logs.some((args) => isEqual(args, expected))) {
+        throw new Error(
+          `console.log was not called with ${JSON.stringify(expected)}`,
+        );
+      }
+    },
+    notToHaveLogged() {
+      if (logs.length > 0) {
+        throw new Error(`console.log was called but should not have been`);
+      }
+    },
+    toHaveLoggedAnything() {
+      if (logs.length === 0) {
+        throw new Error(`console.log was never called`);
+      }
+    },
+    toHaveLoggedInOrder(...expectedCalls) {
+      let logIndex = 0;
+      for (const expected of expectedCalls) {
+        const arr = Array.isArray(expected) ? expected : [expected];
+        while (logIndex < logs.length && !isEqual(logs[logIndex], arr)) {
+          logIndex++;
+        }
+        if (logIndex >= logs.length) {
+          throw new Error(
+            `console.log was not called with ${JSON.stringify(arr)} in the expected order`,
+          );
+        }
+        logIndex++;
+      }
+    },
+  };
+}
+
 // Checks student source code and AST flags injected by the test runner
 function expectCode() {
   const flags = typeof __astFlags !== 'undefined' ? __astFlags : null;
@@ -574,6 +613,21 @@ function expectCode() {
     toUseIfStatement() {
       if (!flags?.statements.includes('IfStatement')) {
         throw new Error('does not use an if statement');
+      }
+    },
+    toUseIfTrue() {
+      if (!flags?.hasIfTrue) {
+        throw new Error('does not use if (true)');
+      }
+    },
+    toUseIfFalse() {
+      if (!flags?.hasIfFalse) {
+        throw new Error('does not use if (false)');
+      }
+    },
+    toUseIfWithNot() {
+      if (!flags?.hasIfWithNot) {
+        throw new Error('does not use the ! operator inside an if condition');
       }
     },
     toUseForLoop() {
