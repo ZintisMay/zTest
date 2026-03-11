@@ -680,6 +680,11 @@ function expectCode() {
         throw new Error('does not use a template literal');
       }
     },
+    toUseTemplateLiteralWithInterpolation() {
+      if (!flags?.hasTemplateLiteralWithInterpolation) {
+        throw new Error('does not use a template literal with interpolation');
+      }
+    },
     toUseLet() {
       if (!flags?.declarations.includes('let')) {
         throw new Error('does not use "let"');

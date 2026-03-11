@@ -295,6 +295,7 @@ function buildAstFlags(code) {
     let hasTernary = false;
     let hasArrowFunction = false;
     let hasTemplateLiteral = false;
+    let hasTemplateLiteralWithInterpolation = false;
     let hasSpread = false;
     let hasRest = false;
     let hasDestructuring = false;
@@ -375,6 +376,7 @@ function buildAstFlags(code) {
           break;
         case 'TemplateLiteral':
           hasTemplateLiteral = true;
+          if (node.expressions?.length > 0) hasTemplateLiteralWithInterpolation = true;
           break;
         case 'SpreadElement':
           hasSpread = true;
@@ -407,6 +409,7 @@ function buildAstFlags(code) {
       hasTernary,
       hasArrowFunction,
       hasTemplateLiteral,
+      hasTemplateLiteralWithInterpolation,
       hasSpread,
       hasRest,
       hasDestructuring,
