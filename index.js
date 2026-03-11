@@ -280,6 +280,100 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+function buildAstFlags(code) {
+  try {
+    const { ast } = prettier.__debug.parse(code, {
+      parser: 'babel',
+      plugins: prettierPlugins,
+    });
+
+    const ops = new Set();
+    const logicalOps = new Set();
+    const assignOps = new Set();
+    const stmts = new Set();
+    const decls = new Set();
+    let hasTernary = false;
+    let hasArrowFunction = false;
+    let hasTemplateLiteral = false;
+    let hasSpread = false;
+    let hasRest = false;
+    let hasDestructuring = false;
+
+    function walk(node) {
+      if (!node || typeof node !== 'object' || !node.type) return;
+      switch (node.type) {
+        case 'BinaryExpression':
+        case 'UnaryExpression':
+          ops.add(node.operator);
+          break;
+        case 'LogicalExpression':
+          logicalOps.add(node.operator);
+          break;
+        case 'AssignmentExpression':
+          assignOps.add(node.operator);
+          break;
+        case 'IfStatement':
+        case 'ForStatement':
+        case 'ForInStatement':
+        case 'ForOfStatement':
+        case 'WhileStatement':
+        case 'DoWhileStatement':
+        case 'SwitchStatement':
+        case 'TryStatement':
+          stmts.add(node.type);
+          break;
+        case 'VariableDeclaration':
+          decls.add(node.kind);
+          break;
+        case 'ConditionalExpression':
+          hasTernary = true;
+          break;
+        case 'ArrowFunctionExpression':
+          hasArrowFunction = true;
+          break;
+        case 'TemplateLiteral':
+          hasTemplateLiteral = true;
+          break;
+        case 'SpreadElement':
+          hasSpread = true;
+          break;
+        case 'RestElement':
+          hasRest = true;
+          break;
+        case 'ObjectPattern':
+        case 'ArrayPattern':
+          hasDestructuring = true;
+          break;
+      }
+      for (const val of Object.values(node)) {
+        if (Array.isArray(val)) {
+          val.forEach(walk);
+        } else if (val && typeof val === 'object' && val.type) {
+          walk(val);
+        }
+      }
+    }
+
+    walk(ast);
+
+    return {
+      operators: [...ops],
+      logicalOperators: [...logicalOps],
+      assignmentOperators: [...assignOps],
+      statements: [...stmts],
+      declarations: [...decls],
+      hasTernary,
+      hasArrowFunction,
+      hasTemplateLiteral,
+      hasSpread,
+      hasRest,
+      hasDestructuring,
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
 function runCode() {
   try {
     const cursor = editor.getCursor();
@@ -294,6 +388,7 @@ function runCode() {
   }
 
   const code = editor.getValue();
+  const astFlags = buildAstFlags(code);
   terminalOutput.innerHTML = '';
 
   const existing = document.getElementById('sandbox');
@@ -344,6 +439,8 @@ function runCode() {
   iframeDoc.open();
   iframeDoc.write(`
     <script>
+      const __src = ${JSON.stringify(code)};
+      const __astFlags = ${JSON.stringify(astFlags)};
       window.console.log = function(...args) {
         if (typeof args[0] === "string" && args[0].startsWith("%c")) return;
         window.parent.postMessage({ type: "log", data: args.map(String) }, "*");

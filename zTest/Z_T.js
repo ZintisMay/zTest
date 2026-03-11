@@ -8,7 +8,7 @@ function isEqual(a, b) {
     return a.every((item, i) => isEqual(item, b[i]));
   }
 
-  if (typeof a === "object") {
+  if (typeof a === 'object') {
     const keysA = Object.keys(a);
     const keysB = Object.keys(b);
     if (keysA.length !== keysB.length) return false;
@@ -19,41 +19,41 @@ function isEqual(a, b) {
 }
 
 const Z_T = {
-  containerParent: document.getElementById("Z_T") || document.body,
+  containerParent: document.getElementById('Z_T') || document.body,
   testContainer: null,
   testCounter: [],
   comletelyPassed: true,
   type: {
-    BOOLEAN: "boolean",
-    NUMBER: "number",
-    STRING: "string",
-    FUNCTION: "function",
-    OBJECT: "object",
+    BOOLEAN: 'boolean',
+    NUMBER: 'number',
+    STRING: 'string',
+    FUNCTION: 'function',
+    OBJECT: 'object',
     // ARRAY: "", // This one doesn't work like that, need Array.isArray(arr)
   },
   colors: {
-    LIGHT_RED: "#FF6961",
-    LIGHT_GREEN: "#77DD77",
-    LIGHT_ORANGE: "#FFB347",
-    DARK_GREEN: "green",
-    DARK_RED: "#8b0000",
-    GRAY: "#6c757d",
+    LIGHT_RED: '#FF6961',
+    LIGHT_GREEN: '#77DD77',
+    LIGHT_ORANGE: '#FFB347',
+    DARK_GREEN: 'green',
+    DARK_RED: '#8b0000',
+    GRAY: '#6c757d',
   },
   css: {
     color: {
-      BLACK: "color:black;",
-      PASSED: "color:green;",
-      FAILED: "color:#8b0000;",
-      WARNING: "color:orange;",
-      NORMAL: "color:default;",
-      PRIMARY: "color:#1DA1F2;",
+      BLACK: 'color:black;',
+      PASSED: 'color:green;',
+      FAILED: 'color:#8b0000;',
+      WARNING: 'color:orange;',
+      NORMAL: 'color:default;',
+      PRIMARY: 'color:#1DA1F2;',
     },
     bg: {
-      PASSED: "background-color:green;",
-      FAILED: "background-color:#8b0000;",
-      WARNING: "background-color:orange;",
-      NORMAL: "background-color:default;",
-      PRIMARY: "background-color:#1DA1F2;",
+      PASSED: 'background-color:green;',
+      FAILED: 'background-color:#8b0000;',
+      WARNING: 'background-color:orange;',
+      NORMAL: 'background-color:default;',
+      PRIMARY: 'background-color:#1DA1F2;',
     },
   },
 };
@@ -67,7 +67,7 @@ Z_T.testAll = function (testSuite) {
 
     console.log(
       `%cSection: ${title}`,
-      Z_T.css.bg.PRIMARY + " " + Z_T.css.color.BLACK
+      Z_T.css.bg.PRIMARY + ' ' + Z_T.css.color.BLACK,
     );
 
     let sectionResult = {};
@@ -107,7 +107,7 @@ Z_T.test = function (description, testFunc) {
     console.log(
       `%c Test #${testCounter.length}:` + ` ${description} %c PASSED`,
       PRIMARY,
-      PASSED
+      PASSED,
     );
   } catch (e) {
     error = e;
@@ -115,7 +115,7 @@ Z_T.test = function (description, testFunc) {
       `%c Test #${testCounter.length}:` + ` ${description} %c FAILED %c ${e}`,
       PRIMARY,
       FAILED,
-      WARNING
+      WARNING,
     );
   }
   return error || null;
@@ -215,42 +215,42 @@ function expect(value) {
   }
 
   function toBeNumber() {
-    if (typeof this.value !== "number") {
+    if (typeof this.value !== 'number') {
       throw new Error(`is not a number`);
     }
     return this;
   }
 
   function toBeDecimal() {
-    if (typeof this.value !== "number" || this.value % 1 === 0) {
+    if (typeof this.value !== 'number' || this.value % 1 === 0) {
       throw new Error(`is not a decimal`);
     }
     return this;
   }
 
   function toBeInteger() {
-    if (typeof this.value !== "number" || this.value % 1 !== 0) {
+    if (typeof this.value !== 'number' || this.value % 1 !== 0) {
       throw new Error(`is not an integer`);
     }
     return this;
   }
 
   function toBeString() {
-    if (typeof this.value !== "string") {
+    if (typeof this.value !== 'string') {
       throw new Error(`is not string`);
     }
     return this;
   }
 
   function toBeFunction() {
-    if (typeof this.value !== "function") {
+    if (typeof this.value !== 'function') {
       throw new Error(`is not function`);
     }
     return this;
   }
 
   function toBeBoolean() {
-    if (typeof this.value !== "boolean") {
+    if (typeof this.value !== 'boolean') {
       throw new Error(`is not a boolean`);
     }
     return this;
@@ -264,7 +264,7 @@ function expect(value) {
   }
 
   function toBeObject() {
-    if (typeof this.value !== "object" || this.value === null) {
+    if (typeof this.value !== 'object' || this.value === null) {
       throw new Error(`is not object`);
     } else if (Array.isArray(this.value)) {
       throw new Error(`is an array (technically an object)`);
@@ -330,7 +330,7 @@ function expect(value) {
   function toHaveKeys(...keys) {
     let missingKeys = keys.filter((key) => this.value[key] === undefined);
     if (missingKeys.length > 0) {
-      throw new Error(`object does not have keys: ${missingKeys.join(", ")}`);
+      throw new Error(`object does not have keys: ${missingKeys.join(', ')}`);
     }
     return this;
   }
@@ -359,15 +359,15 @@ function expect(value) {
   function toBeSameArrayAs(x) {
     if (!Array.isArray(x)) {
       throw new Error(
-        `There is a problem with the test (value to compare to is not array type), please contact the test creator.`
+        `There is a problem with the test (value to compare to is not array type), please contact the test creator.`,
       );
     } else if (!Array.isArray(this.value)) {
       throw new Error(`Value is not array type`);
     } else if (!isEqual(x, this.value)) {
       throw new Error(
         `your array ${JSON.stringify(
-          this.value
-        )} is not the same as ${JSON.stringify(x)}`
+          this.value,
+        )} is not the same as ${JSON.stringify(x)}`,
       );
     }
     return this;
@@ -376,15 +376,15 @@ function expect(value) {
   function toBeSameObjectAs(x) {
     if (typeof x !== Z_T.type.OBJECT) {
       throw new Error(
-        `There is a problem with the test (value to compare to is not object type), please contact the test creator.`
+        `There is a problem with the test (value to compare to is not object type), please contact the test creator.`,
       );
     } else if (Array.isArray(x)) {
       throw new Error(`value is an array, but should be object.`);
     } else if (!isEqual(x, this.value)) {
       throw new Error(
         `your object ${JSON.stringify(
-          this.value
-        )} is not the same as ${JSON.stringify(x)}`
+          this.value,
+        )} is not the same as ${JSON.stringify(x)}`,
       );
     }
     return this;
@@ -399,11 +399,11 @@ function expect(value) {
     if (!isEqual(returnVal, expectedVal)) {
       let ev = expectedVal;
       let rv = returnVal;
-      if (typeof ev === "object") {
-        ev = JSON.stringify(ev, null, " ");
+      if (typeof ev === 'object') {
+        ev = JSON.stringify(ev, null, ' ');
       }
-      if (typeof rv === "object") {
-        rv = JSON.stringify(rv, null, " ");
+      if (typeof rv === 'object') {
+        rv = JSON.stringify(rv, null, ' ');
       }
       throw new Error(`expected return value ${ev} but got ${rv}`);
     }
@@ -480,13 +480,13 @@ function expect(value) {
     return this;
   }
   function takesXArguments(argumentCount) {
-    if (typeof this.value !== "function") {
+    if (typeof this.value !== 'function') {
       throw new Error(
-        `should take ${argumentCount} arguments but isn't a function`
+        `should take ${argumentCount} arguments but isn't a function`,
       );
     } else if (this.value.length !== argumentCount) {
       throw new Error(
-        `should take ${argumentCount} arguments but takes ${this.value.length} instead`
+        `should take ${argumentCount} arguments but takes ${this.value.length} instead`,
       );
     }
     return this;
@@ -526,10 +526,109 @@ function expect(value) {
   }
 }
 
+// Checks student source code and AST flags injected by the test runner
+function expectCode() {
+  const flags = typeof __astFlags !== 'undefined' ? __astFlags : null;
+  const src = typeof __src !== 'undefined' ? __src : '';
+
+  return {
+    toUseOperator(op) {
+      if (!flags?.operators.includes(op)) {
+        throw new Error(`does not use the "${op}" operator`);
+      }
+    },
+    toUseLogicalOperator(op) {
+      if (!flags?.logicalOperators.includes(op)) {
+        throw new Error(`does not use the "${op}" operator`);
+      }
+    },
+    toUseIfStatement() {
+      if (!flags?.statements.includes('IfStatement')) {
+        throw new Error('does not use an if statement');
+      }
+    },
+    toUseForLoop() {
+      if (!flags?.statements.includes('ForStatement')) {
+        throw new Error('does not use a for loop');
+      }
+    },
+    toUseForInLoop() {
+      if (!flags?.statements.includes('ForInStatement')) {
+        throw new Error('does not use a for...in loop');
+      }
+    },
+    toUseForOfLoop() {
+      if (!flags?.statements.includes('ForOfStatement')) {
+        throw new Error('does not use a for...of loop');
+      }
+    },
+    toUseWhileLoop() {
+      if (!flags?.statements.some((s) => s.includes('While'))) {
+        throw new Error('does not use a while loop');
+      }
+    },
+    toUseSwitchStatement() {
+      if (!flags?.statements.includes('SwitchStatement')) {
+        throw new Error('does not use a switch statement');
+      }
+    },
+    toUseTryCatch() {
+      if (!flags?.statements.includes('TryStatement')) {
+        throw new Error('does not use a try/catch block');
+      }
+    },
+    toUseTernary() {
+      if (!flags?.hasTernary) {
+        throw new Error('does not use a ternary operator');
+      }
+    },
+    toUseArrowFunction() {
+      if (!flags?.hasArrowFunction) {
+        throw new Error('does not use an arrow function');
+      }
+    },
+    toUseTemplateLiteral() {
+      if (!flags?.hasTemplateLiteral) {
+        throw new Error('does not use a template literal');
+      }
+    },
+    toUseLet() {
+      if (!flags?.declarations.includes('let')) {
+        throw new Error('does not use "let"');
+      }
+    },
+    toUseConst() {
+      if (!flags?.declarations.includes('const')) {
+        throw new Error('does not use "const"');
+      }
+    },
+    toUseSpread() {
+      if (!flags?.hasSpread) {
+        throw new Error('does not use the spread operator');
+      }
+    },
+    toUseRest() {
+      if (!flags?.hasRest) {
+        throw new Error('does not use rest parameters');
+      }
+    },
+    toUseDestructuring() {
+      if (!flags?.hasDestructuring) {
+        throw new Error('does not use destructuring');
+      }
+    },
+    toContain(str) {
+      if (!src.includes(str)) {
+        throw new Error(`source does not contain "${str}"`);
+      }
+    },
+  };
+}
+
 // Displays the test results as divs on the page
 Z_T.displayResults = function (section) {
   // Create vertical Section list
-  const testContainer = document.createElement("div");
+  const testContainer = document.createElement('div');
   testContainer.style.cssText = `
     display:inline-flex;
     flex-direction:column;
@@ -552,13 +651,13 @@ Z_T.displayResults = function (section) {
 
 // Displays each section as a colored box
 Z_T.populateSection = function (section) {
-  const { testId, results = [], title = "NO TITLE", instructions } = section;
+  const { testId, results = [], title = 'NO TITLE', instructions } = section;
   const {
     colors: { LIGHT_GREEN, LIGHT_ORANGE, LIGHT_RED, DARK_GREEN, DARK_RED },
   } = Z_T;
 
   // Create Div
-  const sectionDiv = document.createElement("div");
+  const sectionDiv = document.createElement('div');
 
   // Assign bg color
   const allTestsFailed = results.every((item) => !!item.result);
@@ -582,7 +681,7 @@ Z_T.populateSection = function (section) {
   `;
 
   // Create Title
-  let h2 = document.createElement("h2");
+  let h2 = document.createElement('h2');
   h2.style.cssText = `
     padding: 0px;
     margin: 0px;
@@ -592,9 +691,9 @@ Z_T.populateSection = function (section) {
 
   // Create Instructions
   if (instructions) {
-    let instructionText = document.createElement("p");
-    let b = document.createElement("b");
-    b.textContent = "Instructions: ";
+    let instructionText = document.createElement('p');
+    let b = document.createElement('b');
+    b.textContent = 'Instructions: ';
     instructionText.appendChild(b);
     instructionText.innerHTML += instructions;
     instructionText.style.cssText = `
@@ -606,18 +705,18 @@ Z_T.populateSection = function (section) {
   // Go through tests
   results.forEach((item) => {
     const itemPassed = !item.result;
-    let testContainer = document.createElement("div");
+    let testContainer = document.createElement('div');
     testContainer.style.cssText = `
       padding: 3px;
       border-radius: 5px;
     `;
 
     // Add pass fail sticker
-    const passFail = itemPassed ? "PASSED " : "FAILED ";
-    let span = document.createElement("span");
+    const passFail = itemPassed ? 'PASSED ' : 'FAILED ';
+    let span = document.createElement('span');
     span.style.cssText = `padding:2px 5px;display:inline-flex;margin:0 3px 0 0;border-radius:5px;`;
     span.style.backgroundColor = itemPassed ? DARK_GREEN : DARK_RED;
-    span.style.color = "white";
+    span.style.color = 'white';
     span.innerHTML = passFail;
     testContainer.appendChild(span);
 
@@ -626,11 +725,11 @@ Z_T.populateSection = function (section) {
 
     // Add Test Error
     if (item.result) {
-      let errorSpan = document.createElement("span");
+      let errorSpan = document.createElement('span');
       errorSpan.style.color = DARK_RED;
       // errorSpan.style.backgroundColor = "red";
       errorSpan.style.fontWeight = 700;
-      errorSpan.textContent = " " + item.result;
+      errorSpan.textContent = ' ' + item.result;
       testContainer.append(errorSpan);
     }
 
@@ -642,7 +741,7 @@ Z_T.populateSection = function (section) {
 };
 
 Z_T.addBigCheckMark = function () {
-  const checkMark = document.createElement("div");
+  const checkMark = document.createElement('div');
   checkMark.style.cssText = `
     position: fixed;
     top: 50%;
@@ -654,6 +753,6 @@ Z_T.addBigCheckMark = function () {
     font-weight: bold;
     opacity:.5;
   `;
-  checkMark.innerHTML = "&check;";
+  checkMark.innerHTML = '&check;';
   document.body.appendChild(checkMark);
 };
