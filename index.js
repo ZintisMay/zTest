@@ -172,6 +172,11 @@ function renderQuestionCards() {
 window.addEventListener('hashchange', () => {
   const hash = window.location.hash;
   const topCenter = document.querySelector('.top-center');
+  terminalOutput.innerHTML = '';
+  if (messageHandler) {
+    window.removeEventListener('message', messageHandler);
+    messageHandler = null;
+  }
 
   for (const group of allTests) {
     if (group.lessons) {
@@ -505,6 +510,7 @@ function runCode() {
   const astFlags = buildAstFlags(code);
   terminalOutput.innerHTML = '';
 
+  // Clear our prior iframe
   const existing = document.getElementById('sandbox');
   if (existing) existing.remove();
 
@@ -650,9 +656,6 @@ function updateNavState() {
 function applyTestResults(data, shouldAdvance = false) {
   if (!activeSectionKey || !data[activeSectionKey]) return;
   const existingEntry = getSaves()[window.location.hash];
-  const alreadyPassed = existingEntry?.results?.[
-    activeSectionKey
-  ]?.results?.every((r) => r.result === null);
   const results = data[activeSectionKey].results;
   const panes = document
     .querySelector('.tests-content')
@@ -678,14 +681,6 @@ function applyTestResults(data, shouldAdvance = false) {
 
   saveEntry(window.location.hash, { results: data });
   updateNavState();
-
-  const allPassed = data[activeSectionKey].results.every(
-    (r) => r.result === null,
-  );
-  if (shouldAdvance && allPassed && alreadyPassed) {
-    const next = getNextHash();
-    if (next) window.location.hash = next;
-  }
 }
 
 function resetQuestion() {
