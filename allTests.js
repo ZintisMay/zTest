@@ -3,8 +3,10 @@ const allTests = [
     id: '1',
     title: 'Variables',
     help: 'https://www.w3schools.com/js/js_variables.asp',
-    lessons: [
+    items: [
       {
+        type: 'lesson',
+        key: 'lesson-0',
         title: 'console.log()',
         text: `You're going to see a lot of console.log(), and when writing code, you'll use this to peek at values.<br><br>
 console.log("Hi there") outputs it into the "terminal" or "console" (those terms are interchangeable).<br><br>
@@ -18,6 +20,8 @@ console.log(true);
 // You'll see the output below in the Terminal`,
       },
       {
+        type: 'lesson',
+        key: 'lesson-1',
         title: 'Variables',
         text: `A variable is a way to name a piece of information.<br><br>
 
@@ -49,12 +53,16 @@ const PI = 3.14;
 PI = "pie"; // This throws an error!`,
       },
       {
+        type: 'lesson',
+        key: 'lesson-2',
         title: 'Data',
         text: `The basic forms of data (aka primitive data) are strings, numbers, and booleans:<br><br>
 
-<b>string</b> — This is a word or sentence. Basically any series of characters from your keyboard (and more). They always are inside a \' or \" or \` pair (single quote, double quote, or backtick).<br>
-<b>number</b> — Any numbers. So like 1, or 200, or -50.<br>
-<b>boolean</b> — This can be "true" or "false".`,
+<b>string</b> — This is a word or sentence. Basically any series of characters from your keyboard (and more). They always are inside a \' or \" or \` pair (single quote, double quote, or backtick).<br><br>
+<b>number</b> — Any numbers. So like 1, or 200, or -50.<br><br>
+<b>boolean</b> — This can be true or false.<br><br>
+Also, <b>typeof</b> is a JS keyword that will tell you the type of something.<br><br> 
+Try running the code!`,
         sampleCode: `// string
 var word = 'banana';
 
@@ -82,6 +90,8 @@ console.log(typeof no);
       },
 
       {
+        type: 'lesson',
+        key: 'lesson-3',
         title: 'Bringing It Together',
         text: `Lets take a look at this code, using variables, data, and console.log.<br><br>
 Try clicking "Run" or CTRL+ENTER.<br><br>
@@ -89,32 +99,31 @@ Take a look at the terminal.<br><br>
 Can you see how the code is writing to the terminal?<br><br>`,
         sampleCode: `// var - the original way, can be reassigned
 var name = "Alice";
-
 console.log(name); // "Alice"
 
 // We can reassign it
 name = "Bob";
-
 console.log(name); // "Bob"
 
 // let - block scoped, can be reassigned
 let age = 25;
-age = 100;
+console.log(age);  // 25
 
-console.log(age);  // 26
+// We can reassign it
+age = 100;
+console.log(age);  // 100
 
 // const - cannot be reassigned
 const PI = 3.14;
 PI = "pie"; // This throws an error!
-
-console.log(PI);   // 3.14
+console.log(PI);   // This code does not run because of the error!
 
 // Try running the code with CTRL + ENTER
 // You'll see the output below in the Terminal`,
       },
-    ],
-    sections: {
-      varATests: {
+      {
+        type: 'test',
+        key: 'varATests',
         title: `var "a"`,
         instructions: `Declare a variable "a" and set it to the number 1`,
         tests: [
@@ -144,7 +153,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varBTests: {
+      {
+        type: 'test',
+        key: 'varBTests',
         title: `var "b"`,
         instructions: `Declare a variable "b" and set it to the number 2.2`,
         tests: [
@@ -174,7 +185,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varCTests: {
+      {
+        type: 'test',
+        key: 'varCTests',
         title: `var "c"`,
         instructions: `Declare a variable "c" and set it to the number 5000`,
         tests: [
@@ -204,7 +217,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varDTests: {
+      {
+        type: 'test',
+        key: 'varDTests',
         title: `var "d"`,
         instructions: `Declare a variable "d" and set it to the number 900000`,
         tests: [
@@ -234,7 +249,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varETests: {
+      {
+        type: 'test',
+        key: 'varETests',
         title: `var "e"`,
         instructions: `Declare a variable "e" and set it to the number 111222333444`,
         tests: [
@@ -264,7 +281,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varIsHavingFunTests: {
+      {
+        type: 'test',
+        key: 'varIsHavingFunTests',
         title: `var "isHavingFun"`,
         instructions: `Declare a variable "isHavingFun" and set it to the boolean true`,
         tests: [
@@ -294,7 +313,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varIsDifficultTests: {
+      {
+        type: 'test',
+        key: 'varIsDifficultTests',
         title: `var "isDifficult"`,
         instructions: `Declare a variable "isDifficult" and set it to the boolean false`,
         tests: [
@@ -324,7 +345,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varLetterATests: {
+      {
+        type: 'test',
+        key: 'varLetterATests',
         title: `var "letterA"`,
         instructions: `Declare a variable "letterA" and set it to the string "a"`,
         tests: [
@@ -354,7 +377,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varWordTests: {
+      {
+        type: 'test',
+        key: 'varWordTests',
         title: `var "word"`,
         instructions: `Declare a variable "word" and set it to the string "banana"`,
         tests: [
@@ -384,7 +409,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varSentenceTests: {
+      {
+        type: 'test',
+        key: 'varSentenceTests',
         title: `var "sentence"`,
         instructions: `Declare a variable "sentence" and set it to the string "I ate breakfast."`,
         tests: [
@@ -414,7 +441,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varParagraphTests: {
+      {
+        type: 'test',
+        key: 'varParagraphTests',
         title: `var "paragraph"`,
         instructions: `Declare a variable "sentence" and set it to the string "The code in the computer is so hard to understand. It is like magic. If I keep studying maybe one day I'll know."`,
         tests: [
@@ -446,14 +475,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '2',
     title: 'Operators',
     help: 'https://www.w3schools.com/js/js_operators.asp',
-    sections: {
-      plusTests: {
+    items: [
+      {
+        type: 'test',
+        key: 'plusTests',
         title: `var "g" +`,
         instructions: `Declare a variable "a" and it should be the number equal to 654321 plus 123456`,
         tests: [
@@ -489,7 +520,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      minusTests: {
+      {
+        type: 'test',
+        key: 'minusTests',
         title: `var "h" -`,
         instructions: `Declare a variable "b" and it should be the number equal to 654321 minus 123456`,
         tests: [
@@ -525,7 +558,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      multiplyTests: {
+      {
+        type: 'test',
+        key: 'multiplyTests',
         title: `var "i" *`,
         instructions: `Declare a variable "c" and it should be the number equal to 654321 times 123456`,
         tests: [
@@ -561,7 +596,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      divideTests: {
+      {
+        type: 'test',
+        key: 'divideTests',
         title: `var "j" /`,
         instructions: `Declare a variable "d" and it should be the number equal to 654321 divided by 123456`,
         tests: [
@@ -597,7 +634,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      modulusTests: {
+      {
+        type: 'test',
+        key: 'modulusTests',
         title: `var "k" %`,
         instructions: `Declare a variable "e" and it should be the number equal to 654321 modulus 123456`,
         tests: [
@@ -633,7 +672,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      exponentTests: {
+      {
+        type: 'test',
+        key: 'exponentTests',
         title: `var "l" **`,
         instructions: `Declare a variable "f" and it should be the number equal to 2 to the 20th power`,
         tests: [
@@ -669,14 +710,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '3',
     title: 'Return Values',
     help: 'https://www.w3schools.com/jsref/jsref_return.asp',
-    sections: {
-      returnNumberTests: {
+    items: [
+      {
+        type: 'test',
+        key: 'returnNumberTests',
         title: `function "returnNumber"`,
         instructions: `Make a function named "returnNumber" that returns a number (any number).`,
         tests: [
@@ -706,7 +749,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      returnStringTests: {
+      {
+        type: 'test',
+        key: 'returnStringTests',
         title: `function "returnString"`,
         instructions: `Make a function named "returnString" that returns a string (any string).`,
         tests: [
@@ -736,7 +781,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      returnTrueTests: {
+      {
+        type: 'test',
+        key: 'returnTrueTests',
         title: `function "returnTrue"`,
         instructions: `Make a function named "returnTrue" that returns the boolean true.`,
         tests: [
@@ -772,7 +819,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      returnFalseTests: {
+      {
+        type: 'test',
+        key: 'returnFalseTests',
         title: `function "returnFalse"`,
         instructions: `Make a function named "returnFalse" that returns the boolean false.`,
         tests: [
@@ -808,7 +857,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      returnArrayTests: {
+      {
+        type: 'test',
+        key: 'returnArrayTests',
         title: `function "returnArray"`,
         instructions: `Make a function named "returnArray" that returns an array.`,
         tests: [
@@ -838,7 +889,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      returnObjectTests: {
+      {
+        type: 'test',
+        key: 'returnObjectTests',
         title: `function "returnObject"`,
         instructions: `Make a function named "returnObject" that returns an object.`,
         tests: [
@@ -868,14 +921,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '4',
     title: 'Basic Functions',
     help: 'https://www.w3schools.com/js/js_function_intro.asp',
-    sections: {
-      addTests: {
+    items: [
+      {
+        type: 'test',
+        key: 'addTests',
         title: `function "add"`,
         instructions: `Make a function named "add" that takes two arguments, both numbers. It should return the sum of those numbers.`,
         tests: [
@@ -925,7 +980,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      subtractTests: {
+      {
+        type: 'test',
+        key: 'subtractTests',
         title: `function "subtract"`,
         instructions: `Make a function named "subtract" that takes two arguments, both numbers. It should return the first number minus the second.`,
         tests: [
@@ -975,7 +1032,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      multiplyTests: {
+      {
+        type: 'test',
+        key: 'multiplyTests',
         title: `function "multiply"`,
         instructions: `Make a function named "multiply" that takes two arguments, both numbers. It should return the numbers multiplied together.`,
         tests: [
@@ -1028,7 +1087,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      divideTests: {
+      {
+        type: 'test',
+        key: 'divideTests',
         title: `function "divide"`,
         instructions: `Make a function named "divide" that takes two arguments, both numbers. It should return the first number divided by the second.`,
         tests: [
@@ -1081,7 +1142,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      exponentTests: {
+      {
+        type: 'test',
+        key: 'exponentTests',
         title: `function "exponent"`,
         instructions: `Make a function named "exponent" that takes two arguments, both numbers. It should return the first number to the power of the second.`,
         tests: [
@@ -1134,7 +1197,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      combineStringsTests: {
+      {
+        type: 'test',
+        key: 'combineStringsTests',
         title: `function "combineStrings"`,
         instructions: `Make a function named "combineStrings" that takes two arguments, both strings. It should return a string that is both arguments combined.`,
         tests: [
@@ -1187,7 +1252,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      combineArraysTests: {
+      {
+        type: 'test',
+        key: 'combineArraysTests',
         title: `function "combineArrays"`,
         instructions: `Make a function named "combineArrays" that takes two arguments, both arrays. It should return an array with the contents of the first, then second array within it.`,
         tests: [
@@ -1238,7 +1305,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      combineObjectsTests: {
+      {
+        type: 'test',
+        key: 'combineObjectsTests',
         title: `function "combineObjects"`,
         instructions: `Make a function named "combineObjects" that takes two arguments, both objects. It should return an object with the key/value pairs of both arguments. (Look up "spread operator" or "Object.assign()")`,
         tests: [
@@ -1291,14 +1360,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '5',
     title: 'Functions with Logic',
     help: 'https://www.w3schools.com/js/js_conditionals.asp',
-    sections: {
-      greeting: {
+    items: [
+      {
+        type: 'test',
+        key: 'greeting',
         title: `function greeting`,
         instructions: `Make a function named "greeting" that takes one argument. It should return a string like "Hello Zintis!" when passed the argument "Zintis"`,
         tests: [
@@ -1341,7 +1412,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      isThisValueTrue: {
+      {
+        type: 'test',
+        key: 'isThisValueTrue',
         title: `function isThisValueTrue`,
         instructions: `Make a function named "isThisValueTrue" that takes one argument (of any type). It should return true if the argument is truthy, and false otherwise.`,
         tests: [
@@ -1385,7 +1458,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      isThisNumberEven: {
+      {
+        type: 'test',
+        key: 'isThisNumberEven',
         title: `function isThisNumberEven`,
         instructions: `Make a function named "isThisNumberEven" that takes one argument, a number. It should return true if the number is even, and false if odd.`,
         tests: [
@@ -1430,7 +1505,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      makeNumberNegative: {
+      {
+        type: 'test',
+        key: 'makeNumberNegative',
         title: `function makeNumberNegative`,
         instructions: `Make a function named "makeNumberNegative" that takes one argument, a number. It should return the same number, but negative.`,
         tests: [
@@ -1474,7 +1551,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      doYouWantCake: {
+      {
+        type: 'test',
+        key: 'doYouWantCake',
         title: `function doYouWantCake`,
         instructions: `Make a function named "doYouWantCake" that takes one argument, a boolean. If the boolean is true, return "yes". Otherwise return "no".`,
         tests: [
@@ -1518,7 +1597,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      wordLength: {
+      {
+        type: 'test',
+        key: 'wordLength',
         title: `function wordLength`,
         instructions: `Make a function named "wordLength" that takes one argument, a string. It should return the length of the string as a number.`,
         tests: [
@@ -1562,7 +1643,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      carBuilder: {
+      {
+        type: 'test',
+        key: 'carBuilder',
         title: `function carBuilder`,
         instructions: `Make a function named "carBuilder" that takes 3 arguments, string, string, and number. It should return an object that has 3 keys: "make", "model", and "year", with the first/second/third arguments as the "make", "model", and "year" values.`,
         tests: [
@@ -1664,7 +1747,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      teachersNeeded: {
+      {
+        type: 'test',
+        key: 'teachersNeeded',
         title: `function teachersNeeded`,
         instructions: `Make a function named "teachersNeeded" that takes 2 arguments, a number and a number. The first number is how many students there are. The second number is how many students there should be per teacher. It should return the minimum number of teachers required (google "Math.ceil")`,
         tests: [
@@ -1714,14 +1799,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '6',
     title: 'Objects',
     help: 'https://www.w3schools.com/js/js_objects.asp',
-    sections: {
-      personObject: {
+    items: [
+      {
+        type: 'test',
+        key: 'personObject',
         title: `var "person"`,
         instructions: `Declare a variable named "person", an object. Read tests closely for keys and values.`,
         tests: [
@@ -1810,7 +1897,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      jsClassObject: {
+      {
+        type: 'test',
+        key: 'jsClassObject',
         title: `var "jsClass"`,
         instructions: `Declare a variable named "jsClass" an object. Read tests closely for keys and values`,
         tests: [
@@ -1875,7 +1964,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      shoppingCartObject: {
+      {
+        type: 'test',
+        key: 'shoppingCartObject',
         title: `var "shoppingCart"`,
         instructions: `Declare a variable named "shoppingCart", an object. Read tests closely for keys and values`,
         tests: [
@@ -1979,14 +2070,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '7',
     title: 'Arrays',
     help: 'https://www.w3schools.com/js/js_arrays.asp',
-    sections: {
-      emptyArray: {
+    items: [
+      {
+        type: 'test',
+        key: 'emptyArray',
         title: `var "emptyArray"`,
         instructions: `Declare a variable named "emptyArray", an array with no values`,
         tests: [
@@ -2016,7 +2109,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varSimpleArrayTests: {
+      {
+        type: 'test',
+        key: 'varSimpleArrayTests',
         title: `var "simpleArray"`,
         instructions: `Declare a variable named "simpleArray", an array whose values are the numbers 1, 2 and 3`,
         tests: [
@@ -2058,7 +2153,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      varFavoriteFoodsTest: {
+      {
+        type: 'test',
+        key: 'varFavoriteFoodsTest',
         title: `var "favoriteFoods"`,
         instructions: `Declare a variable named "favoriteFoods", an array whose values are three words (your favorite foods!).`,
         tests: [
@@ -2100,7 +2197,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      bigNumbers: {
+      {
+        type: 'test',
+        key: 'bigNumbers',
         title: `var "bigNumbers"`,
         instructions: `Declare a variable named "bigNumbers", an array with 3 numbers all greater than 9000.`,
         tests: [
@@ -2142,7 +2241,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      arrayOf10: {
+      {
+        type: 'test',
+        key: 'arrayOf10',
         title: `var "arrayOf10"`,
         instructions: `Declare a variable named "arrayOf10", an array of 10 numbers.`,
         tests: [
@@ -2178,7 +2279,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      arrayOfBooleans: {
+      {
+        type: 'test',
+        key: 'arrayOfBooleans',
         title: `var "arrayOfBooleans"`,
         instructions: `Declare a variable named "arrayOfBooleans", an array of 5 booleans.`,
         tests: [
@@ -2214,14 +2317,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '8',
     title: 'Array Methods',
     help: 'https://www.w3schools.com/js/js_array_methods.asp',
-    sections: {
-      makeArrayOfX: {
+    items: [
+      {
+        type: 'test',
+        key: 'makeArrayOfX',
         title: `function "makeArrayOfX"`,
         instructions: `Make a function that takes 2 arguments. First argument is how many. 2nd argument is what will be in the array. Example: makeArrayOfX(4, 'a') returns ['a', 'a', 'a', 'a']`,
         tests: [
@@ -2273,7 +2378,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      reverseArray: {
+      {
+        type: 'test',
+        key: 'reverseArray',
         title: `function "reverseArray"`,
         instructions: `Make a function that takes an array as an argument. It should return the array in reverse order. Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']`,
         tests: [
@@ -2331,7 +2438,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      sortLetters: {
+      {
+        type: 'test',
+        key: 'sortLetters',
         title: `function "sortLetters"`,
         instructions: `Make a function that takes one argument, an array of letters. It should return the array of letters in alphabetical order.`,
         tests: [
@@ -2386,7 +2495,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      sortNumbers: {
+      {
+        type: 'test',
+        key: 'sortNumbers',
         title: `function "sortNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. It should return the numbers from smallest to biggest.`,
         tests: [
@@ -2439,7 +2550,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      sortByWordLength: {
+      {
+        type: 'test',
+        key: 'sortByWordLength',
         title: `function "sortByWordLength"`,
         instructions: `Make a function that takes one argument, an array of words. Return the words in an array from shortest to longest.`,
         tests: [
@@ -2495,14 +2608,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '9',
     title: 'Loops & Strings',
     help: 'https://www.w3schools.com/js/js_loops.asp',
-    sections: {
-      makeXAsterisks: {
+    items: [
+      {
+        type: 'test',
+        key: 'makeXAsterisks',
         title: `function "makeXAsterisks"`,
         instructions: `Make a function that takes one argument, a number. It should return a string with that many asterisks. Example: makeXAsterisks(5) returns "*****"`,
         tests: [
@@ -2546,7 +2661,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      allNumbersUpToX: {
+      {
+        type: 'test',
+        key: 'allNumbersUpToX',
         title: `function "allNumbersUpToX"`,
         instructions: `Make a function that takes one argument, a number. It should return an array of every number up to that number, starting at 1. Example: allNumbersUpToX(5) returns [1,2,3,4,5]`,
         tests: [
@@ -2598,7 +2715,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      makeStringWithXLetterY: {
+      {
+        type: 'test',
+        key: 'makeStringWithXLetterY',
         title: `function "makeStringWithXLetterY"`,
         instructions: `Make a function that takes two arguments, a number and a character. It should return a string with X copies of Y. Example: makeStringWithXLetterY(4, "b") returns "bbbb"`,
         tests: [
@@ -2644,7 +2763,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      reverseWord: {
+      {
+        type: 'test',
+        key: 'reverseWord',
         title: `function "reverseWord"`,
         instructions: `Make a function that takes one argument, a string. It should return the string in reverse order. Example: reverseWord("cat") returns "tac"`,
         tests: [
@@ -2688,7 +2809,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeVowels: {
+      {
+        type: 'test',
+        key: 'removeVowels',
         title: `function "removeVowels"`,
         instructions: `Make a function that takes one argument, a string. It should return a string with the vowels removed. Example: removeVowels('opportunity') returns 'pprtnty'`,
         tests: [
@@ -2734,7 +2857,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeConsonants: {
+      {
+        type: 'test',
+        key: 'removeConsonants',
         title: `function "removeConsonants"`,
         instructions: `Make a function that takes one argument, a string. It should return a string with the consonants removed. Example: removeConsonants('opportunity') returns 'oouiy'`,
         tests: [
@@ -2780,7 +2905,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeWordsOfLengthXPlus: {
+      {
+        type: 'test',
+        key: 'removeWordsOfLengthXPlus',
         title: `function "removeWordsOfLengthXPlus"`,
         instructions: `Make a function that takes two arguments, an array of strings and a number. Remove any string as long or longer than the number. Example: removeWordsOfLengthXPlus(["homeland","cat","drop"], 5) returns ["cat","drop"]`,
         tests: [
@@ -2851,7 +2978,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      calculateAverage: {
+      {
+        type: 'test',
+        key: 'calculateAverage',
         title: `function "calculateAverage"`,
         instructions: `Make a function that takes one argument, an array of numbers. It should return the average of all numbers. Example: calculateAverage([2, 4, 6, 8, 10]) returns 6`,
         tests: [
@@ -2895,14 +3024,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '10',
     title: 'Array.map',
     help: 'https://www.w3schools.com/jsref/jsref_map.asp',
-    sections: {
-      arrayValuesPlusOne: {
+    items: [
+      {
+        type: 'test',
+        key: 'arrayValuesPlusOne',
         title: `function "arrayValuesPlusOne"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to add one to each number and return the resulting array. Example: arrayValuesPlusOne([1, 3, 5]) returns [2, 4, 6]`,
         tests: [
@@ -2964,7 +3095,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      doubleArrayValues: {
+      {
+        type: 'test',
+        key: 'doubleArrayValues',
         title: `function "doubleArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to double all the values and return an array. Example: doubleArrayValues([2, 5, 11]) returns [4, 10, 22]`,
         tests: [
@@ -3032,7 +3165,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      halveArrayValues: {
+      {
+        type: 'test',
+        key: 'halveArrayValues',
         title: `function "halveArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to divide each item by 2 and return the resulting array. Example: [1, 2, 3, 4, 5] returns [.5, 1, 1.5, 2, 2.5]`,
         tests: [
@@ -3102,7 +3237,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      squareArrayValues: {
+      {
+        type: 'test',
+        key: 'squareArrayValues',
         title: `function "squareArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to square each number and return it. Example: squareArrayValues([10,8]) returns [100, 64]`,
         tests: [
@@ -3170,7 +3307,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      onlyFirstLetterOfWords: {
+      {
+        type: 'test',
+        key: 'onlyFirstLetterOfWords',
         title: `function "onlyFirstLetterOfWords"`,
         instructions: `Make a function that takes one argument, an array of strings. Use "array.map" to return an array of the first letters of each string. Example: onlyFirstLetterOfWords(['cat','dog']) returns ['c','d']`,
         tests: [
@@ -3242,7 +3381,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      onlyLastLetterOfWords: {
+      {
+        type: 'test',
+        key: 'onlyLastLetterOfWords',
         title: `function "onlyLastLetterOfWords"`,
         instructions: `Make a function that takes one argument, an array of strings. Use "array.map" to return an array of the last letter of each string. Example: onlyLastLetterOfWords(["cat","dog"]) returns ["t","g"]`,
         tests: [
@@ -3313,14 +3454,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '11',
     title: 'Array.filter',
     help: 'https://www.w3schools.com/jsref/jsref_filter.asp',
-    sections: {
-      removeOddNumbers: {
+    items: [
+      {
+        type: 'test',
+        key: 'removeOddNumbers',
         title: `function "removeOddNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" and return an array with no odd numbers. Example: removeOddNumbers([1,2,3,4]) returns [2,4]`,
         tests: [
@@ -3389,7 +3532,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeEvenNumbers: {
+      {
+        type: 'test',
+        key: 'removeEvenNumbers',
         title: `function "removeEvenNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" and return an array with no even numbers. Example: removeEvenNumbers([1,2,3,4]) returns [1,3]`,
         tests: [
@@ -3460,7 +3605,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeNumbersLessThan3: {
+      {
+        type: 'test',
+        key: 'removeNumbersLessThan3',
         title: `function "removeNumbersLessThan3"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" to remove numbers less than 3. Example: removeNumbersLessThan3([1,2,3,4]) returns [3,4]`,
         tests: [
@@ -3536,7 +3683,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeNumbersLessThanX: {
+      {
+        type: 'test',
+        key: 'removeNumbersLessThanX',
         title: `function "removeNumbersLessThanX"`,
         instructions: `Make a function that takes two arguments, an array of numbers and a number. Call "array.filter" to remove numbers less than the 2nd argument. Example: removeNumbersLessThanX([1,2,3,4,5],3) returns [3,4,5]`,
         tests: [
@@ -3613,7 +3762,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeEmptyStrings: {
+      {
+        type: 'test',
+        key: 'removeEmptyStrings',
         title: `function "removeEmptyStrings"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove any empty strings. Example: removeEmptyStrings(["","Phone","Josh"]) returns ["Phone","Josh"]`,
         tests: [
@@ -3688,7 +3839,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeVowelsFromArray: {
+      {
+        type: 'test',
+        key: 'removeVowelsFromArray',
         title: `function "removeVowelsFromArray"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove all strings that are a vowel. Example: removeVowelsFromArray(["a","b","c","d","e"]) returns ["b","c","d"]`,
         tests: [
@@ -3768,7 +3921,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeConsonantsInArray: {
+      {
+        type: 'test',
+        key: 'removeConsonantsInArray',
         title: `function "removeConsonantsInArray"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove all strings that are a consonant. Example: removeConsonantsInArray(["a","b","c","d","e"]) returns ["a","e"]`,
         tests: [
@@ -3845,7 +4000,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      removeWordFromArray: {
+      {
+        type: 'test',
+        key: 'removeWordFromArray',
         title: `function "removeWordFromArray"`,
         instructions: `Make a function that takes two arguments, an array of strings and a word. Call "array.filter" to remove all strings that match the word. Example: removeWordFromArray(["cat","dog","fish"],"fish") returns ["cat","dog"]`,
         tests: [
@@ -3922,14 +4079,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '12',
     title: 'While Loops',
     help: 'https://www.w3schools.com/js/js_loop_while.asp',
-    sections: {
-      countUpTests: {
+    items: [
+      {
+        type: 'test',
+        key: 'countUpTests',
         title: `function "countUp"`,
         instructions: `Make a function named "countUp" that takes one argument, a number. Using a while loop, return an array of numbers counting up from 1 to that number. Example: countUp(5) returns [1, 2, 3, 4, 5]`,
         tests: [
@@ -3986,7 +4145,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      countDownTests: {
+      {
+        type: 'test',
+        key: 'countDownTests',
         title: `function "countDown"`,
         instructions: `Make a function named "countDown" that takes one argument, a number. Using a while loop, return an array of numbers counting down from that number to 1. Example: countDown(5) returns [5, 4, 3, 2, 1]`,
         tests: [
@@ -4043,7 +4204,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      sumWhileTests: {
+      {
+        type: 'test',
+        key: 'sumWhileTests',
         title: `function "sumWhile"`,
         instructions: `Make a function named "sumWhile" that takes one argument, a number. Using a while loop, return the sum of all numbers from 1 up to and including that number. Example: sumWhile(5) returns 15 (because 1+2+3+4+5 = 15)`,
         tests: [
@@ -4101,7 +4264,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      repeatStringTests: {
+      {
+        type: 'test',
+        key: 'repeatStringTests',
         title: `function "repeatString"`,
         instructions: `Make a function named "repeatString" that takes two arguments: a string and a number. Using a while loop, return the string repeated that many times. Example: repeatString("ha", 3) returns "hahaha"`,
         tests: [
@@ -4159,7 +4324,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      firstOverTests: {
+      {
+        type: 'test',
+        key: 'firstOverTests',
         title: `function "firstOver"`,
         instructions: `Make a function named "firstOver" that takes two arguments: an array of numbers and a threshold number. Using a while loop, return the first number in the array that is greater than the threshold. If no number exceeds the threshold, return null. Example: firstOver([1, 5, 3, 8], 4) returns 5`,
         tests: [
@@ -4211,14 +4378,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '13',
     title: 'For Loops',
     help: 'https://www.w3schools.com/js/js_loop_for.asp',
-    sections: {
-      countToNTests: {
+    items: [
+      {
+        type: 'test',
+        key: 'countToNTests',
         title: `function "countToN"`,
         instructions: `Make a function named "countToN" that takes one argument, a number. Using a for loop, return an array of numbers from 1 up to and including that number. Example: countToN(4) returns [1, 2, 3, 4]`,
         tests: [
@@ -4269,7 +4438,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      sumArrayTests: {
+      {
+        type: 'test',
+        key: 'sumArrayTests',
         title: `function "sumArray"`,
         instructions: `Make a function named "sumArray" that takes one argument, an array of numbers. Using a for loop, return the sum of all numbers in the array. Example: sumArray([1, 2, 3]) returns 6`,
         tests: [
@@ -4321,7 +4492,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      doubleAllTests: {
+      {
+        type: 'test',
+        key: 'doubleAllTests',
         title: `function "doubleAll"`,
         instructions: `Make a function named "doubleAll" that takes one argument, an array of numbers. Using a for loop, return a new array where every number has been doubled. Example: doubleAll([1, 2, 3]) returns [2, 4, 6]`,
         tests: [
@@ -4373,7 +4546,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      findMaxTests: {
+      {
+        type: 'test',
+        key: 'findMaxTests',
         title: `function "findMax"`,
         instructions: `Make a function named "findMax" that takes one argument, an array of numbers. Using a for loop, return the largest number in the array. Example: findMax([3, 1, 7, 2]) returns 7`,
         tests: [
@@ -4425,7 +4600,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      joinWordsTests: {
+      {
+        type: 'test',
+        key: 'joinWordsTests',
         title: `function "joinWords"`,
         instructions: `Make a function named "joinWords" that takes one argument, an array of strings. Using a for loop, return a single string with all words joined by a space. Example: joinWords(["hello", "world"]) returns "hello world"`,
         tests: [
@@ -4478,14 +4655,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '14',
     title: 'For...Of Loops',
     help: 'https://www.w3schools.com/js/js_loop_forof.asp',
-    sections: {
-      getCharsTests: {
+    items: [
+      {
+        type: 'test',
+        key: 'getCharsTests',
         title: `function "getChars"`,
         instructions: `Make a function named "getChars" that takes one argument, a string. Using a for...of loop, return an array containing each character of the string. Example: getChars("hi") returns ["h", "i"]`,
         tests: [
@@ -4530,7 +4709,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      shoutTests: {
+      {
+        type: 'test',
+        key: 'shoutTests',
         title: `function "shout"`,
         instructions: `Make a function named "shout" that takes one argument, a string. Using a for...of loop, return an array of each character uppercased. Example: shout("hi") returns ["H", "I"]`,
         tests: [
@@ -4575,7 +4756,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      totalTests: {
+      {
+        type: 'test',
+        key: 'totalTests',
         title: `function "total"`,
         instructions: `Make a function named "total" that takes one argument, an array of numbers. Using a for...of loop, return the sum of all the numbers. Example: total([1, 2, 3]) returns 6`,
         tests: [
@@ -4621,7 +4804,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      addOneTests: {
+      {
+        type: 'test',
+        key: 'addOneTests',
         title: `function "addOne"`,
         instructions: `Make a function named "addOne" that takes one argument, an array of numbers. Using a for...of loop, return a new array with 1 added to each number. Example: addOne([1, 2, 3]) returns [2, 3, 4]`,
         tests: [
@@ -4666,7 +4851,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      makeStringTests: {
+      {
+        type: 'test',
+        key: 'makeStringTests',
         title: `function "makeString"`,
         instructions: `Make a function named "makeString" that takes one argument, an array of strings. Using a for...of loop, return a single string with all items concatenated together. Example: makeString(["hello", " ", "world"]) returns "hello world"`,
         tests: [
@@ -4711,14 +4898,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '15',
     title: 'If Statements',
     help: 'https://www.w3schools.com/js/js_if_else.asp',
-    sections: {
-      ifTrueTests: {
+    items: [
+      {
+        type: 'test',
+        key: 'ifTrueTests',
         title: `if (true)`,
         instructions: `Write an if statement with the condition "true". Inside it, console.log the string "it's true".`,
         tests: [
@@ -4736,7 +4925,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      ifFalseTests: {
+      {
+        type: 'test',
+        key: 'ifFalseTests',
         title: `if (false)`,
         instructions: `Write an if statement with the condition "false". Inside it, console.log the string "you shouldn't see this". Nothing should appear in the terminal.`,
         tests: [
@@ -4767,7 +4958,9 @@ console.log(PI);   // 3.14
         ],
       },
 
-      ifNotFalseTests: {
+      {
+        type: 'test',
+        key: 'ifNotFalseTests',
         title: `if NOT (false)`,
         instructions: `Write an if statement with the condition "!false". Inside it, console.log the string "you should see this!".`,
         tests: [
@@ -4803,7 +4996,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      numberComparisonTests: {
+      {
+        type: 'test',
+        key: 'numberComparisonTests',
         title: `number comparison`,
         instructions: `Write if (5 > 3) and inside it console.log the string "five is greater than three".`,
         tests: [
@@ -4827,7 +5022,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      variableComparisonTests: {
+      {
+        type: 'test',
+        key: 'variableComparisonTests',
         title: `variable comparison`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 3. Write if (a > b) and inside it console.log the string "five is greater than three".`,
         tests: [
@@ -4875,7 +5072,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      equalsComparisonTests: {
+      {
+        type: 'test',
+        key: 'equalsComparisonTests',
         title: `equals ==`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 5. Write if (a == b) and inside it console.log the string "a and b are equal".`,
         tests: [
@@ -4923,7 +5122,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      notEqualsComparisonTests: {
+      {
+        type: 'test',
+        key: 'notEqualsComparisonTests',
         title: `not equals !=`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 3. Write if (a != b) and inside it console.log the string "a and b are not equal".`,
         tests: [
@@ -4971,14 +5172,16 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
   {
     id: '16',
     title: 'String Concatenation',
     help: 'https://www.w3schools.com/js/js_string_methods.asp',
-    sections: {
-      stringPlusStringTests: {
+    items: [
+      {
+        type: 'test',
+        key: 'stringPlusStringTests',
         title: `string + string`,
         instructions: `Declare variables a, b, and c. They should be "camp", "fire", and combined to make "campfire" using the "+" operator.`,
         tests: [
@@ -5044,7 +5247,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      stringPlusNumberTests: {
+      {
+        type: 'test',
+        key: 'stringPlusNumberTests',
         title: `string + number`,
         instructions: `Declare a variable "message" by joining the string "I am " and the number 25 using the + operator.`,
         tests: [
@@ -5074,7 +5279,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      templateLiteralBasicTests: {
+      {
+        type: 'test',
+        key: 'templateLiteralBasicTests',
         title: `template literal`,
         instructions: `Declare a variable "phrase" using a template literal (backtick string) containing the text "hello world".`,
         tests: [
@@ -5104,7 +5311,9 @@ console.log(PI);   // 3.14
           },
         ],
       },
-      templateLiteralInterpolationTests: {
+      {
+        type: 'test',
+        key: 'templateLiteralInterpolationTests',
         title: `template literal with interpolation`,
         instructions: `Declare a variable "greeting" set to "Hello". Then declare a variable "myFriend" set to "Beth". Declare a variable "greeting", using a template literal that interpolates "greeting" and "myFriend" to produce "Hello Beth!".`,
         tests: [
@@ -5170,6 +5379,6 @@ console.log(PI);   // 3.14
           },
         ],
       },
-    },
+    ],
   },
 ];

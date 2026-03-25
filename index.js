@@ -104,8 +104,7 @@ function parseHash(hash) {
 }
 
 let activeGroupId = null;
-let activeSectionKey = null;
-let activeSection = null;
+let activeItem = null;
 
 function renderQuestionCards() {
   const leftPanel = document.querySelector('.panel-nav-content');
@@ -122,7 +121,7 @@ function renderQuestionCards() {
 
     const headerCount = document.createElement('span');
     headerCount.classList.add('question-group-count');
-    const total = Object.keys(group.sections).length;
+    const total = group.items.filter((i) => i.type === 'test').length;
     headerCount.textContent = `0/${total}`;
 
     header.appendChild(headerLabel);
@@ -135,32 +134,20 @@ function renderQuestionCards() {
     const subList = document.createElement('div');
     subList.classList.add('question-sublist');
 
-    if (group.lessons) {
-      group.lessons.forEach((lesson, i) => {
-        const route = `#${group.id}-lesson-${i}`;
-        const item = document.createElement('div');
-        item.classList.add('question-item', 'question-item-lesson');
-        item.dataset.hash = route;
-        item.textContent = `Lesson: ${lesson.title}`;
-        item.addEventListener('click', (e) => {
-          e.stopPropagation();
-          window.location.hash = route;
-        });
-        subList.appendChild(item);
-      });
-    }
-
-    Object.entries(group.sections).forEach(([key, section]) => {
-      const route = `#${group.id}-${key}`;
-      const item = document.createElement('div');
-      item.classList.add('question-item');
-      item.dataset.hash = route;
-      item.textContent = `Test: ${section.title}`;
-      item.addEventListener('click', (e) => {
+    group.items.forEach((groupItem) => {
+      const route = `#${group.id}-${groupItem.key}`;
+      const navItem = document.createElement('div');
+      navItem.classList.add('question-item');
+      if (groupItem.type === 'lesson') navItem.classList.add('question-item-lesson');
+      navItem.dataset.hash = route;
+      navItem.textContent = groupItem.type === 'lesson'
+        ? `Lesson: ${groupItem.title}`
+        : `Test: ${groupItem.title}`;
+      navItem.addEventListener('click', (e) => {
         e.stopPropagation();
         window.location.hash = route;
       });
-      subList.appendChild(item);
+      subList.appendChild(navItem);
     });
 
     groupEl.dataset.groupId = group.id;
@@ -179,61 +166,36 @@ window.addEventListener('hashchange', () => {
   }
 
   for (const group of allTests) {
-    if (group.lessons) {
-      const lessonMatch = hash.match(`^#${group.id}-lesson-(\\d+)$`);
-      if (lessonMatch) {
-        const lesson = group.lessons[parseInt(lessonMatch[1])];
-        if (lesson) {
-          topCenter.textContent = `${group.id}: ${group.title} — Lesson: ${lesson.title}`;
-          activeGroupId = null;
-          activeSectionKey = null;
-          activeSection = null;
-          document
-            .querySelectorAll('.question-item')
-            .forEach((el) => el.classList.remove('question-item-active'));
-          document
-            .querySelectorAll('.question-group')
-            .forEach((el) => el.classList.remove('open'));
-          const activeItem = document.querySelector(
-            `.question-item[data-hash="${hash}"]`,
-          );
-          if (activeItem) {
-            activeItem.classList.add('question-item-active');
-            activeItem.closest('.question-group').classList.add('open');
-          }
-          renderLesson(lesson);
-          editor.setValue(lesson.sampleCode);
-          return;
-        }
-      }
-    }
-
-    for (const [key, section] of Object.entries(group.sections)) {
-      if (hash === `#${group.id}-${key}`) {
-        topCenter.textContent = `${group.id}: ${group.title} — ${section.title}`;
+    for (const item of group.items) {
+      if (hash === `#${group.id}-${item.key}`) {
+        topCenter.textContent = item.type === 'lesson'
+          ? `${group.id}: ${group.title} — Lesson: ${item.title}`
+          : `${group.id}: ${group.title} — ${item.title}`;
         activeGroupId = group.id;
-        activeSectionKey = key;
-        activeSection = section;
+        activeItem = item;
         document
           .querySelectorAll('.question-item')
           .forEach((el) => el.classList.remove('question-item-active'));
         document
           .querySelectorAll('.question-group')
           .forEach((el) => el.classList.remove('open'));
-
-        const activeItem = document.querySelector(
-          `.question-item[data-hash="#${group.id}-${key}"]`,
+        const navEl = document.querySelector(
+          `.question-item[data-hash="${hash}"]`,
         );
-        if (activeItem) {
-          activeItem.classList.add('question-item-active');
-          activeItem.closest('.question-group').classList.add('open');
+        if (navEl) {
+          navEl.classList.add('question-item-active');
+          navEl.closest('.question-group').classList.add('open');
         }
-
-        renderTests(section, group.help);
-        updateProgress();
-        const entry = getSaves()[hash] || {};
-        editor.setValue(entry.code || '');
-        if (entry.results) applyTestResults(entry.results);
+        if (item.type === 'lesson') {
+          renderLesson(item);
+          editor.setValue(item.sampleCode || '');
+        } else {
+          renderTests(item, group.help);
+          updateProgress();
+          const entry = getSaves()[hash] || {};
+          editor.setValue(entry.code || '');
+          if (entry.results) applyTestResults(entry.results);
+        }
         return;
       }
     }
@@ -533,11 +495,11 @@ function runCode() {
 
   window.addEventListener('message', messageHandler);
 
-  const testRunnerScript = activeSection
+  const testRunnerScript = activeItem?.type === 'test'
     ? `
-    const _rawSection = allTests.find(g => g.id === "${activeGroupId}").sections["${activeSectionKey}"];
+    const _rawSection = allTests.find(g => g.id === "${activeGroupId}").items.find(i => i.key === "${activeItem?.key}");
     const _suite = {
-      "${activeSectionKey}": {
+      "${activeItem?.key}": {
         ..._rawSection,
         tests: _rawSection.tests.map(t => t.intro ? { ...t, test: () => {} } : t),
       }
@@ -582,10 +544,10 @@ function isQuestionComplete(hash) {
 function getNextHash() {
   let found = false;
   for (const group of allTests) {
-    for (const key of Object.keys(group.sections)) {
-      const hash = `#${group.id}-${key}`;
-      if (found && !isQuestionComplete(hash)) return hash;
-      if (group.id === activeGroupId && key === activeSectionKey) found = true;
+    for (const item of group.items) {
+      const hash = `#${group.id}-${item.key}`;
+      if (found && (item.type === 'lesson' || !isQuestionComplete(hash))) return hash;
+      if (group.id === activeGroupId && item.key === activeItem?.key) found = true;
     }
   }
   return null;
@@ -594,9 +556,9 @@ function getNextHash() {
 function getPrevHash() {
   let prev = null;
   for (const group of allTests) {
-    for (const key of Object.keys(group.sections)) {
-      if (group.id === activeGroupId && key === activeSectionKey) return prev;
-      prev = `#${group.id}-${key}`;
+    for (const item of group.items) {
+      if (group.id === activeGroupId && item.key === activeItem?.key) return prev;
+      prev = `#${group.id}-${item.key}`;
     }
   }
   return null;
@@ -614,49 +576,50 @@ function goBack() {
 
 function updateProgress() {
   const progressEl = document.querySelector('.progress');
-  if (!activeGroupId || !activeSectionKey) {
+  if (!activeGroupId || !activeItem || activeItem.type !== 'test') {
     progressEl.textContent = '0 / 0';
     return;
   }
   const group = allTests.find((g) => g.id === activeGroupId);
   if (!group) return;
-  const keys = Object.keys(group.sections);
-  const current = keys.indexOf(activeSectionKey) + 1;
-  const total = keys.length;
+  const testItems = group.items.filter((i) => i.type === 'test');
+  const current = testItems.findIndex((i) => i.key === activeItem.key) + 1;
+  const total = testItems.length;
   progressEl.textContent = `${current} / ${total}`;
 }
 
 function updateNavState() {
   const saves = getSaves();
 
-  document.querySelectorAll('.question-item').forEach((item) => {
-    const hash = item.dataset.hash;
+  document.querySelectorAll('.question-item').forEach((navItem) => {
+    const hash = navItem.dataset.hash;
+    if (navItem.classList.contains('question-item-lesson')) return;
     const { sectionKey } = parseHash(hash);
     const entry = saves[hash];
     const complete = entry?.results?.[sectionKey]?.results?.every(
       (r) => r.result === null,
     );
-    item.classList.toggle('question-item-complete', !!complete);
+    navItem.classList.toggle('question-item-complete', !!complete);
   });
 
   document.querySelectorAll('.question-group').forEach((group) => {
-    const items = [...group.querySelectorAll('.question-item')];
-    const completeCount = items.filter((item) =>
+    const testItems = [...group.querySelectorAll('.question-item:not(.question-item-lesson)')];
+    const completeCount = testItems.filter((item) =>
       item.classList.contains('question-item-complete'),
     ).length;
-    const allComplete = completeCount === items.length && items.length > 0;
+    const allComplete = completeCount === testItems.length && testItems.length > 0;
     const someComplete = completeCount > 0 && !allComplete;
     group.classList.toggle('question-group-complete', allComplete);
     group.classList.toggle('question-group-partial', someComplete);
     const countEl = group.querySelector('.question-group-count');
-    if (countEl) countEl.textContent = `${completeCount}/${items.length}`;
+    if (countEl) countEl.textContent = `${completeCount}/${testItems.length}`;
   });
 }
 
 function applyTestResults(data, shouldAdvance = false) {
-  if (!activeSectionKey || !data[activeSectionKey]) return;
+  if (!activeItem?.key || !data[activeItem.key]) return;
   const existingEntry = getSaves()[window.location.hash];
-  const results = data[activeSectionKey].results;
+  const results = data[activeItem.key].results;
   const panes = document
     .querySelector('.tests-content')
     .querySelectorAll('.test-pane');
@@ -748,8 +711,7 @@ document.getElementById('confirm-delete-btn').addEventListener('click', () => {
   localStorage.removeItem('Z_T_saves');
   document.getElementById('confirm-backdrop').classList.remove('open');
   activeGroupId = null;
-  activeSectionKey = null;
-  activeSection = null;
+  activeItem = null;
   history.replaceState(null, '', window.location.pathname);
   document
     .querySelectorAll('.question-group.open')
@@ -766,8 +728,7 @@ document.getElementById('confirm-delete-btn').addEventListener('click', () => {
 document.getElementById('logo').addEventListener('click', () => {
   history.replaceState(null, '', window.location.pathname);
   activeGroupId = null;
-  activeSectionKey = null;
-  activeSection = null;
+  activeItem = null;
   document
     .querySelectorAll('.question-group.open')
     .forEach((g) => g.classList.remove('open'));
