@@ -1,8 +1,7 @@
 const allTests = [
   {
-    id: 'A1',
+    id: '1',
     title: 'Variables',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_variables.asp',
     sections: {
       varATests: {
@@ -340,9 +339,8 @@ const allTests = [
     },
   },
   {
-    id: 'A2',
+    id: '2',
     title: 'Operators',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_operators.asp',
     sections: {
       plusTests: {
@@ -564,9 +562,8 @@ const allTests = [
     },
   },
   {
-    id: 'A3',
+    id: '3',
     title: 'Return Values',
-    series: 'A',
     help: 'https://www.w3schools.com/jsref/jsref_return.asp',
     sections: {
       returnNumberTests: {
@@ -764,10 +761,8 @@ const allTests = [
     },
   },
   {
-    id: 'A4',
+    id: '4',
     title: 'Basic Functions',
-    series: 'A',
-
     help: 'https://www.w3schools.com/js/js_function_intro.asp',
     sections: {
       addTests: {
@@ -1189,10 +1184,8 @@ const allTests = [
     },
   },
   {
-    id: 'A5',
+    id: '5',
     title: 'Functions with Logic',
-    series: 'A',
-
     help: 'https://www.w3schools.com/js/js_conditionals.asp',
     sections: {
       greeting: {
@@ -1614,9 +1607,8 @@ const allTests = [
     },
   },
   {
-    id: 'A6',
+    id: '6',
     title: 'Objects',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_objects.asp',
     sections: {
       personObject: {
@@ -1880,9 +1872,8 @@ const allTests = [
     },
   },
   {
-    id: 'A7',
+    id: '7',
     title: 'Arrays',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_arrays.asp',
     sections: {
       emptyArray: {
@@ -2116,10 +2107,8 @@ const allTests = [
     },
   },
   {
-    id: 'A8',
+    id: '8',
     title: 'Array Methods',
-    series: 'A',
-
     help: 'https://www.w3schools.com/js/js_array_methods.asp',
     sections: {
       makeArrayOfX: {
@@ -2399,10 +2388,8 @@ const allTests = [
     },
   },
   {
-    id: 'A9',
+    id: '9',
     title: 'Loops & Strings',
-    series: 'A',
-
     help: 'https://www.w3schools.com/js/js_loops.asp',
     sections: {
       makeXAsterisks: {
@@ -2801,10 +2788,8 @@ const allTests = [
     },
   },
   {
-    id: 'A10',
+    id: '10',
     title: 'Array.map',
-    series: 'A',
-
     help: 'https://www.w3schools.com/jsref/jsref_map.asp',
     sections: {
       arrayValuesPlusOne: {
@@ -3221,10 +3206,8 @@ const allTests = [
     },
   },
   {
-    id: 'A11',
+    id: '11',
     title: 'Array.filter',
-    series: 'A',
-
     help: 'https://www.w3schools.com/jsref/jsref_filter.asp',
     sections: {
       removeOddNumbers: {
@@ -3832,9 +3815,8 @@ const allTests = [
     },
   },
   {
-    id: 'A12',
+    id: '12',
     title: 'While Loops',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_loop_while.asp',
     sections: {
       countUpTests: {
@@ -4122,9 +4104,8 @@ const allTests = [
     },
   },
   {
-    id: 'A13',
+    id: '13',
     title: 'For Loops',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_loop_for.asp',
     sections: {
       countToNTests: {
@@ -4390,9 +4371,8 @@ const allTests = [
     },
   },
   {
-    id: 'A14',
+    id: '14',
     title: 'For...Of Loops',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_loop_forof.asp',
     sections: {
       getCharsTests: {
@@ -4624,9 +4604,8 @@ const allTests = [
     },
   },
   {
-    id: 'A15',
+    id: '15',
     title: 'If Statements',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_if_else.asp',
     sections: {
       ifTrueTests: {
@@ -4885,9 +4864,8 @@ const allTests = [
     },
   },
   {
-    id: 'A16',
+    id: '16',
     title: 'String Concatenation',
-    series: 'A',
     help: 'https://www.w3schools.com/js/js_string_methods.asp',
     sections: {
       stringPlusStringTests: {
