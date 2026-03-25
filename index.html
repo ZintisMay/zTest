@@ -1,128 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Z_Test</title>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/lint.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/introjs.min.css">
-  </head>
-  <body>
 
-    <!-- Top Bar -->
-    <header class="top-bar">
-      <div class="top-left">
-        <div class="logo" id="logo">Z_T</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z_Test</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/lint.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/introjs.min.css">
+</head>
+
+<body>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="top-left">
+      <div class="logo" id="logo">Z_T</div>
+    </div>
+
+    <div class="top-center"></div>
+
+    <div class="top-right">
+      <button class="hamburger-btn" id="hamburger-btn">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- Slide-in Menu -->
+  <nav class="side-menu" id="side-menu">
+    <ul class="side-menu-list">
+      <li><span class="side-menu-item" data-modal="What is Z_Test?">What is Z_Test?</span></li>
+      <li><span class="side-menu-item" data-modal="How to use Z_Test">How to use Z_Test</span></li>
+      <li><span class="side-menu-item" data-modal="Problems / Feedback">Problems / Feedback</span></li>
+      <li><span class="side-menu-item" data-modal="About">About</span></li>
+    </ul>
+  </nav>
+
+  <!-- Confirm Modal -->
+  <div class="modal-backdrop" id="confirm-backdrop">
+    <div class="confirm-body">
+      <h2 class="confirm-title">Clear All Progress?</h2>
+      <p class="confirm-message">This will permanently delete all your saved code and results. This cannot be undone.
+      </p>
+      <div class="confirm-buttons">
+        <button class="confirm-cancel-btn" id="confirm-cancel-btn">Cancel</button>
+        <button class="confirm-delete-btn" id="confirm-delete-btn">Yes, Please Delete My Progress</button>
       </div>
+    </div>
+  </div>
 
-      <div class="top-center"></div>
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal-body" id="modal-body">
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
 
-      <div class="top-right">
-        <button class="hamburger-btn" id="hamburger-btn">&#9776;</button>
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="panel">
+      <div class="panel-header">Lessons</div>
+      <div class="panel-nav-content"></div>
+      <div class="lessons-footer">
+        <button class="clear-save-btn" id="clear-save-btn">Clear Save</button>
+        <button class="clear-btn" id="collapse-btn">Collapse</button>
       </div>
-    </header>
-
-    <!-- Slide-in Menu -->
-    <nav class="side-menu" id="side-menu">
-      <ul class="side-menu-list">
-        <li><span class="side-menu-item" data-modal="What is Z_Test?">What is Z_Test?</span></li>
-        <li><span class="side-menu-item" data-modal="How to use Z_Test">How to use Z_Test</span></li>
-        <li><span class="side-menu-item" data-modal="Problems / Feedback">Problems / Feedback</span></li>
-        <li><span class="side-menu-item" data-modal="About">About</span></li>
-      </ul>
-    </nav>
-
-    <!-- Confirm Modal -->
-    <div class="modal-backdrop" id="confirm-backdrop">
-      <div class="confirm-body">
-        <h2 class="confirm-title">Clear All Progress?</h2>
-        <p class="confirm-message">This will permanently delete all your saved code and results. This cannot be undone.</p>
-        <div class="confirm-buttons">
-          <button class="confirm-cancel-btn" id="confirm-cancel-btn">Cancel</button>
-          <button class="confirm-delete-btn" id="confirm-delete-btn">Yes, Please Delete My Progress</button>
+    </div>
+    <div class="panel panel-tests">
+      <div class="panel-header">Question</div>
+      <div class="tests-content"></div>
+      <div class="tests-footer">
+        <button class="reset-btn" id="reset-btn">Reset</button>
+      </div>
+    </div>
+    <div class="panel panel-right">
+      <div class="panel-sub panel-code">
+        <div class="panel-header">Code</div>
+        <textarea id="code-editor"></textarea>
+        <div class="code-footer">
+          <svg class="save-indicator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <path
+              d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm7-14h1v4h-1z" />
+          </svg>
+          <div class="run-controls">
+            <span class="run-hint">CTRL+ENTER run/next</span>
+            <button class="run-btn" id="run-btn">Run</button>
+          </div>
+        </div>
+      </div>
+      <div class="divider-handle">
+        <div class="divider-knob">
+          <span>&#9650;</span>
+          <span>&#9660;</span>
+        </div>
+      </div>
+      <div class="panel-sub panel-terminal">
+        <div class="panel-header">Terminal</div>
+        <div class="terminal-output"></div>
+        <div class="terminal-footer">
+          <button class="clear-btn" id="clear-btn">Clear</button>
         </div>
       </div>
     </div>
+  </main>
 
-    <!-- Modal -->
-    <div class="modal-backdrop" id="modal-backdrop">
-      <div class="modal-body" id="modal-body">
-        <h2 class="modal-title" id="modal-title"></h2>
-        <div class="modal-content" id="modal-content"></div>
-      </div>
+  <!-- Bottom Bar -->
+  <footer class="bottom-bar">
+    <div class="bottom-left"></div>
+    <div class="bottom-center">
+      <span class="progress">0 / 0</span>
     </div>
+    <div class="bottom-right">
+      <button class="nav-btn" id="back-btn">Back</button>
+      <button class="nav-btn" id="next-btn">Next</button>
+    </div>
+  </footer>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <div class="panel">
-        <div class="panel-header">Lessons</div>
-        <div class="panel-nav-content"></div>
-        <div class="lessons-footer">
-          <button class="clear-save-btn" id="clear-save-btn">Clear Save</button>
-          <button class="clear-btn" id="collapse-btn">Collapse</button>
-        </div>
-      </div>
-      <div class="panel panel-tests">
-        <div class="panel-header">Question</div>
-        <div class="tests-content"></div>
-        <div class="tests-footer">
-          <button class="reset-btn" id="reset-btn">Reset</button>
-        </div>
-      </div>
-      <div class="panel panel-right">
-        <div class="panel-sub panel-code">
-          <div class="panel-header">Code</div>
-          <textarea id="code-editor"></textarea>
-          <div class="code-footer">
-            <svg class="save-indicator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-              <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm7-14h1v4h-1z"/>
-            </svg>
-            <div class="run-controls">
-              <span class="run-hint">CTRL+ENTER run/next</span>
-              <button class="run-btn" id="run-btn">Run</button>
-            </div>
-          </div>
-        </div>
-        <div class="divider-handle">
-          <div class="divider-knob">
-            <span>&#9650;</span>
-            <span>&#9660;</span>
-          </div>
-        </div>
-        <div class="panel-sub panel-terminal">
-          <div class="panel-header">Terminal</div>
-          <div class="terminal-output"></div>
-          <div class="terminal-footer">
-            <button class="clear-btn" id="clear-btn">Clear</button>
-          </div>
-        </div>
-      </div>
-    </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/lint.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/javascript-lint.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jshint/2.13.6/jshint.min.js"></script>
+  <script src="https://unpkg.com/prettier@2.8.8/standalone.js"></script>
+  <script src="https://unpkg.com/prettier@2.8.8/parser-babel.js"></script>
+  <script src="allTests.js"></script>
+  <script src="index.js"></script>
+</body>
 
-    <!-- Bottom Bar -->
-    <footer class="bottom-bar">
-      <div class="bottom-left"></div>
-      <div class="bottom-center">
-        <span class="progress">0 / 0</span>
-      </div>
-      <div class="bottom-right">
-        <button class="nav-btn" id="back-btn">Back</button>
-        <button class="nav-btn" id="next-btn">Next</button>
-      </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/lint.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/javascript-lint.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jshint/2.13.6/jshint.min.js"></script>
-    <script src="https://unpkg.com/prettier@2.8.8/standalone.js"></script>
-    <script src="https://unpkg.com/prettier@2.8.8/parser-babel.js"></script>
-    <script src="allTests.js"></script>
-    <script src="index.js"></script>
-  </body>
 </html>
