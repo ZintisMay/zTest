@@ -503,6 +503,13 @@ body {
   border-radius: 4px;
 }
 
+.CodeMirror-cursor {
+  border-left-width: 0.55em !important;
+  border-left-color: #ffb86c !important;
+  background-color: #ffb86c !important;
+  opacity: 0.5 !important;
+}
+
 .question-group {
   width: 90%;
   margin: 5% auto 0;
