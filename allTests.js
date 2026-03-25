@@ -3,6 +3,40 @@ const allTests = [
     id: '1',
     title: 'Variables',
     help: 'https://www.w3schools.com/js/js_variables.asp',
+    lessons: [
+      {
+        title: 'Variables',
+        text: `A variable is a way to name a piece of information.<br><br>
+
+      There are three ways to declare a variable:<br><br>
+
+<b>var</b> — the original way. Function-scoped and can be re-declared.<br>
+<b>let</b> — block-scoped. Can be reassigned but not re-declared in the same scope.<br>
+<b>const</b> — block-scoped. Cannot be reassigned after declaration.<br><br>
+
+You assign a value using the <b>=</b> sign. The value on the right is stored under the name on the left.`,
+        sampleCode: `// var - the original way, can be reassigned
+var name = "Alice";
+name = "Bob";
+
+console.log(name); // "Alice"
+
+// let - block scoped, can be reassigned
+let age = 25;
+age = 100;
+
+console.log(age);  // 26
+
+// const - cannot be reassigned
+const PI = 3.14;
+PI = "pie"; // This throws an error!
+
+console.log(PI);   // 3.14
+
+// Try running the code with CTRL + ENTER
+// You'll see the output below in the Terminal`,
+      },
+    ],
     sections: {
       varATests: {
         title: `var "a"`,
@@ -344,25 +378,25 @@ const allTests = [
     help: 'https://www.w3schools.com/js/js_operators.asp',
     sections: {
       plusTests: {
-        title: `var "a" +`,
+        title: `var "g" +`,
         instructions: `Declare a variable "a" and it should be the number equal to 654321 plus 123456`,
         tests: [
           {
             description: `is declared`,
             test: () => {
-              expect(a).toBeDeclared();
+              expect(g).toBeDeclared();
             },
           },
           {
             description: `has a value`,
             test: () => {
-              expect(a).toHaveValue();
+              expect(g).toHaveValue();
             },
           },
           {
             description: `is a number`,
             test: () => {
-              expect(a).toBeNumber();
+              expect(g).toBeNumber();
             },
           },
           {
@@ -374,31 +408,31 @@ const allTests = [
           {
             description: `is 654321 + 123456`,
             test: () => {
-              expect(a).toBe(654321 + 123456);
+              expect(g).toBe(654321 + 123456);
             },
           },
         ],
       },
       minusTests: {
-        title: `var "b" -`,
+        title: `var "h" -`,
         instructions: `Declare a variable "b" and it should be the number equal to 654321 minus 123456`,
         tests: [
           {
             description: `is declared`,
             test: () => {
-              expect(b).toBeDeclared();
+              expect(h).toBeDeclared();
             },
           },
           {
             description: `has a value`,
             test: () => {
-              expect(b).toHaveValue();
+              expect(h).toHaveValue();
             },
           },
           {
             description: `is a number`,
             test: () => {
-              expect(b).toBeNumber();
+              expect(h).toBeNumber();
             },
           },
           {
@@ -410,31 +444,31 @@ const allTests = [
           {
             description: `is 654321 - 123456`,
             test: () => {
-              expect(b).toBe(654321 - 123456);
+              expect(h).toBe(654321 - 123456);
             },
           },
         ],
       },
       multiplyTests: {
-        title: `var "c" *`,
+        title: `var "i" *`,
         instructions: `Declare a variable "c" and it should be the number equal to 654321 times 123456`,
         tests: [
           {
             description: `is declared`,
             test: () => {
-              expect(c).toBeDeclared();
+              expect(i).toBeDeclared();
             },
           },
           {
             description: `has a value`,
             test: () => {
-              expect(c).toHaveValue();
+              expect(i).toHaveValue();
             },
           },
           {
             description: `is a number`,
             test: () => {
-              expect(c).toBeNumber();
+              expect(i).toBeNumber();
             },
           },
           {
@@ -446,31 +480,31 @@ const allTests = [
           {
             description: `is 654321 * 123456`,
             test: () => {
-              expect(c).toBe(654321 * 123456);
+              expect(i).toBe(654321 * 123456);
             },
           },
         ],
       },
       divideTests: {
-        title: `var "d" /`,
+        title: `var "j" /`,
         instructions: `Declare a variable "d" and it should be the number equal to 654321 divided by 123456`,
         tests: [
           {
             description: `is declared`,
             test: () => {
-              expect(d).toBeDeclared();
+              expect(j).toBeDeclared();
             },
           },
           {
             description: `has a value`,
             test: () => {
-              expect(d).toHaveValue();
+              expect(j).toHaveValue();
             },
           },
           {
             description: `is a number`,
             test: () => {
-              expect(d).toBeNumber();
+              expect(j).toBeNumber();
             },
           },
           {
@@ -482,31 +516,31 @@ const allTests = [
           {
             description: `is 654321 / 123456`,
             test: () => {
-              expect(d).toBe(654321 / 123456);
+              expect(j).toBe(654321 / 123456);
             },
           },
         ],
       },
       modulusTests: {
-        title: `var "e" %`,
+        title: `var "k" %`,
         instructions: `Declare a variable "e" and it should be the number equal to 654321 modulus 123456`,
         tests: [
           {
             description: `is declared`,
             test: () => {
-              expect(e).toBeDeclared();
+              expect(k).toBeDeclared();
             },
           },
           {
             description: `has a value`,
             test: () => {
-              expect(e).toHaveValue();
+              expect(k).toHaveValue();
             },
           },
           {
             description: `is a number`,
             test: () => {
-              expect(e).toBeNumber();
+              expect(k).toBeNumber();
             },
           },
           {
@@ -518,31 +552,31 @@ const allTests = [
           {
             description: `is 654321 % 123456`,
             test: () => {
-              expect(e).toBe(654321 % 123456);
+              expect(k).toBe(654321 % 123456);
             },
           },
         ],
       },
       exponentTests: {
-        title: `var "f" **`,
+        title: `var "l" **`,
         instructions: `Declare a variable "f" and it should be the number equal to 2 to the 20th power`,
         tests: [
           {
             description: `is declared`,
             test: () => {
-              expect(f).toBeDeclared();
+              expect(l).toBeDeclared();
             },
           },
           {
             description: `has a value`,
             test: () => {
-              expect(f).toHaveValue();
+              expect(l).toHaveValue();
             },
           },
           {
             description: `is a number`,
             test: () => {
-              expect(f).toBeNumber();
+              expect(l).toBeNumber();
             },
           },
           {
@@ -554,7 +588,7 @@ const allTests = [
           {
             description: `is 2 ** 20`,
             test: () => {
-              expect(f).toBe(2 ** 20);
+              expect(l).toBe(2 ** 20);
             },
           },
         ],

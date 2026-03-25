@@ -135,12 +135,27 @@ function renderQuestionCards() {
     const subList = document.createElement('div');
     subList.classList.add('question-sublist');
 
+    if (group.lessons) {
+      group.lessons.forEach((lesson, i) => {
+        const route = `#${group.id}-lesson-${i}`;
+        const item = document.createElement('div');
+        item.classList.add('question-item', 'question-item-lesson');
+        item.dataset.hash = route;
+        item.textContent = `Lesson: ${lesson.title}`;
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          window.location.hash = route;
+        });
+        subList.appendChild(item);
+      });
+    }
+
     Object.entries(group.sections).forEach(([key, section]) => {
       const route = `#${group.id}-${key}`;
       const item = document.createElement('div');
       item.classList.add('question-item');
       item.dataset.hash = route;
-      item.textContent = section.title;
+      item.textContent = `Test: ${section.title}`;
       item.addEventListener('click', (e) => {
         e.stopPropagation();
         window.location.hash = route;
@@ -159,6 +174,35 @@ window.addEventListener('hashchange', () => {
   const topCenter = document.querySelector('.top-center');
 
   for (const group of allTests) {
+    if (group.lessons) {
+      const lessonMatch = hash.match(`^#${group.id}-lesson-(\\d+)$`);
+      if (lessonMatch) {
+        const lesson = group.lessons[parseInt(lessonMatch[1])];
+        if (lesson) {
+          topCenter.textContent = `${group.id}: ${group.title} — Lesson: ${lesson.title}`;
+          activeGroupId = null;
+          activeSectionKey = null;
+          activeSection = null;
+          document
+            .querySelectorAll('.question-item')
+            .forEach((el) => el.classList.remove('question-item-active'));
+          document
+            .querySelectorAll('.question-group')
+            .forEach((el) => el.classList.remove('open'));
+          const activeItem = document.querySelector(
+            `.question-item[data-hash="${hash}"]`,
+          );
+          if (activeItem) {
+            activeItem.classList.add('question-item-active');
+            activeItem.closest('.question-group').classList.add('open');
+          }
+          renderLesson(lesson);
+          editor.setValue(lesson.sampleCode);
+          return;
+        }
+      }
+    }
+
     for (const [key, section] of Object.entries(group.sections)) {
       if (hash === `#${group.id}-${key}`) {
         topCenter.textContent = `${group.id}: ${group.title} — ${section.title}`;
@@ -236,6 +280,23 @@ function renderTests(section, helpUrl) {
   }
 }
 
+function renderLesson(lesson) {
+  const testsPanel = document.querySelector('.tests-content');
+  testsPanel.innerHTML = '';
+
+  const header = document.createElement('div');
+  header.classList.add('test-pane-header');
+  const headerTitle = document.createElement('div');
+  headerTitle.textContent = `Lesson: ${lesson.title}`;
+  header.appendChild(headerTitle);
+  testsPanel.appendChild(header);
+
+  const body = document.createElement('div');
+  body.classList.add('lesson-body');
+  body.innerHTML = lesson.text;
+  testsPanel.appendChild(body);
+}
+
 const terminalOutput = document.querySelector('.terminal-output');
 
 const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
@@ -308,8 +369,10 @@ function buildAstFlags(code) {
       if (!node || typeof node !== 'object' || !node.type) return false;
       if (node.type === 'Identifier' && node.name === name) return true;
       return Object.values(node).some((val) => {
-        if (Array.isArray(val)) return val.some((n) => containsIdentifier(n, name));
-        if (val && typeof val === 'object' && val.type) return containsIdentifier(val, name);
+        if (Array.isArray(val))
+          return val.some((n) => containsIdentifier(n, name));
+        if (val && typeof val === 'object' && val.type)
+          return containsIdentifier(val, name);
         return false;
       });
     }
@@ -349,7 +412,8 @@ function buildAstFlags(code) {
               if (n.type === 'Identifier') ifConditionIdentifiers.add(n.name);
               Object.values(n).forEach((val) => {
                 if (Array.isArray(val)) val.forEach(collectIdentifiers);
-                else if (val && typeof val === 'object' && val.type) collectIdentifiers(val);
+                else if (val && typeof val === 'object' && val.type)
+                  collectIdentifiers(val);
               });
             };
             collectIdentifiers(node.test);
@@ -376,7 +440,8 @@ function buildAstFlags(code) {
           break;
         case 'TemplateLiteral':
           hasTemplateLiteral = true;
-          if (node.expressions?.length > 0) hasTemplateLiteralWithInterpolation = true;
+          if (node.expressions?.length > 0)
+            hasTemplateLiteralWithInterpolation = true;
           break;
         case 'SpreadElement':
           hasSpread = true;

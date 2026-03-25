@@ -271,6 +271,18 @@ body {
   margin-top: 6px;
 }
 
+.lesson-body {
+  width: 90%;
+  margin: 8px auto 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #ccc;
+  background-color: #0a1a2e;
+  border: 1px solid #1a4a7a;
+  border-radius: 4px;
+}
+
 .test-pane {
   width: 90%;
   margin: 4px auto 0;
@@ -563,6 +575,23 @@ body {
 
 .question-item:hover {
   background-color: #3a1515;
+  color: #fff;
+}
+
+.question-item.question-item-lesson {
+  background-color: #0a1a2e;
+  border-color: #1a4a7a;
+  color: #7ab8f5;
+}
+
+.question-item.question-item-lesson:hover {
+  background-color: #0f2540;
+  color: #a8d0ff;
+}
+
+.question-item.question-item-lesson.question-item-active {
+  background-color: #0f2540;
+  border-color: #4488cc;
   color: #fff;
 }
 
