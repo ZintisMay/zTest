@@ -464,15 +464,6 @@ function runCode() {
 
   const testRunnerScript = activeSection
     ? `
-    Z_T.displayResults = function(results) {
-      const clean = JSON.parse(JSON.stringify(results, (key, val) => {
-        if (val instanceof Error) return val.message;
-        if (typeof val === "function") return undefined;
-        return val;
-      }));
-      window.parent.postMessage({ type: "results", data: clean }, "*");
-    };
-    Z_T.addBigCheckMark = function() {};
     const _rawSection = allTests.find(g => g.id === "${activeGroupId}").sections["${activeSectionKey}"];
     const _suite = {
       "${activeSectionKey}": {

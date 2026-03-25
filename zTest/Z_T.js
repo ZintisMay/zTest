@@ -22,7 +22,6 @@ const Z_T = {
   containerParent: document.getElementById('Z_T') || document.body,
   testContainer: null,
   testCounter: [],
-  comletelyPassed: true,
   type: {
     BOOLEAN: 'boolean',
     NUMBER: 'number',
@@ -84,11 +83,7 @@ Z_T.testAll = function (testSuite) {
     results[sectionKey] = sectionResult;
   }
 
-  Z_T.displayResults(results);
-
-  if (Z_T.comletelyPassed) {
-    Z_T.addBigCheckMark();
-  }
+  Z_T.reportResults(results);
   Z_T.completedTests = results;
 };
 
@@ -685,6 +680,11 @@ function expectCode() {
         throw new Error('does not use a template literal with interpolation');
       }
     },
+    toUseVar() {
+      if (!flags?.declarations.includes('var')) {
+        throw new Error('does not use "var"');
+      }
+    },
     toUseLet() {
       if (!flags?.declarations.includes('let')) {
         throw new Error('does not use "let"');
@@ -718,134 +718,12 @@ function expectCode() {
   };
 }
 
-// Displays the test results as divs on the page
-Z_T.displayResults = function (section) {
-  // Create vertical Section list
-  const testContainer = document.createElement('div');
-  testContainer.style.cssText = `
-    display:inline-flex;
-    flex-direction:column;
-    flex-wrap:wrap;
-    height: 98vh;
-    align-items:start;
-    justify-content: flex-start;
-  `;
-  Z_T.containerParent.appendChild(testContainer);
-  Z_T.testContainer = testContainer;
-
-  // Iterate over test sections
-  let resultCounter = 0;
-  for (let key in section) {
-    section[key].testId = ++resultCounter;
-    console.log(section[key]);
-    Z_T.populateSection(section[key]);
-  }
+Z_T.reportResults = function (results) {
+  const clean = JSON.parse(JSON.stringify(results, (key, val) => {
+    if (val instanceof Error) return val.message;
+    if (typeof val === 'function') return undefined;
+    return val;
+  }));
+  window.parent.postMessage({ type: 'results', data: clean }, '*');
 };
 
-// Displays each section as a colored box
-Z_T.populateSection = function (section) {
-  const { testId, results = [], title = 'NO TITLE', instructions } = section;
-  const {
-    colors: { LIGHT_GREEN, LIGHT_ORANGE, LIGHT_RED, DARK_GREEN, DARK_RED },
-  } = Z_T;
-
-  // Create Div
-  const sectionDiv = document.createElement('div');
-
-  // Assign bg color
-  const allTestsFailed = results.every((item) => !!item.result);
-  const anyTestFailed = results.find((item) => !!item.result);
-
-  let sectionBGColor = LIGHT_GREEN; // All tests passed
-  if (allTestsFailed) {
-    sectionBGColor = LIGHT_RED;
-    Z_T.comletelyPassed = false;
-  } else if (anyTestFailed) {
-    sectionBGColor = LIGHT_ORANGE;
-    Z_T.comletelyPassed = false;
-  }
-
-  sectionDiv.style.cssText = `
-    padding: 10px 10px; 
-    margin: 5px; 
-    background-color: ${sectionBGColor}; 
-    border-radius: 10px;
-    width:300px;
-  `;
-
-  // Create Title
-  let h2 = document.createElement('h2');
-  h2.style.cssText = `
-    padding: 0px;
-    margin: 0px;
-  `;
-  h2.innerHTML = `${testId}: ${title}`;
-  sectionDiv.appendChild(h2);
-
-  // Create Instructions
-  if (instructions) {
-    let instructionText = document.createElement('p');
-    let b = document.createElement('b');
-    b.textContent = 'Instructions: ';
-    instructionText.appendChild(b);
-    instructionText.innerHTML += instructions;
-    instructionText.style.cssText = `
-      margin: 10px 0;
-    `;
-    sectionDiv.appendChild(instructionText);
-  }
-
-  // Go through tests
-  results.forEach((item) => {
-    const itemPassed = !item.result;
-    let testContainer = document.createElement('div');
-    testContainer.style.cssText = `
-      padding: 3px;
-      border-radius: 5px;
-    `;
-
-    // Add pass fail sticker
-    const passFail = itemPassed ? 'PASSED ' : 'FAILED ';
-    let span = document.createElement('span');
-    span.style.cssText = `padding:2px 5px;display:inline-flex;margin:0 3px 0 0;border-radius:5px;`;
-    span.style.backgroundColor = itemPassed ? DARK_GREEN : DARK_RED;
-    span.style.color = 'white';
-    span.innerHTML = passFail;
-    testContainer.appendChild(span);
-
-    // Add Test Description
-    testContainer.innerHTML += item.description;
-
-    // Add Test Error
-    if (item.result) {
-      let errorSpan = document.createElement('span');
-      errorSpan.style.color = DARK_RED;
-      // errorSpan.style.backgroundColor = "red";
-      errorSpan.style.fontWeight = 700;
-      errorSpan.textContent = ' ' + item.result;
-      testContainer.append(errorSpan);
-    }
-
-    // Append to sectionDiv
-    sectionDiv.appendChild(testContainer);
-  });
-
-  Z_T.testContainer.appendChild(sectionDiv);
-};
-
-Z_T.addBigCheckMark = function () {
-  const checkMark = document.createElement('div');
-  checkMark.style.cssText = `
-    position: fixed;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    font-size:50vw;
-    color:green;
-    z-index: 5000;
-    font-weight: bold;
-    opacity:.5;
-  `;
-  checkMark.innerHTML = '&check;';
-  document.body.appendChild(checkMark);
-};

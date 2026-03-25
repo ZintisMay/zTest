@@ -22,7 +22,7 @@ A browser-based JavaScript teaching/exercise framework. Students write code in a
 - Student code runs in a hidden `<iframe>` (sandboxed)
 - Three scripts injected in order: `Z_T.js`, `allTests.js`, student code, then a test runner script
 - Results sent back to parent via `postMessage`
-- `Z_T.displayResults` is overridden in the iframe to postMessage instead of writing to DOM
+- `Z_T.reportResults` sends results to the parent window via postMessage
 - `Z_T.addBigCheckMark` is overridden to a no-op
 
 ### localStorage
