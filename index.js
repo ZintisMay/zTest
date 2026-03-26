@@ -690,9 +690,13 @@ function applyTestResults(data, shouldAdvance = false) {
 function resetQuestion() {
   const hash = window.location.hash;
   if (!hash) return;
-  editor.setValue('');
-  saveEntry(hash, { code: '', results: null });
-  runCode();
+  if (activeItem?.type === 'lesson') {
+    editor.setValue(activeItem.sampleCode || '');
+  } else {
+    editor.setValue('');
+    saveEntry(hash, { code: '', results: null });
+    runCode();
+  }
 }
 
 function clearTerminal() {
