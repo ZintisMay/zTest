@@ -654,18 +654,6 @@ body {
   font-size: 14px;
 }
 
-.question-group.question-group-complete .question-item-lesson {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.question-group.question-group-complete .question-item-lesson::after {
-  content: '✓';
-  flex-shrink: 0;
-  margin-left: 8px;
-  color: #77dd77;
-}
 
 /* ── Bottom Bar ── */
 .bottom-bar {
