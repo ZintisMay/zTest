@@ -7,6 +7,7 @@ const testBuilderLine = `if (typeof module !== 'undefined') module.exports = ${E
 const commands = {
   split: splitTests,
   build: buildTests,
+  watch: watchTests,
 };
 
 const command = process.argv[2];
@@ -42,6 +43,19 @@ function buildTests() {
   // Write to file
   fs.writeFileSync('./allTests.js', output, 'utf8');
   console.log(`Built allTests.js from ${files.length} files.`);
+}
+
+function watchTests() {
+  console.log('Watching ./testSource for changes...');
+  buildTests();
+  fs.watch('./testSource', (eventType, filename) => {
+    if (!filename?.endsWith('.js')) return;
+    console.log(`${filename} changed — rebuilding...`);
+    Object.keys(require.cache).forEach((key) => {
+      if (key.includes('testSource')) delete require.cache[key];
+    });
+    buildTests();
+  });
 }
 
 function serializeGroup(g) {
