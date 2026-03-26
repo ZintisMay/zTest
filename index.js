@@ -1,6 +1,9 @@
 let ZT_SOURCE = '';
 let ALLTESTS_SOURCE = '';
 
+const RUN_HOTKEY = 'CTRL+ENTER → run';
+const NEXT_HOTKEY = 'CTRL+SHIFT+ENTER → next';
+
 Promise.all([
   fetch('zTest/Z_T.js').then((r) => r.text()),
   fetch('allTests.js').then((r) => r.text()),
@@ -138,11 +141,13 @@ function renderQuestionCards() {
       const route = `#${group.id}-${groupItem.key}`;
       const navItem = document.createElement('div');
       navItem.classList.add('question-item');
-      if (groupItem.type === 'lesson') navItem.classList.add('question-item-lesson');
+      if (groupItem.type === 'lesson')
+        navItem.classList.add('question-item-lesson');
       navItem.dataset.hash = route;
-      navItem.textContent = groupItem.type === 'lesson'
-        ? `Lesson: ${groupItem.title}`
-        : `Test: ${groupItem.title}`;
+      navItem.textContent =
+        groupItem.type === 'lesson'
+          ? `Lesson: ${groupItem.title}`
+          : `Test: ${groupItem.title}`;
       navItem.addEventListener('click', (e) => {
         e.stopPropagation();
         window.location.hash = route;
@@ -160,6 +165,9 @@ window.addEventListener('hashchange', () => {
   const hash = window.location.hash;
   const topCenter = document.querySelector('.top-center');
   terminalOutput.innerHTML = '';
+  const hint = document.querySelector('.run-hint');
+  hint.textContent = RUN_HOTKEY;
+  hint.classList.remove('run-hint-complete');
   if (messageHandler) {
     window.removeEventListener('message', messageHandler);
     messageHandler = null;
@@ -168,9 +176,10 @@ window.addEventListener('hashchange', () => {
   for (const group of allTests) {
     for (const item of group.items) {
       if (hash === `#${group.id}-${item.key}`) {
-        topCenter.textContent = item.type === 'lesson'
-          ? `${group.id}: ${group.title} — Lesson: ${item.title}`
-          : `${group.id}: ${group.title} — ${item.title}`;
+        topCenter.textContent =
+          item.type === 'lesson'
+            ? `${group.id}: ${group.title} — Lesson: ${item.title}`
+            : `${group.id}: ${group.title} — ${item.title}`;
         activeGroupId = group.id;
         activeItem = item;
         document
@@ -302,7 +311,15 @@ function saveEntry(hash, patch) {
 let messageHandler = null;
 
 document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey && (e.key === 's' || e.key === 'Enter')) {
+  if (e.ctrlKey && e.shiftKey && e.key === 'Enter') {
+    e.preventDefault();
+    const isLesson = activeItem?.type === 'lesson';
+    const isComplete = isQuestionComplete(window.location.hash);
+    if (isLesson || isComplete) {
+      const next = getNextItemHash();
+      if (next) window.location.hash = next;
+    }
+  } else if (e.ctrlKey && (e.key === 's' || e.key === 'Enter')) {
     e.preventDefault();
     runCode();
   }
@@ -495,8 +512,9 @@ function runCode() {
 
   window.addEventListener('message', messageHandler);
 
-  const testRunnerScript = activeItem?.type === 'test'
-    ? `
+  const testRunnerScript =
+    activeItem?.type === 'test'
+      ? `
     const _rawSection = allTests.find(g => g.id === "${activeGroupId}").items.find(i => i.key === "${activeItem?.key}");
     const _suite = {
       "${activeItem?.key}": {
@@ -506,7 +524,7 @@ function runCode() {
     };
     Z_T.testAll(_suite);
   `
-    : '';
+      : '';
 
   const iframeDoc = iframe.contentDocument;
   iframeDoc.open();
@@ -541,13 +559,27 @@ function isQuestionComplete(hash) {
   );
 }
 
+function getNextItemHash() {
+  let found = false;
+  for (const group of allTests) {
+    for (const item of group.items) {
+      if (found) return `#${group.id}-${item.key}`;
+      if (group.id === activeGroupId && item.key === activeItem?.key)
+        found = true;
+    }
+  }
+  return null;
+}
+
 function getNextHash() {
   let found = false;
   for (const group of allTests) {
     for (const item of group.items) {
       const hash = `#${group.id}-${item.key}`;
-      if (found && (item.type === 'lesson' || !isQuestionComplete(hash))) return hash;
-      if (group.id === activeGroupId && item.key === activeItem?.key) found = true;
+      if (found && (item.type === 'lesson' || !isQuestionComplete(hash)))
+        return hash;
+      if (group.id === activeGroupId && item.key === activeItem?.key)
+        found = true;
     }
   }
   return null;
@@ -557,7 +589,8 @@ function getPrevHash() {
   let prev = null;
   for (const group of allTests) {
     for (const item of group.items) {
-      if (group.id === activeGroupId && item.key === activeItem?.key) return prev;
+      if (group.id === activeGroupId && item.key === activeItem?.key)
+        return prev;
       prev = `#${group.id}-${item.key}`;
     }
   }
@@ -603,11 +636,14 @@ function updateNavState() {
   });
 
   document.querySelectorAll('.question-group').forEach((group) => {
-    const testItems = [...group.querySelectorAll('.question-item:not(.question-item-lesson)')];
+    const testItems = [
+      ...group.querySelectorAll('.question-item:not(.question-item-lesson)'),
+    ];
     const completeCount = testItems.filter((item) =>
       item.classList.contains('question-item-complete'),
     ).length;
-    const allComplete = completeCount === testItems.length && testItems.length > 0;
+    const allComplete =
+      completeCount === testItems.length && testItems.length > 0;
     const someComplete = completeCount > 0 && !allComplete;
     group.classList.toggle('question-group-complete', allComplete);
     group.classList.toggle('question-group-partial', someComplete);
@@ -644,6 +680,11 @@ function applyTestResults(data, shouldAdvance = false) {
 
   saveEntry(window.location.hash, { results: data });
   updateNavState();
+
+  const hint = document.querySelector('.run-hint');
+  const complete = isQuestionComplete(window.location.hash);
+  hint.textContent = complete ? NEXT_HOTKEY : RUN_HOTKEY;
+  hint.classList.toggle('run-hint-complete', complete);
 }
 
 function resetQuestion() {
