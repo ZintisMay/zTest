@@ -615,6 +615,79 @@ console.log(numberFive() * numberFive()); // 25`,
             expect(returnFalse).toReturn(false);
           } }
         ],
+      }
+    ],
+  },
+  {
+    id: '4',
+    title: 'Function Parameters',
+    help: 'https://www.w3schools.com/js/js_function_parameters.asp',
+    items: [
+      { type: 'lesson', key: 'lesson-2',
+        title: 'Parameters',
+        text: `Functions more useful when you can have them do extra work for you.<br><br>
+
+<b>Parameters</b> are variables inside the <b>( )</b> when you declare it. → <b>function hello( name ){ }</b><br><br>
+
+When you <b>call</b> a function you can pass in <b>arguments</b>. → <b>hello( "bob" )</b> <br><br>
+
+<b>console.log()</b> is a function! You've been using a function this whole time!<br><br>
+
+Try running the code and change the arguments and see how the output changes!`,
+        sampleCode: `function hello(name) {
+  console.log("Hello, " + name + "!");
+}
+
+hello("Alice"); // Hello, Alice!
+hello("Bob");   // Hello, Bob!
+
+// Functions can have multiple parameters
+function logBoth(word1, word2) {
+  console.log(word1);
+  console.log(word2);
+}
+
+// Try changing these arguments (look, up, oh, my)
+logBoth("look", "up");
+logBoth("oh", "my");`,
+      },
+      { type: 'lesson', key: 'lesson-2b',
+        title: 'Naming Parameters',
+        text: `Parameter names only exist inside the function. You name them like normal variables.<br><br>
+
+For now, use parameters like "a" or "b" or "x". This is OK when you are first learning programming. There are better practices, we'll learn about those later.<br><br>
+      
+Try running the code!`,
+        sampleCode: `// "x" works but tells you nothing
+function double(x) {
+  return x * 2;
+}
+
+// "number" is much clearer
+function doubleNumber(number) {
+  return number * 2;
+}
+
+// The argument name doesn't need to match the parameter name
+var myScore = 50;
+var result = doubleNumber(myScore);
+console.log(result); // 100`,
+      },
+      { type: 'lesson', key: 'lesson-3',
+        title: 'Parameters + Return',
+        text: `Now lets use both. This is a very common pattern in programming!<br><br>
+
+A function takes in data via <b>parameters</b>, does something with it, and sends a result back with <b>return</b>.<br><br>
+
+Think of it like a machine: you put something in, it does work, and something comes out the other side.<br><br>
+
+Try running the code, then try changing the arguments!`,
+        sampleCode: `function double(number) {
+  return number * 2;
+}
+
+console.log(double(5)); // 10
+console.log(double(100)); // 200`,
       },
       { type: 'test', key: 'addTests',
         title: `function "add"`,
@@ -773,41 +846,122 @@ console.log(numberFive() * numberFive()); // 25`,
     ],
   },
   {
-    id: '4',
-    title: 'More Strings',
-    help: 'https://www.w3schools.com/jsref/jsref_return.asp',
-    items: [
-
-    ],
-  },
-  {
     id: '5',
     title: 'Functions with Logic',
     help: 'https://www.w3schools.com/js/js_conditionals.asp',
     items: [
+      { type: 'lesson', key: 'lesson-0',
+        title: 'If Statements',
+        text: `An <b>if statement</b> runs a block of code only when a condition is true.<br><br>
+
+The condition goes inside the <b>( )</b>. If it's true, the code inside <b>{ }</b> runs. If not, it's skipped.<br><br>
+
+Try running the code and changing true to false!`,
+        sampleCode: `if (true) {
+  console.log("You passed!");
+}`,
+      },
+      { type: 'lesson', key: 'lesson-0a',
+        title: 'Else Statements',
+        text: `You can add an <b>else</b> block after an <b>if</b> block to run code when the condition is false.<br><br>
+
+Try running the code and changing true to false!`,
+        sampleCode: `if (true) {
+  console.log("You passed!");
+} else {
+  console.log("You failed.");
+}`,
+      },
+      { type: 'lesson', key: 'lesson-0b',
+        title: 'The ! Operator',
+        text: `The <b>!</b> operator means <b>not</b>. It flips a truthy value to false, and a falsy value to true.<br><br>
+
+It goes right before the value or condition you want to flip.<br><br>
+
+You'll use <b>!</b> a lot when writing if statements as it lets you check for the opposite of something.<br><br>
+
+Try running the code!`,
+        sampleCode: `console.log("true and not true");
+console.log(true);  // true
+console.log(!true);  // false
+console.log("false and not false");
+console.log(false); // false
+console.log(!false); // true
+
+var isRaining = false;
+
+if (!isRaining) {
+  console.log("Go outside!");
+} else {
+  console.log("Stay inside.");
+}`,
+      },
+      { type: 'lesson', key: 'lesson-1',
+        title: 'What is True?',
+        text: `In JavaScript lots of values are considered true <b>true</b>. Almost all, in fact.<br><br>
+
+This is called being <b>truthy</b>. If a value is truthy, an if statement will run its block.<br><br>
+
+It's actually easier to learn which values are <b>falsy</b> (next lesson).<br><br>
+
+Try running the code!`,
+        sampleCode: `// All of these are truthy
+if (1) {
+  console.log("1 is truthy");
+}
+if (true) {
+  console.log("true is truthy");
+}
+if ("a") {
+  console.log("characters are truthy");
+}
+if ("hello") {
+  console.log("words are truthy");
+}
+if ("hi there") {
+  console.log("sentences are truthy");
+}`,
+      },
+      { type: 'lesson', key: 'lesson-2',
+        title: 'What is False?',
+        text: `There are only a handful of <b>falsy</b> values.<br><br>
+
+Just try to keep these in mind when you code your own projects! There's only 6 to remember!<br><br>
+
+(There's actually 9, but the last 3 are not seen often, go look it up if you want!)
+
+Everything else is truthy — so when in doubt, assume it's true!`,
+        sampleCode: `// All of these are falsy
+if (!false)     { console.log("false is falsy"); }
+if (!0)         { console.log("0 is falsy"); }
+if (!"")        { console.log("an empty string is falsy"); }
+if (!null)      { console.log("null is falsy"); }
+if (!undefined) { console.log("undefined is falsy"); }
+if (!NaN)       { console.log("NaN is falsy"); }`,
+      },
       { type: 'test', key: 'greeting',
         title: `function greeting`,
         instructions: `Make a function named "greeting" that takes one argument. It should return a string like "Hello Zintis!" when passed the argument "Zintis"`,
         tests: [
           { description: `is declared`, test: () => {
-              expect(greeting).toBeDeclared();
-            } },
+            expect(greeting).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(greeting).toHaveValue();
-            } },
+            expect(greeting).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(greeting).toBeFunction();
-            } },
+            expect(greeting).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(greeting).takesXArguments(1);
-            } },
+            expect(greeting).takesXArguments(1);
+          } },
           { description: `returns a string`, test: () => {
-              expect(greeting).withArgs().toReturnString();
-            } },
+            expect(greeting).withArgs().toReturnString();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(greeting).withArgs('Barry').toReturn(`Hello Barry!`);
-              expect(greeting).withArgs(`Rosie`).toReturn(`Hello Rosie!`);
-            } }
+            expect(greeting).withArgs('Barry').toReturn(`Hello Barry!`);
+            expect(greeting).withArgs(`Rosie`).toReturn(`Hello Rosie!`);
+          } }
         ],
       },
       { type: 'test', key: 'isThisValueTrue',
@@ -815,25 +969,25 @@ console.log(numberFive() * numberFive()); // 25`,
         instructions: `Make a function named "isThisValueTrue" that takes one argument (of any type). It should return true if the argument is truthy, and false otherwise.`,
         tests: [
           { description: `is declared`, test: () => {
-              expect(isThisValueTrue).toBeDeclared();
-            } },
+            expect(isThisValueTrue).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(isThisValueTrue).toHaveValue();
-            } },
+            expect(isThisValueTrue).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(isThisValueTrue).toBeFunction();
-            } },
+            expect(isThisValueTrue).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(isThisValueTrue).takesXArguments(1);
-            } },
+            expect(isThisValueTrue).takesXArguments(1);
+          } },
           { description: `returns a boolean`, test: () => {
-              expect(isThisValueTrue).withArgs().toReturnBoolean();
-            } },
+            expect(isThisValueTrue).withArgs().toReturnBoolean();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(isThisValueTrue).withArgs(true).toReturn(true);
-              expect(isThisValueTrue).withArgs(false).toReturn(false);
-              expect(isThisValueTrue).withArgs().toReturn(false);
-            } }
+            expect(isThisValueTrue).withArgs(true).toReturn(true);
+            expect(isThisValueTrue).withArgs(false).toReturn(false);
+            expect(isThisValueTrue).withArgs().toReturn(false);
+          } }
         ],
       },
       { type: 'test', key: 'isThisNumberEven',
@@ -841,26 +995,26 @@ console.log(numberFive() * numberFive()); // 25`,
         instructions: `Make a function named "isThisNumberEven" that takes one argument, a number. It should return true if the number is even, and false if odd.`,
         tests: [
           { description: `is declared`, test: () => {
-              expect(isThisNumberEven).toBeDeclared();
-            } },
+            expect(isThisNumberEven).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(isThisNumberEven).toHaveValue();
-            } },
+            expect(isThisNumberEven).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(isThisNumberEven).toBeFunction();
-            } },
+            expect(isThisNumberEven).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(isThisNumberEven).takesXArguments(1);
-            } },
+            expect(isThisNumberEven).takesXArguments(1);
+          } },
           { description: `returns a boolean`, test: () => {
-              expect(isThisNumberEven).toReturnBoolean();
-            } },
+            expect(isThisNumberEven).toReturnBoolean();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(isThisNumberEven).withArgs(1).toReturn(false);
-              expect(isThisNumberEven).withArgs(2).toReturn(true);
-              expect(isThisNumberEven).withArgs(-1).toReturn(false);
-              expect(isThisNumberEven).withArgs(0).toReturn(true);
-            } }
+            expect(isThisNumberEven).withArgs(1).toReturn(false);
+            expect(isThisNumberEven).withArgs(2).toReturn(true);
+            expect(isThisNumberEven).withArgs(-1).toReturn(false);
+            expect(isThisNumberEven).withArgs(0).toReturn(true);
+          } }
         ],
       },
       { type: 'test', key: 'makeNumberNegative',
@@ -868,25 +1022,25 @@ console.log(numberFive() * numberFive()); // 25`,
         instructions: `Make a function named "makeNumberNegative" that takes one argument, a number. It should return the same number, but negative.`,
         tests: [
           { description: `is declared`, test: () => {
-              expect(makeNumberNegative).toBeDeclared();
-            } },
+            expect(makeNumberNegative).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(makeNumberNegative).toHaveValue();
-            } },
+            expect(makeNumberNegative).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(makeNumberNegative).toBeFunction();
-            } },
+            expect(makeNumberNegative).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(makeNumberNegative).takesXArguments(1);
-            } },
+            expect(makeNumberNegative).takesXArguments(1);
+          } },
           { description: `returns a number`, test: () => {
-              expect(makeNumberNegative).withArgs(1).toReturnNumber();
-            } },
+            expect(makeNumberNegative).withArgs(1).toReturnNumber();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(makeNumberNegative).withArgs(1).toReturn(-1);
-              expect(makeNumberNegative).withArgs(0).toReturn(0);
-              expect(makeNumberNegative).withArgs(-1).toReturn(-1);
-            } }
+            expect(makeNumberNegative).withArgs(1).toReturn(-1);
+            expect(makeNumberNegative).withArgs(0).toReturn(0);
+            expect(makeNumberNegative).withArgs(-1).toReturn(-1);
+          } }
         ],
       },
       { type: 'test', key: 'doYouWantCake',
@@ -894,25 +1048,25 @@ console.log(numberFive() * numberFive()); // 25`,
         instructions: `Make a function named "doYouWantCake" that takes one argument, a boolean. If the boolean is true, return "yes". Otherwise return "no".`,
         tests: [
           { description: `is declared`, test: () => {
-              expect(doYouWantCake).toBeDeclared();
-            } },
+            expect(doYouWantCake).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(doYouWantCake).toHaveValue();
-            } },
+            expect(doYouWantCake).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(doYouWantCake).toBeFunction();
-            } },
+            expect(doYouWantCake).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(doYouWantCake).takesXArguments(1);
-            } },
+            expect(doYouWantCake).takesXArguments(1);
+          } },
           { description: `returns a string`, test: () => {
-              expect(doYouWantCake).withArgs().toReturnString();
-            } },
+            expect(doYouWantCake).withArgs().toReturnString();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(doYouWantCake).withArgs(true).toReturn('yes');
-              expect(doYouWantCake).withArgs(false).toReturn('no');
-              expect(doYouWantCake).withArgs().toReturn('no');
-            } }
+            expect(doYouWantCake).withArgs(true).toReturn('yes');
+            expect(doYouWantCake).withArgs(false).toReturn('no');
+            expect(doYouWantCake).withArgs().toReturn('no');
+          } }
         ],
       },
       { type: 'test', key: 'wordLength',
@@ -920,25 +1074,25 @@ console.log(numberFive() * numberFive()); // 25`,
         instructions: `Make a function named "wordLength" that takes one argument, a string. It should return the length of the string as a number.`,
         tests: [
           { description: `is declared`, test: () => {
-              expect(wordLength).toBeDeclared();
-            } },
+            expect(wordLength).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(wordLength).toHaveValue();
-            } },
+            expect(wordLength).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(wordLength).toBeFunction();
-            } },
+            expect(wordLength).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(wordLength).takesXArguments(1);
-            } },
+            expect(wordLength).takesXArguments(1);
+          } },
           { description: `returns a number`, test: () => {
-              expect(wordLength).withArgs('string').toReturnNumber();
-            } },
+            expect(wordLength).withArgs('string').toReturnNumber();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(wordLength).withArgs('cat').toReturn(3);
-              expect(wordLength).withArgs('steep').toReturn(5);
-              expect(wordLength).withArgs('').toReturn(0);
-            } }
+            expect(wordLength).withArgs('cat').toReturn(3);
+            expect(wordLength).withArgs('steep').toReturn(5);
+            expect(wordLength).withArgs('').toReturn(0);
+          } }
         ],
       },
       { type: 'test', key: 'carBuilder',
@@ -946,62 +1100,62 @@ console.log(numberFive() * numberFive()); // 25`,
         instructions: `Make a function named "carBuilder" that takes 3 arguments, string, string, and number. It should return an object that has 3 keys: "make", "model", and "year", with the first/second/third arguments as the "make", "model", and "year" values.`,
         tests: [
           { description: `is declared`, test: () => {
-              expect(carBuilder).toBeDeclared();
-            } },
+            expect(carBuilder).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(carBuilder).toHaveValue();
-            } },
+            expect(carBuilder).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(carBuilder).toBeFunction();
-            } },
+            expect(carBuilder).toBeFunction();
+          } },
           { description: `takes three arguments`, test: () => {
-              expect(carBuilder).takesXArguments(3);
-            } },
+            expect(carBuilder).takesXArguments(3);
+          } },
           { description: `returns an object`, test: () => {
-              expect(carBuilder).withArgs().toReturnObject();
-            } },
+            expect(carBuilder).withArgs().toReturnObject();
+          } },
           { description: `returns an object with 3 keys`, test: () => {
-              expect(carBuilder(1, 2, 3)).toHaveObjectKeyCount(3);
-            } },
+            expect(carBuilder(1, 2, 3)).toHaveObjectKeyCount(3);
+          } },
           { description: `returns an object with key "make"`, test: () => {
-              expect(carBuilder(1, 2, 3)).toHaveKey(`make`);
-            } },
+            expect(carBuilder(1, 2, 3)).toHaveKey(`make`);
+          } },
           { description: `returns an object with key "model"`, test: () => {
-              expect(carBuilder(1, 2, 3)).toHaveKey(`model`);
-            } },
+            expect(carBuilder(1, 2, 3)).toHaveKey(`model`);
+          } },
           { description: `returns an object with key "year"`, test: () => {
-              expect(carBuilder(1, 2, 3)).toHaveKey(`year`);
-            } },
+            expect(carBuilder(1, 2, 3)).toHaveKey(`year`);
+          } },
           { description: `carBuilder("Hyundai", "Accent", 2010) returns correct "make"`, test: () => {
-              expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-                `make`,
-                `Hyundai`,
-              );
-            } },
+            expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
+              `make`,
+              `Hyundai`,
+            );
+          } },
           { description: `carBuilder("Hyundai", "Accent", 2010) returns correct "model"`, test: () => {
-              expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-                `model`,
-                `Accent`,
-              );
-            } },
+            expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
+              `model`,
+              `Accent`,
+            );
+          } },
           { description: `carBuilder("Hyundai", "Accent", 2010) returns correct "year"`, test: () => {
-              expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-                `year`,
-                2010,
-              );
-            } },
+            expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
+              `year`,
+              2010,
+            );
+          } },
           { description: `returns correct values`, test: () => {
-              expect(carBuilder)
-                .withArgs(`Volkswagen`, `Beetle`, `1963`)
-                .toReturn({
-                  make: `Volkswagen`,
-                  model: `Beetle`,
-                  year: `1963`,
-                });
-              expect(carBuilder)
-                .withArgs(`Lotus`, `Esprit S1`, `1976`)
-                .toReturn({ make: `Lotus`, model: `Esprit S1`, year: `1976` });
-            } }
+            expect(carBuilder)
+              .withArgs(`Volkswagen`, `Beetle`, `1963`)
+              .toReturn({
+                make: `Volkswagen`,
+                model: `Beetle`,
+                year: `1963`,
+              });
+            expect(carBuilder)
+              .withArgs(`Lotus`, `Esprit S1`, `1976`)
+              .toReturn({ make: `Lotus`, model: `Esprit S1`, year: `1976` });
+          } }
         ],
       },
       { type: 'test', key: 'teachersNeeded',
@@ -1009,28 +1163,28 @@ console.log(numberFive() * numberFive()); // 25`,
         instructions: `Make a function named "teachersNeeded" that takes 2 arguments, a number and a number. The first number is how many students there are. The second number is how many students there should be per teacher. It should return the minimum number of teachers required (google "Math.ceil")`,
         tests: [
           { description: `is declared`, test: () => {
-              expect(teachersNeeded).toBeDeclared();
-            } },
+            expect(teachersNeeded).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(teachersNeeded).toHaveValue();
-            } },
+            expect(teachersNeeded).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(teachersNeeded).toBeFunction();
-            } },
+            expect(teachersNeeded).toBeFunction();
+          } },
           { description: `takes two arguments`, test: () => {
-              expect(teachersNeeded).takesXArguments(2);
-            } },
+            expect(teachersNeeded).takesXArguments(2);
+          } },
           { description: `returns a number`, test: () => {
-              expect(teachersNeeded).withArgs(1, 1).toReturnNumber();
-            } },
+            expect(teachersNeeded).withArgs(1, 1).toReturnNumber();
+          } },
           { description: `returns an integer`, test: () => {
-              expect(teachersNeeded).withArgs(3, 2).toReturnInteger();
-            } },
+            expect(teachersNeeded).withArgs(3, 2).toReturnInteger();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(teachersNeeded).withArgs(10, 5).toReturn(2);
-              expect(teachersNeeded).withArgs(18, 7).toReturn(3);
-              expect(teachersNeeded).withArgs(1000, 234).toReturn(5);
-            } }
+            expect(teachersNeeded).withArgs(10, 5).toReturn(2);
+            expect(teachersNeeded).withArgs(18, 7).toReturn(3);
+            expect(teachersNeeded).withArgs(1000, 234).toReturn(5);
+          } }
         ],
       }
     ],
