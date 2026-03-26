@@ -283,6 +283,11 @@ body {
   border-radius: 4px;
 }
 
+.lesson-body b {
+  color: #a8d0ff;
+  font-weight: 900;
+}
+
 .test-pane {
   width: 90%;
   margin: 4px auto 0;

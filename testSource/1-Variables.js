@@ -26,9 +26,9 @@ console.log(true);
 
       There are three ways to declare a variable:<br><br>
 
-<b>var</b> — The original way.<br>
-<b>let</b> — Newer way. Slightly different from "var".<br>
-<b>const</b> — Newer way. Cannot be reassigned (it is a "constant").<br><br>
+<b>var</b> → The original way.<br>
+<b>let</b> → Slightly different from "var".<br>
+<b>const</b> → Cannot be reassigned (it is a "constant").<br><br>
 
 You assign a value using the "=" sign. The value on the right is stored under the name on the left.<br><br>
 
@@ -57,9 +57,9 @@ PI = "pie"; // This throws an error!`,
       title: 'Data',
       text: `The basic forms of data (aka primitive data) are strings, numbers, and booleans:<br><br>
 
-<b>string</b> — This is a word or sentence. Basically any series of characters from your keyboard (and more). They always are inside a ' or " or \` pair (single quote, double quote, or backtick).<br><br>
-<b>number</b> — Any numbers. So like 1, or 200, or -50.<br><br>
-<b>boolean</b> — This can be true or false.<br><br>
+<b>string</b> → This is a word or sentence. Basically any series of characters from your keyboard (and more). They always are inside a ' or " or \` pair (single quote, double quote, or backtick).<br><br>
+<b>number</b> → Any numbers. So like 1, or 200, or -50.<br><br>
+<b>boolean</b> → This can be true or false.<br><br>
 Also, <b>typeof</b> is a JS keyword that will tell you the type of something.<br><br> 
 Try running the code!`,
       sampleCode: `// string

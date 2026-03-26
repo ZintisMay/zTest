@@ -13,12 +13,12 @@ You already know one: the <b>=</b> sign, which assigns a value to a variable.<br
 
 The math operators are:<br><br>
 
-<b>+</b> — addition<br>
-<b>-</b> — subtraction<br>
-<b>*</b> — multiplication<br>
-<b>/</b> — division<br>
-<b>%</b> — modulus (the remainder after division)<br>
-<b>**</b> — exponent (to the power of)<br><br>
+<b>+</b> → addition<br>
+<b>-</b> → subtraction<br>
+<b>*</b> → multiplication<br>
+<b>/</b> → division<br>
+<b>%</b> → modulus (the remainder after division)<br>
+<b>**</b> → exponent (to the power of)<br><br>
 
 Try running the code!`,
       sampleCode: `console.log(10 + 5);  // 15
