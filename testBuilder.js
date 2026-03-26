@@ -29,13 +29,17 @@ function splitTests() {
 }
 
 function buildTests() {
+  // Grab file names
   const files = fs
     .readdirSync('./testSource')
     .filter((f) => f.endsWith('.js'))
-    .sort();
+    .sort((t1, t2) => getNumFromTestName(t1) - getNumFromTestName(t2));
+  // Get all data into array
   const groups = files.map((f) => require('./testSource/' + f));
+  // Combine
   const content = groups.map(serializeGroup).join(',\n');
   const output = `const allTests = [\n${content}\n];\n\nif (typeof module !== 'undefined') module.exports = allTests;\n`;
+  // Write to file
   fs.writeFileSync('./allTests.js', output, 'utf8');
   console.log(`Built allTests.js from ${files.length} files.`);
 }
@@ -94,4 +98,8 @@ function saveJson(filePath, data) {
 function saveAsJs(filePath, variableName, data) {
   const content = `const ${variableName} = ${serialize(data, { space: 2 })};\n${testBuilderLine}\n`;
   fs.writeFileSync(filePath, content, 'utf8');
+}
+
+function getNumFromTestName(testName) {
+  return testName.split('-')?.[0] || -1;
 }

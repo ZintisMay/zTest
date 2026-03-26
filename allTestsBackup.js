@@ -9,7 +9,7 @@ const allTests = [
         key: 'lesson-0',
         title: 'console.log()',
         text: `You're going to see a lot of console.log(), and when writing code, you'll use this to peek at values.<br><br>
-console.log("Hi there") outputs it into the "terminal" or "console" (those terms are interchangeable).<br><br>
+console.log("Hi there") outputs it into the "terminal".<br><br>
 Give it a try!
 `,
         sampleCode: `console.log("Hi there");
