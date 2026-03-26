@@ -1,5 +1,132 @@
 const allTests = [
   {
+    id: '0',
+    title: 'Getting Started',
+    help: 'https://www.w3schools.com/js',
+    items: [
+      { type: 'lesson', key: 'lesson-0',
+        title: 'Z_Test',
+        text: `Z_Test is a free and open source teaching tool for Javascript students.<br><br>
+      
+      The goal is to <b>LEARN</b>.<br><br>
+      
+      So if you get confused, or stuck, <b>go look it up!</b> Google! Forums! AI!<br><br>
+      
+      An important part of programming is being able to <b>figure things out</b>. So do whatever you need to do in order to figure it out, and make sure you learn something along the way.<br><br>
+      
+      <b>If you use AI to help, DO NOT COPY/PASTE</b>. Have it explain to you the topic, and then you write out the suggestion by hand to help you remember. <b>LEARNING</b> is the goal, not finishing.<br><br>
+
+      Z_Test lessons are <b>SHORT</b>. For some they will be enough to understand a topic. But for others, you may need more! Go look up a tutorial, an article, etc...<br><br>
+
+      Z_Test lessons are <b>aimed at beginners</b>. So a LOT of nuance and detail are skipped in favor of building out your understanding. This material is NOT comprehensive.<br><br>
+
+      If you can complete Z_Test quickly and easily, you are no longer a beginner!
+      `,
+        sampleCode: ``,
+      },
+      { type: 'lesson', key: 'lesson-1',
+        title: 'Z_Test Flow',
+        text: `Z_Test is a series of sections, like this one.<br><br>
+
+      There will be lesson blocks that explain something, and give you some code to tinker with.<br><br>
+
+      There will be test blocks that give you a little challenge. There will be instructions, some tests to pass, and you need to write in the code section to pass the tests.<br><br>
+
+      The instructions will help guide you towards the answer. But there will often be more than one working answer!<br><br>
+      `,
+        sampleCode: `// I'm a comment!
+var sampleCode;`,
+      },
+      { type: 'test', key: 'firstTest',
+        title: `Passing A Test`,
+        instructions: `Write this exactly in the code area:<br><br>
+      
+      var x = "@";<br><br>
+      
+      Then press CTRL+ENTER.<br><br>
+      
+      If you passed the tests, you can press CTRL+SHIFT+ENTER to go to the next panel.`,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(x).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(x).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(x).toBeString();
+          } },
+          { description: `is @`, test: () => {
+            expect(x).toBe('@');
+          } }
+        ],
+      },
+      { type: 'test', key: 'secondTest',
+        title: `Failing A Test`,
+        instructions: `Write this exactly in the code area:<br><br>
+      
+      var x;<br><br>
+      
+      Then press CTRL+ENTER<br><br>
+      
+      You'll see that only one test passed. You declared the variable but didn't give it a value.<br><br>
+      
+      Try completing it:<br><br>
+      
+      var x = "@";<br><br>
+      
+      Then press CTRL+Enter`,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(x).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(x).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(x).toBeString();
+          } },
+          { description: `is @`, test: () => {
+            expect(x).toBe('@');
+          } }
+        ],
+      },
+      { type: 'test', key: 'thirdTest',
+        title: `Errors`,
+        instructions: `Try it without quotes:<br><br>
+      
+      var x = @;<br><br>
+      
+      Then press CTRL+ENTER<br><br>
+      
+      You'll see there's an error in the terminal. Red errors like this cause the code to stop running, and need to be fixed. 
+
+      The @ symbol doesn't get processed by Javascript. Try adding quotes around it like this "@"<br><br>
+      
+      These errors are normal and part of Javascript. Z_Test gives you little tests that check whether your code is written in a certain way. But requires you to have working code. If there is a red error, fix that first, then worry about the tests!<br><br>
+
+      Errors can be cryptic, so do whatever you need to figure it out. Many errors will get caught by the editor! So watch for squiggly lines and tooltips.<br><br>
+      
+      If you hover over them, often it'll explain how to fix it!
+      `,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(x).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(x).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(x).toBeString();
+          } },
+          { description: `is @`, test: () => {
+            expect(x).toBe('@');
+          } }
+        ],
+      }
+    ],
+  },
+  {
     id: '1',
     title: 'Variables',
     help: 'https://www.w3schools.com/js/js_variables.asp',
@@ -898,9 +1025,9 @@ if (!isRaining) {
       },
       { type: 'lesson', key: 'lesson-1',
         title: 'What is True?',
-        text: `In JavaScript lots of values are considered true <b>true</b>. Almost all, in fact.<br><br>
+        text: `In JavaScript lots of values are considered <b>true</b>. Almost all, in fact.<br><br>
 
-This is called being <b>truthy</b>. If a value is truthy, an if statement will run its block.<br><br>
+This is called being <b>truthy</b>. If a value is truthy, an <b>if</b> statement will run its block.<br><br>
 
 It's actually easier to learn which values are <b>falsy</b> (next lesson).<br><br>
 
@@ -928,41 +1055,62 @@ if ("hi there") {
 
 Just try to keep these in mind when you code your own projects! There's only 6 to remember!<br><br>
 
+<b>false</b> is "false", a boolean
+<b>0</b> the number zero
+<b>""</b> an empty string
+<b>null</b> keyword "null"
+<b>undefined</b> keyword "undefined"
+<b>NaN</b> keyword "NaN" (not a number)
+
 (There's actually 9, but the last 3 are not seen often, go look it up if you want!)
 
-Everything else is truthy — so when in doubt, assume it's true!`,
+Everything else is truthy. When in doubt, assume it's true!`,
         sampleCode: `// All of these are falsy
-if (!false)     { console.log("false is falsy"); }
-if (!0)         { console.log("0 is falsy"); }
-if (!"")        { console.log("an empty string is falsy"); }
-if (!null)      { console.log("null is falsy"); }
-if (!undefined) { console.log("undefined is falsy"); }
-if (!NaN)       { console.log("NaN is falsy"); }`,
+if (!false) {
+  console.log("false is falsy");
+}
+if (!0) {
+  console.log("0 is falsy");
+}
+if (!"") {
+  console.log("an empty string is falsy");
+}
+if (!null) {
+  console.log("null is falsy");
+}
+if (!undefined) {
+  console.log("undefined is falsy");
+}
+if (!NaN) {
+  console.log("NaN is falsy");
+}`,
       },
-      { type: 'test', key: 'greeting',
-        title: `function greeting`,
-        instructions: `Make a function named "greeting" that takes one argument. It should return a string like "Hello Zintis!" when passed the argument "Zintis"`,
-        tests: [
-          { description: `is declared`, test: () => {
-            expect(greeting).toBeDeclared();
-          } },
-          { description: `has a value`, test: () => {
-            expect(greeting).toHaveValue();
-          } },
-          { description: `is a function`, test: () => {
-            expect(greeting).toBeFunction();
-          } },
-          { description: `takes one argument`, test: () => {
-            expect(greeting).takesXArguments(1);
-          } },
-          { description: `returns a string`, test: () => {
-            expect(greeting).withArgs().toReturnString();
-          } },
-          { description: `returns correct values`, test: () => {
-            expect(greeting).withArgs('Barry').toReturn(`Hello Barry!`);
-            expect(greeting).withArgs(`Rosie`).toReturn(`Hello Rosie!`);
-          } }
-        ],
+      { type: 'lesson', key: 'lesson-3',
+        title: 'null, undefined, and NaN',
+        text: `These are different kinds of falsy values:<br><br>
+
+<b>null</b> means "intentionally empty". If something is null, it's empty on purpose (usually).<br><br>
+
+<b>undefined</b> means "this hasn't been given a value yet". So like null, but unintentional. You'll get it if you try to access a variable that hasn't been assigned or doesn't exist!<br><br>
+
+<b>NaN</b> stands for "Not a Number". When you accidentally  do math to something that isn't a number.<br><br>
+
+Try running the code!`,
+        sampleCode: `// null - intentionally empty
+var winner = null;
+console.log(winner); // null
+
+// undefined - notice that there's no value assigned, no "="
+var score;
+console.log(score); // undefined
+
+// A function with no return gives undefined
+function doNothing() {}
+console.log(doNothing()); // undefined
+
+// NaN - a bad math operation
+var result = "hello" * 5;
+console.log(result);         // NaN`,
       },
       { type: 'test', key: 'isThisValueTrue',
         title: `function isThisValueTrue`,
@@ -987,33 +1135,6 @@ if (!NaN)       { console.log("NaN is falsy"); }`,
             expect(isThisValueTrue).withArgs(true).toReturn(true);
             expect(isThisValueTrue).withArgs(false).toReturn(false);
             expect(isThisValueTrue).withArgs().toReturn(false);
-          } }
-        ],
-      },
-      { type: 'test', key: 'isThisNumberEven',
-        title: `function isThisNumberEven`,
-        instructions: `Make a function named "isThisNumberEven" that takes one argument, a number. It should return true if the number is even, and false if odd.`,
-        tests: [
-          { description: `is declared`, test: () => {
-            expect(isThisNumberEven).toBeDeclared();
-          } },
-          { description: `has a value`, test: () => {
-            expect(isThisNumberEven).toHaveValue();
-          } },
-          { description: `is a function`, test: () => {
-            expect(isThisNumberEven).toBeFunction();
-          } },
-          { description: `takes one argument`, test: () => {
-            expect(isThisNumberEven).takesXArguments(1);
-          } },
-          { description: `returns a boolean`, test: () => {
-            expect(isThisNumberEven).toReturnBoolean();
-          } },
-          { description: `returns correct values`, test: () => {
-            expect(isThisNumberEven).withArgs(1).toReturn(false);
-            expect(isThisNumberEven).withArgs(2).toReturn(true);
-            expect(isThisNumberEven).withArgs(-1).toReturn(false);
-            expect(isThisNumberEven).withArgs(0).toReturn(true);
           } }
         ],
       },

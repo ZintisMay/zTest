@@ -100,7 +100,7 @@ Just try to keep these in mind when you code your own projects! There's only 6 t
 
 (There's actually 9, but the last 3 are not seen often, go look it up if you want!)
 
-Everything else is truthy — so when in doubt, assume it's true!`,
+Everything else is truthy. When in doubt, assume it's true!`,
       sampleCode: `// All of these are falsy
 if (!false) {
   console.log("false is falsy");
@@ -125,20 +125,20 @@ if (!NaN) {
       type: 'lesson',
       key: 'lesson-3',
       title: 'null, undefined, and NaN',
-      text: `Three of the falsy values deserve a closer look:<br><br>
+      text: `These are different kinds of falsy values:<br><br>
 
-<b>null</b> — means "intentionally empty". A developer set this on purpose to say "there's nothing here".<br><br>
+<b>null</b> means "intentionally empty". If something is null, it's empty on purpose (usually).<br><br>
 
-<b>undefined</b> — means "this hasn't been given a value yet". You get this when you declare a variable but don't assign it, or when a function returns nothing.<br><br>
+<b>undefined</b> means "this hasn't been given a value yet". So like null, but unintentional. You'll get it if you try to access a variable that hasn't been assigned or doesn't exist!<br><br>
 
-<b>NaN</b> — stands for "Not a Number". You get this when a math operation goes wrong, like trying to multiply a word by a number.<br><br>
+<b>NaN</b> stands for "Not a Number". When you accidentally  do math to something that isn't a number.<br><br>
 
 Try running the code!`,
       sampleCode: `// null - intentionally empty
 var winner = null;
 console.log(winner); // null
 
-// undefined - no value assigned
+// undefined - notice that there's no value assigned, no "="
 var score;
 console.log(score); // undefined
 
@@ -148,54 +148,53 @@ console.log(doNothing()); // undefined
 
 // NaN - a bad math operation
 var result = "hello" * 5;
-console.log(result);         // NaN
-console.log(typeof result);  // "number" (yes, really!)`,
+console.log(result);         // NaN`,
     },
-    {
-      type: 'test',
-      key: 'greeting',
-      title: `function greeting`,
-      instructions: `Make a function named "greeting" that takes one argument. It should return a string like "Hello Zintis!" when passed the argument "Zintis"`,
-      tests: [
-        {
-          description: `is declared`,
-          test: () => {
-            expect(greeting).toBeDeclared();
-          },
-        },
-        {
-          description: `has a value`,
-          test: () => {
-            expect(greeting).toHaveValue();
-          },
-        },
-        {
-          description: `is a function`,
-          test: () => {
-            expect(greeting).toBeFunction();
-          },
-        },
-        {
-          description: `takes one argument`,
-          test: () => {
-            expect(greeting).takesXArguments(1);
-          },
-        },
-        {
-          description: `returns a string`,
-          test: () => {
-            expect(greeting).withArgs().toReturnString();
-          },
-        },
-        {
-          description: `returns correct values`,
-          test: () => {
-            expect(greeting).withArgs('Barry').toReturn(`Hello Barry!`);
-            expect(greeting).withArgs(`Rosie`).toReturn(`Hello Rosie!`);
-          },
-        },
-      ],
-    },
+    // {
+    //   type: 'test',
+    //   key: 'greeting',
+    //   title: `function greeting`,
+    //   instructions: `Make a function named "greeting" that takes one argument. It should return a string like "Hello Zintis!" when passed the argument "Zintis"`,
+    //   tests: [
+    //     {
+    //       description: `is declared`,
+    //       test: () => {
+    //         expect(greeting).toBeDeclared();
+    //       },
+    //     },
+    //     {
+    //       description: `has a value`,
+    //       test: () => {
+    //         expect(greeting).toHaveValue();
+    //       },
+    //     },
+    //     {
+    //       description: `is a function`,
+    //       test: () => {
+    //         expect(greeting).toBeFunction();
+    //       },
+    //     },
+    //     {
+    //       description: `takes one argument`,
+    //       test: () => {
+    //         expect(greeting).takesXArguments(1);
+    //       },
+    //     },
+    //     {
+    //       description: `returns a string`,
+    //       test: () => {
+    //         expect(greeting).withArgs().toReturnString();
+    //       },
+    //     },
+    //     {
+    //       description: `returns correct values`,
+    //       test: () => {
+    //         expect(greeting).withArgs('Barry').toReturn(`Hello Barry!`);
+    //         expect(greeting).withArgs(`Rosie`).toReturn(`Hello Rosie!`);
+    //       },
+    //     },
+    //   ],
+    // },
     {
       type: 'test',
       key: 'isThisValueTrue',
@@ -242,53 +241,53 @@ console.log(typeof result);  // "number" (yes, really!)`,
         },
       ],
     },
-    {
-      type: 'test',
-      key: 'isThisNumberEven',
-      title: `function isThisNumberEven`,
-      instructions: `Make a function named "isThisNumberEven" that takes one argument, a number. It should return true if the number is even, and false if odd.`,
-      tests: [
-        {
-          description: `is declared`,
-          test: () => {
-            expect(isThisNumberEven).toBeDeclared();
-          },
-        },
-        {
-          description: `has a value`,
-          test: () => {
-            expect(isThisNumberEven).toHaveValue();
-          },
-        },
-        {
-          description: `is a function`,
-          test: () => {
-            expect(isThisNumberEven).toBeFunction();
-          },
-        },
-        {
-          description: `takes one argument`,
-          test: () => {
-            expect(isThisNumberEven).takesXArguments(1);
-          },
-        },
-        {
-          description: `returns a boolean`,
-          test: () => {
-            expect(isThisNumberEven).toReturnBoolean();
-          },
-        },
-        {
-          description: `returns correct values`,
-          test: () => {
-            expect(isThisNumberEven).withArgs(1).toReturn(false);
-            expect(isThisNumberEven).withArgs(2).toReturn(true);
-            expect(isThisNumberEven).withArgs(-1).toReturn(false);
-            expect(isThisNumberEven).withArgs(0).toReturn(true);
-          },
-        },
-      ],
-    },
+    // {
+    //   type: 'test',
+    //   key: 'isThisNumberEven',
+    //   title: `function isThisNumberEven`,
+    //   instructions: `Make a function named "isThisNumberEven" that takes one argument, a number. It should return true if the number is even, and false if odd.`,
+    //   tests: [
+    //     {
+    //       description: `is declared`,
+    //       test: () => {
+    //         expect(isThisNumberEven).toBeDeclared();
+    //       },
+    //     },
+    //     {
+    //       description: `has a value`,
+    //       test: () => {
+    //         expect(isThisNumberEven).toHaveValue();
+    //       },
+    //     },
+    //     {
+    //       description: `is a function`,
+    //       test: () => {
+    //         expect(isThisNumberEven).toBeFunction();
+    //       },
+    //     },
+    //     {
+    //       description: `takes one argument`,
+    //       test: () => {
+    //         expect(isThisNumberEven).takesXArguments(1);
+    //       },
+    //     },
+    //     {
+    //       description: `returns a boolean`,
+    //       test: () => {
+    //         expect(isThisNumberEven).toReturnBoolean();
+    //       },
+    //     },
+    //     {
+    //       description: `returns correct values`,
+    //       test: () => {
+    //         expect(isThisNumberEven).withArgs(1).toReturn(false);
+    //         expect(isThisNumberEven).withArgs(2).toReturn(true);
+    //         expect(isThisNumberEven).withArgs(-1).toReturn(false);
+    //         expect(isThisNumberEven).withArgs(0).toReturn(true);
+    //       },
+    //     },
+    //   ],
+    // },
     {
       type: 'test',
       key: 'makeNumberNegative',

@@ -228,7 +228,7 @@ function renderTests(section, helpUrl) {
 
   const headerInstructions = document.createElement('div');
   headerInstructions.classList.add('test-pane-header-instructions');
-  headerInstructions.textContent = section.instructions;
+  headerInstructions.innerHTML = section.instructions;
 
   header.appendChild(headerTitle);
   header.appendChild(headerInstructions);
