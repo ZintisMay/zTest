@@ -16,7 +16,7 @@ Give it a try!
 console.log(3);
 console.log(true);
 
-// Try running the code with CTRL + ENTER
+// Try running the code with CTRL+ENTER
 // You'll see the output below in the Terminal`,
       },
       {
@@ -85,7 +85,7 @@ console.log(typeof yes);
 console.log(no);
 console.log(typeof no);
 
-// Try running the code with CTRL + ENTER
+// Try running the code with CTRL+ENTER
 // You'll see the output below in the Terminal`,
       },
 
@@ -118,7 +118,7 @@ const PI = 3.14;
 PI = "pie"; // This throws an error!
 console.log(PI);   // This code does not run because of the error!
 
-// Try running the code with CTRL + ENTER
+// Try running the code with CTRL+ENTER
 // You'll see the output below in the Terminal`,
       },
       {

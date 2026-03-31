@@ -9,9 +9,13 @@ const test = {
       title: 'Parameters',
       text: `Functions more useful when you can have them do extra work for you.<br><br>
 
-<b>Parameters</b> are variables inside the <b>( )</b> when you declare it. → <b>function hello( name ){ }</b><br><br>
+<b>Parameters</b> are variables inside the <b>( )</b> when you declare it.<br>→ <b>function hello( parameter ){ }</b><br><br>
 
-When you <b>call</b> a function you can pass in <b>arguments</b>. → <b>hello( "bob" )</b> <br><br>
+When you <b>call</b> a function you can pass in <b>arguments</b>.<br>→ <b>hello( "bob" )</b> <br><br>
+
+So in the code, when you have "bob" as an argument, it will show up as <b>parameter</b> in the function declaration. The code will run as if <b>parameter</b> was "bob".<br><br>
+
+
 
 <b>console.log()</b> is a function! You've been using a function this whole time!<br><br>
 
