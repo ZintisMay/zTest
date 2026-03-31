@@ -94,7 +94,7 @@ var sampleCode;`,
       
       var x = "@";<br><br>
       
-      Then press CTRL+Enter`,
+      Then press CTRL+SHIFT+ENTER`,
       tests: [
         {
           description: `is declared`,
