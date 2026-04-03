@@ -443,7 +443,7 @@ console.log(PI);   // This code does not run because of the error!
       type: 'test',
       key: 'varParagraphTests',
       title: `var "paragraph"`,
-      instructions: `Declare a variable "sentence" and set it to the string "The code in the computer is so hard to understand. It is like magic. If I keep studying maybe one day I'll know."`,
+      instructions: `Declare a variable "paragraph" and set it to the string "The code is like magic. I will learn how to use it!"`,
       tests: [
         {
           description: `is declared`,
@@ -464,10 +464,10 @@ console.log(PI);   // This code does not run because of the error!
           },
         },
         {
-          description: `is "The code in the computer is so hard to understand. It is like magic. If I keep studying maybe one day I'll know."`,
+          description: `is "The code is like magic. I will learn how to use it!"`,
           test: () => {
             expect(paragraph).toBe(
-              `The code in the computer is so hard to understand. It is like magic. If I keep studying maybe one day I'll know.`,
+              `The code is like magic. I will learn how to use it!`,
             );
           },
         },

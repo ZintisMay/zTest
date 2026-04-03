@@ -11,9 +11,11 @@ const test = {
 
 You define a function with the <b>function</b> keyword, give it a name, some parentheses, and put the code inside curly braces <b>{ }</b>.<br><br>
 
-To run the function, you <b>call</b> it by writing its name followed by <b>()</b>.<br><br>
+To run the function, you <b>call</b> it by writing its name followed by <b>parenthesis ( )</b>. i.e. doSomething()<br><br>
 
-Try running the code — notice how the function only runs when called!`,
+Try running the code — notice how the function only runs when called!<br><br>
+
+(There are other ways to make functions, we'll talk about those later, i.e. arrow functions and function expressions)`,
       sampleCode: `function sayHello() {
   console.log("Hello!");
 }

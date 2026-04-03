@@ -421,7 +421,7 @@ console.log(PI);   // This code does not run because of the error!
       },
       { type: 'test', key: 'varParagraphTests',
         title: `var "paragraph"`,
-        instructions: `Declare a variable "sentence" and set it to the string "The code in the computer is so hard to understand. It is like magic. If I keep studying maybe one day I'll know."`,
+        instructions: `Declare a variable "paragraph" and set it to the string "The code is like magic. I will learn how to use it!"`,
         tests: [
           { description: `is declared`, test: () => {
             expect(paragraph).toBeDeclared();
@@ -432,9 +432,9 @@ console.log(PI);   // This code does not run because of the error!
           { description: `is a string`, test: () => {
             expect(paragraph).toBeString();
           } },
-          { description: `is "The code in the computer is so hard to understand. It is like magic. If I keep studying maybe one day I'll know."`, test: () => {
+          { description: `is "The code is like magic. I will learn how to use it!"`, test: () => {
             expect(paragraph).toBe(
-              `The code in the computer is so hard to understand. It is like magic. If I keep studying maybe one day I'll know.`,
+              `The code is like magic. I will learn how to use it!`,
             );
           } }
         ],
@@ -628,9 +628,11 @@ console.log(quotient);   // 4`,
 
 You define a function with the <b>function</b> keyword, give it a name, some parentheses, and put the code inside curly braces <b>{ }</b>.<br><br>
 
-To run the function, you <b>call</b> it by writing its name followed by <b>()</b>.<br><br>
+To run the function, you <b>call</b> it by writing its name followed by <b>parenthesis ( )</b>. i.e. doSomething()<br><br>
 
-Try running the code — notice how the function only runs when called!`,
+Try running the code — notice how the function only runs when called!<br><br>
+
+(There are other ways to make functions, we'll talk about those later, i.e. arrow functions and function expressions)`,
         sampleCode: `function sayHello() {
   console.log("Hello!");
 }
@@ -819,6 +821,35 @@ Try running the code, then try changing the arguments!`,
 
 console.log(double(5)); // 10
 console.log(double(100)); // 200`,
+      },
+      { type: 'test', key: 'doubleTests',
+        title: `function "double"`,
+        instructions: `Make a function named "double" that takes one argument, a number. It should return double the number.`,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(double).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(double).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(double).toBeFunction();
+          } },
+          { description: `takes one argument`, test: () => {
+            expect(double).takesXArguments(1);
+          } },
+          { description: `returns something`, test: () => {
+            expect(double).withArgs(1).toReturnSomething();
+          } },
+          { description: `returns a number`, test: () => {
+            expect(double).withArgs(1).toReturnNumber();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(double).withArgs(2).toReturn(4);
+            expect(double).withArgs(-2).toReturn(-4);
+            expect(double).withArgs(444).toReturn(888);
+          } }
+        ],
       },
       { type: 'test', key: 'addTests',
         title: `function "add"`,

@@ -81,6 +81,58 @@ console.log(double(100)); // 200`,
     },
     {
       type: 'test',
+      key: 'doubleTests',
+      title: `function "double"`,
+      instructions: `Make a function named "double" that takes one argument, a number. It should return double the number.`,
+      tests: [
+        {
+          description: `is declared`,
+          test: () => {
+            expect(double).toBeDeclared();
+          },
+        },
+        {
+          description: `has a value`,
+          test: () => {
+            expect(double).toHaveValue();
+          },
+        },
+        {
+          description: `is a function`,
+          test: () => {
+            expect(double).toBeFunction();
+          },
+        },
+        {
+          description: `takes one argument`,
+          test: () => {
+            expect(double).takesXArguments(1);
+          },
+        },
+        {
+          description: `returns something`,
+          test: () => {
+            expect(double).withArgs(1).toReturnSomething();
+          },
+        },
+        {
+          description: `returns a number`,
+          test: () => {
+            expect(double).withArgs(1).toReturnNumber();
+          },
+        },
+        {
+          description: `returns correct values`,
+          test: () => {
+            expect(double).withArgs(2).toReturn(4);
+            expect(double).withArgs(-2).toReturn(-4);
+            expect(double).withArgs(444).toReturn(888);
+          },
+        },
+      ],
+    },
+    {
+      type: 'test',
       key: 'addTests',
       title: `function "add"`,
       instructions: `Make a function named "add" that takes two arguments, both numbers. It should return the sum of those numbers.`,
