@@ -543,7 +543,7 @@ function expect(value) {
     }
     if (!calls.some((args) => isEqual(args, expectedArgs))) {
       throw new Error(
-        `${fName} was not called with ${JSON.stringify(expectedArgs)}`
+        `${fName} was not called with ${JSON.stringify(expectedArgs)}`,
       );
     }
     return this;
@@ -719,11 +719,12 @@ function expectCode() {
 }
 
 Z_T.reportResults = function (results) {
-  const clean = JSON.parse(JSON.stringify(results, (key, val) => {
-    if (val instanceof Error) return val.message;
-    if (typeof val === 'function') return undefined;
-    return val;
-  }));
+  const clean = JSON.parse(
+    JSON.stringify(results, (key, val) => {
+      if (val instanceof Error) return val.message;
+      if (typeof val === 'function') return undefined;
+      return val;
+    }),
+  );
   window.parent.postMessage({ type: 'results', data: clean }, '*');
 };
-

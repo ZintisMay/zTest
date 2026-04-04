@@ -4,9 +4,7 @@ const allTests = [
     title: 'Getting Started',
     help: 'https://www.w3schools.com/js',
     items: [
-      {
-        type: 'lesson',
-        key: 'lesson-0',
+      { type: 'lesson', key: 'lesson-0',
         title: 'Z_Test',
         text: `Z_Test is a free and open source teaching tool for Javascript students.<br><br>
       
@@ -26,9 +24,7 @@ const allTests = [
       `,
         sampleCode: ``,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-1',
+      { type: 'lesson', key: 'lesson-1',
         title: 'Z_Test Flow',
         text: `Z_Test is a series of sections, like this one.<br><br>
 
@@ -41,9 +37,7 @@ const allTests = [
         sampleCode: `// I'm a comment!
 var sampleCode;`,
       },
-      {
-        type: 'test',
-        key: 'firstTest',
+      { type: 'test', key: 'firstTest',
         title: `Passing A Test`,
         instructions: `Write this exactly in the code area:<br><br>
       
@@ -53,35 +47,21 @@ var sampleCode;`,
       
       If you passed the tests, you can press CTRL+SHIFT+ENTER to go to the next panel.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(x).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(x).toHaveValue();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(x).toBeString();
-            },
-          },
-          {
-            description: `is @`,
-            test: () => {
-              expect(x).toBe('@');
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(x).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(x).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(x).toBeString();
+          } },
+          { description: `is @`, test: () => {
+            expect(x).toBe('@');
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'secondTest',
+      { type: 'test', key: 'secondTest',
         title: `Failing A Test`,
         instructions: `Write this exactly in the code area:<br><br>
       
@@ -97,35 +77,21 @@ var sampleCode;`,
       
       Then press CTRL+SHIFT+ENTER`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(x).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(x).toHaveValue();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(x).toBeString();
-            },
-          },
-          {
-            description: `is @`,
-            test: () => {
-              expect(x).toBe('@');
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(x).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(x).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(x).toBeString();
+          } },
+          { description: `is @`, test: () => {
+            expect(x).toBe('@');
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'thirdTest',
+      { type: 'test', key: 'thirdTest',
         title: `Errors`,
         instructions: `Try it without quotes:<br><br>
       
@@ -144,32 +110,20 @@ var sampleCode;`,
       If you hover over them, often it'll explain how to fix it!
       `,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(x).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(x).toHaveValue();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(x).toBeString();
-            },
-          },
-          {
-            description: `is @`,
-            test: () => {
-              expect(x).toBe('@');
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(x).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(x).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(x).toBeString();
+          } },
+          { description: `is @`, test: () => {
+            expect(x).toBe('@');
+          } }
         ],
-      },
+      }
     ],
   },
   {
@@ -177,9 +131,7 @@ var sampleCode;`,
     title: 'Variables',
     help: 'https://www.w3schools.com/js/js_variables.asp',
     items: [
-      {
-        type: 'lesson',
-        key: 'lesson-0',
+      { type: 'lesson', key: 'lesson-0',
         title: 'console.log()',
         text: `You're going to see a lot of console.log(), and when writing code, you'll use this to peek at values.<br><br>
 console.log("Hi there") outputs it into the "terminal".<br><br>
@@ -192,9 +144,7 @@ console.log(true);
 // Try running the code with CTRL+ENTER
 // You'll see the output below in the Terminal`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-1',
+      { type: 'lesson', key: 'lesson-1',
         title: 'Variables',
         text: `A variable is a way to name a piece of information.<br><br>
 
@@ -225,9 +175,7 @@ age = 100;
 const PI = 3.14;
 PI = "pie"; // This throws an error!`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-2',
+      { type: 'lesson', key: 'lesson-2',
         title: 'Data',
         text: `The basic forms of data (aka primitive data) are strings, numbers, and booleans:<br><br>
 
@@ -261,9 +209,7 @@ console.log(typeof no);
 // Try running the code with CTRL+ENTER
 // You'll see the output below in the Terminal`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-3',
+      { type: 'lesson', key: 'lesson-3',
         title: 'Bringing It Together',
         text: `Lets take a look at this code, using variables, data, and console.log.<br><br>
 Try clicking "Run" or CTRL+ENTER.<br><br>
@@ -293,360 +239,206 @@ console.log(PI);   // This code does not run because of the error!
 // Try running the code with CTRL+ENTER
 // You'll see the output below in the Terminal`,
       },
-      {
-        type: 'test',
-        key: 'varATests',
+      { type: 'test', key: 'varATests',
         title: `var "a"`,
         instructions: `Declare a variable "a" and set it to the number 1`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(a).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(a).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(a).toBeNumber();
-            },
-          },
-          {
-            description: `is 1`,
-            test: () => {
-              expect(a).toBe(1);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(a).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(a).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(a).toBeNumber();
+          } },
+          { description: `is 1`, test: () => {
+            expect(a).toBe(1);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varBTests',
+      { type: 'test', key: 'varBTests',
         title: `var "b"`,
         instructions: `Declare a variable "b" and set it to the number 2.2`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(b).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(b).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(b).toBeNumber();
-            },
-          },
-          {
-            description: `is 2.2`,
-            test: () => {
-              expect(b).toBe(2.2);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(b).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(b).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(b).toBeNumber();
+          } },
+          { description: `is 2.2`, test: () => {
+            expect(b).toBe(2.2);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varCTests',
+      { type: 'test', key: 'varCTests',
         title: `var "c"`,
         instructions: `Declare a variable "c" and set it to the number 5000`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(c).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(c).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(c).toBeNumber();
-            },
-          },
-          {
-            description: `is 5000`,
-            test: () => {
-              expect(c).toBe(5000);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(c).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(c).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(c).toBeNumber();
+          } },
+          { description: `is 5000`, test: () => {
+            expect(c).toBe(5000);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varDTests',
+      { type: 'test', key: 'varDTests',
         title: `var "d"`,
         instructions: `Declare a variable "d" and set it to the number 900000`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(d).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(d).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(d).toBeNumber();
-            },
-          },
-          {
-            description: `is 900000`,
-            test: () => {
-              expect(d).toBe(900000);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(d).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(d).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(d).toBeNumber();
+          } },
+          { description: `is 900000`, test: () => {
+            expect(d).toBe(900000);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varETests',
+      { type: 'test', key: 'varETests',
         title: `var "e"`,
         instructions: `Declare a variable "e" and set it to the number 111222333444`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(e).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(e).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(e).toBeNumber();
-            },
-          },
-          {
-            description: `is 111222333444`,
-            test: () => {
-              expect(e).toBe(111222333444);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(e).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(e).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(e).toBeNumber();
+          } },
+          { description: `is 111222333444`, test: () => {
+            expect(e).toBe(111222333444);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varIsHavingFunTests',
+      { type: 'test', key: 'varIsHavingFunTests',
         title: `var "isHavingFun"`,
         instructions: `Declare a variable "isHavingFun" and set it to the boolean true`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(isHavingFun).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(isHavingFun).toHaveValue();
-            },
-          },
-          {
-            description: `is a boolean`,
-            test: () => {
-              expect(isHavingFun).toBeBoolean();
-            },
-          },
-          {
-            description: `is true`,
-            test: () => {
-              expect(isHavingFun).toBe(true);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(isHavingFun).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(isHavingFun).toHaveValue();
+          } },
+          { description: `is a boolean`, test: () => {
+            expect(isHavingFun).toBeBoolean();
+          } },
+          { description: `is true`, test: () => {
+            expect(isHavingFun).toBe(true);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varIsDifficultTests',
+      { type: 'test', key: 'varIsDifficultTests',
         title: `var "isDifficult"`,
         instructions: `Declare a variable "isDifficult" and set it to the boolean false`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(isDifficult).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(isDifficult).toHaveValue();
-            },
-          },
-          {
-            description: `is a boolean`,
-            test: () => {
-              expect(isDifficult).toBeBoolean();
-            },
-          },
-          {
-            description: `is false`,
-            test: () => {
-              expect(isDifficult).toBe(false);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(isDifficult).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(isDifficult).toHaveValue();
+          } },
+          { description: `is a boolean`, test: () => {
+            expect(isDifficult).toBeBoolean();
+          } },
+          { description: `is false`, test: () => {
+            expect(isDifficult).toBe(false);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varLetterATests',
+      { type: 'test', key: 'varLetterATests',
         title: `var "letterA"`,
         instructions: `Declare a variable "letterA" and set it to the string "a"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(letterA).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(letterA).toHaveValue();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(letterA).toBeString();
-            },
-          },
-          {
-            description: `is "a"`,
-            test: () => {
-              expect(letterA).toBe('a');
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(letterA).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(letterA).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(letterA).toBeString();
+          } },
+          { description: `is "a"`, test: () => {
+            expect(letterA).toBe('a');
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varWordTests',
+      { type: 'test', key: 'varWordTests',
         title: `var "word"`,
         instructions: `Declare a variable "word" and set it to the string "banana"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(word).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(word).toHaveValue();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(word).toBeString();
-            },
-          },
-          {
-            description: `is "banana"`,
-            test: () => {
-              expect(word).toBe('banana');
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(word).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(word).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(word).toBeString();
+          } },
+          { description: `is "banana"`, test: () => {
+            expect(word).toBe('banana');
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varSentenceTests',
+      { type: 'test', key: 'varSentenceTests',
         title: `var "sentence"`,
         instructions: `Declare a variable "sentence" and set it to the string "I ate breakfast."`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(sentence).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(sentence).toHaveValue();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(sentence).toBeString();
-            },
-          },
-          {
-            description: `is "I ate breakfast."`,
-            test: () => {
-              expect(sentence).toBe('I ate breakfast.');
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(sentence).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(sentence).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(sentence).toBeString();
+          } },
+          { description: `is "I ate breakfast."`, test: () => {
+            expect(sentence).toBe('I ate breakfast.');
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varParagraphTests',
+      { type: 'test', key: 'varParagraphTests',
         title: `var "paragraph"`,
         instructions: `Declare a variable "paragraph" and set it to the string "The code is like magic. I will learn how to use it!"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(paragraph).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(paragraph).toHaveValue();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(paragraph).toBeString();
-            },
-          },
-          {
-            description: `is "The code is like magic. I will learn how to use it!"`,
-            test: () => {
-              expect(paragraph).toBe(
-                `The code is like magic. I will learn how to use it!`,
-              );
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(paragraph).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(paragraph).toHaveValue();
+          } },
+          { description: `is a string`, test: () => {
+            expect(paragraph).toBeString();
+          } },
+          { description: `is "The code is like magic. I will learn how to use it!"`, test: () => {
+            expect(paragraph).toBe(
+              `The code is like magic. I will learn how to use it!`,
+            );
+          } }
         ],
-      },
+      }
     ],
   },
   {
@@ -654,9 +446,7 @@ console.log(PI);   // This code does not run because of the error!
     title: 'Operators',
     help: 'https://www.w3schools.com/js/js_operators.asp',
     items: [
-      {
-        type: 'lesson',
-        key: 'lesson-0',
+      { type: 'lesson', key: 'lesson-0',
         title: 'Operators',
         text: `An operator is a symbol that performs an operation on values.<br><br>
 
@@ -679,9 +469,7 @@ console.log(10 / 5);  // 2
 console.log(10 % 3);  // 1 (remainder of 10 / 3)
 console.log(2 ** 8);  // 256 (2 to the power of 8)`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-1',
+      { type: 'lesson', key: 'lesson-1',
         title: 'Operators with Variables',
         text: `Operators work just as well with variables as they do with plain numbers.<br><br>
 
@@ -701,234 +489,132 @@ console.log(difference); // 75
 console.log(product);    // 2500
 console.log(quotient);   // 4`,
       },
-      {
-        type: 'test',
-        key: 'plusTests',
+      { type: 'test', key: 'plusTests',
         title: `var "g" +`,
         instructions: `Declare a variable "g" and it should be the number equal to 654321 plus 123456`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(g).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(g).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(g).toBeNumber();
-            },
-          },
-          {
-            description: `uses the + operator`,
-            test: () => {
-              expectCode().toUseOperator('+');
-            },
-          },
-          {
-            description: `is 654321 + 123456`,
-            test: () => {
-              expect(g).toBe(654321 + 123456);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(g).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(g).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(g).toBeNumber();
+          } },
+          { description: `uses the + operator`, test: () => {
+            expectCode().toUseOperator('+');
+          } },
+          { description: `is 654321 + 123456`, test: () => {
+            expect(g).toBe(654321 + 123456);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'minusTests',
+      { type: 'test', key: 'minusTests',
         title: `var "h" -`,
         instructions: `Declare a variable "h" and it should be the number equal to 654321 minus 123456`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(h).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(h).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(h).toBeNumber();
-            },
-          },
-          {
-            description: `uses the - operator`,
-            test: () => {
-              expectCode().toUseOperator('-');
-            },
-          },
-          {
-            description: `is 654321 - 123456`,
-            test: () => {
-              expect(h).toBe(654321 - 123456);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(h).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(h).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(h).toBeNumber();
+          } },
+          { description: `uses the - operator`, test: () => {
+            expectCode().toUseOperator('-');
+          } },
+          { description: `is 654321 - 123456`, test: () => {
+            expect(h).toBe(654321 - 123456);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'multiplyTests',
+      { type: 'test', key: 'multiplyTests',
         title: `var "i" *`,
         instructions: `Declare a variable "i" and it should be the number equal to 654321 times 123456`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(i).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(i).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(i).toBeNumber();
-            },
-          },
-          {
-            description: `uses the * operator`,
-            test: () => {
-              expectCode().toUseOperator('*');
-            },
-          },
-          {
-            description: `is 654321 * 123456`,
-            test: () => {
-              expect(i).toBe(654321 * 123456);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(i).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(i).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(i).toBeNumber();
+          } },
+          { description: `uses the * operator`, test: () => {
+            expectCode().toUseOperator('*');
+          } },
+          { description: `is 654321 * 123456`, test: () => {
+            expect(i).toBe(654321 * 123456);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'divideTests',
+      { type: 'test', key: 'divideTests',
         title: `var "j" /`,
         instructions: `Declare a variable "j" and it should be the number equal to 654321 divided by 123456`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(j).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(j).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(j).toBeNumber();
-            },
-          },
-          {
-            description: `uses the / operator`,
-            test: () => {
-              expectCode().toUseOperator('/');
-            },
-          },
-          {
-            description: `is 654321 / 123456`,
-            test: () => {
-              expect(j).toBe(654321 / 123456);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(j).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(j).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(j).toBeNumber();
+          } },
+          { description: `uses the / operator`, test: () => {
+            expectCode().toUseOperator('/');
+          } },
+          { description: `is 654321 / 123456`, test: () => {
+            expect(j).toBe(654321 / 123456);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'modulusTests',
+      { type: 'test', key: 'modulusTests',
         title: `var "k" %`,
         instructions: `Declare a variable "k" and it should be the number equal to 654321 modulus 123456`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(k).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(k).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(k).toBeNumber();
-            },
-          },
-          {
-            description: `uses the % operator`,
-            test: () => {
-              expectCode().toUseOperator('%');
-            },
-          },
-          {
-            description: `is 654321 % 123456`,
-            test: () => {
-              expect(k).toBe(654321 % 123456);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(k).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(k).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(k).toBeNumber();
+          } },
+          { description: `uses the % operator`, test: () => {
+            expectCode().toUseOperator('%');
+          } },
+          { description: `is 654321 % 123456`, test: () => {
+            expect(k).toBe(654321 % 123456);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'exponentTests',
+      { type: 'test', key: 'exponentTests',
         title: `var "l" **`,
         instructions: `Declare a variable "l" and it should be the number equal to 2 to the 20th power`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(l).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(l).toHaveValue();
-            },
-          },
-          {
-            description: `is a number`,
-            test: () => {
-              expect(l).toBeNumber();
-            },
-          },
-          {
-            description: `uses the ** operator`,
-            test: () => {
-              expectCode().toUseOperator('**');
-            },
-          },
-          {
-            description: `is 2 ** 20`,
-            test: () => {
-              expect(l).toBe(2 ** 20);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(l).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(l).toHaveValue();
+          } },
+          { description: `is a number`, test: () => {
+            expect(l).toBeNumber();
+          } },
+          { description: `uses the ** operator`, test: () => {
+            expectCode().toUseOperator('**');
+          } },
+          { description: `is 2 ** 20`, test: () => {
+            expect(l).toBe(2 ** 20);
+          } }
         ],
-      },
+      }
     ],
   },
   {
@@ -936,9 +622,7 @@ console.log(quotient);   // 4`,
     title: 'Functions',
     help: 'https://www.w3schools.com/js/js_function_intro.asp',
     items: [
-      {
-        type: 'lesson',
-        key: 'lesson-0',
+      { type: 'lesson', key: 'lesson-0',
         title: 'Functions',
         text: `A function is a reusable block of code that you can run whenever you need it.<br><br>
 
@@ -959,9 +643,7 @@ sayHello();
 sayHello();
 sayHello();`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-1',
+      { type: 'lesson', key: 'lesson-1',
         title: 'The Return Keyword',
         text: `Functions can also <b>return</b> a value back to wherever they were called.<br><br>
 
@@ -985,146 +667,84 @@ console.log(result2); // 10
 // Or used directly
 console.log(numberFive() * numberFive()); // 25`,
       },
-      {
-        type: 'test',
-        key: 'returnNumberTests',
+      { type: 'test', key: 'returnNumberTests',
         title: `function "returnNumber"`,
         instructions: `Make a function named "returnNumber" that returns a number (any number).`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(returnNumber).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(returnNumber).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(returnNumber).toBeFunction();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(returnNumber).toReturnNumber();
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(returnNumber).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(returnNumber).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(returnNumber).toBeFunction();
+          } },
+          { description: `returns a number`, test: () => {
+            expect(returnNumber).toReturnNumber();
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'returnStringTests',
+      { type: 'test', key: 'returnStringTests',
         title: `function "returnString"`,
         instructions: `Make a function named "returnString" that returns a string (any string).`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(returnString).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(returnString).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(returnString).toBeFunction();
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
-              expect(returnString).toReturnString();
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(returnString).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(returnString).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(returnString).toBeFunction();
+          } },
+          { description: `returns a string`, test: () => {
+            expect(returnString).toReturnString();
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'returnTrueTests',
+      { type: 'test', key: 'returnTrueTests',
         title: `function "returnTrue"`,
         instructions: `Make a function named "returnTrue" that returns the boolean true.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(returnTrue).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(returnTrue).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(returnTrue).toBeFunction();
-            },
-          },
-          {
-            description: `returns a boolean`,
-            test: () => {
-              expect(returnTrue).toReturnBoolean();
-            },
-          },
-          {
-            description: `returns correct value true`,
-            test: () => {
-              expect(returnTrue).toReturn(true);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(returnTrue).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(returnTrue).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(returnTrue).toBeFunction();
+          } },
+          { description: `returns a boolean`, test: () => {
+            expect(returnTrue).toReturnBoolean();
+          } },
+          { description: `returns correct value true`, test: () => {
+            expect(returnTrue).toReturn(true);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'returnFalseTests',
+      { type: 'test', key: 'returnFalseTests',
         title: `function "returnFalse"`,
         instructions: `Make a function named "returnFalse" that returns the boolean false.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(returnFalse).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(returnFalse).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(returnFalse).toBeFunction();
-            },
-          },
-          {
-            description: `returns a boolean`,
-            test: () => {
-              expect(returnFalse).toReturnBoolean();
-            },
-          },
-          {
-            description: `returns correct value false`,
-            test: () => {
-              expect(returnFalse).toReturn(false);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(returnFalse).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(returnFalse).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(returnFalse).toBeFunction();
+          } },
+          { description: `returns a boolean`, test: () => {
+            expect(returnFalse).toReturnBoolean();
+          } },
+          { description: `returns correct value false`, test: () => {
+            expect(returnFalse).toReturn(false);
+          } }
         ],
-      },
+      }
     ],
   },
   {
@@ -1132,9 +752,7 @@ console.log(numberFive() * numberFive()); // 25`,
     title: 'Function Parameters',
     help: 'https://www.w3schools.com/js/js_function_parameters.asp',
     items: [
-      {
-        type: 'lesson',
-        key: 'lesson-2',
+      { type: 'lesson', key: 'lesson-2',
         title: 'Parameters',
         text: `Functions more useful when you can have them do extra work for you.<br><br>
 
@@ -1166,9 +784,7 @@ function logBoth(word1, word2) {
 logBoth("look", "up");
 logBoth("oh", "my");`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-2b',
+      { type: 'lesson', key: 'lesson-2b',
         title: 'Naming Parameters',
         text: `Parameter names only exist inside the function. You name them like normal variables.<br><br>
 
@@ -1190,9 +806,7 @@ var myScore = 50;
 var result = doubleNumber(myScore);
 console.log(result); // 100`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-3',
+      { type: 'lesson', key: 'lesson-3',
         title: 'Parameters + Return',
         text: `Now lets use both. This is a very common pattern in programming!<br><br>
 
@@ -1208,327 +822,189 @@ Try running the code, then try changing the arguments!`,
 console.log(double(5)); // 10
 console.log(double(100)); // 200`,
       },
-      {
-        type: 'test',
-        key: 'doubleTests',
+      { type: 'test', key: 'doubleTests',
         title: `function "double"`,
         instructions: `Make a function named "double" that takes one argument, a number. It should return double the number.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(double).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(double).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(double).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
-              expect(double).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
-              expect(double).withArgs(1).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(double).withArgs(1).toReturnNumber();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(double).withArgs(2).toReturn(4);
-              expect(double).withArgs(-2).toReturn(-4);
-              expect(double).withArgs(444).toReturn(888);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(double).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(double).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(double).toBeFunction();
+          } },
+          { description: `takes one argument`, test: () => {
+            expect(double).takesXArguments(1);
+          } },
+          { description: `returns something`, test: () => {
+            expect(double).withArgs(1).toReturnSomething();
+          } },
+          { description: `returns a number`, test: () => {
+            expect(double).withArgs(1).toReturnNumber();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(double).withArgs(2).toReturn(4);
+            expect(double).withArgs(-2).toReturn(-4);
+            expect(double).withArgs(444).toReturn(888);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'addTests',
+      { type: 'test', key: 'addTests',
         title: `function "add"`,
         instructions: `Make a function named "add" that takes two arguments, both numbers. It should return the sum of those numbers.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(add).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(add).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(add).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
-              expect(add).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
-              expect(add).withArgs(1, 1).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(add).withArgs(1, 1).toReturnNumber();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(add).withArgs(1, 1).toReturn(2);
-              expect(add).withArgs(-1, 1).toReturn(0);
-              expect(add).withArgs(1000, 234).toReturn(1234);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(add).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(add).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(add).toBeFunction();
+          } },
+          { description: `takes two arguments`, test: () => {
+            expect(add).takesXArguments(2);
+          } },
+          { description: `returns something`, test: () => {
+            expect(add).withArgs(1, 1).toReturnSomething();
+          } },
+          { description: `returns a number`, test: () => {
+            expect(add).withArgs(1, 1).toReturnNumber();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(add).withArgs(1, 1).toReturn(2);
+            expect(add).withArgs(-1, 1).toReturn(0);
+            expect(add).withArgs(1000, 234).toReturn(1234);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'subtractTests',
+      { type: 'test', key: 'subtractTests',
         title: `function "subtract"`,
         instructions: `Make a function named "subtract" that takes two arguments, both numbers. It should return the first number minus the second.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(subtract).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(subtract).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(subtract).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
-              expect(subtract).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
-              expect(subtract).withArgs(1, 1).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(subtract).withArgs(1, 1).toReturnNumber();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(subtract).withArgs(1, 1).toReturn(0);
-              expect(subtract).withArgs(-1, 1).toReturn(-2);
-              expect(subtract).withArgs(1000, 234).toReturn(766);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(subtract).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(subtract).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(subtract).toBeFunction();
+          } },
+          { description: `takes two arguments`, test: () => {
+            expect(subtract).takesXArguments(2);
+          } },
+          { description: `returns something`, test: () => {
+            expect(subtract).withArgs(1, 1).toReturnSomething();
+          } },
+          { description: `returns a number`, test: () => {
+            expect(subtract).withArgs(1, 1).toReturnNumber();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(subtract).withArgs(1, 1).toReturn(0);
+            expect(subtract).withArgs(-1, 1).toReturn(-2);
+            expect(subtract).withArgs(1000, 234).toReturn(766);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'multiplyTests',
+      { type: 'test', key: 'multiplyTests',
         title: `function "multiply"`,
         instructions: `Make a function named "multiply" that takes two arguments, both numbers. It should return the numbers multiplied together.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(multiply).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(multiply).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(multiply).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
-              expect(multiply).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
-              expect(multiply).withArgs(1, 1).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(multiply).withArgs(1, 1).toReturnNumber();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(multiply).withArgs(2, 3).toReturn(6);
-              expect(multiply).withArgs(-2, 3).toReturn(-6);
-              expect(multiply).withArgs(1000, 234).toReturn(234000);
-              expect(multiply).withArgs(1, 0).toReturn(0);
-              expect(multiply).withArgs(0, 0).toReturn(0);
-              expect(multiply).withArgs(-2, -3).toReturn(6);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(multiply).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(multiply).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(multiply).toBeFunction();
+          } },
+          { description: `takes two arguments`, test: () => {
+            expect(multiply).takesXArguments(2);
+          } },
+          { description: `returns something`, test: () => {
+            expect(multiply).withArgs(1, 1).toReturnSomething();
+          } },
+          { description: `returns a number`, test: () => {
+            expect(multiply).withArgs(1, 1).toReturnNumber();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(multiply).withArgs(2, 3).toReturn(6);
+            expect(multiply).withArgs(-2, 3).toReturn(-6);
+            expect(multiply).withArgs(1000, 234).toReturn(234000);
+            expect(multiply).withArgs(1, 0).toReturn(0);
+            expect(multiply).withArgs(0, 0).toReturn(0);
+            expect(multiply).withArgs(-2, -3).toReturn(6);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'divideTests',
+      { type: 'test', key: 'divideTests',
         title: `function "divide"`,
         instructions: `Make a function named "divide" that takes two arguments, both numbers. It should return the first number divided by the second.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(divide).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(divide).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(divide).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
-              expect(divide).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
-              expect(divide).withArgs(1, 1).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(divide).withArgs(1, 1).toReturnNumber();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(divide).withArgs(1, 1).toReturn(1);
-              expect(divide).withArgs(10, 20).toReturn(0.5);
-              expect(divide).withArgs(100, 0).toReturn(Infinity);
-              expect(divide).withArgs(-4, 2).toReturn(-2);
-              expect(divide).withArgs(150, -1).toReturn(-150);
-              expect(divide).withArgs(4, 3).toReturn(1.3333333333333333);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(divide).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(divide).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(divide).toBeFunction();
+          } },
+          { description: `takes two arguments`, test: () => {
+            expect(divide).takesXArguments(2);
+          } },
+          { description: `returns something`, test: () => {
+            expect(divide).withArgs(1, 1).toReturnSomething();
+          } },
+          { description: `returns a number`, test: () => {
+            expect(divide).withArgs(1, 1).toReturnNumber();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(divide).withArgs(1, 1).toReturn(1);
+            expect(divide).withArgs(10, 20).toReturn(0.5);
+            expect(divide).withArgs(100, 0).toReturn(Infinity);
+            expect(divide).withArgs(-4, 2).toReturn(-2);
+            expect(divide).withArgs(150, -1).toReturn(-150);
+            expect(divide).withArgs(4, 3).toReturn(1.3333333333333333);
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'exponentTests',
+      { type: 'test', key: 'exponentTests',
         title: `function "exponent"`,
         instructions: `Make a function named "exponent" that takes two arguments, both numbers. It should return the first number to the power of the second.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(exponent).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(exponent).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(exponent).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
-              expect(exponent).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
-              expect(exponent).withArgs(1, 1).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(exponent).withArgs(1, 1).toReturnNumber();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(exponent).withArgs(4, 3).toReturn(64);
-              expect(exponent).withArgs(5, 5).toReturn(3125);
-              expect(exponent).withArgs(100, 0).toReturn(1);
-              expect(exponent).withArgs(-4, 2).toReturn(16);
-              expect(exponent).withArgs(3, -2).toReturn(0.1111111111111111);
-              expect(exponent).withArgs(0, 0).toReturn(1);
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(exponent).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(exponent).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(exponent).toBeFunction();
+          } },
+          { description: `takes two arguments`, test: () => {
+            expect(exponent).takesXArguments(2);
+          } },
+          { description: `returns something`, test: () => {
+            expect(exponent).withArgs(1, 1).toReturnSomething();
+          } },
+          { description: `returns a number`, test: () => {
+            expect(exponent).withArgs(1, 1).toReturnNumber();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(exponent).withArgs(4, 3).toReturn(64);
+            expect(exponent).withArgs(5, 5).toReturn(3125);
+            expect(exponent).withArgs(100, 0).toReturn(1);
+            expect(exponent).withArgs(-4, 2).toReturn(16);
+            expect(exponent).withArgs(3, -2).toReturn(0.1111111111111111);
+            expect(exponent).withArgs(0, 0).toReturn(1);
+          } }
         ],
-      },
+      }
     ],
   },
   {
@@ -1536,9 +1012,7 @@ console.log(double(100)); // 200`,
     title: 'Logic',
     help: 'https://www.w3schools.com/js/js_conditionals.asp',
     items: [
-      {
-        type: 'lesson',
-        key: 'lesson-0',
+      { type: 'lesson', key: 'lesson-0',
         title: 'If Statements',
         text: `An <b>if statement</b> runs a block of code only when a condition is true.<br><br>
 
@@ -1549,11 +1023,39 @@ Try running the code and changing true to false!`,
   console.log("You passed!");
 }`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-0a',
+      { type: 'test', key: 'writeAnIfStatement',
+        title: `Write an if statement`,
+        instructions: `Write an if statement with <b>true</b> as the condition. Inside, use console.log() to print "banana".`,
+        tests: [
+          { description: `uses an if statement`, test: () => {
+            expectCode().toUseIfStatement();
+          } },
+          { description: `uses if (true)`, test: () => {
+            expectCode().toUseIfTrue();
+          } },
+          { description: `console.log something`, test: () => {
+            expectConsole().toHaveLoggedAnything();
+          } }
+        ],
+      },
+      { type: 'test', key: 'writeAnIfStatementFalse',
+        title: `Write an if statement (false)`,
+        instructions: `Write an if statement with <b>false</b> as the condition. Inside, use console.log() to print anything you like. Notice that it doesn't run!`,
+        tests: [
+          { description: `uses an if statement`, test: () => {
+            expectCode().toUseIfStatement();
+          } },
+          { description: `uses if (false)`, test: () => {
+            expectCode().toUseIfFalse();
+          } },
+          { description: `console.log nothing`, test: () => {
+            expectConsole().notToHaveLogged();
+          } }
+        ],
+      },
+      { type: 'lesson', key: 'lesson-0a',
         title: 'Else Statements',
-        text: `You can add an <b>else</b> block after an <b>if</b> block to run code when the condition is false.<br><br>
+        text: `You can add an <b>else</b> block after an <b>if</b> block to run code when the prior conditions are NOT met.<br><br>
 
 Try running the code and changing true to false!`,
         sampleCode: `if (true) {
@@ -1562,9 +1064,28 @@ Try running the code and changing true to false!`,
   console.log("You failed.");
 }`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-0b',
+      { type: 'lesson', key: 'lesson-0b',
+        title: 'If Else Statements',
+        text: `You can combine the two to create an "if else(){}" statement.<br><br>
+
+Just keep in mind:<br><br>
+
+<ul>
+<li>The first one is always just "if".</li>
+<li>The later ones are "if else".</li>
+<li>If you want to catch all other possibilities, then put an "else" statement at the end.</li>
+</ul><br><br>
+
+When you write these, you'll have to think about what kinds of values you'll see, and what you want the outcome to be. 
+
+Try running the code and changing true to false!`,
+        sampleCode: `if (true) {
+  console.log("You passed!");
+} else {
+  console.log("You failed.");
+}`,
+      },
+      { type: 'lesson', key: 'lesson-0b',
         title: 'The ! Operator',
         text: `The <b>!</b> operator means <b>not</b>. It flips a truthy value to false, and a falsy value to true.<br><br>
 
@@ -1588,9 +1109,7 @@ if (!isRaining) {
   console.log("Stay inside.");
 }`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-1',
+      { type: 'lesson', key: 'lesson-1',
         title: 'What is True?',
         text: `In JavaScript lots of values are considered <b>true</b>. Almost all, in fact.<br><br>
 
@@ -1616,9 +1135,7 @@ if ("hi there") {
   console.log("sentences are truthy");
 }`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-2',
+      { type: 'lesson', key: 'lesson-2',
         title: 'What is False?',
         text: `There are only a handful of <b>falsy</b> values.<br><br>
 
@@ -1656,9 +1173,173 @@ if (!NaN) {
   console.log("NaN is falsy");
 }`,
       },
-      {
-        type: 'lesson',
-        key: 'lesson-3',
+      { type: 'test', key: 'isThisValueTrue',
+        title: `function isThisValueTrue`,
+        instructions: `Make a function named "isThisValueTrue" that takes one argument (of any type). It should return true if the argument is truthy, and false otherwise. Use an if statement.`,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(isThisValueTrue).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(isThisValueTrue).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(isThisValueTrue).toBeFunction();
+          } },
+          { description: `takes one argument`, test: () => {
+            expect(isThisValueTrue).takesXArguments(1);
+          } },
+          { description: `returns a boolean`, test: () => {
+            expect(isThisValueTrue).withArgs().toReturnBoolean();
+          } },
+          { description: `uses an if statement`, test: () => {
+            expectCode().toUseIfStatement();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(isThisValueTrue).withArgs(true).toReturn(true);
+            expect(isThisValueTrue).withArgs(false).toReturn(false);
+            expect(isThisValueTrue).withArgs().toReturn(false);
+          } }
+        ],
+      },
+      { type: 'test', key: 'makeNumberNegative',
+        title: `function makeNumberNegative`,
+        instructions: `Make a function named "makeNumberNegative" that takes one argument, a number. If it's negative, just return it. If it's positive, return it as a negative number.`,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(makeNumberNegative).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(makeNumberNegative).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(makeNumberNegative).toBeFunction();
+          } },
+          { description: `takes one argument`, test: () => {
+            expect(makeNumberNegative).takesXArguments(1);
+          } },
+          { description: `returns a number`, test: () => {
+            expect(makeNumberNegative).withArgs(1).toReturnNumber();
+          } },
+          { description: `uses an if statement`, test: () => {
+            expectCode().toUseIfStatement();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(makeNumberNegative).withArgs(1).toReturn(-1);
+            expect(makeNumberNegative).withArgs(0).toReturn(0);
+            expect(makeNumberNegative).withArgs(-1).toReturn(-1);
+            expect(makeNumberNegative).withArgs(444).toReturn(-444);
+          } }
+        ],
+      },
+      { type: 'test', key: 'doYouWantCake',
+        title: `function doYouWantCake`,
+        instructions: `Make a function named "doYouWantCake" that takes one argument, a boolean. If the boolean is true, return "yes". Otherwise return "no".`,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(doYouWantCake).toBeDeclared();
+          } },
+          { description: `has a value`, test: () => {
+            expect(doYouWantCake).toHaveValue();
+          } },
+          { description: `is a function`, test: () => {
+            expect(doYouWantCake).toBeFunction();
+          } },
+          { description: `takes one argument`, test: () => {
+            expect(doYouWantCake).takesXArguments(1);
+          } },
+          { description: `returns a string`, test: () => {
+            expect(doYouWantCake).withArgs().toReturnString();
+          } },
+          { description: `uses an if statement`, test: () => {
+            expectCode().toUseIfStatement();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(doYouWantCake).withArgs(true).toReturn('yes');
+            expect(doYouWantCake).withArgs(false).toReturn('no');
+            expect(doYouWantCake).withArgs().toReturn('no');
+          } }
+        ],
+      },
+      { type: 'lesson', key: 'lesson-6',
+        title: '>, <, >=, <=, ==, !=',
+        text: `You may remember these from math class:<br><br>
+
+      <ul>
+     <li><b>></b> greater than</li>
+     <li><b><</b> less than</li>
+     <li><b>>=</b> greater than or equal</li>
+     <li><b><=</b> less than or equal</li>
+     <li><b>!=</b> not equal</li>
+     <li><b>==</b> is equal (be careful with this one! it looks like assignment but is actually comparison!)</li>
+
+      </ul><br>
+
+These can be used in logical operations like so:<br><br>
+
+<ul>if( 5 > 3 ){ console.log("five is greater than three") }</ul><br>
+
+But to most, this would seem pretty obvious. No reason to use fancy code here right?<br><br>
+
+These statements really shine through when you use variables. Especially when you don't know the value of a variable. <br><br>
+
+Check out the code on the right, try running it!`,
+        sampleCode: `function whichIsGreater(a, b) {
+  if (a > b) {
+    console.log("a is greater than b");
+  } else if (a < b) {
+    console.log("a is less than b");
+  } else if (a == b) {
+    console.log("a is equal to b");
+  }
+}
+  
+whichIsGreater(2, 1);
+whichIsGreater(1, 2);
+whichIsGreater(2, 2);
+`,
+      },
+      { type: 'lesson', key: 'lesson-7',
+        title: 'focusing on == and !=',
+        text: `So with the prior lesson, >, |< >= and <= are used with numbers.<br><br>
+
+      BUT == and != can be used with anything! 
+
+      <ul>
+     <li><b>></b> greater than</li>
+     <li><b><</b> less than</li>
+     <li><b>>=</b> greater than or equal</li>
+     <li><b><=</b> less than or equal</li>
+     <li><b>!=</b> not equal</li>
+     <li><b>==</b> is equal (be careful with this one! it looks like assignment but is actually comparison!)</li>
+
+      </ul><br>
+
+These can be used in logical operations like so:<br><br>
+
+<ul>if( 5 > 3 ){ console.log("five is greater than three") }</ul><br>
+
+But to most, this would seem pretty obvious. No reason to use fancy code here right?<br><br>
+
+These statements really shine through when you use variables. Especially when you don't know the value of a variable. <br><br>
+
+Check out the code on the right, try running it!`,
+        sampleCode: `function whichIsGreater(a, b) {
+  if (a > b) {
+    console.log("a is greater than b");
+  } else if (a < b) {
+    console.log("a is less than b");
+  } else if (a == b) {
+    console.log("a is equal to b");
+  }
+}
+  
+whichIsGreater(2, 1);
+whichIsGreater(1, 2);
+whichIsGreater(2, 2);
+`,
+      },
+      { type: 'lesson', key: 'lesson-8',
         title: 'null, undefined, and NaN',
         text: `These are different kinds of falsy values:<br><br>
 
@@ -1684,366 +1365,7 @@ console.log(doNothing()); // undefined
 // NaN - a bad math operation
 var result = "hello" * 5;
 console.log(result);         // NaN`,
-      },
-      {
-        type: 'test',
-        key: 'isThisValueTrue',
-        title: `function isThisValueTrue`,
-        instructions: `Make a function named "isThisValueTrue" that takes one argument (of any type). It should return true if the argument is truthy, and false otherwise. Use an if statement.`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(isThisValueTrue).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(isThisValueTrue).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(isThisValueTrue).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
-              expect(isThisValueTrue).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a boolean`,
-            test: () => {
-              expect(isThisValueTrue).withArgs().toReturnBoolean();
-            },
-          },
-          {
-            description: `uses an if statement`,
-            test: () => {
-              expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(isThisValueTrue).withArgs(true).toReturn(true);
-              expect(isThisValueTrue).withArgs(false).toReturn(false);
-              expect(isThisValueTrue).withArgs().toReturn(false);
-            },
-          },
-        ],
-      },
-      {
-        type: 'test',
-        key: 'makeNumberNegative',
-        title: `function makeNumberNegative`,
-        instructions: `Make a function named "makeNumberNegative" that takes one argument, a number. If it's negative, just return it. If it's positive, return it as a negative number.`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(makeNumberNegative).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(makeNumberNegative).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(makeNumberNegative).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
-              expect(makeNumberNegative).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(makeNumberNegative).withArgs(1).toReturnNumber();
-            },
-          },
-          {
-            description: `uses an if statement`,
-            test: () => {
-              expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(makeNumberNegative).withArgs(1).toReturn(-1);
-              expect(makeNumberNegative).withArgs(0).toReturn(0);
-              expect(makeNumberNegative).withArgs(-1).toReturn(-1);
-              expect(makeNumberNegative).withArgs(444).toReturn(-444);
-            },
-          },
-        ],
-      },
-      {
-        type: 'test',
-        key: 'doYouWantCake',
-        title: `function doYouWantCake`,
-        instructions: `Make a function named "doYouWantCake" that takes one argument, a boolean. If the boolean is true, return "yes". Otherwise return "no".`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(doYouWantCake).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(doYouWantCake).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(doYouWantCake).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
-              expect(doYouWantCake).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
-              expect(doYouWantCake).withArgs().toReturnString();
-            },
-          },
-          {
-            description: `uses an if statement`,
-            test: () => {
-              expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(doYouWantCake).withArgs(true).toReturn('yes');
-              expect(doYouWantCake).withArgs(false).toReturn('no');
-              expect(doYouWantCake).withArgs().toReturn('no');
-            },
-          },
-        ],
-      },
-      {
-        type: 'test',
-        key: 'wordLength',
-        title: `function wordLength`,
-        instructions: `Make a function named "wordLength" that takes one argument, a string. It should return the length of the string as a number.`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(wordLength).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(wordLength).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(wordLength).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
-              expect(wordLength).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(wordLength).withArgs('string').toReturnNumber();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(wordLength).withArgs('cat').toReturn(3);
-              expect(wordLength).withArgs('steep').toReturn(5);
-              expect(wordLength).withArgs('').toReturn(0);
-            },
-          },
-        ],
-      },
-      {
-        type: 'test',
-        key: 'carBuilder',
-        title: `function carBuilder`,
-        instructions: `Make a function named "carBuilder" that takes 3 arguments, string, string, and number. It should return an object that has 3 keys: "make", "model", and "year", with the first/second/third arguments as the "make", "model", and "year" values.`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(carBuilder).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(carBuilder).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(carBuilder).toBeFunction();
-            },
-          },
-          {
-            description: `takes three arguments`,
-            test: () => {
-              expect(carBuilder).takesXArguments(3);
-            },
-          },
-          {
-            description: `returns an object`,
-            test: () => {
-              expect(carBuilder).withArgs().toReturnObject();
-            },
-          },
-          {
-            description: `returns an object with 3 keys`,
-            test: () => {
-              expect(carBuilder(1, 2, 3)).toHaveObjectKeyCount(3);
-            },
-          },
-          {
-            description: `returns an object with key "make"`,
-            test: () => {
-              expect(carBuilder(1, 2, 3)).toHaveKey(`make`);
-            },
-          },
-          {
-            description: `returns an object with key "model"`,
-            test: () => {
-              expect(carBuilder(1, 2, 3)).toHaveKey(`model`);
-            },
-          },
-          {
-            description: `returns an object with key "year"`,
-            test: () => {
-              expect(carBuilder(1, 2, 3)).toHaveKey(`year`);
-            },
-          },
-          {
-            description: `carBuilder("Hyundai", "Accent", 2010) returns correct "make"`,
-            test: () => {
-              expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-                `make`,
-                `Hyundai`,
-              );
-            },
-          },
-          {
-            description: `carBuilder("Hyundai", "Accent", 2010) returns correct "model"`,
-            test: () => {
-              expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-                `model`,
-                `Accent`,
-              );
-            },
-          },
-          {
-            description: `carBuilder("Hyundai", "Accent", 2010) returns correct "year"`,
-            test: () => {
-              expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-                `year`,
-                2010,
-              );
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(carBuilder)
-                .withArgs(`Volkswagen`, `Beetle`, `1963`)
-                .toReturn({
-                  make: `Volkswagen`,
-                  model: `Beetle`,
-                  year: `1963`,
-                });
-              expect(carBuilder)
-                .withArgs(`Lotus`, `Esprit S1`, `1976`)
-                .toReturn({ make: `Lotus`, model: `Esprit S1`, year: `1976` });
-            },
-          },
-        ],
-      },
-      {
-        type: 'test',
-        key: 'teachersNeeded',
-        title: `function teachersNeeded`,
-        instructions: `Make a function named "teachersNeeded" that takes 2 arguments, a number and a number. The first number is how many students there are. The second number is how many students there should be per teacher. It should return the minimum number of teachers required (google "Math.ceil")`,
-        tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(teachersNeeded).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
-              expect(teachersNeeded).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
-              expect(teachersNeeded).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
-              expect(teachersNeeded).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
-              expect(teachersNeeded).withArgs(1, 1).toReturnNumber();
-            },
-          },
-          {
-            description: `returns an integer`,
-            test: () => {
-              expect(teachersNeeded).withArgs(3, 2).toReturnInteger();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
-              expect(teachersNeeded).withArgs(10, 5).toReturn(2);
-              expect(teachersNeeded).withArgs(18, 7).toReturn(3);
-              expect(teachersNeeded).withArgs(1000, 234).toReturn(5);
-            },
-          },
-        ],
-      },
+      }
     ],
   },
   {
@@ -2051,270 +1373,153 @@ console.log(result);         // NaN`,
     title: 'Objects',
     help: 'https://www.w3schools.com/js/js_objects.asp',
     items: [
-      {
-        type: 'test',
-        key: 'personObject',
+      { type: 'test', key: 'personObject',
         title: `var "person"`,
         instructions: `Declare a variable named "person", an object. Read tests closely for keys and values.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(person).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(person).toHaveValue();
-            },
-          },
-          {
-            description: `is an object`,
-            test: () => {
+            } },
+          { description: `is an object`, test: () => {
               expect(person).toBeObject();
-            },
-          },
-          {
-            description: `has 4 keys`,
-            test: () => {
+            } },
+          { description: `has 4 keys`, test: () => {
               expect(person).toHaveObjectKeyCount(4);
-            },
-          },
-          {
-            description: `has key "firstName"`,
-            test: () => {
+            } },
+          { description: `has key "firstName"`, test: () => {
               expect(person).toHaveKey('firstName');
-            },
-          },
-          {
-            description: `has key/value pair of "firstName"/"Zintis"`,
-            test: () => {
+            } },
+          { description: `has key/value pair of "firstName"/"Zintis"`, test: () => {
               expect(person).toHaveKeyValuePair('firstName', 'Zintis');
-            },
-          },
-          {
-            description: `has key "lastName"`,
-            test: () => {
+            } },
+          { description: `has key "lastName"`, test: () => {
               expect(person).toHaveKey('lastName');
-            },
-          },
-          {
-            description: `has key/value pair of "lastName"/"May"`,
-            test: () => {
+            } },
+          { description: `has key/value pair of "lastName"/"May"`, test: () => {
               expect(person).toHaveKeyValuePair('lastName', 'May');
-            },
-          },
-          {
-            description: `has key "isTeacher"`,
-            test: () => {
+            } },
+          { description: `has key "isTeacher"`, test: () => {
               expect(person).toHaveKey('isTeacher');
-            },
-          },
-          {
-            description: `has key/value pair of "isTeacher"/true`,
-            test: () => {
+            } },
+          { description: `has key/value pair of "isTeacher"/true`, test: () => {
               expect(person).toHaveKeyValuePair('isTeacher', true);
-            },
-          },
-          {
-            description: `has key "students"`,
-            test: () => {
+            } },
+          { description: `has key "students"`, test: () => {
               expect(person).toHaveKey('students');
-            },
-          },
-          {
-            description: `has key/value pair of "students"/100`,
-            test: () => {
+            } },
+          { description: `has key/value pair of "students"/100`, test: () => {
               expect(person).toHaveKeyValuePair('students', 100);
-            },
-          },
-          {
-            description: `is correct value`,
-            test: () => {
+            } },
+          { description: `is correct value`, test: () => {
               expect(person).toBe({
                 firstName: 'Zintis',
                 lastName: 'May',
                 isTeacher: true,
                 students: 100,
               });
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'jsClassObject',
+      { type: 'test', key: 'jsClassObject',
         title: `var "jsClass"`,
         instructions: `Declare a variable named "jsClass" an object. Read tests closely for keys and values`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(jsClass).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(jsClass).toHaveValue();
-            },
-          },
-          {
-            description: `is an object`,
-            test: () => {
+            } },
+          { description: `is an object`, test: () => {
               expect(jsClass).toBeObject();
-            },
-          },
-          {
-            description: `has 2 keys`,
-            test: () => {
+            } },
+          { description: `has 2 keys`, test: () => {
               expect(jsClass).toHaveObjectKeyCount(2);
-            },
-          },
-          {
-            description: `has key "class"`,
-            test: () => {
+            } },
+          { description: `has key "class"`, test: () => {
               expect(jsClass).toHaveKey('class');
-            },
-          },
-          {
-            description: `has key/value pair of "class"/"javascript"`,
-            test: () => {
+            } },
+          { description: `has key/value pair of "class"/"javascript"`, test: () => {
               expect(jsClass).toHaveKeyValuePair('class', 'javascript');
-            },
-          },
-          {
-            description: `has key "grades"`,
-            test: () => {
+            } },
+          { description: `has key "grades"`, test: () => {
               expect(jsClass).toHaveKey('grades');
-            },
-          },
-          {
-            description: `key "grades" is [85, 94, 82, 79, 77, 88, 96, 95, 57, 100]`,
-            test: () => {
+            } },
+          { description: `key "grades" is [85, 94, 82, 79, 77, 88, 96, 95, 57, 100]`, test: () => {
               expect(jsClass.grades).toBe([
                 85, 94, 82, 79, 77, 88, 96, 95, 57, 100,
               ]);
-            },
-          },
-          {
-            description: `is correct value`,
-            test: () => {
+            } },
+          { description: `is correct value`, test: () => {
               expect(jsClass).toBe({
                 class: 'javascript',
                 grades: [85, 94, 82, 79, 77, 88, 96, 95, 57, 100],
               });
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'shoppingCartObject',
+      { type: 'test', key: 'shoppingCartObject',
         title: `var "shoppingCart"`,
         instructions: `Declare a variable named "shoppingCart", an object. Read tests closely for keys and values`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(shoppingCart).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(shoppingCart).toHaveValue();
-            },
-          },
-          {
-            description: `is an object`,
-            test: () => {
+            } },
+          { description: `is an object`, test: () => {
               expect(shoppingCart).toBeObject();
-            },
-          },
-          {
-            description: `has 3 keys`,
-            test: () => {
+            } },
+          { description: `has 3 keys`, test: () => {
               expect(shoppingCart).toHaveObjectKeyCount(3);
-            },
-          },
-          {
-            description: `has key "total"`,
-            test: () => {
+            } },
+          { description: `has key "total"`, test: () => {
               expect(shoppingCart).toHaveKey('total');
-            },
-          },
-          {
-            description: `key "total" is a number`,
-            test: () => {
+            } },
+          { description: `key "total" is a number`, test: () => {
               expect(shoppingCart.total).toBeNumber();
-            },
-          },
-          {
-            description: `has key/value pair of "total"/5`,
-            test: () => {
+            } },
+          { description: `has key/value pair of "total"/5`, test: () => {
               expect(shoppingCart).toHaveKeyValuePair('total', 5);
-            },
-          },
-          {
-            description: `has key "onlinePurchase"`,
-            test: () => {
+            } },
+          { description: `has key "onlinePurchase"`, test: () => {
               expect(shoppingCart).toHaveKey('onlinePurchase');
-            },
-          },
-          {
-            description: `key "onlinePurchase" is a boolean`,
-            test: () => {
+            } },
+          { description: `key "onlinePurchase" is a boolean`, test: () => {
               expect(shoppingCart.onlinePurchase).toBeBoolean();
-            },
-          },
-          {
-            description: `has key/value pair of "onlinePurchase"/true`,
-            test: () => {
+            } },
+          { description: `has key/value pair of "onlinePurchase"/true`, test: () => {
               expect(shoppingCart).toHaveKeyValuePair('onlinePurchase', true);
-            },
-          },
-          {
-            description: `has key "items"`,
-            test: () => {
+            } },
+          { description: `has key "items"`, test: () => {
               expect(shoppingCart).toHaveKey('items');
-            },
-          },
-          {
-            description: `key "items" is an array`,
-            test: () => {
+            } },
+          { description: `key "items" is an array`, test: () => {
               expect(shoppingCart.items).toBeArray();
-            },
-          },
-          {
-            description: `key "items" is an array of length 3`,
-            test: () => {
+            } },
+          { description: `key "items" is an array of length 3`, test: () => {
               expect(shoppingCart.items).toHaveLength(3);
-            },
-          },
-          {
-            description: `key "items" is ["toothbrush", "toothpaste", "floss"]`,
-            test: () => {
+            } },
+          { description: `key "items" is ["toothbrush", "toothpaste", "floss"]`, test: () => {
               expect(shoppingCart.items).toBe([
                 'toothbrush',
                 'toothpaste',
                 'floss',
               ]);
-            },
-          },
-          {
-            description: `is correct value`,
-            test: () => {
+            } },
+          { description: `is correct value`, test: () => {
               expect(shoppingCart).toBe({
                 items: ['toothbrush', 'toothpaste', 'floss'],
                 total: 5,
                 onlinePurchase: true,
               });
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -2322,115 +1527,65 @@ console.log(result);         // NaN`,
     title: 'Arrays',
     help: 'https://www.w3schools.com/js/js_arrays.asp',
     items: [
-      {
-        type: 'test',
-        key: 'emptyArray',
+      { type: 'test', key: 'emptyArray',
         title: `var "emptyArray"`,
         instructions: `Declare a variable named "emptyArray", an array with no values`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(emptyArray).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(emptyArray).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
+            } },
+          { description: `is an array`, test: () => {
               expect(emptyArray).toBeArray();
-            },
-          },
-          {
-            description: `has 0 items`,
-            test: () => {
+            } },
+          { description: `has 0 items`, test: () => {
               expect(emptyArray).toHaveLength(0);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varSimpleArrayTests',
+      { type: 'test', key: 'varSimpleArrayTests',
         title: `var "simpleArray"`,
         instructions: `Declare a variable named "simpleArray", an array whose values are the numbers 1, 2 and 3`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(simpleArray).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(simpleArray).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
+            } },
+          { description: `is an array`, test: () => {
               expect(simpleArray).toBeArray();
-            },
-          },
-          {
-            description: `contains only numbers`,
-            test: () => {
+            } },
+          { description: `contains only numbers`, test: () => {
               expect(simpleArray).toOnlyContainType(`number`);
-            },
-          },
-          {
-            description: `has 3 items`,
-            test: () => {
+            } },
+          { description: `has 3 items`, test: () => {
               expect(simpleArray).toHaveLength(3);
-            },
-          },
-          {
-            description: `contains numbers 1,2,3`,
-            test: () => {
+            } },
+          { description: `contains numbers 1,2,3`, test: () => {
               expect(simpleArray).toBeSameArrayAs([1, 2, 3]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'varFavoriteFoodsTest',
+      { type: 'test', key: 'varFavoriteFoodsTest',
         title: `var "favoriteFoods"`,
         instructions: `Declare a variable named "favoriteFoods", an array whose values are three words (your favorite foods!).`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(favoriteFoods).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(favoriteFoods).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
+            } },
+          { description: `is an array`, test: () => {
               expect(favoriteFoods).toBeArray();
-            },
-          },
-          {
-            description: `contains only strings`,
-            test: () => {
+            } },
+          { description: `contains only strings`, test: () => {
               expect(favoriteFoods).toOnlyContainType(`string`);
-            },
-          },
-          {
-            description: `contains only words of 3+ letters`,
-            test: () => {
+            } },
+          { description: `contains only words of 3+ letters`, test: () => {
               expect(favoriteFoods).customTest(function () {
                 this.value.forEach((item) => {
                   if (item.length < 3)
@@ -2438,43 +1593,26 @@ console.log(result);         // NaN`,
                 });
                 return this;
               });
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'bigNumbers',
+      { type: 'test', key: 'bigNumbers',
         title: `var "bigNumbers"`,
         instructions: `Declare a variable named "bigNumbers", an array with 3 numbers all greater than 9000.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(bigNumbers).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(bigNumbers).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
+            } },
+          { description: `is an array`, test: () => {
               expect(bigNumbers).toBeArray();
-            },
-          },
-          {
-            description: `contains only numbers`,
-            test: () => {
+            } },
+          { description: `contains only numbers`, test: () => {
               expect(bigNumbers).toOnlyContainType(`number`);
-            },
-          },
-          {
-            description: `only contains numbers over 9000`,
-            test: () => {
+            } },
+          { description: `only contains numbers over 9000`, test: () => {
               expect(bigNumbers).customTest(function () {
                 this.value.forEach((item) => {
                   if (!(item > 9000))
@@ -2482,86 +1620,51 @@ console.log(result);         // NaN`,
                   return this;
                 });
               });
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'arrayOf10',
+      { type: 'test', key: 'arrayOf10',
         title: `var "arrayOf10"`,
         instructions: `Declare a variable named "arrayOf10", an array of 10 numbers.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(arrayOf10).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(arrayOf10).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
+            } },
+          { description: `is an array`, test: () => {
               expect(arrayOf10).toBeArray();
-            },
-          },
-          {
-            description: `contains only numbers`,
-            test: () => {
+            } },
+          { description: `contains only numbers`, test: () => {
               expect(arrayOf10).toOnlyContainType(`number`);
-            },
-          },
-          {
-            description: `has 10 items`,
-            test: () => {
+            } },
+          { description: `has 10 items`, test: () => {
               expect(arrayOf10).toHaveLength(10);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'arrayOfBooleans',
+      { type: 'test', key: 'arrayOfBooleans',
         title: `var "arrayOfBooleans"`,
         instructions: `Declare a variable named "arrayOfBooleans", an array of 5 booleans.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(arrayOfBooleans).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(arrayOfBooleans).toHaveValue();
-            },
-          },
-          {
-            description: `is an array`,
-            test: () => {
+            } },
+          { description: `is an array`, test: () => {
               expect(arrayOfBooleans).toBeArray();
-            },
-          },
-          {
-            description: `contains only booleans`,
-            test: () => {
+            } },
+          { description: `contains only booleans`, test: () => {
               expect(arrayOfBooleans).toOnlyContainType(`boolean`);
-            },
-          },
-          {
-            description: `has 5 items`,
-            test: () => {
+            } },
+          { description: `has 5 items`, test: () => {
               expect(arrayOfBooleans).toHaveLength(5);
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -2569,290 +1672,175 @@ console.log(result);         // NaN`,
     title: 'Array Methods',
     help: 'https://www.w3schools.com/js/js_array_methods.asp',
     items: [
-      {
-        type: 'test',
-        key: 'makeArrayOfX',
+      { type: 'test', key: 'makeArrayOfX',
         title: `function "makeArrayOfX"`,
         instructions: `Make a function that takes 2 arguments. First argument is how many. 2nd argument is what will be in the array. Example: makeArrayOfX(4, 'a') returns ['a', 'a', 'a', 'a']`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(makeArrayOfX).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(makeArrayOfX).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
+            } },
+          { description: `takes two arguments`, test: () => {
               expect(makeArrayOfX).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(makeArrayOfX).withArgs(3, 3).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(makeArrayOfX).withArgs(3, 3).toReturnArray();
-            },
-          },
-          {
-            description: `return array contains correct type`,
-            test: () => {
+            } },
+          { description: `return array contains correct type`, test: () => {
               expect(makeArrayOfX).withArgs(3, 3).toReturnArrayOfType('number');
               expect(makeArrayOfX)
                 .withArgs(3, 'a')
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(makeArrayOfX(5, 8)).toBeSameArrayAs([8, 8, 8, 8, 8]);
               expect(makeArrayOfX(3, 'a')).toBeSameArrayAs(['a', 'a', 'a']);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'reverseArray',
+      { type: 'test', key: 'reverseArray',
         title: `function "reverseArray"`,
         instructions: `Make a function that takes an array as an argument. It should return the array in reverse order. Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(reverseArray).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(reverseArray).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(reverseArray).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(reverseArray).withArgs([]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns array`,
-            test: () => {
+            } },
+          { description: `returns array`, test: () => {
               expect(reverseArray).withArgs([]).toReturnArray();
-            },
-          },
-          {
-            description: `returns array of correct type`,
-            test: () => {
+            } },
+          { description: `returns array of correct type`, test: () => {
               expect(reverseArray)
                 .withArgs([1, 2, 3])
                 .toReturnArrayOfType('number');
               expect(reverseArray)
                 .withArgs(['a', 'b', 'c'])
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(reverseArray(['a', 'b', 'c'])).toBeSameArrayAs([
                 'c',
                 'b',
                 'a',
               ]);
               expect(reverseArray([1, 2, 3])).toBeSameArrayAs([3, 2, 1]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'sortLetters',
+      { type: 'test', key: 'sortLetters',
         title: `function "sortLetters"`,
         instructions: `Make a function that takes one argument, an array of letters. It should return the array of letters in alphabetical order.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(sortLetters).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(sortLetters).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(sortLetters).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(sortLetters).withArgs(['a', 'z', 'b']).toReturnSomething();
-            },
-          },
-          {
-            description: `returns array`,
-            test: () => {
+            } },
+          { description: `returns array`, test: () => {
               expect(sortLetters).withArgs(['a', 'z', 'b']).toReturnArray();
-            },
-          },
-          {
-            description: `returns array with string items`,
-            test: () => {
+            } },
+          { description: `returns array with string items`, test: () => {
               expect(sortLetters)
                 .withArgs(['a', 'z', 'b'])
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(sortLetters(['a', 'z', 'b', 'd'])).toBeSameArrayAs([
                 'a',
                 'b',
                 'd',
                 'z',
               ]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'sortNumbers',
+      { type: 'test', key: 'sortNumbers',
         title: `function "sortNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. It should return the numbers from smallest to biggest.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(sortNumbers).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(sortNumbers).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(sortNumbers).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(sortNumbers).withArgs([3, 2, 1]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(sortNumbers).withArgs([3, 2, 1]).toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of number items`,
-            test: () => {
+            } },
+          { description: `returns an array of number items`, test: () => {
               expect(sortNumbers)
                 .withArgs([3, 2, 1])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(
                 sortNumbers([1, 1000, 2, 2000, 5, 30, 400]),
               ).toBeSameArrayAs([1, 2, 5, 30, 400, 1000, 2000]);
               expect(sortNumbers([5, 3, 1])).toBeSameArrayAs([1, 3, 5]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'sortByWordLength',
+      { type: 'test', key: 'sortByWordLength',
         title: `function "sortByWordLength"`,
         instructions: `Make a function that takes one argument, an array of words. Return the words in an array from shortest to longest.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(sortByWordLength).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(sortByWordLength).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(sortByWordLength).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(sortByWordLength)
                 .withArgs(['bob', 'bill'])
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(sortByWordLength)
                 .withArgs(['bob', 'bill'])
                 .toReturnArray();
-            },
-          },
-          {
-            description: `returns an array with string items`,
-            test: () => {
+            } },
+          { description: `returns an array with string items`, test: () => {
               expect(sortByWordLength)
                 .withArgs(['bob', 'bill'])
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(
                 sortByWordLength(['throw', 'jungle', 'longest', 'cat']),
               ).toBeSameArrayAs(['cat', 'throw', 'jungle', 'longest']);
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -2860,347 +1848,202 @@ console.log(result);         // NaN`,
     title: 'Loops & Strings',
     help: 'https://www.w3schools.com/js/js_loops.asp',
     items: [
-      {
-        type: 'test',
-        key: 'makeXAsterisks',
+      { type: 'test', key: 'makeXAsterisks',
         title: `function "makeXAsterisks"`,
         instructions: `Make a function that takes one argument, a number. It should return a string with that many asterisks. Example: makeXAsterisks(5) returns "*****"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(makeXAsterisks).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(makeXAsterisks).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(makeXAsterisks).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(makeXAsterisks).withArgs(3).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
+            } },
+          { description: `returns a string`, test: () => {
               expect(makeXAsterisks).withArgs(3).toReturnString();
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(makeXAsterisks(5)).toBe('*****');
               expect(makeXAsterisks(3)).toBe('***');
               expect(makeXAsterisks(12)).toBe('************');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'allNumbersUpToX',
+      { type: 'test', key: 'allNumbersUpToX',
         title: `function "allNumbersUpToX"`,
         instructions: `Make a function that takes one argument, a number. It should return an array of every number up to that number, starting at 1. Example: allNumbersUpToX(5) returns [1,2,3,4,5]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(allNumbersUpToX).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(allNumbersUpToX).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(allNumbersUpToX).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(allNumbersUpToX).withArgs(4).toReturnSomething();
-            },
-          },
-          {
-            description: `returns array`,
-            test: () => {
+            } },
+          { description: `returns array`, test: () => {
               expect(allNumbersUpToX).withArgs(4).toReturnArray();
-            },
-          },
-          {
-            description: `returns array of numbers`,
-            test: () => {
+            } },
+          { description: `returns array of numbers`, test: () => {
               expect(allNumbersUpToX).withArgs(4).toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(allNumbersUpToX(8)).toBeSameArrayAs([
                 1, 2, 3, 4, 5, 6, 7, 8,
               ]);
               expect(allNumbersUpToX(1)).toBeSameArrayAs([1]);
               expect(allNumbersUpToX(3)).toBeSameArrayAs([1, 2, 3]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'makeStringWithXLetterY',
+      { type: 'test', key: 'makeStringWithXLetterY',
         title: `function "makeStringWithXLetterY"`,
         instructions: `Make a function that takes two arguments, a number and a character. It should return a string with X copies of Y. Example: makeStringWithXLetterY(4, "b") returns "bbbb"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(makeStringWithXLetterY).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(makeStringWithXLetterY).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
+            } },
+          { description: `takes two arguments`, test: () => {
               expect(makeStringWithXLetterY).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(makeStringWithXLetterY)
                 .withArgs(3, 'b')
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
+            } },
+          { description: `returns a string`, test: () => {
               expect(makeStringWithXLetterY).withArgs(3, 'b').toReturnString();
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(makeStringWithXLetterY(5, 'a')).toBe('aaaaa');
               expect(makeStringWithXLetterY(10, 'x')).toBe('xxxxxxxxxx');
               expect(makeStringWithXLetterY(0, 'q')).toBe('');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'reverseWord',
+      { type: 'test', key: 'reverseWord',
         title: `function "reverseWord"`,
         instructions: `Make a function that takes one argument, a string. It should return the string in reverse order. Example: reverseWord("cat") returns "tac"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(reverseWord).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(reverseWord).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(reverseWord).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(reverseWord).withArgs('bill').toReturnSomething();
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
+            } },
+          { description: `returns a string`, test: () => {
               expect(reverseWord).withArgs('bill').toReturnString();
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(reverseWord('towel')).toBe('lewot');
               expect(reverseWord('aba')).toBe('aba');
               expect(reverseWord('cow')).toBe('woc');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeVowels',
+      { type: 'test', key: 'removeVowels',
         title: `function "removeVowels"`,
         instructions: `Make a function that takes one argument, a string. It should return a string with the vowels removed. Example: removeVowels('opportunity') returns 'pprtnty'`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeVowels).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeVowels).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(removeVowels).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeVowels).withArgs('ca').toReturnSomething();
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
+            } },
+          { description: `returns a string`, test: () => {
               expect(removeVowels).withArgs('ca').toReturnString();
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(removeVowels('behaviour')).toBe('bhvr');
               expect(removeVowels('aeiou')).toBe('');
               expect(removeVowels('bcdfghjklmnpqrstvwxyz')).toBe(
                 'bcdfghjklmnpqrstvwxyz',
               );
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeConsonants',
+      { type: 'test', key: 'removeConsonants',
         title: `function "removeConsonants"`,
         instructions: `Make a function that takes one argument, a string. It should return a string with the consonants removed. Example: removeConsonants('opportunity') returns 'oouiy'`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeConsonants).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeConsonants).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(removeConsonants).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeConsonants).withArgs('ab').toReturnSomething();
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
+            } },
+          { description: `returns a string`, test: () => {
               expect(removeConsonants).withArgs('ab').toReturnString();
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(removeConsonants('abcdefghijklmnopqrstuvwxyz')).toBe(
                 'aeiou',
               );
               expect(removeConsonants('aeiou')).toBe('aeiou');
               expect(removeConsonants('xyz')).toBe('');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeWordsOfLengthXPlus',
+      { type: 'test', key: 'removeWordsOfLengthXPlus',
         title: `function "removeWordsOfLengthXPlus"`,
         instructions: `Make a function that takes two arguments, an array of strings and a number. Remove any string as long or longer than the number. Example: removeWordsOfLengthXPlus(["homeland","cat","drop"], 5) returns ["cat","drop"]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeWordsOfLengthXPlus).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeWordsOfLengthXPlus).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
+            } },
+          { description: `takes two arguments`, test: () => {
               expect(removeWordsOfLengthXPlus).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeWordsOfLengthXPlus)
                 .withArgs(['cat'], 5)
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns array`,
-            test: () => {
+            } },
+          { description: `returns array`, test: () => {
               expect(removeWordsOfLengthXPlus)
                 .withArgs(['cat'], 5)
                 .toReturnArray();
-            },
-          },
-          {
-            description: `returns array of strings`,
-            test: () => {
+            } },
+          { description: `returns array of strings`, test: () => {
               expect(removeWordsOfLengthXPlus)
                 .withArgs(['cat'], 5)
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(
                 removeWordsOfLengthXPlus(
                   ['president', 'leader', 'cat', 'dog'],
@@ -3219,56 +2062,35 @@ console.log(result);         // NaN`,
                   12,
                 ),
               ).toBeSameArrayAs(['president', 'leader', 'cat', 'dog']);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'calculateAverage',
+      { type: 'test', key: 'calculateAverage',
         title: `function "calculateAverage"`,
         instructions: `Make a function that takes one argument, an array of numbers. It should return the average of all numbers. Example: calculateAverage([2, 4, 6, 8, 10]) returns 6`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(calculateAverage).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(calculateAverage).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(calculateAverage).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(calculateAverage).withArgs([1, 2, 3]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
+            } },
+          { description: `returns a number`, test: () => {
               expect(calculateAverage).withArgs([1, 2, 3]).toReturnNumber();
-            },
-          },
-          {
-            description: `returns the correct result`,
-            test: () => {
+            } },
+          { description: `returns the correct result`, test: () => {
               expect(calculateAverage([1, 8, 5, 20, 16])).toBe(10);
               expect(calculateAverage([2])).toBe(2);
               expect(calculateAverage([1, 2])).toBe(1.5);
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -3276,201 +2098,118 @@ console.log(result);         // NaN`,
     title: 'Array.map',
     help: 'https://www.w3schools.com/jsref/jsref_map.asp',
     items: [
-      {
-        type: 'test',
-        key: 'arrayValuesPlusOne',
+      { type: 'test', key: 'arrayValuesPlusOne',
         title: `function "arrayValuesPlusOne"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to add one to each number and return the resulting array. Example: arrayValuesPlusOne([1, 3, 5]) returns [2, 4, 6]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(arrayValuesPlusOne).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(arrayValuesPlusOne).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(arrayValuesPlusOne).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(arrayValuesPlusOne).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(arrayValuesPlusOne).withArgs([1, 2]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array of numbers`,
-            test: () => {
+            } },
+          { description: `returns an array of numbers`, test: () => {
               expect(arrayValuesPlusOne)
                 .withArgs([1, 2])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `calls the "array.map" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.map" method`, test: () => {
               expect(arrayValuesPlusOne)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'map');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(arrayValuesPlusOne([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs(
                 [2, 3, 4, 5, 6, 7, 8],
               );
               expect(arrayValuesPlusOne([])).toBeSameArrayAs([]);
               expect(arrayValuesPlusOne([1])).toBeSameArrayAs([2]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'doubleArrayValues',
+      { type: 'test', key: 'doubleArrayValues',
         title: `function "doubleArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to double all the values and return an array. Example: doubleArrayValues([2, 5, 11]) returns [4, 10, 22]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(doubleArrayValues).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(doubleArrayValues).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(doubleArrayValues).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(doubleArrayValues).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(doubleArrayValues).withArgs([1]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(doubleArrayValues).withArgs([1]).toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of numbers`,
-            test: () => {
+            } },
+          { description: `returns an array of numbers`, test: () => {
               expect(doubleArrayValues)
                 .withArgs([1])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `calls the "array.map" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.map" method`, test: () => {
               expect(doubleArrayValues)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'map');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(doubleArrayValues([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
                 2, 4, 6, 8, 10, 12, 14,
               ]);
               expect(doubleArrayValues([])).toBeSameArrayAs([]);
               expect(doubleArrayValues([-1, 0, 1])).toBeSameArrayAs([-2, 0, 2]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'halveArrayValues',
+      { type: 'test', key: 'halveArrayValues',
         title: `function "halveArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to divide each item by 2 and return the resulting array. Example: [1, 2, 3, 4, 5] returns [.5, 1, 1.5, 2, 2.5]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(halveArrayValues).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(halveArrayValues).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(halveArrayValues).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(halveArrayValues).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(halveArrayValues).withArgs([]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(halveArrayValues).withArgs([]).toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of numbers`,
-            test: () => {
+            } },
+          { description: `returns an array of numbers`, test: () => {
               expect(halveArrayValues)
                 .withArgs([1])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `calls the "array.map" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.map" method`, test: () => {
               expect(halveArrayValues)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'map');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(halveArrayValues([2, 4, 6, 8, 10, 12])).toBeSameArrayAs([
                 1, 2, 3, 4, 5, 6,
               ]);
@@ -3478,143 +2217,85 @@ console.log(result);         // NaN`,
               expect(halveArrayValues([-1, -2, 0])).toBeSameArrayAs([
                 -0.5, -1, 0,
               ]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'squareArrayValues',
+      { type: 'test', key: 'squareArrayValues',
         title: `function "squareArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to square each number and return it. Example: squareArrayValues([10,8]) returns [100, 64]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(squareArrayValues).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(squareArrayValues).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(squareArrayValues).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(squareArrayValues).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(squareArrayValues).withArgs([1]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(squareArrayValues).withArgs([1]).toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of numbers`,
-            test: () => {
+            } },
+          { description: `returns an array of numbers`, test: () => {
               expect(squareArrayValues)
                 .withArgs([1])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `calls the "array.map" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.map" method`, test: () => {
               expect(squareArrayValues)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'map');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(squareArrayValues([2, 4, 6, 8, 10, 12])).toBeSameArrayAs([
                 4, 16, 36, 64, 100, 144,
               ]);
               expect(squareArrayValues([0])).toBeSameArrayAs([0]);
               expect(squareArrayValues([])).toBeSameArrayAs([]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'onlyFirstLetterOfWords',
+      { type: 'test', key: 'onlyFirstLetterOfWords',
         title: `function "onlyFirstLetterOfWords"`,
         instructions: `Make a function that takes one argument, an array of strings. Use "array.map" to return an array of the first letters of each string. Example: onlyFirstLetterOfWords(['cat','dog']) returns ['c','d']`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(onlyFirstLetterOfWords).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(onlyFirstLetterOfWords).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(onlyFirstLetterOfWords).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(onlyFirstLetterOfWords).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(onlyFirstLetterOfWords)
                 .withArgs(['a'])
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(onlyFirstLetterOfWords).withArgs(['a']).toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of strings`,
-            test: () => {
+            } },
+          { description: `returns an array of strings`, test: () => {
               expect(onlyFirstLetterOfWords)
                 .withArgs(['a'])
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `calls the "array.map" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.map" method`, test: () => {
               expect(onlyFirstLetterOfWords)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'map');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(
                 onlyFirstLetterOfWords(['cat', 'sibling', 'pepper', 'zebra']),
               ).toBeSameArrayAs(['c', 's', 'p', 'z']);
@@ -3622,83 +2303,53 @@ console.log(result);         // NaN`,
               expect(
                 onlyFirstLetterOfWords(['az', 'bz', 'cz']),
               ).toBeSameArrayAs(['a', 'b', 'c']);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'onlyLastLetterOfWords',
+      { type: 'test', key: 'onlyLastLetterOfWords',
         title: `function "onlyLastLetterOfWords"`,
         instructions: `Make a function that takes one argument, an array of strings. Use "array.map" to return an array of the last letter of each string. Example: onlyLastLetterOfWords(["cat","dog"]) returns ["t","g"]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(onlyLastLetterOfWords).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(onlyLastLetterOfWords).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(onlyLastLetterOfWords).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(onlyLastLetterOfWords).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(onlyLastLetterOfWords)
                 .withArgs(['a', 'ab', 'abc'])
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(onlyLastLetterOfWords)
                 .withArgs(['a', 'ab', 'abc'])
                 .toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of strings`,
-            test: () => {
+            } },
+          { description: `returns an array of strings`, test: () => {
               expect(onlyLastLetterOfWords)
                 .withArgs(['a', 'ab', 'abc'])
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `calls the "array.map" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.map" method`, test: () => {
               expect(onlyLastLetterOfWords)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'map');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(
                 onlyLastLetterOfWords(['cat', 'wing', 'trot', 'coo']),
               ).toBeSameArrayAs(['t', 'g', 't', 'o']);
               expect(onlyLastLetterOfWords([])).toBeSameArrayAs([]);
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -3706,138 +2357,81 @@ console.log(result);         // NaN`,
     title: 'Array.filter',
     help: 'https://www.w3schools.com/jsref/jsref_filter.asp',
     items: [
-      {
-        type: 'test',
-        key: 'removeOddNumbers',
+      { type: 'test', key: 'removeOddNumbers',
         title: `function "removeOddNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" and return an array with no odd numbers. Example: removeOddNumbers([1,2,3,4]) returns [2,4]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeOddNumbers).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(removeOddNumbers).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeOddNumbers).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(removeOddNumbers).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeOddNumbers).withArgs([1, 2]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(removeOddNumbers).withArgs([1, 2]).toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of numbers`,
-            test: () => {
+            } },
+          { description: `returns an array of numbers`, test: () => {
               expect(removeOddNumbers)
                 .withArgs([1, 2])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `calls the "array.filter" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.filter" method`, test: () => {
               expect(removeOddNumbers)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'filter');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(removeOddNumbers([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
                 2, 4, 6,
               ]);
               expect(removeOddNumbers([])).toBeSameArrayAs([]);
               expect(removeOddNumbers([11, 31, 51])).toBeSameArrayAs([]);
               expect(removeOddNumbers([22, 44])).toBeSameArrayAs([22, 44]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeEvenNumbers',
+      { type: 'test', key: 'removeEvenNumbers',
         title: `function "removeEvenNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" and return an array with no even numbers. Example: removeEvenNumbers([1,2,3,4]) returns [1,3]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeEvenNumbers).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(removeEvenNumbers).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeEvenNumbers).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(removeEvenNumbers).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeEvenNumbers).withArgs([1, 2]).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(removeEvenNumbers).withArgs([1, 2]).toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of numbers`,
-            test: () => {
+            } },
+          { description: `returns an array of numbers`, test: () => {
               expect(removeEvenNumbers)
                 .withArgs([1, 2])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `calls the "array.filter" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.filter" method`, test: () => {
               expect(removeEvenNumbers)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'filter');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(removeEvenNumbers([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
                 1, 3, 5, 7,
               ]);
@@ -3846,75 +2440,46 @@ console.log(result);         // NaN`,
                 11, 31, 51,
               ]);
               expect(removeEvenNumbers([22, 44])).toBeSameArrayAs([]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeNumbersLessThan3',
+      { type: 'test', key: 'removeNumbersLessThan3',
         title: `function "removeNumbersLessThan3"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" to remove numbers less than 3. Example: removeNumbersLessThan3([1,2,3,4]) returns [3,4]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeNumbersLessThan3).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(removeNumbersLessThan3).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeNumbersLessThan3).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(removeNumbersLessThan3).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeNumbersLessThan3)
                 .withArgs([1, 2, 3])
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(removeNumbersLessThan3)
                 .withArgs([1, 2, 3])
                 .toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of numbers`,
-            test: () => {
+            } },
+          { description: `returns an array of numbers`, test: () => {
               expect(removeNumbersLessThan3)
                 .withArgs([1, 2, 3])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `calls the "filter" method`,
-            test: () => {
+            } },
+          { description: `calls the "filter" method`, test: () => {
               expect(removeNumbersLessThan3)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'filter');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(
                 removeNumbersLessThan3([1, 2, 3, 4, 5, 6, 7]),
               ).toBeSameArrayAs([3, 4, 5, 6, 7]);
@@ -3924,75 +2489,46 @@ console.log(result);         // NaN`,
               expect(removeNumbersLessThan3([3, 4, 5, 6, 100])).toBeSameArrayAs(
                 [3, 4, 5, 6, 100],
               );
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeNumbersLessThanX',
+      { type: 'test', key: 'removeNumbersLessThanX',
         title: `function "removeNumbersLessThanX"`,
         instructions: `Make a function that takes two arguments, an array of numbers and a number. Call "array.filter" to remove numbers less than the 2nd argument. Example: removeNumbersLessThanX([1,2,3,4,5],3) returns [3,4,5]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeNumbersLessThanX).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(removeNumbersLessThanX).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeNumbersLessThanX).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
+            } },
+          { description: `takes two arguments`, test: () => {
               expect(removeNumbersLessThanX).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeNumbersLessThanX)
                 .withArgs([1, 2, 3])
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(removeNumbersLessThanX)
                 .withArgs([1, 2, 3])
                 .toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of numbers`,
-            test: () => {
+            } },
+          { description: `returns an array of numbers`, test: () => {
               expect(removeNumbersLessThanX)
                 .withArgs([1, 2, 3])
                 .toReturnArrayOfType('number');
-            },
-          },
-          {
-            description: `calls the "filter" method`,
-            test: () => {
+            } },
+          { description: `calls the "filter" method`, test: () => {
               expect(removeNumbersLessThanX)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'filter');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(
                 removeNumbersLessThanX([1, 2, 3, 4, 5, 6, 7], 4),
               ).toBeSameArrayAs([4, 5, 6, 7]);
@@ -4003,73 +2539,44 @@ console.log(result);         // NaN`,
                 removeNumbersLessThanX([3, 4, 5, 6, 100], 50),
               ).toBeSameArrayAs([100]);
               expect(removeNumbersLessThanX([], 50)).toBeSameArrayAs([]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeEmptyStrings',
+      { type: 'test', key: 'removeEmptyStrings',
         title: `function "removeEmptyStrings"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove any empty strings. Example: removeEmptyStrings(["","Phone","Josh"]) returns ["Phone","Josh"]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeEmptyStrings).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(removeEmptyStrings).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeEmptyStrings).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(removeEmptyStrings).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeEmptyStrings)
                 .withArgs(['a', ''])
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(removeEmptyStrings).withArgs(['a', '']).toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of strings`,
-            test: () => {
+            } },
+          { description: `returns an array of strings`, test: () => {
               expect(removeEmptyStrings)
                 .withArgs(['a', ''])
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `calls "array.filter" method`,
-            test: () => {
+            } },
+          { description: `calls "array.filter" method`, test: () => {
               expect(removeEmptyStrings)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'filter');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(
                 removeEmptyStrings(['', '', 'dog', 'document', 'cat']),
               ).toBeSameArrayAs(['dog', 'document', 'cat']);
@@ -4080,75 +2587,46 @@ console.log(result);         // NaN`,
                 'a',
                 'a',
               ]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeVowelsFromArray',
+      { type: 'test', key: 'removeVowelsFromArray',
         title: `function "removeVowelsFromArray"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove all strings that are a vowel. Example: removeVowelsFromArray(["a","b","c","d","e"]) returns ["b","c","d"]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeVowelsFromArray).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(removeVowelsFromArray).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeVowelsFromArray).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(removeVowelsFromArray).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeVowelsFromArray)
                 .withArgs(['a', 'z'])
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(removeVowelsFromArray)
                 .withArgs(['a', 'z'])
                 .toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of strings`,
-            test: () => {
+            } },
+          { description: `returns an array of strings`, test: () => {
               expect(removeVowelsFromArray)
                 .withArgs(['a', 'z'])
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `calls the "array.filter" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.filter" method`, test: () => {
               expect(removeVowelsFromArray)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'filter');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(removeVowelsFromArray(['a', 'b', 'c'])).toBeSameArrayAs([
                 'b',
                 'c',
@@ -4162,75 +2640,46 @@ console.log(result);         // NaN`,
                 'x',
                 'z',
               ]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeConsonantsInArray',
+      { type: 'test', key: 'removeConsonantsInArray',
         title: `function "removeConsonantsInArray"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove all strings that are a consonant. Example: removeConsonantsInArray(["a","b","c","d","e"]) returns ["a","e"]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeConsonantsInArray).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(removeConsonantsInArray).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeConsonantsInArray).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(removeConsonantsInArray).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeConsonantsInArray)
                 .withArgs(['a', 'z'])
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(removeConsonantsInArray)
                 .withArgs(['a', 'z'])
                 .toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of strings`,
-            test: () => {
+            } },
+          { description: `returns an array of strings`, test: () => {
               expect(removeConsonantsInArray)
                 .withArgs(['a', 'z'])
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `calls the "array.filter" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.filter" method`, test: () => {
               expect(removeConsonantsInArray)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'filter');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(removeConsonantsInArray(['a', 'b', 'c'])).toBeSameArrayAs([
                 'a',
               ]);
@@ -4241,75 +2690,46 @@ console.log(result);         // NaN`,
               expect(removeConsonantsInArray(['b', 'x', 'z'])).toBeSameArrayAs(
                 [],
               );
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'removeWordFromArray',
+      { type: 'test', key: 'removeWordFromArray',
         title: `function "removeWordFromArray"`,
         instructions: `Make a function that takes two arguments, an array of strings and a word. Call "array.filter" to remove all strings that match the word. Example: removeWordFromArray(["cat","dog","fish"],"fish") returns ["cat","dog"]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(removeWordFromArray).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(removeWordFromArray).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(removeWordFromArray).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
+            } },
+          { description: `takes two arguments`, test: () => {
               expect(removeWordFromArray).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(removeWordFromArray)
                 .withArgs(['a', 'b'], 'a')
                 .toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(removeWordFromArray)
                 .withArgs(['a', 'b'], 'a')
                 .toReturnArray();
-            },
-          },
-          {
-            description: `returns an array of strings`,
-            test: () => {
+            } },
+          { description: `returns an array of strings`, test: () => {
               expect(removeWordFromArray)
                 .withArgs(['a', 'b'], 'a')
                 .toReturnArrayOfType('string');
-            },
-          },
-          {
-            description: `calls the "array.filter" method`,
-            test: () => {
+            } },
+          { description: `calls the "array.filter" method`, test: () => {
               expect(removeWordFromArray)
                 .withArgs([1, 2, 3])
                 .callsFunction(Array.prototype, 'filter');
-            },
-          },
-          {
-            description: `returns the correct value`,
-            test: () => {
+            } },
+          { description: `returns the correct value`, test: () => {
               expect(
                 removeWordFromArray(['joke', 'documentation'], 'documentation'),
               ).toBeSameArrayAs(['joke']);
@@ -4320,10 +2740,9 @@ console.log(result);         // NaN`,
               expect(
                 removeWordFromArray(['cat', 'cat', 'cat'], 'cat'),
               ).toBeSameArrayAs([]);
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -4331,298 +2750,171 @@ console.log(result);         // NaN`,
     title: 'While Loops',
     help: 'https://www.w3schools.com/js/js_loop_while.asp',
     items: [
-      {
-        type: 'test',
-        key: 'countUpTests',
+      { type: 'test', key: 'countUpTests',
         title: `function "countUp"`,
         instructions: `Make a function named "countUp" that takes one argument, a number. Using a while loop, return an array of numbers counting up from 1 to that number. Example: countUp(5) returns [1, 2, 3, 4, 5]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(countUp).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(countUp).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(countUp).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(countUp).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(countUp).withArgs(3).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(countUp).withArgs(3).toReturnArray();
-            },
-          },
-          {
-            description: `uses a while loop`,
-            test: () => {
+            } },
+          { description: `uses a while loop`, test: () => {
               expectCode().toUseWhileLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(countUp(1)).toBeSameArrayAs([1]);
               expect(countUp(3)).toBeSameArrayAs([1, 2, 3]);
               expect(countUp(5)).toBeSameArrayAs([1, 2, 3, 4, 5]);
               expect(countUp(8)).toBeSameArrayAs([1, 2, 3, 4, 5, 6, 7, 8]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'countDownTests',
+      { type: 'test', key: 'countDownTests',
         title: `function "countDown"`,
         instructions: `Make a function named "countDown" that takes one argument, a number. Using a while loop, return an array of numbers counting down from that number to 1. Example: countDown(5) returns [5, 4, 3, 2, 1]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(countDown).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(countDown).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(countDown).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(countDown).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(countDown).withArgs(3).toReturnSomething();
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(countDown).withArgs(3).toReturnArray();
-            },
-          },
-          {
-            description: `uses a while loop`,
-            test: () => {
+            } },
+          { description: `uses a while loop`, test: () => {
               expectCode().toUseWhileLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(countDown(1)).toBeSameArrayAs([1]);
               expect(countDown(3)).toBeSameArrayAs([3, 2, 1]);
               expect(countDown(5)).toBeSameArrayAs([5, 4, 3, 2, 1]);
               expect(countDown(8)).toBeSameArrayAs([8, 7, 6, 5, 4, 3, 2, 1]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'sumWhileTests',
+      { type: 'test', key: 'sumWhileTests',
         title: `function "sumWhile"`,
         instructions: `Make a function named "sumWhile" that takes one argument, a number. Using a while loop, return the sum of all numbers from 1 up to and including that number. Example: sumWhile(5) returns 15 (because 1+2+3+4+5 = 15)`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(sumWhile).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(sumWhile).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(sumWhile).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(sumWhile).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(sumWhile).withArgs(3).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
+            } },
+          { description: `returns a number`, test: () => {
               expect(sumWhile).withArgs(3).toReturnNumber();
-            },
-          },
-          {
-            description: `uses a while loop`,
-            test: () => {
+            } },
+          { description: `uses a while loop`, test: () => {
               expectCode().toUseWhileLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(sumWhile(1)).toBe(1);
               expect(sumWhile(3)).toBe(6);
               expect(sumWhile(5)).toBe(15);
               expect(sumWhile(10)).toBe(55);
               expect(sumWhile(100)).toBe(5050);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'repeatStringTests',
+      { type: 'test', key: 'repeatStringTests',
         title: `function "repeatString"`,
         instructions: `Make a function named "repeatString" that takes two arguments: a string and a number. Using a while loop, return the string repeated that many times. Example: repeatString("ha", 3) returns "hahaha"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(repeatString).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(repeatString).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(repeatString).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
+            } },
+          { description: `takes two arguments`, test: () => {
               expect(repeatString).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(repeatString).withArgs('ha', 3).toReturnSomething();
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
+            } },
+          { description: `returns a string`, test: () => {
               expect(repeatString).withArgs('ha', 3).toReturnString();
-            },
-          },
-          {
-            description: `uses a while loop`,
-            test: () => {
+            } },
+          { description: `uses a while loop`, test: () => {
               expectCode().toUseWhileLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(repeatString('ha', 3)).toBe('hahaha');
               expect(repeatString('ab', 1)).toBe('ab');
               expect(repeatString('x', 4)).toBe('xxxx');
               expect(repeatString('na', 8)).toBe('nananananananana');
               expect(repeatString('yo', 0)).toBe('');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'firstOverTests',
+      { type: 'test', key: 'firstOverTests',
         title: `function "firstOver"`,
         instructions: `Make a function named "firstOver" that takes two arguments: an array of numbers and a threshold number. Using a while loop, return the first number in the array that is greater than the threshold. If no number exceeds the threshold, return null. Example: firstOver([1, 5, 3, 8], 4) returns 5`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(firstOver).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(firstOver).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(firstOver).toBeFunction();
-            },
-          },
-          {
-            description: `takes two arguments`,
-            test: () => {
+            } },
+          { description: `takes two arguments`, test: () => {
               expect(firstOver).takesXArguments(2);
-            },
-          },
-          {
-            description: `returns something`,
-            test: () => {
+            } },
+          { description: `returns something`, test: () => {
               expect(firstOver).withArgs([1, 5, 3], 4).toReturnSomething();
-            },
-          },
-          {
-            description: `uses a while loop`,
-            test: () => {
+            } },
+          { description: `uses a while loop`, test: () => {
               expectCode().toUseWhileLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(firstOver([1, 5, 3, 8], 4)).toBe(5);
               expect(firstOver([10, 1, 2], 5)).toBe(10);
               expect(firstOver([1, 2, 3], 10)).toBe(null);
               expect(firstOver([], 0)).toBe(null);
               expect(firstOver([3, 3, 3, 7], 5)).toBe(7);
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -4630,276 +2922,161 @@ console.log(result);         // NaN`,
     title: 'For Loops',
     help: 'https://www.w3schools.com/js/js_loop_for.asp',
     items: [
-      {
-        type: 'test',
-        key: 'countToNTests',
+      { type: 'test', key: 'countToNTests',
         title: `function "countToN"`,
         instructions: `Make a function named "countToN" that takes one argument, a number. Using a for loop, return an array of numbers from 1 up to and including that number. Example: countToN(4) returns [1, 2, 3, 4]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(countToN).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(countToN).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(countToN).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(countToN).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(countToN).withArgs(3).toReturnArray();
-            },
-          },
-          {
-            description: `uses a for loop`,
-            test: () => {
+            } },
+          { description: `uses a for loop`, test: () => {
               expectCode().toUseForLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(countToN(1)).toBeSameArrayAs([1]);
               expect(countToN(3)).toBeSameArrayAs([1, 2, 3]);
               expect(countToN(5)).toBeSameArrayAs([1, 2, 3, 4, 5]);
               expect(countToN(7)).toBeSameArrayAs([1, 2, 3, 4, 5, 6, 7]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'sumArrayTests',
+      { type: 'test', key: 'sumArrayTests',
         title: `function "sumArray"`,
         instructions: `Make a function named "sumArray" that takes one argument, an array of numbers. Using a for loop, return the sum of all numbers in the array. Example: sumArray([1, 2, 3]) returns 6`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(sumArray).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(sumArray).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(sumArray).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(sumArray).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
+            } },
+          { description: `returns a number`, test: () => {
               expect(sumArray).withArgs([1, 2]).toReturnNumber();
-            },
-          },
-          {
-            description: `uses a for loop`,
-            test: () => {
+            } },
+          { description: `uses a for loop`, test: () => {
               expectCode().toUseForLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(sumArray([1, 2, 3])).toBe(6);
               expect(sumArray([10, 20, 30])).toBe(60);
               expect(sumArray([0, 0, 0])).toBe(0);
               expect(sumArray([])).toBe(0);
               expect(sumArray([100])).toBe(100);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'doubleAllTests',
+      { type: 'test', key: 'doubleAllTests',
         title: `function "doubleAll"`,
         instructions: `Make a function named "doubleAll" that takes one argument, an array of numbers. Using a for loop, return a new array where every number has been doubled. Example: doubleAll([1, 2, 3]) returns [2, 4, 6]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(doubleAll).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(doubleAll).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(doubleAll).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(doubleAll).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(doubleAll).withArgs([1, 2]).toReturnArray();
-            },
-          },
-          {
-            description: `uses a for loop`,
-            test: () => {
+            } },
+          { description: `uses a for loop`, test: () => {
               expectCode().toUseForLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(doubleAll([1, 2, 3])).toBeSameArrayAs([2, 4, 6]);
               expect(doubleAll([0, 5, 10])).toBeSameArrayAs([0, 10, 20]);
               expect(doubleAll([])).toBeSameArrayAs([]);
               expect(doubleAll([7])).toBeSameArrayAs([14]);
               expect(doubleAll([-3, -1, 0])).toBeSameArrayAs([-6, -2, 0]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'findMaxTests',
+      { type: 'test', key: 'findMaxTests',
         title: `function "findMax"`,
         instructions: `Make a function named "findMax" that takes one argument, an array of numbers. Using a for loop, return the largest number in the array. Example: findMax([3, 1, 7, 2]) returns 7`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(findMax).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(findMax).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(findMax).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(findMax).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
+            } },
+          { description: `returns a number`, test: () => {
               expect(findMax).withArgs([1, 2]).toReturnNumber();
-            },
-          },
-          {
-            description: `uses a for loop`,
-            test: () => {
+            } },
+          { description: `uses a for loop`, test: () => {
               expectCode().toUseForLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(findMax([3, 1, 7, 2])).toBe(7);
               expect(findMax([1])).toBe(1);
               expect(findMax([-5, -1, -3])).toBe(-1);
               expect(findMax([0, 0, 0])).toBe(0);
               expect(findMax([100, 200, 150])).toBe(200);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'joinWordsTests',
+      { type: 'test', key: 'joinWordsTests',
         title: `function "joinWords"`,
         instructions: `Make a function named "joinWords" that takes one argument, an array of strings. Using a for loop, return a single string with all words joined by a space. Example: joinWords(["hello", "world"]) returns "hello world"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(joinWords).toBeDeclared();
-            },
-          },
-          {
-            description: `has a value`,
-            test: () => {
+            } },
+          { description: `has a value`, test: () => {
               expect(joinWords).toHaveValue();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(joinWords).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(joinWords).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
+            } },
+          { description: `returns a string`, test: () => {
               expect(joinWords).withArgs(['a', 'b']).toReturnString();
-            },
-          },
-          {
-            description: `uses a for loop`,
-            test: () => {
+            } },
+          { description: `uses a for loop`, test: () => {
               expectCode().toUseForLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(joinWords(['hello', 'world'])).toBe('hello world');
               expect(joinWords(['one'])).toBe('one');
               expect(joinWords(['a', 'b', 'c', 'd'])).toBe('a b c d');
               expect(joinWords(['the', 'quick', 'brown', 'fox'])).toBe(
                 'the quick brown fox',
               );
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -4907,242 +3084,142 @@ console.log(result);         // NaN`,
     title: 'For...Of Loops',
     help: 'https://www.w3schools.com/js/js_loop_forof.asp',
     items: [
-      {
-        type: 'test',
-        key: 'getCharsTests',
+      { type: 'test', key: 'getCharsTests',
         title: `function "getChars"`,
         instructions: `Make a function named "getChars" that takes one argument, a string. Using a for...of loop, return an array containing each character of the string. Example: getChars("hi") returns ["h", "i"]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(getChars).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(getChars).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(getChars).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(getChars).withArgs('hi').toReturnArray();
-            },
-          },
-          {
-            description: `uses a for...of loop`,
-            test: () => {
+            } },
+          { description: `uses a for...of loop`, test: () => {
               expectCode().toUseForOfLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(getChars('hi')).toBeSameArrayAs(['h', 'i']);
               expect(getChars('abc')).toBeSameArrayAs(['a', 'b', 'c']);
               expect(getChars('z')).toBeSameArrayAs(['z']);
               expect(getChars('')).toBeSameArrayAs([]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'shoutTests',
+      { type: 'test', key: 'shoutTests',
         title: `function "shout"`,
         instructions: `Make a function named "shout" that takes one argument, a string. Using a for...of loop, return an array of each character uppercased. Example: shout("hi") returns ["H", "I"]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(shout).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(shout).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(shout).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(shout).withArgs('hi').toReturnArray();
-            },
-          },
-          {
-            description: `uses a for...of loop`,
-            test: () => {
+            } },
+          { description: `uses a for...of loop`, test: () => {
               expectCode().toUseForOfLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(shout('hi')).toBeSameArrayAs(['H', 'I']);
               expect(shout('abc')).toBeSameArrayAs(['A', 'B', 'C']);
               expect(shout('z')).toBeSameArrayAs(['Z']);
               expect(shout('')).toBeSameArrayAs([]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'totalTests',
+      { type: 'test', key: 'totalTests',
         title: `function "total"`,
         instructions: `Make a function named "total" that takes one argument, an array of numbers. Using a for...of loop, return the sum of all the numbers. Example: total([1, 2, 3]) returns 6`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(total).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(total).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(total).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a number`,
-            test: () => {
+            } },
+          { description: `returns a number`, test: () => {
               expect(total).withArgs([1, 2]).toReturnNumber();
-            },
-          },
-          {
-            description: `uses a for...of loop`,
-            test: () => {
+            } },
+          { description: `uses a for...of loop`, test: () => {
               expectCode().toUseForOfLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(total([1, 2, 3])).toBe(6);
               expect(total([10, 20, 30])).toBe(60);
               expect(total([0])).toBe(0);
               expect(total([])).toBe(0);
               expect(total([100, 1])).toBe(101);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'addOneTests',
+      { type: 'test', key: 'addOneTests',
         title: `function "addOne"`,
         instructions: `Make a function named "addOne" that takes one argument, an array of numbers. Using a for...of loop, return a new array with 1 added to each number. Example: addOne([1, 2, 3]) returns [2, 3, 4]`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(addOne).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(addOne).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(addOne).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns an array`,
-            test: () => {
+            } },
+          { description: `returns an array`, test: () => {
               expect(addOne).withArgs([1, 2]).toReturnArray();
-            },
-          },
-          {
-            description: `uses a for...of loop`,
-            test: () => {
+            } },
+          { description: `uses a for...of loop`, test: () => {
               expectCode().toUseForOfLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(addOne([1, 2, 3])).toBeSameArrayAs([2, 3, 4]);
               expect(addOne([0, 0, 0])).toBeSameArrayAs([1, 1, 1]);
               expect(addOne([9])).toBeSameArrayAs([10]);
               expect(addOne([])).toBeSameArrayAs([]);
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'makeStringTests',
+      { type: 'test', key: 'makeStringTests',
         title: `function "makeString"`,
         instructions: `Make a function named "makeString" that takes one argument, an array of strings. Using a for...of loop, return a single string with all items concatenated together. Example: makeString(["hello", " ", "world"]) returns "hello world"`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
+          { description: `is declared`, test: () => {
               expect(makeString).toBeDeclared();
-            },
-          },
-          {
-            description: `is a function`,
-            test: () => {
+            } },
+          { description: `is a function`, test: () => {
               expect(makeString).toBeFunction();
-            },
-          },
-          {
-            description: `takes one argument`,
-            test: () => {
+            } },
+          { description: `takes one argument`, test: () => {
               expect(makeString).takesXArguments(1);
-            },
-          },
-          {
-            description: `returns a string`,
-            test: () => {
+            } },
+          { description: `returns a string`, test: () => {
               expect(makeString).withArgs(['a', 'b']).toReturnString();
-            },
-          },
-          {
-            description: `uses a for...of loop`,
-            test: () => {
+            } },
+          { description: `uses a for...of loop`, test: () => {
               expectCode().toUseForOfLoop();
-            },
-          },
-          {
-            description: `returns correct values`,
-            test: () => {
+            } },
+          { description: `returns correct values`, test: () => {
               expect(makeString(['hello', ' ', 'world'])).toBe('hello world');
               expect(makeString(['a', 'b', 'c'])).toBe('abc');
               expect(makeString(['one'])).toBe('one');
               expect(makeString([])).toBe('');
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -5150,272 +3227,153 @@ console.log(result);         // NaN`,
     title: 'If Statements',
     help: 'https://www.w3schools.com/js/js_if_else.asp',
     items: [
-      {
-        type: 'test',
-        key: 'ifTrueTests',
+      { type: 'test', key: 'ifTrueTests',
         title: `if (true)`,
         instructions: `Write an if statement with the condition "true". Inside it, console.log the string "it's true".`,
         tests: [
-          {
-            description: `uses an if statement`,
-            test: () => {
+          { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `if statement has "true" argument`,
-            test: () => {
+            } },
+          { description: `if statement has "true" argument`, test: () => {
               expectCode().toUseIfTrue();
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'ifFalseTests',
+      { type: 'test', key: 'ifFalseTests',
         title: `if (false)`,
         instructions: `Write an if statement with the condition "false". Inside it, console.log the string "you shouldn't see this". Nothing should appear in the terminal.`,
         tests: [
-          {
-            description: `uses an if statement`,
-            test: () => {
+          { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `has a console.log inside it`,
-            test: () => {
+            } },
+          { description: `has a console.log inside it`, test: () => {
               expectCode().toContain(`console.log(`);
-            },
-          },
-          {
-            description: `has "you shouldn't see this" as argument for console.log()`,
-            test: () => {
+            } },
+          { description: `has "you shouldn't see this" as argument for console.log()`, test: () => {
               expectCode().toContain(`console.log("you shouldn't see this")`);
-            },
-          },
-          {
-            description: `does not log anything`,
-            test: () => {
+            } },
+          { description: `does not log anything`, test: () => {
               expectConsole().notToHaveLogged();
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'ifNotFalseTests',
+      { type: 'test', key: 'ifNotFalseTests',
         title: `if NOT (false)`,
         instructions: `Write an if statement with the condition "!false". Inside it, console.log the string "you should see this!".`,
         tests: [
-          {
-            description: `uses an if statement`,
-            test: () => {
+          { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `if statement has "!" (NOT) before the "false" argument`,
-            test: () => {
+            } },
+          { description: `if statement has "!" (NOT) before the "false" argument`, test: () => {
               expectCode().toUseIfWithNot();
-            },
-          },
-          {
-            description: `has a console.log`,
-            test: () => {
+            } },
+          { description: `has a console.log`, test: () => {
               expectCode().toContain(`console.log(`);
-            },
-          },
-          {
-            description: `has "you should see this" as argument for console.log()`,
-            test: () => {
+            } },
+          { description: `has "you should see this" as argument for console.log()`, test: () => {
               expectCode().toContain(`console.log("you should see this")`);
-            },
-          },
-          {
-            description: `logs "you should see this"`,
-            test: () => {
+            } },
+          { description: `logs "you should see this"`, test: () => {
               expectConsole().toHaveLogged('you should see this');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'numberComparisonTests',
+      { type: 'test', key: 'numberComparisonTests',
         title: `number comparison`,
         instructions: `Write if (5 > 3) and inside it console.log the string "five is greater than three".`,
         tests: [
-          {
-            description: `uses an if statement`,
-            test: () => {
+          { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `uses the > operator`,
-            test: () => {
+            } },
+          { description: `uses the > operator`, test: () => {
               expectCode().toUseOperator('>');
-            },
-          },
-          {
-            description: `logs "five is greater than three"`,
-            test: () => {
+            } },
+          { description: `logs "five is greater than three"`, test: () => {
               expectConsole().toHaveLogged('five is greater than three');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'variableComparisonTests',
+      { type: 'test', key: 'variableComparisonTests',
         title: `variable comparison`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 3. Write if (a > b) and inside it console.log the string "five is greater than three".`,
         tests: [
-          {
-            description: `"a" is 5`,
-            test: () => {
+          { description: `"a" is 5`, test: () => {
               expect(a).toBe(5);
-            },
-          },
-          {
-            description: `"b" is 3`,
-            test: () => {
+            } },
+          { description: `"b" is 3`, test: () => {
               expect(b).toBe(3);
-            },
-          },
-          {
-            description: `uses an if statement`,
-            test: () => {
+            } },
+          { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `uses the > operator`,
-            test: () => {
+            } },
+          { description: `uses the > operator`, test: () => {
               expectCode().toUseOperator('>');
-            },
-          },
-          {
-            description: `uses "a" in the if condition`,
-            test: () => {
+            } },
+          { description: `uses "a" in the if condition`, test: () => {
               expectCode().toUseVariableInIfCondition('a');
-            },
-          },
-          {
-            description: `uses "b" in the if condition`,
-            test: () => {
+            } },
+          { description: `uses "b" in the if condition`, test: () => {
               expectCode().toUseVariableInIfCondition('b');
-            },
-          },
-          {
-            description: `logs "five is greater than three"`,
-            test: () => {
+            } },
+          { description: `logs "five is greater than three"`, test: () => {
               expectConsole().toHaveLogged('five is greater than three');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'equalsComparisonTests',
+      { type: 'test', key: 'equalsComparisonTests',
         title: `equals ==`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 5. Write if (a == b) and inside it console.log the string "a and b are equal".`,
         tests: [
-          {
-            description: `uses an if statement`,
-            test: () => {
+          { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `uses the == operator`,
-            test: () => {
+            } },
+          { description: `uses the == operator`, test: () => {
               expectCode().toUseOperator('==');
-            },
-          },
-          {
-            description: `uses "a" in the if condition`,
-            test: () => {
+            } },
+          { description: `uses "a" in the if condition`, test: () => {
               expectCode().toUseVariableInIfCondition('a');
-            },
-          },
-          {
-            description: `uses "b" in the if condition`,
-            test: () => {
+            } },
+          { description: `uses "b" in the if condition`, test: () => {
               expectCode().toUseVariableInIfCondition('b');
-            },
-          },
-          {
-            description: `"a" is 5`,
-            test: () => {
+            } },
+          { description: `"a" is 5`, test: () => {
               expect(a).toBe(5);
-            },
-          },
-          {
-            description: `"b" is 5`,
-            test: () => {
+            } },
+          { description: `"b" is 5`, test: () => {
               expect(b).toBe(5);
-            },
-          },
-          {
-            description: `logs "a and b are equal"`,
-            test: () => {
+            } },
+          { description: `logs "a and b are equal"`, test: () => {
               expectConsole().toHaveLogged('a and b are equal');
-            },
-          },
+            } }
         ],
       },
-      {
-        type: 'test',
-        key: 'notEqualsComparisonTests',
+      { type: 'test', key: 'notEqualsComparisonTests',
         title: `not equals !=`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 3. Write if (a != b) and inside it console.log the string "a and b are not equal".`,
         tests: [
-          {
-            description: `"a" is 5`,
-            test: () => {
+          { description: `"a" is 5`, test: () => {
               expect(a).toBe(5);
-            },
-          },
-          {
-            description: `"b" is 3`,
-            test: () => {
+            } },
+          { description: `"b" is 3`, test: () => {
               expect(b).toBe(3);
-            },
-          },
-          {
-            description: `uses an if statement`,
-            test: () => {
+            } },
+          { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
-            },
-          },
-          {
-            description: `uses the != operator`,
-            test: () => {
+            } },
+          { description: `uses the != operator`, test: () => {
               expectCode().toUseOperator('!=');
-            },
-          },
-          {
-            description: `uses "a" in the if condition`,
-            test: () => {
+            } },
+          { description: `uses "a" in the if condition`, test: () => {
               expectCode().toUseVariableInIfCondition('a');
-            },
-          },
-          {
-            description: `uses "b" in the if condition`,
-            test: () => {
+            } },
+          { description: `uses "b" in the if condition`, test: () => {
               expectCode().toUseVariableInIfCondition('b');
-            },
-          },
-          {
-            description: `logs "a and b are not equal"`,
-            test: () => {
+            } },
+          { description: `logs "a and b are not equal"`, test: () => {
               expectConsole().toHaveLogged('a and b are not equal');
-            },
-          },
+            } }
         ],
-      },
+      }
     ],
   },
   {
@@ -5423,208 +3381,116 @@ console.log(result);         // NaN`,
     title: 'String Concatenation',
     help: 'https://www.w3schools.com/js/js_string_methods.asp',
     items: [
-      {
-        type: 'test',
-        key: 'stringPlusStringTests',
+      { type: 'test', key: 'stringPlusStringTests',
         title: `string + string`,
         instructions: `Declare variables a, b, and c. a is "camp", b is "fire", and c is a and b together using the "+" operator.`,
         tests: [
-          {
-            description: `a is declared`,
-            test: () => {
-              expect(a).toBeDeclared();
-            },
-          },
-          {
-            description: `a is a string`,
-            test: () => {
-              expect(a).toBeString();
-            },
-          },
-          {
-            description: `a is "camp"`,
-            test: () => {
-              expect(a).toBe('camp');
-            },
-          },
-          {
-            description: `b is declared`,
-            test: () => {
-              expect(b).toBeDeclared();
-            },
-          },
-          {
-            description: `b is a string`,
-            test: () => {
-              expect(b).toBeString();
-            },
-          },
-          {
-            description: `b is "fire"`,
-            test: () => {
-              expect(b).toBe('fire');
-            },
-          },
-          {
-            description: `c is declared`,
-            test: () => {
-              expect(c).toBeDeclared();
-            },
-          },
-          {
-            description: `c is a string`,
-            test: () => {
-              expect(c).toBeString();
-            },
-          },
-          {
-            description: `uses the + operator`,
-            test: () => {
-              expectCode().toUseOperator('+');
-            },
-          },
-          {
-            description: `c is "campfire"`,
-            test: () => {
-              expect(c).toBe('campfire');
-            },
-          },
+          { description: `a is declared`, test: () => {
+            expect(a).toBeDeclared();
+          } },
+          { description: `a is a string`, test: () => {
+            expect(a).toBeString();
+          } },
+          { description: `a is "camp"`, test: () => {
+            expect(a).toBe('camp');
+          } },
+          { description: `b is declared`, test: () => {
+            expect(b).toBeDeclared();
+          } },
+          { description: `b is a string`, test: () => {
+            expect(b).toBeString();
+          } },
+          { description: `b is "fire"`, test: () => {
+            expect(b).toBe('fire');
+          } },
+          { description: `c is declared`, test: () => {
+            expect(c).toBeDeclared();
+          } },
+          { description: `c is a string`, test: () => {
+            expect(c).toBeString();
+          } },
+          { description: `uses the + operator`, test: () => {
+            expectCode().toUseOperator('+');
+          } },
+          { description: `c is "campfire"`, test: () => {
+            expect(c).toBe('campfire');
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'stringPlusNumberTests',
+      { type: 'test', key: 'stringPlusNumberTests',
         title: `string + number`,
         instructions: `Declare a variable "message" by joining the string "I am " and the number 25 using the + operator.`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(message).toBeDeclared();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(message).toBeString();
-            },
-          },
-          {
-            description: `uses the + operator`,
-            test: () => {
-              expectCode().toUseOperator('+');
-            },
-          },
-          {
-            description: `is "I am 25"`,
-            test: () => {
-              expect(message).toBe('I am 25');
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(message).toBeDeclared();
+          } },
+          { description: `is a string`, test: () => {
+            expect(message).toBeString();
+          } },
+          { description: `uses the + operator`, test: () => {
+            expectCode().toUseOperator('+');
+          } },
+          { description: `is "I am 25"`, test: () => {
+            expect(message).toBe('I am 25');
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'templateLiteralBasicTests',
+      { type: 'test', key: 'templateLiteralBasicTests',
         title: `template literal`,
         instructions: `Declare a variable "phrase" using a template literal (backtick string) containing the text "hello world".`,
         tests: [
-          {
-            description: `is declared`,
-            test: () => {
-              expect(phrase).toBeDeclared();
-            },
-          },
-          {
-            description: `is a string`,
-            test: () => {
-              expect(phrase).toBeString();
-            },
-          },
-          {
-            description: `uses a template literal`,
-            test: () => {
-              expectCode().toUseTemplateLiteral();
-            },
-          },
-          {
-            description: `is "hello world"`,
-            test: () => {
-              expect(phrase).toBe('hello world');
-            },
-          },
+          { description: `is declared`, test: () => {
+            expect(phrase).toBeDeclared();
+          } },
+          { description: `is a string`, test: () => {
+            expect(phrase).toBeString();
+          } },
+          { description: `uses a template literal`, test: () => {
+            expectCode().toUseTemplateLiteral();
+          } },
+          { description: `is "hello world"`, test: () => {
+            expect(phrase).toBe('hello world');
+          } }
         ],
       },
-      {
-        type: 'test',
-        key: 'templateLiteralInterpolationTests',
+      { type: 'test', key: 'templateLiteralInterpolationTests',
         title: `template literal with interpolation`,
         instructions: `Declare a variable "greeting" set to "Hello". Then declare a variable "myFriend" set to "Beth". Declare a variable "greeting", using a template literal that interpolates "greeting" and "myFriend" to produce "Hello Beth!". (i.e. \`\${greeting} \${myFriend}\`))`,
         tests: [
-          {
-            description: `"greeting" is declared`,
-            test: () => {
-              expect(greeting).toBeDeclared();
-            },
-          },
-          {
-            description: `"greeting" is a string`,
-            test: () => {
-              expect(greeting).toBeString();
-            },
-          },
-          {
-            description: `"greeting" is "Hello"`,
-            test: () => {
-              expect(greeting).toBe('Hello');
-            },
-          },
-          {
-            description: `"myFriend" is declared`,
-            test: () => {
-              expect(myFriend).toBeDeclared();
-            },
-          },
-          {
-            description: `"myFriend" is a string`,
-            test: () => {
-              expect(myFriend).toBeString();
-            },
-          },
-          {
-            description: `"myFriend" is "Beth"`,
-            test: () => {
-              expect(myFriend).toBe('Beth');
-            },
-          },
-          {
-            description: `"phrase" is declared`,
-            test: () => {
-              expect(phrase).toBeDeclared();
-            },
-          },
-          {
-            description: `"phrase" is a string`,
-            test: () => {
-              expect(phrase).toBeString();
-            },
-          },
-          {
-            description: `uses a template literal with interpolation`,
-            test: () => {
-              expectCode().toUseTemplateLiteralWithInterpolation();
-            },
-          },
-          {
-            description: `"phrase" is "Hello Beth!"`,
-            test: () => {
-              expect(phrase).toBe('Hello Beth!');
-            },
-          },
+          { description: `"greeting" is declared`, test: () => {
+            expect(greeting).toBeDeclared();
+          } },
+          { description: `"greeting" is a string`, test: () => {
+            expect(greeting).toBeString();
+          } },
+          { description: `"greeting" is "Hello"`, test: () => {
+            expect(greeting).toBe('Hello');
+          } },
+          { description: `"myFriend" is declared`, test: () => {
+            expect(myFriend).toBeDeclared();
+          } },
+          { description: `"myFriend" is a string`, test: () => {
+            expect(myFriend).toBeString();
+          } },
+          { description: `"myFriend" is "Beth"`, test: () => {
+            expect(myFriend).toBe('Beth');
+          } },
+          { description: `"phrase" is declared`, test: () => {
+            expect(phrase).toBeDeclared();
+          } },
+          { description: `"phrase" is a string`, test: () => {
+            expect(phrase).toBeString();
+          } },
+          { description: `uses a template literal with interpolation`, test: () => {
+            expectCode().toUseTemplateLiteralWithInterpolation();
+          } },
+          { description: `"phrase" is "Hello Beth!"`, test: () => {
+            expect(phrase).toBe('Hello Beth!');
+          } }
         ],
-      },
+      }
     ],
-  },
+  }
 ];
 
 if (typeof module !== 'undefined') module.exports = allTests;

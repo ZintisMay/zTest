@@ -17,10 +17,85 @@ Try running the code and changing true to false!`,
 }`,
     },
     {
+      type: 'test',
+      key: 'writeAnIfStatement',
+      title: `Write an if statement`,
+      instructions: `Write an if statement with <b>true</b> as the condition. Inside, use console.log() to print "banana".`,
+      tests: [
+        {
+          description: `uses an if statement`,
+          test: () => {
+            expectCode().toUseIfStatement();
+          },
+        },
+        {
+          description: `uses if (true)`,
+          test: () => {
+            expectCode().toUseIfTrue();
+          },
+        },
+        {
+          description: `console.log something`,
+          test: () => {
+            expectConsole().toHaveLoggedAnything();
+          },
+        },
+      ],
+    },
+    {
+      type: 'test',
+      key: 'writeAnIfStatementFalse',
+      title: `Write an if statement (false)`,
+      instructions: `Write an if statement with <b>false</b> as the condition. Inside, use console.log() to print anything you like. Notice that it doesn't run!`,
+      tests: [
+        {
+          description: `uses an if statement`,
+          test: () => {
+            expectCode().toUseIfStatement();
+          },
+        },
+        {
+          description: `uses if (false)`,
+          test: () => {
+            expectCode().toUseIfFalse();
+          },
+        },
+        {
+          description: `console.log nothing`,
+          test: () => {
+            expectConsole().notToHaveLogged();
+          },
+        },
+      ],
+    },
+    {
       type: 'lesson',
       key: 'lesson-0a',
       title: 'Else Statements',
-      text: `You can add an <b>else</b> block after an <b>if</b> block to run code when the condition is false.<br><br>
+      text: `You can add an <b>else</b> block after an <b>if</b> block to run code when the prior conditions are NOT met.<br><br>
+
+Try running the code and changing true to false!`,
+      sampleCode: `if (true) {
+  console.log("You passed!");
+} else {
+  console.log("You failed.");
+}`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-0b',
+      title: 'If Else Statements',
+      text: `You can combine the two to create an "if else(){}" statement.<br><br>
+
+Just keep in mind:<br><br>
+
+<ul>
+<li>The first one is always just "if".</li>
+<li>The later ones are "if else".</li>
+<li>If you want to catch all other possibilities, then put an "else" statement at the end.</li>
+</ul><br><br>
+
+When you write these, you'll have to think about what kinds of values you'll see, and what you want the outcome to be. 
 
 Try running the code and changing true to false!`,
       sampleCode: `if (true) {
@@ -123,35 +198,7 @@ if (!NaN) {
   console.log("NaN is falsy");
 }`,
     },
-    {
-      type: 'lesson',
-      key: 'lesson-3',
-      title: 'null, undefined, and NaN',
-      text: `These are different kinds of falsy values:<br><br>
 
-<b>null</b> means "intentionally empty". If something is null, it's empty on purpose (usually).<br><br>
-
-<b>undefined</b> means "this hasn't been given a value yet". So like null, but unintentional. You'll get it if you try to access a variable that hasn't been assigned or doesn't exist!<br><br>
-
-<b>NaN</b> stands for "Not a Number". When you accidentally  do math to something that isn't a number.<br><br>
-
-Try running the code!`,
-      sampleCode: `// null - intentionally empty
-var winner = null;
-console.log(winner); // null
-
-// undefined - notice that there's no value assigned, no "="
-var score;
-console.log(score); // undefined
-
-// A function with no return gives undefined
-function doNothing() {}
-console.log(doNothing()); // undefined
-
-// NaN - a bad math operation
-var result = "hello" * 5;
-console.log(result);         // NaN`,
-    },
     // {
     //   type: 'test',
     //   key: 'greeting',
@@ -401,207 +448,318 @@ console.log(result);         // NaN`,
         },
       ],
     },
+    // {
+    //   type: 'test',
+    //   key: 'wordLength',
+    //   title: `function wordLength`,
+    //   instructions: `Make a function named "wordLength" that takes one argument, a string. It should return the length of the string as a number.`,
+    //   tests: [
+    //     {
+    //       description: `is declared`,
+    //       test: () => {
+    //         expect(wordLength).toBeDeclared();
+    //       },
+    //     },
+    //     {
+    //       description: `has a value`,
+    //       test: () => {
+    //         expect(wordLength).toHaveValue();
+    //       },
+    //     },
+    //     {
+    //       description: `is a function`,
+    //       test: () => {
+    //         expect(wordLength).toBeFunction();
+    //       },
+    //     },
+    //     {
+    //       description: `takes one argument`,
+    //       test: () => {
+    //         expect(wordLength).takesXArguments(1);
+    //       },
+    //     },
+    //     {
+    //       description: `returns a number`,
+    //       test: () => {
+    //         expect(wordLength).withArgs('string').toReturnNumber();
+    //       },
+    //     },
+    //     {
+    //       description: `returns correct values`,
+    //       test: () => {
+    //         expect(wordLength).withArgs('cat').toReturn(3);
+    //         expect(wordLength).withArgs('steep').toReturn(5);
+    //         expect(wordLength).withArgs('').toReturn(0);
+    //       },
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: 'test',
+    //   key: 'carBuilder',
+    //   title: `function carBuilder`,
+    //   instructions: `Make a function named "carBuilder" that takes 3 arguments, string, string, and number. It should return an object that has 3 keys: "make", "model", and "year", with the first/second/third arguments as the "make", "model", and "year" values.`,
+    //   tests: [
+    //     {
+    //       description: `is declared`,
+    //       test: () => {
+    //         expect(carBuilder).toBeDeclared();
+    //       },
+    //     },
+    //     {
+    //       description: `has a value`,
+    //       test: () => {
+    //         expect(carBuilder).toHaveValue();
+    //       },
+    //     },
+    //     {
+    //       description: `is a function`,
+    //       test: () => {
+    //         expect(carBuilder).toBeFunction();
+    //       },
+    //     },
+    //     {
+    //       description: `takes three arguments`,
+    //       test: () => {
+    //         expect(carBuilder).takesXArguments(3);
+    //       },
+    //     },
+    //     {
+    //       description: `returns an object`,
+    //       test: () => {
+    //         expect(carBuilder).withArgs().toReturnObject();
+    //       },
+    //     },
+    //     {
+    //       description: `returns an object with 3 keys`,
+    //       test: () => {
+    //         expect(carBuilder(1, 2, 3)).toHaveObjectKeyCount(3);
+    //       },
+    //     },
+    //     {
+    //       description: `returns an object with key "make"`,
+    //       test: () => {
+    //         expect(carBuilder(1, 2, 3)).toHaveKey(`make`);
+    //       },
+    //     },
+    //     {
+    //       description: `returns an object with key "model"`,
+    //       test: () => {
+    //         expect(carBuilder(1, 2, 3)).toHaveKey(`model`);
+    //       },
+    //     },
+    //     {
+    //       description: `returns an object with key "year"`,
+    //       test: () => {
+    //         expect(carBuilder(1, 2, 3)).toHaveKey(`year`);
+    //       },
+    //     },
+    //     {
+    //       description: `carBuilder("Hyundai", "Accent", 2010) returns correct "make"`,
+    //       test: () => {
+    //         expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
+    //           `make`,
+    //           `Hyundai`,
+    //         );
+    //       },
+    //     },
+    //     {
+    //       description: `carBuilder("Hyundai", "Accent", 2010) returns correct "model"`,
+    //       test: () => {
+    //         expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
+    //           `model`,
+    //           `Accent`,
+    //         );
+    //       },
+    //     },
+    //     {
+    //       description: `carBuilder("Hyundai", "Accent", 2010) returns correct "year"`,
+    //       test: () => {
+    //         expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
+    //           `year`,
+    //           2010,
+    //         );
+    //       },
+    //     },
+    //     {
+    //       description: `returns correct values`,
+    //       test: () => {
+    //         expect(carBuilder)
+    //           .withArgs(`Volkswagen`, `Beetle`, `1963`)
+    //           .toReturn({
+    //             make: `Volkswagen`,
+    //             model: `Beetle`,
+    //             year: `1963`,
+    //           });
+    //         expect(carBuilder)
+    //           .withArgs(`Lotus`, `Esprit S1`, `1976`)
+    //           .toReturn({ make: `Lotus`, model: `Esprit S1`, year: `1976` });
+    //       },
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: 'test',
+    //   key: 'teachersNeeded',
+    //   title: `function teachersNeeded`,
+    //   instructions: `Make a function named "teachersNeeded" that takes 2 arguments, a number and a number. The first number is how many students there are. The second number is how many students there should be per teacher. It should return the minimum number of teachers required (google "Math.ceil")`,
+    //   tests: [
+    //     {
+    //       description: `is declared`,
+    //       test: () => {
+    //         expect(teachersNeeded).toBeDeclared();
+    //       },
+    //     },
+    //     {
+    //       description: `has a value`,
+    //       test: () => {
+    //         expect(teachersNeeded).toHaveValue();
+    //       },
+    //     },
+    //     {
+    //       description: `is a function`,
+    //       test: () => {
+    //         expect(teachersNeeded).toBeFunction();
+    //       },
+    //     },
+    //     {
+    //       description: `takes two arguments`,
+    //       test: () => {
+    //         expect(teachersNeeded).takesXArguments(2);
+    //       },
+    //     },
+    //     {
+    //       description: `returns a number`,
+    //       test: () => {
+    //         expect(teachersNeeded).withArgs(1, 1).toReturnNumber();
+    //       },
+    //     },
+    //     {
+    //       description: `returns an integer`,
+    //       test: () => {
+    //         expect(teachersNeeded).withArgs(3, 2).toReturnInteger();
+    //       },
+    //     },
+    //     {
+    //       description: `returns correct values`,
+    //       test: () => {
+    //         expect(teachersNeeded).withArgs(10, 5).toReturn(2);
+    //         expect(teachersNeeded).withArgs(18, 7).toReturn(3);
+    //         expect(teachersNeeded).withArgs(1000, 234).toReturn(5);
+    //       },
+    //     },
+    //   ],
+    // },
     {
-      type: 'test',
-      key: 'wordLength',
-      title: `function wordLength`,
-      instructions: `Make a function named "wordLength" that takes one argument, a string. It should return the length of the string as a number.`,
-      tests: [
-        {
-          description: `is declared`,
-          test: () => {
-            expect(wordLength).toBeDeclared();
-          },
-        },
-        {
-          description: `has a value`,
-          test: () => {
-            expect(wordLength).toHaveValue();
-          },
-        },
-        {
-          description: `is a function`,
-          test: () => {
-            expect(wordLength).toBeFunction();
-          },
-        },
-        {
-          description: `takes one argument`,
-          test: () => {
-            expect(wordLength).takesXArguments(1);
-          },
-        },
-        {
-          description: `returns a number`,
-          test: () => {
-            expect(wordLength).withArgs('string').toReturnNumber();
-          },
-        },
-        {
-          description: `returns correct values`,
-          test: () => {
-            expect(wordLength).withArgs('cat').toReturn(3);
-            expect(wordLength).withArgs('steep').toReturn(5);
-            expect(wordLength).withArgs('').toReturn(0);
-          },
-        },
-      ],
+      type: 'lesson',
+      key: 'lesson-6',
+      title: '>, <, >=, <=, ==, !=',
+      text: `You may remember these from math class:<br><br>
+
+      <ul>
+     <li><b>\></b> greater than</li>
+     <li><b>\<</b> less than</li>
+     <li><b>\>=</b> greater than or equal</li>
+     <li><b>\<=</b> less than or equal</li>
+     <li><b>!=</b> not equal</li>
+     <li><b>==</b> is equal (be careful with this one! it looks like assignment but is actually comparison!)</li>
+
+      </ul><br>
+
+These can be used in logical operations like so:<br><br>
+
+<ul>if( 5 > 3 ){ console.log("five is greater than three") }</ul><br>
+
+But to most, this would seem pretty obvious. No reason to use fancy code here right?<br><br>
+
+These statements really shine through when you use variables. Especially when you don't know the value of a variable. <br><br>
+
+Check out the code on the right, try running it!`,
+      sampleCode: `function whichIsGreater(a, b) {
+  if (a > b) {
+    console.log("a is greater than b");
+  } else if (a < b) {
+    console.log("a is less than b");
+  } else if (a == b) {
+    console.log("a is equal to b");
+  }
+}
+  
+whichIsGreater(2, 1);
+whichIsGreater(1, 2);
+whichIsGreater(2, 2);
+`,
     },
     {
-      type: 'test',
-      key: 'carBuilder',
-      title: `function carBuilder`,
-      instructions: `Make a function named "carBuilder" that takes 3 arguments, string, string, and number. It should return an object that has 3 keys: "make", "model", and "year", with the first/second/third arguments as the "make", "model", and "year" values.`,
-      tests: [
-        {
-          description: `is declared`,
-          test: () => {
-            expect(carBuilder).toBeDeclared();
-          },
-        },
-        {
-          description: `has a value`,
-          test: () => {
-            expect(carBuilder).toHaveValue();
-          },
-        },
-        {
-          description: `is a function`,
-          test: () => {
-            expect(carBuilder).toBeFunction();
-          },
-        },
-        {
-          description: `takes three arguments`,
-          test: () => {
-            expect(carBuilder).takesXArguments(3);
-          },
-        },
-        {
-          description: `returns an object`,
-          test: () => {
-            expect(carBuilder).withArgs().toReturnObject();
-          },
-        },
-        {
-          description: `returns an object with 3 keys`,
-          test: () => {
-            expect(carBuilder(1, 2, 3)).toHaveObjectKeyCount(3);
-          },
-        },
-        {
-          description: `returns an object with key "make"`,
-          test: () => {
-            expect(carBuilder(1, 2, 3)).toHaveKey(`make`);
-          },
-        },
-        {
-          description: `returns an object with key "model"`,
-          test: () => {
-            expect(carBuilder(1, 2, 3)).toHaveKey(`model`);
-          },
-        },
-        {
-          description: `returns an object with key "year"`,
-          test: () => {
-            expect(carBuilder(1, 2, 3)).toHaveKey(`year`);
-          },
-        },
-        {
-          description: `carBuilder("Hyundai", "Accent", 2010) returns correct "make"`,
-          test: () => {
-            expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-              `make`,
-              `Hyundai`,
-            );
-          },
-        },
-        {
-          description: `carBuilder("Hyundai", "Accent", 2010) returns correct "model"`,
-          test: () => {
-            expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-              `model`,
-              `Accent`,
-            );
-          },
-        },
-        {
-          description: `carBuilder("Hyundai", "Accent", 2010) returns correct "year"`,
-          test: () => {
-            expect(carBuilder(`Hyundai`, `Accent`, 2010)).toHaveKeyValuePair(
-              `year`,
-              2010,
-            );
-          },
-        },
-        {
-          description: `returns correct values`,
-          test: () => {
-            expect(carBuilder)
-              .withArgs(`Volkswagen`, `Beetle`, `1963`)
-              .toReturn({
-                make: `Volkswagen`,
-                model: `Beetle`,
-                year: `1963`,
-              });
-            expect(carBuilder)
-              .withArgs(`Lotus`, `Esprit S1`, `1976`)
-              .toReturn({ make: `Lotus`, model: `Esprit S1`, year: `1976` });
-          },
-        },
-      ],
+      type: 'lesson',
+      key: 'lesson-7',
+      title: 'focusing on == and !=',
+      text: `So with the prior lesson, \>, |< \>= and \<= are used with numbers.<br><br>
+
+      BUT == and != can be used with anything! 
+
+      <ul>
+     <li><b>\></b> greater than</li>
+     <li><b>\<</b> less than</li>
+     <li><b>\>=</b> greater than or equal</li>
+     <li><b>\<=</b> less than or equal</li>
+     <li><b>!=</b> not equal</li>
+     <li><b>==</b> is equal (be careful with this one! it looks like assignment but is actually comparison!)</li>
+
+      </ul><br>
+
+These can be used in logical operations like so:<br><br>
+
+<ul>if( 5 > 3 ){ console.log("five is greater than three") }</ul><br>
+
+But to most, this would seem pretty obvious. No reason to use fancy code here right?<br><br>
+
+These statements really shine through when you use variables. Especially when you don't know the value of a variable. <br><br>
+
+Check out the code on the right, try running it!`,
+      sampleCode: `function whichIsGreater(a, b) {
+  if (a > b) {
+    console.log("a is greater than b");
+  } else if (a < b) {
+    console.log("a is less than b");
+  } else if (a == b) {
+    console.log("a is equal to b");
+  }
+}
+  
+whichIsGreater(2, 1);
+whichIsGreater(1, 2);
+whichIsGreater(2, 2);
+`,
     },
     {
-      type: 'test',
-      key: 'teachersNeeded',
-      title: `function teachersNeeded`,
-      instructions: `Make a function named "teachersNeeded" that takes 2 arguments, a number and a number. The first number is how many students there are. The second number is how many students there should be per teacher. It should return the minimum number of teachers required (google "Math.ceil")`,
-      tests: [
-        {
-          description: `is declared`,
-          test: () => {
-            expect(teachersNeeded).toBeDeclared();
-          },
-        },
-        {
-          description: `has a value`,
-          test: () => {
-            expect(teachersNeeded).toHaveValue();
-          },
-        },
-        {
-          description: `is a function`,
-          test: () => {
-            expect(teachersNeeded).toBeFunction();
-          },
-        },
-        {
-          description: `takes two arguments`,
-          test: () => {
-            expect(teachersNeeded).takesXArguments(2);
-          },
-        },
-        {
-          description: `returns a number`,
-          test: () => {
-            expect(teachersNeeded).withArgs(1, 1).toReturnNumber();
-          },
-        },
-        {
-          description: `returns an integer`,
-          test: () => {
-            expect(teachersNeeded).withArgs(3, 2).toReturnInteger();
-          },
-        },
-        {
-          description: `returns correct values`,
-          test: () => {
-            expect(teachersNeeded).withArgs(10, 5).toReturn(2);
-            expect(teachersNeeded).withArgs(18, 7).toReturn(3);
-            expect(teachersNeeded).withArgs(1000, 234).toReturn(5);
-          },
-        },
-      ],
+      type: 'lesson',
+      key: 'lesson-8',
+      title: 'null, undefined, and NaN',
+      text: `These are different kinds of falsy values:<br><br>
+
+<b>null</b> means "intentionally empty". If something is null, it's empty on purpose (usually).<br><br>
+
+<b>undefined</b> means "this hasn't been given a value yet". So like null, but unintentional. You'll get it if you try to access a variable that hasn't been assigned or doesn't exist!<br><br>
+
+<b>NaN</b> stands for "Not a Number". When you accidentally  do math to something that isn't a number.<br><br>
+
+Try running the code!`,
+      sampleCode: `// null - intentionally empty
+var winner = null;
+console.log(winner); // null
+
+// undefined - notice that there's no value assigned, no "="
+var score;
+console.log(score); // undefined
+
+// A function with no return gives undefined
+function doNothing() {}
+console.log(doNothing()); // undefined
+
+// NaN - a bad math operation
+var result = "hello" * 5;
+console.log(result);         // NaN`,
     },
   ],
 };
