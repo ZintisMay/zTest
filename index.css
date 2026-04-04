@@ -288,6 +288,10 @@ body {
   font-weight: 900;
 }
 
+.lesson-body ul {
+  padding-left: 2em;
+}
+
 .test-pane {
   width: 90%;
   margin: 4px auto 0;

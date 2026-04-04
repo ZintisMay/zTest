@@ -1,6 +1,6 @@
 const test = {
   id: '5',
-  title: 'Functions with Logic',
+  title: 'Logic',
   help: 'https://www.w3schools.com/js/js_conditionals.asp',
   items: [
     {
@@ -63,7 +63,7 @@ if (!isRaining) {
 
 This is called being <b>truthy</b>. If a value is truthy, an <b>if</b> statement will run its block.<br><br>
 
-It's actually easier to learn which values are <b>falsy</b> (next lesson).<br><br>
+It's actually easiest to learn which values are <b>falsy</b> rather than all the true values (see next lesson).<br><br>
 
 Try running the code!`,
       sampleCode: `// All of these are truthy
@@ -91,14 +91,16 @@ if ("hi there") {
 
 Just try to keep these in mind when you code your own projects! There's only 6 to remember!<br><br>
 
-<b>false</b> is "false", a boolean
-<b>0</b> the number zero
-<b>""</b> an empty string
-<b>null</b> keyword "null"
-<b>undefined</b> keyword "undefined"
-<b>NaN</b> keyword "NaN" (not a number)
+<ul>
+<li><b>false</b> is "false", a boolean</li>
+<li><b>0</b> the number zero</li>
+<li><b>null</b> keyword "null"</li>
+<li><b>""</b> an empty string (not even a space!)</li>
+<li><b>undefined</b> is a keyword</li>
+<li><b>NaN</b> is a keyword (stands for <b>Not a Number</b>)</li>
+</ul><br><br>
 
-(There's actually 9, but the last 3 are not seen often, go look it up if you want!)
+(There's actually 9, but the last 3 are rare, go look them up if you want!)
 
 Everything else is truthy. When in doubt, assume it's true!`,
       sampleCode: `// All of these are falsy
@@ -199,7 +201,7 @@ console.log(result);         // NaN`,
       type: 'test',
       key: 'isThisValueTrue',
       title: `function isThisValueTrue`,
-      instructions: `Make a function named "isThisValueTrue" that takes one argument (of any type). It should return true if the argument is truthy, and false otherwise.`,
+      instructions: `Make a function named "isThisValueTrue" that takes one argument (of any type). It should return true if the argument is truthy, and false otherwise. Use an if statement.`,
       tests: [
         {
           description: `is declared`,
@@ -229,6 +231,12 @@ console.log(result);         // NaN`,
           description: `returns a boolean`,
           test: () => {
             expect(isThisValueTrue).withArgs().toReturnBoolean();
+          },
+        },
+        {
+          description: `uses an if statement`,
+          test: () => {
+            expectCode().toUseIfStatement();
           },
         },
         {
@@ -292,7 +300,7 @@ console.log(result);         // NaN`,
       type: 'test',
       key: 'makeNumberNegative',
       title: `function makeNumberNegative`,
-      instructions: `Make a function named "makeNumberNegative" that takes one argument, a number. It should return the same number, but negative.`,
+      instructions: `Make a function named "makeNumberNegative" that takes one argument, a number. If it's negative, just return it. If it's positive, return it as a negative number.`,
       tests: [
         {
           description: `is declared`,
@@ -325,11 +333,18 @@ console.log(result);         // NaN`,
           },
         },
         {
+          description: `uses an if statement`,
+          test: () => {
+            expectCode().toUseIfStatement();
+          },
+        },
+        {
           description: `returns correct values`,
           test: () => {
             expect(makeNumberNegative).withArgs(1).toReturn(-1);
             expect(makeNumberNegative).withArgs(0).toReturn(0);
             expect(makeNumberNegative).withArgs(-1).toReturn(-1);
+            expect(makeNumberNegative).withArgs(444).toReturn(-444);
           },
         },
       ],
@@ -368,6 +383,12 @@ console.log(result);         // NaN`,
           description: `returns a string`,
           test: () => {
             expect(doYouWantCake).withArgs().toReturnString();
+          },
+        },
+        {
+          description: `uses an if statement`,
+          test: () => {
+            expectCode().toUseIfStatement();
           },
         },
         {
