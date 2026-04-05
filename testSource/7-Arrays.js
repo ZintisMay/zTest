@@ -3,6 +3,44 @@ const test =   {
     title: 'Arrays',
     help: 'https://www.w3schools.com/js/js_arrays.asp',
     items: [
+    {
+      type: 'lesson',
+      key: 'lesson-what-is-array',
+      title: 'What is an Array?',
+      text: `An array is an ordered list of values stored under one variable.<br><br>
+
+Instead of making separate variables for each item, you can put them all in one array.<br><br>
+
+Arrays are declared with square brackets <b>[ ]</b>. Values inside are separated by commas.<br><br>
+
+Array values can be any type — numbers, strings, booleans, objects, even other arrays.<br><br>
+
+Try running the code!`,
+      sampleCode: `var fruits = ["apple", "banana", "cherry"];
+
+console.log(fruits);`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-indexes',
+      title: 'Indexes',
+      text: `Each item in an array has a position called an <b>index</b>.<br><br>
+
+Arrays are <b>zero-indexed</b> — the first item is at index <b>0</b>, the second at index <b>1</b>, and so on.<br><br>
+
+You access items using square brackets: <b>array[index]</b><br><br>
+
+The <b>length</b> property tells you how many items are in the array: <b>array.length</b><br><br>
+
+Try running the code and check the output!`,
+      sampleCode: `var fruits = ["apple", "banana", "cherry"];
+
+console.log(fruits[0]);  // "apple"
+console.log(fruits[1]);  // "banana"
+console.log(fruits[2]);  // "cherry"
+
+console.log(fruits.length);  // 3`,
+    },
       { type: 'test', key: 'emptyArray',
         title: `var "emptyArray"`,
         instructions: `Declare a variable named "emptyArray", an array with no values`,
