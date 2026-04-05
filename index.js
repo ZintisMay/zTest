@@ -344,6 +344,8 @@ function buildAstFlags(code) {
     let hasSpread = false;
     let hasRest = false;
     let hasDestructuring = false;
+    let hasDotNotation = false;
+    let hasBracketNotation = false;
     let hasIfTrue = false;
     let hasIfFalse = false;
     let hasIfWithNot = false;
@@ -437,6 +439,13 @@ function buildAstFlags(code) {
         case 'ArrayPattern':
           hasDestructuring = true;
           break;
+        case 'MemberExpression':
+          if (node.computed) hasBracketNotation = true;
+          else {
+            const isConsoleLog = node.object?.type === 'Identifier' && node.object?.name === 'console' && node.property?.name === 'log';
+            if (!isConsoleLog) hasDotNotation = true;
+          }
+          break;
       }
       for (const val of Object.values(node)) {
         if (Array.isArray(val)) {
@@ -462,6 +471,8 @@ function buildAstFlags(code) {
       hasSpread,
       hasRest,
       hasDestructuring,
+      hasDotNotation,
+      hasBracketNotation,
       hasIfTrue,
       hasIfFalse,
       hasIfWithNot,
@@ -536,7 +547,7 @@ function runCode() {
       window.console.log = function(...args) {
         if (typeof args[0] === "string" && args[0].startsWith("%c")) return;
         __logs.push(args);
-        window.parent.postMessage({ type: "log", data: args.map(String) }, "*");
+        window.parent.postMessage({ type: "log", data: args.map(a => (typeof a === 'object' && a !== null) ? JSON.stringify(a, null, 2) : String(a)) }, "*");
       };
       window.onerror = function(message, source, line) {
         window.parent.postMessage({ type: "error", data: "Line " + line + ": " + message }, "*");

@@ -11,12 +11,20 @@ const test = {
 
 Instead of making separate variables for a person's first name, last name, and age, you can put them all in one object.<br><br>
 
-Objects are declared with curly braces <b>{ }</b>. Inside, you write <b>key: value</b> pairs separated by commas. The key is the name, the value is the data.<br><br>
+Objects are declared with curly braces <b>{ }</b>. Inside, you write <b>key: value</b> pairs separated by commas. The key is the name, the value is the data. Example:<br><br>
 
-Keys are always strings (you don't need quotes around them). Values can be any type — strings, numbers, booleans, arrays, even other objects.<br><br>
+var obj = { key: value };<br><br>
+
+Keys are always strings (quotes optional, but usually no quotes).<br><br>
+
+Values can be any type — strings, numbers, booleans, arrays, even other objects.<br><br>
 
 Try running the code and look at the output!`,
-      sampleCode: `var person = {
+      sampleCode: `var emptyObject = {};
+
+console.log(emptyObject);      
+
+var person = {
   firstName: "Amy",
   lastName: "Miller",
   age: 30,
@@ -35,13 +43,14 @@ The <b>key</b> is the property name. The <b>value</b> is what it holds.<br><br>
 
 In this example:<br><br>
 
-<b>firstName</b> is a key, <b>"Zintis"</b> is its value.<br>
-<b>age</b> is a key, <b>30</b> is its value.<br>
-<b>isTeacher</b> is a key, <b>true</b> is its value.<br><br>
+<b>make</b> is a key, <b>"Toyota"</b> is its value.<br>
+<b>model</b> is a key, <b>"Corolla"</b> is its value.<br>
+<b>year</b> is a key, <b>2020</b> is its value.<br>
+<b>electric</b> is a key, <b>false</b> is its value.<br><br>
 
 Properties can hold any type of value — including arrays and other objects!<br><br>
 
-Try adding a new property to the object below.`,
+Try adding a new property (key AND value).`,
       sampleCode: `var car = {
   make: "Toyota",
   model: "Corolla",
@@ -91,9 +100,9 @@ console.log(car);`,
           },
         },
         {
-          description: `has key/value pair of "firstName"/"Zintis"`,
+          description: `has key/value pair of "firstName" and "Bethany"`,
           test: () => {
-            expect(person).toHaveKeyValuePair('firstName', 'Zintis');
+            expect(person).toHaveKeyValuePair('firstName', 'Bethany');
           },
         },
         {
@@ -103,9 +112,9 @@ console.log(car);`,
           },
         },
         {
-          description: `has key/value pair of "lastName"/"May"`,
+          description: `has key/value pair of "lastName" and "Wagner"`,
           test: () => {
-            expect(person).toHaveKeyValuePair('lastName', 'May');
+            expect(person).toHaveKeyValuePair('lastName', 'Wagner');
           },
         },
         {
@@ -115,7 +124,7 @@ console.log(car);`,
           },
         },
         {
-          description: `has key/value pair of "isTeacher"/true`,
+          description: `has key/value pair of "isTeacher" and true`,
           test: () => {
             expect(person).toHaveKeyValuePair('isTeacher', true);
           },
@@ -127,7 +136,7 @@ console.log(car);`,
           },
         },
         {
-          description: `has key/value pair of "students"/100`,
+          description: `has key/value pair of "students" and 100`,
           test: () => {
             expect(person).toHaveKeyValuePair('students', 100);
           },
@@ -136,8 +145,8 @@ console.log(car);`,
           description: `is correct value`,
           test: () => {
             expect(person).toBe({
-              firstName: 'Zintis',
-              lastName: 'May',
+              firstName: 'Bethany',
+              lastName: 'Wagner',
               isTeacher: true,
               students: 100,
             });
@@ -147,59 +156,59 @@ console.log(car);`,
     },
     {
       type: 'test',
-      key: 'jsClassObject',
-      title: `var "jsClass"`,
-      instructions: `Declare a variable named "jsClass" an object. Read tests closely for keys and values`,
-      sampleCode: `var jsClass = {
+      key: 'jsClassroomObject',
+      title: `var "jsClassroom"`,
+      instructions: `Declare a variable named "jsClassroom" an object. Read tests closely for keys and values`,
+      sampleCode: `var jsClassroom = {
 
 };`,
       tests: [
         {
           description: `is declared`,
           test: () => {
-            expect(jsClass).toBeDeclared();
+            expect(jsClassroom).toBeDeclared();
           },
         },
         {
           description: `has a value`,
           test: () => {
-            expect(jsClass).toHaveValue();
+            expect(jsClassroom).toHaveValue();
           },
         },
         {
           description: `is an object`,
           test: () => {
-            expect(jsClass).toBeObject();
+            expect(jsClassroom).toBeObject();
           },
         },
         {
           description: `has 2 keys`,
           test: () => {
-            expect(jsClass).toHaveObjectKeyCount(2);
+            expect(jsClassroom).toHaveObjectKeyCount(2);
           },
         },
         {
           description: `has key "class"`,
           test: () => {
-            expect(jsClass).toHaveKey('class');
+            expect(jsClassroom).toHaveKey('class');
           },
         },
         {
-          description: `has key/value pair of "class"/"javascript"`,
+          description: `has key/value pair of "class" and "javascript"`,
           test: () => {
-            expect(jsClass).toHaveKeyValuePair('class', 'javascript');
+            expect(jsClassroom).toHaveKeyValuePair('class', 'javascript');
           },
         },
         {
           description: `has key "grades"`,
           test: () => {
-            expect(jsClass).toHaveKey('grades');
+            expect(jsClassroom).toHaveKey('grades');
           },
         },
         {
           description: `key "grades" is [85, 94, 82, 79, 77, 88, 96, 95, 57, 100]`,
           test: () => {
-            expect(jsClass.grades).toBe([
+            expect(jsClassroom.grades).toBe([
               85, 94, 82, 79, 77, 88, 96, 95, 57, 100,
             ]);
           },
@@ -207,7 +216,7 @@ console.log(car);`,
         {
           description: `is correct value`,
           test: () => {
-            expect(jsClass).toBe({
+            expect(jsClassroom).toBe({
               class: 'javascript',
               grades: [85, 94, 82, 79, 77, 88, 96, 95, 57, 100],
             });
@@ -261,7 +270,7 @@ console.log(car);`,
           },
         },
         {
-          description: `has key/value pair of "total"/5`,
+          description: `has key/value pair of "total" and 5`,
           test: () => {
             expect(shoppingCart).toHaveKeyValuePair('total', 5);
           },
@@ -279,7 +288,7 @@ console.log(car);`,
           },
         },
         {
-          description: `has key/value pair of "onlinePurchase"/true`,
+          description: `has key/value pair of "onlinePurchase" and true`,
           test: () => {
             expect(shoppingCart).toHaveKeyValuePair('onlinePurchase', true);
           },
@@ -336,30 +345,32 @@ Both do the same thing. Dot notation is more common and easier to read.<br><br>
 
 Try running the code and see how each property is accessed.`,
       sampleCode: `var person = {
-  firstName: "Zintis",
-  lastName: "May",
+  firstName: "Billy",
+  lastName: "Baxter",
   age: 30
 };
 
 // Dot notation
-console.log(person.firstName);  // "Zintis"
+console.log(person.firstName);  // "Billy"
 console.log(person.age);        // 30
 
-// Bracket notation
-console.log(person["lastName"]); // "May"`,
+// Bracket notation (ignore the warning)
+console.log(person["lastName"]); // "Baxter"
+
+// Bracket notation with a variable
+var theKey = "lastName";
+console.log(person[theKey]); 
+`,
     },
+
     {
       type: 'test',
       key: 'accessPropertyTest',
       title: `Accessing a Property`,
-      instructions: `Declare a variable named <b>city</b> that is an object with a property <b>name</b> set to <b>"London"</b> and a property <b>population</b> set to <b>9000000</b>.<br><br>
+      instructions: `Declare a variable named <b>city</b> that is an object with a property <b>name</b> set to <b>"London"</b> and a property <b>population</b> set to <b>9000000</b> (9 million).<br><br>
 
-Then declare a variable named <b>cityName</b> and set it to the <b>name</b> property of <b>city</b> using dot notation.`,
-      sampleCode: `var city = {
-
-};
-
-var cityName = // access city.name here`,
+Use two console.log to log both values separately.<br><br>`,
+      sampleCode: ``,
       tests: [
         {
           description: `"city" is declared`,
@@ -385,16 +396,78 @@ var cityName = // access city.name here`,
             expect(city).toHaveKeyValuePair('population', 9000000);
           },
         },
+
         {
-          description: `"cityName" is declared`,
+          description: `console.log the city.name`,
           test: () => {
-            expect(cityName).toBeDeclared();
+            expectConsole().toHaveLogged('London');
+          },
+        },
+
+        {
+          description: `console.log the city.population`,
+          test: () => {
+            expectConsole().toHaveLogged(9000000);
+          },
+        },
+      ],
+    },
+    {
+      type: 'test',
+      key: 'accessPropertyBracketTest',
+      title: `Bracket Notation`,
+      instructions: `Use console.log to log the properties of the object.<br><br>
+      
+      Use bracket notation to access maker. i.e. obj["maker"]<br><br>
+      Use bracket notation to access year. i.e. obj[keyName]<br>`,
+      sampleCode: `var toy = {
+      maker: "Hasbro",
+      year: 1999,
+      }
+      var keyName = "year"
+      `,
+
+      tests: [
+        {
+          description: `variables are declared by default (toy, keyName... reset if this is red)`,
+          test: () => {
+            expect(toy).toBeDeclared();
+            expect(keyName).toBeDeclared();
+            expect(toy).toBe({
+              maker: 'Hasbro',
+              year: 1999,
+            });
+            expect(keyName).toBe('year');
           },
         },
         {
-          description: `"cityName" is "London"`,
+          description: `uses bracket notation`,
           test: () => {
-            expect(cityName).toBe('London');
+            expectCode().toUseBracketNotation();
+          },
+        },
+        {
+          description: `console.log the "maker" using bracket notation (you may see a warning in the editor, that's OK)`,
+          test: () => {
+            expectConsole().toHaveLogged('Hasbro');
+          },
+        },
+        {
+          description: `should NOT use dot notation`,
+          test: () => {
+            expectCode().toNotUseDotNotation();
+          },
+        },
+        {
+          description: `console.log "Hasbro"`,
+          test: () => {
+            expectConsole().toHaveLogged('Hasbro');
+          },
+        },
+        {
+          description: `console.log 1999`,
+          test: () => {
+            expectConsole().toHaveLogged(1999);
           },
         },
       ],
@@ -403,26 +476,23 @@ var cityName = // access city.name here`,
       type: 'lesson',
       key: 'lesson-setting',
       title: 'Setting Properties',
-      text: `You can add or update properties on an object after it's been created using dot notation: <b>object.key = value</b><br><br>
+      text: `You can also change the value of a property. It's about the same way you would change a variable:<br><br>
 
-If the key already exists, this updates its value. If it doesn't exist, it creates a new property.<br><br>
+          var obj = {
+              name: "Zoe"
+          };<br><br>
 
-You can also use bracket notation: <b>object["key"] = value</b><br><br>
+          obj.name = "Zachary";
+    `,
+      sampleCode: `var obj = {
+      name: "Zoe"
+    };
 
-Try running the code to see properties being added and updated.`,
-      sampleCode: `var car = {
-  make: "Toyota"
-};
+    console.log(obj);
 
-// Add a new property
-car.color = "blue";
-console.log(car.color);  // "blue"
+    obj.name = "Zachary";
 
-// Update an existing property
-car.make = "Honda";
-console.log(car.make);   // "Honda"
-
-console.log(car);`,
+    console.log(obj);`,
     },
     {
       type: 'test',
@@ -432,10 +502,11 @@ console.log(car);`,
 
 Then add a new property <b>author</b> to the <b>book</b> object and set it to <b>"Frank Herbert"</b> using dot notation.`,
       sampleCode: `var book = {
-
+  title: "Moby Dick",
+  pages: 720,
+  year: 1851
 };
-
-// Add the author property here`,
+`,
       tests: [
         {
           description: `"book" is declared`,
@@ -450,21 +521,21 @@ Then add a new property <b>author</b> to the <b>book</b> object and set it to <b
           },
         },
         {
-          description: `"book" has key "title" with value "Dune"`,
+          description: `change "book" key "title" to value "Dune"`,
           test: () => {
             expect(book).toHaveKeyValuePair('title', 'Dune');
           },
         },
         {
-          description: `"book" has key "author"`,
+          description: `change "book" key "pages" to value 412`,
           test: () => {
-            expect(book).toHaveKey('author');
+            expect(book).toHaveKeyValuePair('pages', 412);
           },
         },
         {
-          description: `"book" has key "author" with value "Frank Herbert"`,
+          description: `change "book" key "year" to value 1965`,
           test: () => {
-            expect(book).toHaveKeyValuePair('author', 'Frank Herbert');
+            expect(book).toHaveKeyValuePair('year', 1965);
           },
         },
       ],

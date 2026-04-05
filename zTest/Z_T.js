@@ -727,6 +727,26 @@ function expectCode() {
         throw new Error('does not use destructuring');
       }
     },
+    toUseDotNotation() {
+      if (!flags?.hasDotNotation) {
+        throw new Error('does not use dot notation');
+      }
+    },
+    toNotUseDotNotation() {
+      if (flags?.hasDotNotation) {
+        throw new Error('should not use dot notation');
+      }
+    },
+    toUseBracketNotation() {
+      if (!flags?.hasBracketNotation) {
+        throw new Error('does not use bracket notation');
+      }
+    },
+    toNotUseBracketNotation() {
+      if (flags?.hasBracketNotation) {
+        throw new Error('should not use bracket notation');
+      }
+    },
     toContain(str) {
       if (!src.includes(str)) {
         throw new Error(`source does not contain "${str}"`);

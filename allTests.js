@@ -1519,12 +1519,20 @@ console.log(result);         // NaN`,
 
 Instead of making separate variables for a person's first name, last name, and age, you can put them all in one object.<br><br>
 
-Objects are declared with curly braces <b>{ }</b>. Inside, you write <b>key: value</b> pairs separated by commas. The key is the name, the value is the data.<br><br>
+Objects are declared with curly braces <b>{ }</b>. Inside, you write <b>key: value</b> pairs separated by commas. The key is the name, the value is the data. Example:<br><br>
 
-Keys are always strings (you don't need quotes around them). Values can be any type — strings, numbers, booleans, arrays, even other objects.<br><br>
+var obj = { key: value };<br><br>
+
+Keys are always strings (quotes optional, but usually no quotes).<br><br>
+
+Values can be any type — strings, numbers, booleans, arrays, even other objects.<br><br>
 
 Try running the code and look at the output!`,
-        sampleCode: `var person = {
+        sampleCode: `var emptyObject = {};
+
+console.log(emptyObject);      
+
+var person = {
   firstName: "Amy",
   lastName: "Miller",
   age: 30,
@@ -1541,13 +1549,14 @@ The <b>key</b> is the property name. The <b>value</b> is what it holds.<br><br>
 
 In this example:<br><br>
 
-<b>firstName</b> is a key, <b>"Zintis"</b> is its value.<br>
-<b>age</b> is a key, <b>30</b> is its value.<br>
-<b>isTeacher</b> is a key, <b>true</b> is its value.<br><br>
+<b>make</b> is a key, <b>"Toyota"</b> is its value.<br>
+<b>model</b> is a key, <b>"Corolla"</b> is its value.<br>
+<b>year</b> is a key, <b>2020</b> is its value.<br>
+<b>electric</b> is a key, <b>false</b> is its value.<br><br>
 
 Properties can hold any type of value — including arrays and other objects!<br><br>
 
-Try adding a new property to the object below.`,
+Try adding a new property (key AND value).`,
         sampleCode: `var car = {
   make: "Toyota",
   model: "Corolla",
@@ -1579,72 +1588,72 @@ console.log(car);`,
           { description: `has key "firstName"`, test: () => {
             expect(person).toHaveKey('firstName');
           } },
-          { description: `has key/value pair of "firstName"/"Zintis"`, test: () => {
-            expect(person).toHaveKeyValuePair('firstName', 'Zintis');
+          { description: `has key/value pair of "firstName" and "Bethany"`, test: () => {
+            expect(person).toHaveKeyValuePair('firstName', 'Bethany');
           } },
           { description: `has key "lastName"`, test: () => {
             expect(person).toHaveKey('lastName');
           } },
-          { description: `has key/value pair of "lastName"/"May"`, test: () => {
-            expect(person).toHaveKeyValuePair('lastName', 'May');
+          { description: `has key/value pair of "lastName" and "Wagner"`, test: () => {
+            expect(person).toHaveKeyValuePair('lastName', 'Wagner');
           } },
           { description: `has key "isTeacher"`, test: () => {
             expect(person).toHaveKey('isTeacher');
           } },
-          { description: `has key/value pair of "isTeacher"/true`, test: () => {
+          { description: `has key/value pair of "isTeacher" and true`, test: () => {
             expect(person).toHaveKeyValuePair('isTeacher', true);
           } },
           { description: `has key "students"`, test: () => {
             expect(person).toHaveKey('students');
           } },
-          { description: `has key/value pair of "students"/100`, test: () => {
+          { description: `has key/value pair of "students" and 100`, test: () => {
             expect(person).toHaveKeyValuePair('students', 100);
           } },
           { description: `is correct value`, test: () => {
             expect(person).toBe({
-              firstName: 'Zintis',
-              lastName: 'May',
+              firstName: 'Bethany',
+              lastName: 'Wagner',
               isTeacher: true,
               students: 100,
             });
           } }
         ],
       },
-      { type: 'test', key: 'jsClassObject',
-        title: `var "jsClass"`,
-        instructions: `Declare a variable named "jsClass" an object. Read tests closely for keys and values`,
-        sampleCode: `var jsClass = {
+      { type: 'test', key: 'jsClassroomObject',
+        title: `var "jsClassroom"`,
+        instructions: `Declare a variable named "jsClassroom" an object. Read tests closely for keys and values`,
+        sampleCode: `var jsClassroom = {
 
 };`,
         tests: [
           { description: `is declared`, test: () => {
-            expect(jsClass).toBeDeclared();
+            expect(jsClassroom).toBeDeclared();
           } },
           { description: `has a value`, test: () => {
-            expect(jsClass).toHaveValue();
+            expect(jsClassroom).toHaveValue();
           } },
           { description: `is an object`, test: () => {
-            expect(jsClass).toBeObject();
+            expect(jsClassroom).toBeObject();
           } },
           { description: `has 2 keys`, test: () => {
-            expect(jsClass).toHaveObjectKeyCount(2);
+            expect(jsClassroom).toHaveObjectKeyCount(2);
           } },
           { description: `has key "class"`, test: () => {
-            expect(jsClass).toHaveKey('class');
+            expect(jsClassroom).toHaveKey('class');
           } },
-          { description: `has key/value pair of "class"/"javascript"`, test: () => {
-            expect(jsClass).toHaveKeyValuePair('class', 'javascript');
+          { description: `has key/value pair of "class" and "javascript"`, test: () => {
+            expect(jsClassroom).toHaveKeyValuePair('class', 'javascript');
           } },
           { description: `has key "grades"`, test: () => {
-            expect(jsClass).toHaveKey('grades');
+            expect(jsClassroom).toHaveKey('grades');
           } },
           { description: `key "grades" is [85, 94, 82, 79, 77, 88, 96, 95, 57, 100]`, test: () => {
-            expect(jsClass.grades).toBe([
+            expect(jsClassroom.grades).toBe([
               85, 94, 82, 79, 77, 88, 96, 95, 57, 100,
             ]);
           } },
           { description: `is correct value`, test: () => {
-            expect(jsClass).toBe({
+            expect(jsClassroom).toBe({
               class: 'javascript',
               grades: [85, 94, 82, 79, 77, 88, 96, 95, 57, 100],
             });
@@ -1676,7 +1685,7 @@ console.log(car);`,
           { description: `key "total" is a number`, test: () => {
             expect(shoppingCart.total).toBeNumber();
           } },
-          { description: `has key/value pair of "total"/5`, test: () => {
+          { description: `has key/value pair of "total" and 5`, test: () => {
             expect(shoppingCart).toHaveKeyValuePair('total', 5);
           } },
           { description: `has key "onlinePurchase"`, test: () => {
@@ -1685,7 +1694,7 @@ console.log(car);`,
           { description: `key "onlinePurchase" is a boolean`, test: () => {
             expect(shoppingCart.onlinePurchase).toBeBoolean();
           } },
-          { description: `has key/value pair of "onlinePurchase"/true`, test: () => {
+          { description: `has key/value pair of "onlinePurchase" and true`, test: () => {
             expect(shoppingCart).toHaveKeyValuePair('onlinePurchase', true);
           } },
           { description: `has key "items"`, test: () => {
@@ -1723,28 +1732,29 @@ Both do the same thing. Dot notation is more common and easier to read.<br><br>
 
 Try running the code and see how each property is accessed.`,
         sampleCode: `var person = {
-  firstName: "Zintis",
-  lastName: "May",
+  firstName: "Billy",
+  lastName: "Baxter",
   age: 30
 };
 
 // Dot notation
-console.log(person.firstName);  // "Zintis"
+console.log(person.firstName);  // "Billy"
 console.log(person.age);        // 30
 
-// Bracket notation
-console.log(person["lastName"]); // "May"`,
+// Bracket notation (ignore the warning)
+console.log(person["lastName"]); // "Baxter"
+
+// Bracket notation with a variable
+var theKey = "lastName";
+console.log(person[theKey]); 
+`,
       },
       { type: 'test', key: 'accessPropertyTest',
         title: `Accessing a Property`,
-        instructions: `Declare a variable named <b>city</b> that is an object with a property <b>name</b> set to <b>"London"</b> and a property <b>population</b> set to <b>9000000</b>.<br><br>
+        instructions: `Declare a variable named <b>city</b> that is an object with a property <b>name</b> set to <b>"London"</b> and a property <b>population</b> set to <b>9000000</b> (9 million).<br><br>
 
-Then declare a variable named <b>cityName</b> and set it to the <b>name</b> property of <b>city</b> using dot notation.`,
-        sampleCode: `var city = {
-
-};
-
-var cityName = // access city.name here`,
+Use two console.log to log both values separately.<br><br>`,
+        sampleCode: ``,
         tests: [
           { description: `"city" is declared`, test: () => {
             expect(city).toBeDeclared();
@@ -1758,36 +1768,72 @@ var cityName = // access city.name here`,
           { description: `"city" has key "population" with value 9000000`, test: () => {
             expect(city).toHaveKeyValuePair('population', 9000000);
           } },
-          { description: `"cityName" is declared`, test: () => {
-            expect(cityName).toBeDeclared();
+          { description: `console.log the city.name`, test: () => {
+            expectConsole().toHaveLogged('London');
           } },
-          { description: `"cityName" is "London"`, test: () => {
-            expect(cityName).toBe('London');
+          { description: `console.log the city.population`, test: () => {
+            expectConsole().toHaveLogged(9000000);
+          } }
+        ],
+      },
+      { type: 'test', key: 'accessPropertyBracketTest',
+        title: `Bracket Notation`,
+        instructions: `Use console.log to log the properties of the object.<br><br>
+      
+      Use bracket notation to access maker. i.e. obj["maker"]<br><br>
+      Use bracket notation to access year. i.e. obj[keyName]<br>`,
+        sampleCode: `var toy = {
+      maker: "Hasbro",
+      year: 1999,
+      }
+      var keyName = "year"
+      `,
+        tests: [
+          { description: `variables are declared by default (toy, keyName... reset if this is red)`, test: () => {
+            expect(toy).toBeDeclared();
+            expect(keyName).toBeDeclared();
+            expect(toy).toBe({
+              maker: 'Hasbro',
+              year: 1999,
+            });
+            expect(keyName).toBe('year');
+          } },
+          { description: `uses bracket notation`, test: () => {
+            expectCode().toUseBracketNotation();
+          } },
+          { description: `console.log the "maker" using bracket notation (you may see a warning in the editor, that's OK)`, test: () => {
+            expectConsole().toHaveLogged('Hasbro');
+          } },
+          { description: `should NOT use dot notation`, test: () => {
+            expectCode().toNotUseDotNotation();
+          } },
+          { description: `console.log "Hasbro"`, test: () => {
+            expectConsole().toHaveLogged('Hasbro');
+          } },
+          { description: `console.log 1999`, test: () => {
+            expectConsole().toHaveLogged(1999);
           } }
         ],
       },
       { type: 'lesson', key: 'lesson-setting',
         title: 'Setting Properties',
-        text: `You can add or update properties on an object after it's been created using dot notation: <b>object.key = value</b><br><br>
+        text: `You can also change the value of a property. It's about the same way you would change a variable:<br><br>
 
-If the key already exists, this updates its value. If it doesn't exist, it creates a new property.<br><br>
+          var obj = {
+              name: "Zoe"
+          };<br><br>
 
-You can also use bracket notation: <b>object["key"] = value</b><br><br>
+          obj.name = "Zachary";
+    `,
+        sampleCode: `var obj = {
+      name: "Zoe"
+    };
 
-Try running the code to see properties being added and updated.`,
-        sampleCode: `var car = {
-  make: "Toyota"
-};
+    console.log(obj);
 
-// Add a new property
-car.color = "blue";
-console.log(car.color);  // "blue"
+    obj.name = "Zachary";
 
-// Update an existing property
-car.make = "Honda";
-console.log(car.make);   // "Honda"
-
-console.log(car);`,
+    console.log(obj);`,
       },
       { type: 'test', key: 'setPropertyTest',
         title: `Setting a Property`,
@@ -1795,10 +1841,11 @@ console.log(car);`,
 
 Then add a new property <b>author</b> to the <b>book</b> object and set it to <b>"Frank Herbert"</b> using dot notation.`,
         sampleCode: `var book = {
-
+  title: "Moby Dick",
+  pages: 720,
+  year: 1851
 };
-
-// Add the author property here`,
+`,
         tests: [
           { description: `"book" is declared`, test: () => {
             expect(book).toBeDeclared();
@@ -1806,14 +1853,14 @@ Then add a new property <b>author</b> to the <b>book</b> object and set it to <b
           { description: `"book" is an object`, test: () => {
             expect(book).toBeObject();
           } },
-          { description: `"book" has key "title" with value "Dune"`, test: () => {
+          { description: `change "book" key "title" to value "Dune"`, test: () => {
             expect(book).toHaveKeyValuePair('title', 'Dune');
           } },
-          { description: `"book" has key "author"`, test: () => {
-            expect(book).toHaveKey('author');
+          { description: `change "book" key "pages" to value 412`, test: () => {
+            expect(book).toHaveKeyValuePair('pages', 412);
           } },
-          { description: `"book" has key "author" with value "Frank Herbert"`, test: () => {
-            expect(book).toHaveKeyValuePair('author', 'Frank Herbert');
+          { description: `change "book" key "year" to value 1965`, test: () => {
+            expect(book).toHaveKeyValuePair('year', 1965);
           } }
         ],
       }
@@ -2232,6 +2279,46 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
     title: 'Loops & Strings',
     help: 'https://www.w3schools.com/js/js_loops.asp',
     items: [
+      { type: 'lesson', key: 'lesson-for-loop',
+        title: 'For Loops',
+        text: `A <b>for loop</b> repeats a block of code a set number of times.<br><br>
+
+It has three parts:<br>
+<b>var i = 0</b> — start value<br>
+<b>i &lt; 5</b> — keep going while this is true<br>
+<b>i++</b> — what to do after each loop (i++ means add 1)<br><br>
+
+<b>i</b> is just a variable name — it's short for "index" and is the convention, but you can name it anything.<br><br>
+
+Try running the code!`,
+        sampleCode: `for (var i = 0; i < 5; i++) {
+  console.log(i); // 0, 1, 2, 3, 4
+}`,
+      },
+      { type: 'lesson', key: 'lesson-loops-strings',
+        title: 'Loops & Strings',
+        text: `Loops are great for building strings character by character, or for iterating over each character in a string.<br><br>
+
+You can loop over a string's characters using its index, just like an array. <b>str[0]</b> is the first character, <b>str[1]</b> is the second, and so on.<br><br>
+
+<b>str.length</b> gives you the number of characters, so you can use it as the loop's stop condition.<br><br>
+
+You can also build up a string by starting with an empty string and adding to it with <b>+=</b> inside the loop.<br><br>
+
+Try running the code!`,
+        sampleCode: `// Loop over a string's characters
+var word = "hello";
+for (var i = 0; i < word.length; i++) {
+  console.log(word[i]);
+}
+
+// Build a string with a loop
+var result = "";
+for (var i = 0; i < 5; i++) {
+  result += "*";
+}
+console.log(result); // "*****"`,
+      },
       { type: 'test', key: 'makeXAsterisks',
         title: `function "makeXAsterisks"`,
         instructions: `Make a function that takes one argument, a number. It should return a string with that many asterisks. Example: makeXAsterisks(5) returns "*****"`,
@@ -2490,6 +2577,48 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
     title: 'Array.map',
     help: 'https://www.w3schools.com/jsref/jsref_map.asp',
     items: [
+      { type: 'lesson', key: 'lesson-map',
+        title: 'Array.map()',
+        text: `<b>array.map()</b> transforms every item in an array and returns a <b>new array</b> of the same length.<br><br>
+
+You pass it a function, and that function runs once for each item. Whatever the function returns becomes the new value at that position.<br><br>
+
+The original array is <b>not modified</b>.<br><br>
+
+The function receives each item as its argument — you can name it anything.<br><br>
+
+Try running the code!`,
+        sampleCode: `var numbers = [1, 2, 3, 4, 5];
+
+var doubled = numbers.map(function(num) {
+  return num * 2;
+});
+
+console.log(doubled);  // [2, 4, 6, 8, 10]
+console.log(numbers);  // [1, 2, 3, 4, 5] — unchanged`,
+      },
+      { type: 'lesson', key: 'lesson-map-arrow',
+        title: 'map() with Arrow Functions',
+        text: `You'll often see <b>map()</b> written with an <b>arrow function</b> — it's shorter and very common.<br><br>
+
+An arrow function looks like: <b>(item) => item * 2</b><br><br>
+
+If the function only returns one expression, you can skip the curly braces and the <b>return</b> keyword — the value is returned automatically.<br><br>
+
+Both styles do the same thing. The tests in this section require you to use <b>array.map()</b> specifically.<br><br>
+
+Try running the code!`,
+        sampleCode: `var numbers = [1, 2, 3, 4, 5];
+
+// Arrow function with map
+var doubled = numbers.map((num) => num * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// Also works on strings
+var words = ["cat", "dog", "bird"];
+var firstLetters = words.map((word) => word[0]);
+console.log(firstLetters); // ["c", "d", "b"]`,
+      },
       { type: 'test', key: 'arrayValuesPlusOne',
         title: `function "arrayValuesPlusOne"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to add one to each number and return the resulting array. Example: arrayValuesPlusOne([1, 3, 5]) returns [2, 4, 6]`,
@@ -2755,6 +2884,29 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
     title: 'Array.filter',
     help: 'https://www.w3schools.com/jsref/jsref_filter.asp',
     items: [
+      { type: 'lesson', key: 'lesson-filter',
+        title: 'Array.filter()',
+        text: `<b>array.filter()</b> returns a <b>new array</b> containing only the items that pass a test.<br><br>
+
+You pass it a function that takes each item and returns <b>true</b> (keep it) or <b>false</b> (remove it).<br><br>
+
+The original array is <b>not modified</b>. The new array may be shorter — or even empty if nothing passes.<br><br>
+
+Think of it like a sieve — only what fits through stays.<br><br>
+
+Try running the code!`,
+        sampleCode: `var numbers = [1, 2, 3, 4, 5, 6];
+
+// Keep only even numbers
+var evens = numbers.filter((num) => num % 2 === 0);
+console.log(evens);   // [2, 4, 6]
+console.log(numbers); // [1, 2, 3, 4, 5, 6] — unchanged
+
+// Keep only words longer than 3 letters
+var words = ["cat", "elephant", "dog", "rhinoceros"];
+var longWords = words.filter((word) => word.length > 3);
+console.log(longWords); // ["elephant", "rhinoceros"]`,
+      },
       { type: 'test', key: 'removeOddNumbers',
         title: `function "removeOddNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" and return an array with no odd numbers. Example: removeOddNumbers([1,2,3,4]) returns [2,4]`,
@@ -3156,6 +3308,29 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
     title: 'While Loops',
     help: 'https://www.w3schools.com/js/js_loop_while.asp',
     items: [
+      { type: 'lesson', key: 'lesson-while',
+        title: 'While Loops',
+        text: `A <b>while loop</b> keeps running as long as a condition is true.<br><br>
+
+Unlike a for loop where you know how many times it will run, a while loop is useful when you don't know in advance — you just keep going until something changes.<br><br>
+
+<b>Important:</b> you must change something inside the loop that will eventually make the condition false, otherwise you'll have an <b>infinite loop</b> that freezes the page!<br><br>
+
+Try running the code!`,
+        sampleCode: `var i = 1;
+
+while (i <= 5) {
+  console.log(i);
+  i++; // without this, the loop runs forever!
+}
+
+// While loops are great when you don't know how many steps you need
+var num = 100;
+while (num > 1) {
+  num = Math.floor(num / 2);
+  console.log(num);
+}`,
+      },
       { type: 'test', key: 'countUpTests',
         title: `function "countUp"`,
         instructions: `Make a function named "countUp" that takes one argument, a number. Using a while loop, return an array of numbers counting up from 1 to that number. Example: countUp(5) returns [1, 2, 3, 4, 5]`,
@@ -3333,6 +3508,38 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
     title: 'For Loops',
     help: 'https://www.w3schools.com/js/js_loop_for.asp',
     items: [
+      { type: 'lesson', key: 'lesson-for-loops',
+        title: 'For Loops & Arrays',
+        text: `You've seen for loops before, but they're especially powerful when combined with arrays.<br><br>
+
+Using the array's <b>length</b> as the stop condition, you can loop over every item:<br><br>
+
+<b>for (var i = 0; i &lt; array.length; i++)</b><br><br>
+
+Inside the loop, <b>array[i]</b> gives you the current item. You can read it, transform it, or use it to build up a result.<br><br>
+
+Common patterns:<br>
+— <b>accumulate</b>: start with 0 or "", add to it each loop<br>
+— <b>collect</b>: start with [], push items each loop<br>
+— <b>track</b>: start with a value, update it each loop (e.g. finding the max)<br><br>
+
+Try running the code!`,
+        sampleCode: `var numbers = [10, 3, 7, 2, 8];
+
+// Accumulate — sum all numbers
+var sum = 0;
+for (var i = 0; i < numbers.length; i++) {
+  sum += numbers[i];
+}
+console.log(sum); // 30
+
+// Collect — build a new array
+var doubled = [];
+for (var i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2);
+}
+console.log(doubled); // [20, 6, 14, 4, 16]`,
+      },
       { type: 'test', key: 'countToNTests',
         title: `function "countToN"`,
         instructions: `Make a function named "countToN" that takes one argument, a number. Using a for loop, return an array of numbers from 1 up to and including that number. Example: countToN(4) returns [1, 2, 3, 4]`,
@@ -3500,6 +3707,33 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
     title: 'For...Of Loops',
     help: 'https://www.w3schools.com/js/js_loop_forof.asp',
     items: [
+      { type: 'lesson', key: 'lesson-for-of',
+        title: 'For...Of Loops',
+        text: `A <b>for...of</b> loop is a cleaner way to loop over arrays and strings.<br><br>
+
+Instead of tracking an index with <b>i</b>, you get each item directly:<br><br>
+
+<b>for (var item of array)</b><br><br>
+
+This is simpler than a regular for loop when you don't need the index — you just care about the values.<br><br>
+
+It works on strings too — each iteration gives you one character.<br><br>
+
+Try running the code!`,
+        sampleCode: `var fruits = ["apple", "banana", "cherry"];
+
+for (var fruit of fruits) {
+  console.log(fruit);
+}
+// "apple"
+// "banana"
+// "cherry"
+
+// Also works on strings
+for (var char of "hello") {
+  console.log(char);
+}`,
+      },
       { type: 'test', key: 'getCharsTests',
         title: `function "getChars"`,
         instructions: `Make a function named "getChars" that takes one argument, a string. Using a for...of loop, return an array containing each character of the string. Example: getChars("hi") returns ["h", "i"]`,
@@ -3648,6 +3882,37 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
     title: 'If Statements',
     help: 'https://www.w3schools.com/js/js_if_else.asp',
     items: [
+      { type: 'lesson', key: 'lesson-if-statements',
+        title: 'If Statements',
+        text: `An <b>if statement</b> runs a block of code only if a condition is true.<br><br>
+
+The condition goes inside the parentheses. If it evaluates to <b>true</b>, the code inside the curly braces runs. If it's <b>false</b>, it's skipped.<br><br>
+
+You can compare values using operators:<br>
+<b>==</b> equal to<br>
+<b>!=</b> not equal to<br>
+<b>&gt;</b> greater than<br>
+<b>&lt;</b> less than<br>
+<b>&gt;=</b> greater than or equal to<br>
+<b>&lt;=</b> less than or equal to<br><br>
+
+You can also use <b>!</b> (NOT) to flip a condition — <b>!true</b> is false, <b>!false</b> is true.<br><br>
+
+Try running the code!`,
+        sampleCode: `var age = 20;
+
+if (age >= 18) {
+  console.log("you are an adult");
+}
+
+if (age < 18) {
+  console.log("you are not an adult");
+}
+
+if (!false) {
+  console.log("not false is true!");
+}`,
+      },
       { type: 'test', key: 'ifTrueTests',
         title: `if (true)`,
         instructions: `Write an if statement with the condition "true". Inside it, console.log the string "it's true".`,
@@ -3809,6 +4074,33 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
     title: 'String Concatenation',
     help: 'https://www.w3schools.com/js/js_string_methods.asp',
     items: [
+      { type: 'lesson', key: 'lesson-concatenation',
+        title: 'String Concatenation',
+        text: `<b>String concatenation</b> is joining strings together to make a new string.<br><br>
+
+The simplest way is with the <b>+</b> operator — the same one used for adding numbers. When used with strings, it joins them instead.<br><br>
+
+You can also join a string and a number — JavaScript will convert the number to a string automatically.<br><br>
+
+The second way is with <b>template literals</b> — strings wrapped in backticks (<b>\`\`</b>) instead of quotes. Inside them you can embed any expression using <b>\${}</b>. This is often cleaner than using +.<br><br>
+
+Try running the code!`,
+        sampleCode: `var first = "camp";
+var second = "fire";
+
+// Using +
+var word = first + second;
+console.log(word); // "campfire"
+
+// Joining a string and a number
+var message = "I am " + 25;
+console.log(message); // "I am 25"
+
+// Template literal with interpolation
+var name = "Beth";
+var greeting = \`Hello \${name}!\`;
+console.log(greeting); // "Hello Beth!"`,
+      },
       { type: 'test', key: 'stringPlusStringTests',
         title: `string + string`,
         instructions: `Declare variables a, b, and c. a is "camp", b is "fire", and c is a and b together using the "+" operator.`,
