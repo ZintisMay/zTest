@@ -103,11 +103,13 @@ var sampleCode;`,
 
       The @ symbol doesn't get processed by Javascript. Try adding quotes around it like this "@"<br><br>
       
-      These errors are normal and part of Javascript. Z_Test gives you little tests that check whether your code is written in a certain way. But requires you to have working code. If there is a red error, fix that first, then worry about the tests!<br><br>
+      These errors are normal and part of Javascript. Z_Test gives you little tests that check whether your code is written in a certain way. But it requires you to have working code. If there is a red error, fix that first, then worry about the tests!<br><br>
 
-      Errors can be cryptic, so do whatever you need to figure it out. Many errors will get caught by the editor! So watch for squiggly lines and tooltips.<br><br>
+      Errors can be cryptic, so do whatever you need to figure it out (google, ai, etc...). Many errors will get caught by the editor! So watch for squiggly lines and tooltips.<br><br>
       
-      If you hover over them, often it'll explain how to fix it!
+      If you hover over them, often it'll explain how to fix it!<br><br>
+
+      (Fix this one by putting quotes (") around the "@" character)
       `,
         tests: [
           { description: `is declared`, test: () => {
@@ -123,14 +125,7 @@ var sampleCode;`,
             expect(x).toBe('@');
           } }
         ],
-      }
-    ],
-  },
-  {
-    id: '1',
-    title: 'Variables',
-    help: 'https://www.w3schools.com/js/js_variables.asp',
-    items: [
+      },
       { type: 'lesson', key: 'lesson-0',
         title: 'console.log()',
         text: `You're going to see a lot of console.log(), and when writing code, you'll use this to peek at values.<br><br>
@@ -144,6 +139,43 @@ console.log(true);
 // Try running the code with CTRL+ENTER
 // You'll see the output below in the Terminal`,
       },
+      { type: 'test', key: 'consoleLogTest',
+        title: `console.log`,
+        instructions: `Use console.log three times to log the numbers 1, 2, and 3.<br><br>
+      
+      In the editor, write:
+
+      console.log(1);
+      
+      Then press CTRL+ENTER<br><br>
+
+      Now repeat this for the numbers 2 and 3.
+      `,
+        tests: [
+          { description: `console.log is called`, test: () => {
+            expectConsole().toHaveLoggedAnything();
+          } },
+          { description: `1 is logged`, test: () => {
+            expectConsole().toHaveLogged(1);
+          } },
+          { description: `2 is logged`, test: () => {
+            expectConsole().toHaveLogged(2);
+          } },
+          { description: `3 is logged`, test: () => {
+            expectConsole().toHaveLogged(3);
+          } },
+          { description: `console.log is called 3 times`, test: () => {
+            expectConsole().toHaveLoggedXTimes(3);
+          } }
+        ],
+      }
+    ],
+  },
+  {
+    id: '1',
+    title: 'Variables',
+    help: 'https://www.w3schools.com/js/js_variables.asp',
+    items: [
       { type: 'lesson', key: 'lesson-1',
         title: 'Variables',
         text: `A variable is a way to name a piece of information.<br><br>
@@ -1063,6 +1095,42 @@ Try running the code and changing true to false!`,
 } else {
   console.log("You failed.");
 }`,
+      },
+      { type: 'test', key: 'ifTrueWithElse',
+        title: `if (true) with else`,
+        instructions: `Write an if statement with <b>true</b> as the condition, and an <b>else</b> block. Put a console.log() inside the if block.`,
+        tests: [
+          { description: `uses an if statement`, test: () => {
+            expectCode().toUseIfStatement();
+          } },
+          { description: `uses if (true)`, test: () => {
+            expectCode().toUseIfTrue();
+          } },
+          { description: `uses an else block`, test: () => {
+            expectCode().toContain('else');
+          } },
+          { description: `logs something`, test: () => {
+            expectConsole().toHaveLoggedAnything();
+          } }
+        ],
+      },
+      { type: 'test', key: 'ifFalseWithElse',
+        title: `if (false) with else`,
+        instructions: `Write an if statement with <b>false</b> as the condition, and an <b>else</b> block. Put a console.log() inside the false block only.`,
+        tests: [
+          { description: `uses an if statement`, test: () => {
+            expectCode().toUseIfStatement();
+          } },
+          { description: `uses if (false)`, test: () => {
+            expectCode().toUseIfFalse();
+          } },
+          { description: `uses an else block`, test: () => {
+            expectCode().toContain('else');
+          } },
+          { description: `logs something`, test: () => {
+            expectConsole().toHaveLoggedAnything();
+          } }
+        ],
       },
       { type: 'lesson', key: 'lesson-0b',
         title: 'If Else Statements',

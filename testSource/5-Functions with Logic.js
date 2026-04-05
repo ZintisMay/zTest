@@ -82,6 +82,70 @@ Try running the code and changing true to false!`,
 }`,
     },
     {
+      type: 'test',
+      key: 'ifTrueWithElse',
+      title: `if (true) with else`,
+      instructions: `Write an if statement with <b>true</b> as the condition, and an <b>else</b> block. Put a console.log() inside the if block.`,
+      tests: [
+        {
+          description: `uses an if statement`,
+          test: () => {
+            expectCode().toUseIfStatement();
+          },
+        },
+        {
+          description: `uses if (true)`,
+          test: () => {
+            expectCode().toUseIfTrue();
+          },
+        },
+        {
+          description: `uses an else block`,
+          test: () => {
+            expectCode().toContain('else');
+          },
+        },
+        {
+          description: `logs something`,
+          test: () => {
+            expectConsole().toHaveLoggedAnything();
+          },
+        },
+      ],
+    },
+    {
+      type: 'test',
+      key: 'ifFalseWithElse',
+      title: `if (false) with else`,
+      instructions: `Write an if statement with <b>false</b> as the condition, and an <b>else</b> block. Put a console.log() inside the false block only.`,
+      tests: [
+        {
+          description: `uses an if statement`,
+          test: () => {
+            expectCode().toUseIfStatement();
+          },
+        },
+        {
+          description: `uses if (false)`,
+          test: () => {
+            expectCode().toUseIfFalse();
+          },
+        },
+        {
+          description: `uses an else block`,
+          test: () => {
+            expectCode().toContain('else');
+          },
+        },
+        {
+          description: `logs something`,
+          test: () => {
+            expectConsole().toHaveLoggedAnything();
+          },
+        },
+      ],
+    },
+    {
       type: 'lesson',
       key: 'lesson-0b',
       title: 'If Else Statements',

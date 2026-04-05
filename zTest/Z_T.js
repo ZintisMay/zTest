@@ -494,7 +494,9 @@ function expect(value) {
     return this;
   }
 
-  function callsFunction(obj, fName) {
+  // This only works when calling a function inside a function
+  // @#@#@# Maybe extend to allow function call checking in global scope
+  function callsFunction(obj, fName, x = 1) {
     let callCount = 0;
     const originalFunction = obj[fName];
 
@@ -518,6 +520,14 @@ function expect(value) {
     if (callCount === 0) {
       throw new Error(`${fName} was not called`);
     }
+
+    // was function called x times?
+    if (callCount != x) {
+      throw new Error(
+        `${fName} was called ${callCount} times, should be ${x} times`,
+      );
+    }
+
     return this;
   }
 
@@ -559,6 +569,13 @@ function expectConsole() {
         throw new Error(
           `console.log was not called with ${JSON.stringify(expected)}`,
         );
+      }
+    },
+    toHaveLoggedXTimes(x) {
+      if (logs.length < x) {
+        throw new Error(`console.log less than ${x} times`);
+      } else if (logs.length > x) {
+        throw new Error(`console.log more than ${x} times`);
       }
     },
     notToHaveLogged() {

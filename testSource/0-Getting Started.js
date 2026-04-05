@@ -136,11 +136,13 @@ var sampleCode;`,
 
       The @ symbol doesn't get processed by Javascript. Try adding quotes around it like this "@"<br><br>
       
-      These errors are normal and part of Javascript. Z_Test gives you little tests that check whether your code is written in a certain way. But requires you to have working code. If there is a red error, fix that first, then worry about the tests!<br><br>
+      These errors are normal and part of Javascript. Z_Test gives you little tests that check whether your code is written in a certain way. But it requires you to have working code. If there is a red error, fix that first, then worry about the tests!<br><br>
 
-      Errors can be cryptic, so do whatever you need to figure it out. Many errors will get caught by the editor! So watch for squiggly lines and tooltips.<br><br>
+      Errors can be cryptic, so do whatever you need to figure it out (google, ai, etc...). Many errors will get caught by the editor! So watch for squiggly lines and tooltips.<br><br>
       
-      If you hover over them, often it'll explain how to fix it!
+      If you hover over them, often it'll explain how to fix it!<br><br>
+
+      (Fix this one by putting quotes (") around the "@" character)
       `,
       tests: [
         {
@@ -165,6 +167,68 @@ var sampleCode;`,
           description: `is @`,
           test: () => {
             expect(x).toBe('@');
+          },
+        },
+      ],
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-0',
+      title: 'console.log()',
+      text: `You're going to see a lot of console.log(), and when writing code, you'll use this to peek at values.<br><br>
+console.log("Hi there") outputs it into the "terminal".<br><br>
+Give it a try!
+`,
+      sampleCode: `console.log("Hi there");
+console.log(3);
+console.log(true);
+
+// Try running the code with CTRL+ENTER
+// You'll see the output below in the Terminal`,
+    },
+    {
+      type: 'test',
+      key: 'consoleLogTest',
+      title: `console.log`,
+      instructions: `Use console.log three times to log the numbers 1, 2, and 3.<br><br>
+      
+      In the editor, write:
+
+      console.log(1);
+      
+      Then press CTRL+ENTER<br><br>
+
+      Now repeat this for the numbers 2 and 3.
+      `,
+      tests: [
+        {
+          description: `console.log is called`,
+          test: () => {
+            expectConsole().toHaveLoggedAnything();
+          },
+        },
+        {
+          description: `1 is logged`,
+          test: () => {
+            expectConsole().toHaveLogged(1);
+          },
+        },
+        {
+          description: `2 is logged`,
+          test: () => {
+            expectConsole().toHaveLogged(2);
+          },
+        },
+        {
+          description: `3 is logged`,
+          test: () => {
+            expectConsole().toHaveLogged(3);
+          },
+        },
+        {
+          description: `console.log is called 3 times`,
+          test: () => {
+            expectConsole().toHaveLoggedXTimes(3);
           },
         },
       ],

@@ -5,21 +5,6 @@ const test = {
   items: [
     {
       type: 'lesson',
-      key: 'lesson-0',
-      title: 'console.log()',
-      text: `You're going to see a lot of console.log(), and when writing code, you'll use this to peek at values.<br><br>
-console.log("Hi there") outputs it into the "terminal".<br><br>
-Give it a try!
-`,
-      sampleCode: `console.log("Hi there");
-console.log(3);
-console.log(true);
-
-// Try running the code with CTRL+ENTER
-// You'll see the output below in the Terminal`,
-    },
-    {
-      type: 'lesson',
       key: 'lesson-1',
       title: 'Variables',
       text: `A variable is a way to name a piece of information.<br><br>
