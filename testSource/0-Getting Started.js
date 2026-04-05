@@ -190,13 +190,9 @@ console.log(true);
       type: 'test',
       key: 'consoleLogTest',
       title: `console.log`,
+      sampleCode: `console.log(1);`,
       instructions: `Use console.log three times to log the numbers 1, 2, and 3.<br><br>
-      
-      In the editor, write:
-
-      console.log(1);
-      
-      Then press CTRL+ENTER<br><br>
+      The editor already has some sample code for you, try pressing CTRL+ENTER<br><br>
 
       Now repeat this for the numbers 2 and 3.
       `,

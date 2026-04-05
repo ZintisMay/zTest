@@ -83,6 +83,7 @@ function serializeGroup(g) {
           `      { type: 'test', key: ${q(item.key)},`,
           `        title: ${bt(item.title)},`,
           `        instructions: ${bt(item.instructions)},`,
+          `        sampleCode: ${bt(item.sampleCode || '')},`,
           `        tests: [\n${tests}\n        ],`,
           `      }`,
         ].join('\n');

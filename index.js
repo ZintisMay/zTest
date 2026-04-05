@@ -202,7 +202,7 @@ window.addEventListener('hashchange', () => {
           renderTests(item, group.help);
           updateProgress();
           const entry = getSaves()[hash] || {};
-          editor.setValue(entry.code || '');
+          editor.setValue(entry.code || item.sampleCode || '');
           if (entry.results) applyTestResults(entry.results);
         }
         return;
@@ -690,13 +690,10 @@ function applyTestResults(data, shouldAdvance = false) {
 function resetQuestion() {
   const hash = window.location.hash;
   if (!hash) return;
-  if (activeItem?.type === 'lesson') {
-    editor.setValue(activeItem.sampleCode || '');
-  } else {
-    editor.setValue('');
-    saveEntry(hash, { code: '', results: null });
-    runCode();
-  }
+  const code = activeItem.sampleCode || '';
+  editor.setValue(code);
+  saveEntry(hash, { code, results: null });
+  runCode();
 }
 
 function clearTerminal() {

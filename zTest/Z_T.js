@@ -571,11 +571,11 @@ function expectConsole() {
         );
       }
     },
-    toHaveLoggedXTimes(x) {
-      if (logs.length < x) {
-        throw new Error(`console.log less than ${x} times`);
-      } else if (logs.length > x) {
-        throw new Error(`console.log more than ${x} times`);
+    toHaveLoggedXTimes(x = 1) {
+      if (logs.length != x) {
+        throw new Error(
+          `console.log was called ${logs.length} times, expected ${x} times`,
+        );
       }
     },
     notToHaveLogged() {

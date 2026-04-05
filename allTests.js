@@ -46,6 +46,7 @@ var sampleCode;`,
       Then press CTRL+ENTER.<br><br>
       
       If you passed the tests, you can press CTRL+SHIFT+ENTER to go to the next panel.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(x).toBeDeclared();
@@ -76,6 +77,7 @@ var sampleCode;`,
       var x = "@";<br><br>
       
       Then press CTRL+SHIFT+ENTER`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(x).toBeDeclared();
@@ -111,6 +113,7 @@ var sampleCode;`,
 
       (Fix this one by putting quotes (") around the "@" character)
       `,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(x).toBeDeclared();
@@ -142,15 +145,11 @@ console.log(true);
       { type: 'test', key: 'consoleLogTest',
         title: `console.log`,
         instructions: `Use console.log three times to log the numbers 1, 2, and 3.<br><br>
-      
-      In the editor, write:
-
-      console.log(1);
-      
-      Then press CTRL+ENTER<br><br>
+      The editor already has some sample code for you, try pressing CTRL+ENTER<br><br>
 
       Now repeat this for the numbers 2 and 3.
       `,
+        sampleCode: `console.log(1);`,
         tests: [
           { description: `console.log is called`, test: () => {
             expectConsole().toHaveLoggedAnything();
@@ -274,6 +273,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varATests',
         title: `var "a"`,
         instructions: `Declare a variable "a" and set it to the number 1`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(a).toBeDeclared();
@@ -292,6 +292,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varBTests',
         title: `var "b"`,
         instructions: `Declare a variable "b" and set it to the number 2.2`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(b).toBeDeclared();
@@ -310,6 +311,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varCTests',
         title: `var "c"`,
         instructions: `Declare a variable "c" and set it to the number 5000`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(c).toBeDeclared();
@@ -328,6 +330,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varDTests',
         title: `var "d"`,
         instructions: `Declare a variable "d" and set it to the number 900000`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(d).toBeDeclared();
@@ -346,6 +349,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varETests',
         title: `var "e"`,
         instructions: `Declare a variable "e" and set it to the number 111222333444`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(e).toBeDeclared();
@@ -364,6 +368,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varIsHavingFunTests',
         title: `var "isHavingFun"`,
         instructions: `Declare a variable "isHavingFun" and set it to the boolean true`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(isHavingFun).toBeDeclared();
@@ -382,6 +387,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varIsDifficultTests',
         title: `var "isDifficult"`,
         instructions: `Declare a variable "isDifficult" and set it to the boolean false`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(isDifficult).toBeDeclared();
@@ -400,6 +406,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varLetterATests',
         title: `var "letterA"`,
         instructions: `Declare a variable "letterA" and set it to the string "a"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(letterA).toBeDeclared();
@@ -418,6 +425,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varWordTests',
         title: `var "word"`,
         instructions: `Declare a variable "word" and set it to the string "banana"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(word).toBeDeclared();
@@ -436,6 +444,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varSentenceTests',
         title: `var "sentence"`,
         instructions: `Declare a variable "sentence" and set it to the string "I ate breakfast."`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(sentence).toBeDeclared();
@@ -454,6 +463,7 @@ console.log(PI);   // This code does not run because of the error!
       { type: 'test', key: 'varParagraphTests',
         title: `var "paragraph"`,
         instructions: `Declare a variable "paragraph" and set it to the string "The code is like magic. I will learn how to use it!"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(paragraph).toBeDeclared();
@@ -524,6 +534,7 @@ console.log(quotient);   // 4`,
       { type: 'test', key: 'plusTests',
         title: `var "g" +`,
         instructions: `Declare a variable "g" and it should be the number equal to 654321 plus 123456`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(g).toBeDeclared();
@@ -545,6 +556,7 @@ console.log(quotient);   // 4`,
       { type: 'test', key: 'minusTests',
         title: `var "h" -`,
         instructions: `Declare a variable "h" and it should be the number equal to 654321 minus 123456`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(h).toBeDeclared();
@@ -566,6 +578,7 @@ console.log(quotient);   // 4`,
       { type: 'test', key: 'multiplyTests',
         title: `var "i" *`,
         instructions: `Declare a variable "i" and it should be the number equal to 654321 times 123456`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(i).toBeDeclared();
@@ -587,6 +600,7 @@ console.log(quotient);   // 4`,
       { type: 'test', key: 'divideTests',
         title: `var "j" /`,
         instructions: `Declare a variable "j" and it should be the number equal to 654321 divided by 123456`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(j).toBeDeclared();
@@ -608,6 +622,7 @@ console.log(quotient);   // 4`,
       { type: 'test', key: 'modulusTests',
         title: `var "k" %`,
         instructions: `Declare a variable "k" and it should be the number equal to 654321 modulus 123456`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(k).toBeDeclared();
@@ -629,6 +644,7 @@ console.log(quotient);   // 4`,
       { type: 'test', key: 'exponentTests',
         title: `var "l" **`,
         instructions: `Declare a variable "l" and it should be the number equal to 2 to the 20th power`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(l).toBeDeclared();
@@ -702,6 +718,7 @@ console.log(numberFive() * numberFive()); // 25`,
       { type: 'test', key: 'returnNumberTests',
         title: `function "returnNumber"`,
         instructions: `Make a function named "returnNumber" that returns a number (any number).`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(returnNumber).toBeDeclared();
@@ -720,6 +737,7 @@ console.log(numberFive() * numberFive()); // 25`,
       { type: 'test', key: 'returnStringTests',
         title: `function "returnString"`,
         instructions: `Make a function named "returnString" that returns a string (any string).`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(returnString).toBeDeclared();
@@ -738,6 +756,7 @@ console.log(numberFive() * numberFive()); // 25`,
       { type: 'test', key: 'returnTrueTests',
         title: `function "returnTrue"`,
         instructions: `Make a function named "returnTrue" that returns the boolean true.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(returnTrue).toBeDeclared();
@@ -759,6 +778,7 @@ console.log(numberFive() * numberFive()); // 25`,
       { type: 'test', key: 'returnFalseTests',
         title: `function "returnFalse"`,
         instructions: `Make a function named "returnFalse" that returns the boolean false.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(returnFalse).toBeDeclared();
@@ -857,6 +877,7 @@ console.log(double(100)); // 200`,
       { type: 'test', key: 'doubleTests',
         title: `function "double"`,
         instructions: `Make a function named "double" that takes one argument, a number. It should return double the number.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(double).toBeDeclared();
@@ -886,6 +907,7 @@ console.log(double(100)); // 200`,
       { type: 'test', key: 'addTests',
         title: `function "add"`,
         instructions: `Make a function named "add" that takes two arguments, both numbers. It should return the sum of those numbers.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(add).toBeDeclared();
@@ -915,6 +937,7 @@ console.log(double(100)); // 200`,
       { type: 'test', key: 'subtractTests',
         title: `function "subtract"`,
         instructions: `Make a function named "subtract" that takes two arguments, both numbers. It should return the first number minus the second.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(subtract).toBeDeclared();
@@ -944,6 +967,7 @@ console.log(double(100)); // 200`,
       { type: 'test', key: 'multiplyTests',
         title: `function "multiply"`,
         instructions: `Make a function named "multiply" that takes two arguments, both numbers. It should return the numbers multiplied together.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(multiply).toBeDeclared();
@@ -976,6 +1000,7 @@ console.log(double(100)); // 200`,
       { type: 'test', key: 'divideTests',
         title: `function "divide"`,
         instructions: `Make a function named "divide" that takes two arguments, both numbers. It should return the first number divided by the second.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(divide).toBeDeclared();
@@ -1008,6 +1033,7 @@ console.log(double(100)); // 200`,
       { type: 'test', key: 'exponentTests',
         title: `function "exponent"`,
         instructions: `Make a function named "exponent" that takes two arguments, both numbers. It should return the first number to the power of the second.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(exponent).toBeDeclared();
@@ -1058,6 +1084,7 @@ Try running the code and changing true to false!`,
       { type: 'test', key: 'writeAnIfStatement',
         title: `Write an if statement`,
         instructions: `Write an if statement with <b>true</b> as the condition. Inside, use console.log() to print "banana".`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
             expectCode().toUseIfStatement();
@@ -1073,6 +1100,7 @@ Try running the code and changing true to false!`,
       { type: 'test', key: 'writeAnIfStatementFalse',
         title: `Write an if statement (false)`,
         instructions: `Write an if statement with <b>false</b> as the condition. Inside, use console.log() to print anything you like. Notice that it doesn't run!`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
             expectCode().toUseIfStatement();
@@ -1099,6 +1127,7 @@ Try running the code and changing true to false!`,
       { type: 'test', key: 'ifTrueWithElse',
         title: `if (true) with else`,
         instructions: `Write an if statement with <b>true</b> as the condition, and an <b>else</b> block. Put a console.log() inside the if block.`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
             expectCode().toUseIfStatement();
@@ -1117,6 +1146,7 @@ Try running the code and changing true to false!`,
       { type: 'test', key: 'ifFalseWithElse',
         title: `if (false) with else`,
         instructions: `Write an if statement with <b>false</b> as the condition, and an <b>else</b> block. Put a console.log() inside the false block only.`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
             expectCode().toUseIfStatement();
@@ -1244,6 +1274,7 @@ if (!NaN) {
       { type: 'test', key: 'isThisValueTrue',
         title: `function isThisValueTrue`,
         instructions: `Make a function named "isThisValueTrue" that takes one argument (of any type). It should return true if the argument is truthy, and false otherwise. Use an if statement.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(isThisValueTrue).toBeDeclared();
@@ -1273,6 +1304,7 @@ if (!NaN) {
       { type: 'test', key: 'makeNumberNegative',
         title: `function makeNumberNegative`,
         instructions: `Make a function named "makeNumberNegative" that takes one argument, a number. If it's negative, just return it. If it's positive, return it as a negative number.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(makeNumberNegative).toBeDeclared();
@@ -1303,6 +1335,7 @@ if (!NaN) {
       { type: 'test', key: 'doYouWantCake',
         title: `function doYouWantCake`,
         instructions: `Make a function named "doYouWantCake" that takes one argument, a boolean. If the boolean is true, return "yes". Otherwise return "no".`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(doYouWantCake).toBeDeclared();
@@ -1444,6 +1477,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'personObject',
         title: `var "person"`,
         instructions: `Declare a variable named "person", an object. Read tests closely for keys and values.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(person).toBeDeclared();
@@ -1494,6 +1528,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'jsClassObject',
         title: `var "jsClass"`,
         instructions: `Declare a variable named "jsClass" an object. Read tests closely for keys and values`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(jsClass).toBeDeclared();
@@ -1532,6 +1567,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'shoppingCartObject',
         title: `var "shoppingCart"`,
         instructions: `Declare a variable named "shoppingCart", an object. Read tests closely for keys and values`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(shoppingCart).toBeDeclared();
@@ -1598,6 +1634,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'emptyArray',
         title: `var "emptyArray"`,
         instructions: `Declare a variable named "emptyArray", an array with no values`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(emptyArray).toBeDeclared();
@@ -1616,6 +1653,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'varSimpleArrayTests',
         title: `var "simpleArray"`,
         instructions: `Declare a variable named "simpleArray", an array whose values are the numbers 1, 2 and 3`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(simpleArray).toBeDeclared();
@@ -1640,6 +1678,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'varFavoriteFoodsTest',
         title: `var "favoriteFoods"`,
         instructions: `Declare a variable named "favoriteFoods", an array whose values are three words (your favorite foods!).`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(favoriteFoods).toBeDeclared();
@@ -1667,6 +1706,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'bigNumbers',
         title: `var "bigNumbers"`,
         instructions: `Declare a variable named "bigNumbers", an array with 3 numbers all greater than 9000.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(bigNumbers).toBeDeclared();
@@ -1694,6 +1734,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'arrayOf10',
         title: `var "arrayOf10"`,
         instructions: `Declare a variable named "arrayOf10", an array of 10 numbers.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(arrayOf10).toBeDeclared();
@@ -1715,6 +1756,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'arrayOfBooleans',
         title: `var "arrayOfBooleans"`,
         instructions: `Declare a variable named "arrayOfBooleans", an array of 5 booleans.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(arrayOfBooleans).toBeDeclared();
@@ -1743,6 +1785,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'makeArrayOfX',
         title: `function "makeArrayOfX"`,
         instructions: `Make a function that takes 2 arguments. First argument is how many. 2nd argument is what will be in the array. Example: makeArrayOfX(4, 'a') returns ['a', 'a', 'a', 'a']`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(makeArrayOfX).toBeDeclared();
@@ -1774,6 +1817,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'reverseArray',
         title: `function "reverseArray"`,
         instructions: `Make a function that takes an array as an argument. It should return the array in reverse order. Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(reverseArray).toBeDeclared();
@@ -1811,6 +1855,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'sortLetters',
         title: `function "sortLetters"`,
         instructions: `Make a function that takes one argument, an array of letters. It should return the array of letters in alphabetical order.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(sortLetters).toBeDeclared();
@@ -1845,6 +1890,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'sortNumbers',
         title: `function "sortNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. It should return the numbers from smallest to biggest.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(sortNumbers).toBeDeclared();
@@ -1877,6 +1923,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'sortByWordLength',
         title: `function "sortByWordLength"`,
         instructions: `Make a function that takes one argument, an array of words. Return the words in an array from shortest to longest.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(sortByWordLength).toBeDeclared();
@@ -1919,6 +1966,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'makeXAsterisks',
         title: `function "makeXAsterisks"`,
         instructions: `Make a function that takes one argument, a number. It should return a string with that many asterisks. Example: makeXAsterisks(5) returns "*****"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(makeXAsterisks).toBeDeclared();
@@ -1945,6 +1993,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'allNumbersUpToX',
         title: `function "allNumbersUpToX"`,
         instructions: `Make a function that takes one argument, a number. It should return an array of every number up to that number, starting at 1. Example: allNumbersUpToX(5) returns [1,2,3,4,5]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(allNumbersUpToX).toBeDeclared();
@@ -1976,6 +2025,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'makeStringWithXLetterY',
         title: `function "makeStringWithXLetterY"`,
         instructions: `Make a function that takes two arguments, a number and a character. It should return a string with X copies of Y. Example: makeStringWithXLetterY(4, "b") returns "bbbb"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(makeStringWithXLetterY).toBeDeclared();
@@ -2004,6 +2054,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'reverseWord',
         title: `function "reverseWord"`,
         instructions: `Make a function that takes one argument, a string. It should return the string in reverse order. Example: reverseWord("cat") returns "tac"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(reverseWord).toBeDeclared();
@@ -2030,6 +2081,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeVowels',
         title: `function "removeVowels"`,
         instructions: `Make a function that takes one argument, a string. It should return a string with the vowels removed. Example: removeVowels('opportunity') returns 'pprtnty'`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeVowels).toBeDeclared();
@@ -2058,6 +2110,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeConsonants',
         title: `function "removeConsonants"`,
         instructions: `Make a function that takes one argument, a string. It should return a string with the consonants removed. Example: removeConsonants('opportunity') returns 'oouiy'`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeConsonants).toBeDeclared();
@@ -2086,6 +2139,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeWordsOfLengthXPlus',
         title: `function "removeWordsOfLengthXPlus"`,
         instructions: `Make a function that takes two arguments, an array of strings and a number. Remove any string as long or longer than the number. Example: removeWordsOfLengthXPlus(["homeland","cat","drop"], 5) returns ["cat","drop"]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeWordsOfLengthXPlus).toBeDeclared();
@@ -2136,6 +2190,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'calculateAverage',
         title: `function "calculateAverage"`,
         instructions: `Make a function that takes one argument, an array of numbers. It should return the average of all numbers. Example: calculateAverage([2, 4, 6, 8, 10]) returns 6`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(calculateAverage).toBeDeclared();
@@ -2169,6 +2224,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'arrayValuesPlusOne',
         title: `function "arrayValuesPlusOne"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to add one to each number and return the resulting array. Example: arrayValuesPlusOne([1, 3, 5]) returns [2, 4, 6]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(arrayValuesPlusOne).toBeDeclared();
@@ -2207,6 +2263,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'doubleArrayValues',
         title: `function "doubleArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to double all the values and return an array. Example: doubleArrayValues([2, 5, 11]) returns [4, 10, 22]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(doubleArrayValues).toBeDeclared();
@@ -2248,6 +2305,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'halveArrayValues',
         title: `function "halveArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to divide each item by 2 and return the resulting array. Example: [1, 2, 3, 4, 5] returns [.5, 1, 1.5, 2, 2.5]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(halveArrayValues).toBeDeclared();
@@ -2291,6 +2349,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'squareArrayValues',
         title: `function "squareArrayValues"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to square each number and return it. Example: squareArrayValues([10,8]) returns [100, 64]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(squareArrayValues).toBeDeclared();
@@ -2332,6 +2391,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'onlyFirstLetterOfWords',
         title: `function "onlyFirstLetterOfWords"`,
         instructions: `Make a function that takes one argument, an array of strings. Use "array.map" to return an array of the first letters of each string. Example: onlyFirstLetterOfWords(['cat','dog']) returns ['c','d']`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(onlyFirstLetterOfWords).toBeDeclared();
@@ -2377,6 +2437,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'onlyLastLetterOfWords',
         title: `function "onlyLastLetterOfWords"`,
         instructions: `Make a function that takes one argument, an array of strings. Use "array.map" to return an array of the last letter of each string. Example: onlyLastLetterOfWords(["cat","dog"]) returns ["t","g"]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(onlyLastLetterOfWords).toBeDeclared();
@@ -2428,6 +2489,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeOddNumbers',
         title: `function "removeOddNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" and return an array with no odd numbers. Example: removeOddNumbers([1,2,3,4]) returns [2,4]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeOddNumbers).toBeDeclared();
@@ -2470,6 +2532,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeEvenNumbers',
         title: `function "removeEvenNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" and return an array with no even numbers. Example: removeEvenNumbers([1,2,3,4]) returns [1,3]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeEvenNumbers).toBeDeclared();
@@ -2514,6 +2577,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeNumbersLessThan3',
         title: `function "removeNumbersLessThan3"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" to remove numbers less than 3. Example: removeNumbersLessThan3([1,2,3,4]) returns [3,4]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeNumbersLessThan3).toBeDeclared();
@@ -2563,6 +2627,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeNumbersLessThanX',
         title: `function "removeNumbersLessThanX"`,
         instructions: `Make a function that takes two arguments, an array of numbers and a number. Call "array.filter" to remove numbers less than the 2nd argument. Example: removeNumbersLessThanX([1,2,3,4,5],3) returns [3,4,5]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeNumbersLessThanX).toBeDeclared();
@@ -2613,6 +2678,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeEmptyStrings',
         title: `function "removeEmptyStrings"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove any empty strings. Example: removeEmptyStrings(["","Phone","Josh"]) returns ["Phone","Josh"]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeEmptyStrings).toBeDeclared();
@@ -2661,6 +2727,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeVowelsFromArray',
         title: `function "removeVowelsFromArray"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove all strings that are a vowel. Example: removeVowelsFromArray(["a","b","c","d","e"]) returns ["b","c","d"]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeVowelsFromArray).toBeDeclared();
@@ -2714,6 +2781,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeConsonantsInArray',
         title: `function "removeConsonantsInArray"`,
         instructions: `Make a function that takes one argument, an array of strings. Call "array.filter" and remove all strings that are a consonant. Example: removeConsonantsInArray(["a","b","c","d","e"]) returns ["a","e"]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeConsonantsInArray).toBeDeclared();
@@ -2764,6 +2832,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'removeWordFromArray',
         title: `function "removeWordFromArray"`,
         instructions: `Make a function that takes two arguments, an array of strings and a word. Call "array.filter" to remove all strings that match the word. Example: removeWordFromArray(["cat","dog","fish"],"fish") returns ["cat","dog"]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(removeWordFromArray).toBeDeclared();
@@ -2821,6 +2890,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'countUpTests',
         title: `function "countUp"`,
         instructions: `Make a function named "countUp" that takes one argument, a number. Using a while loop, return an array of numbers counting up from 1 to that number. Example: countUp(5) returns [1, 2, 3, 4, 5]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(countUp).toBeDeclared();
@@ -2854,6 +2924,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'countDownTests',
         title: `function "countDown"`,
         instructions: `Make a function named "countDown" that takes one argument, a number. Using a while loop, return an array of numbers counting down from that number to 1. Example: countDown(5) returns [5, 4, 3, 2, 1]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(countDown).toBeDeclared();
@@ -2887,6 +2958,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'sumWhileTests',
         title: `function "sumWhile"`,
         instructions: `Make a function named "sumWhile" that takes one argument, a number. Using a while loop, return the sum of all numbers from 1 up to and including that number. Example: sumWhile(5) returns 15 (because 1+2+3+4+5 = 15)`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(sumWhile).toBeDeclared();
@@ -2921,6 +2993,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'repeatStringTests',
         title: `function "repeatString"`,
         instructions: `Make a function named "repeatString" that takes two arguments: a string and a number. Using a while loop, return the string repeated that many times. Example: repeatString("ha", 3) returns "hahaha"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(repeatString).toBeDeclared();
@@ -2955,6 +3028,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'firstOverTests',
         title: `function "firstOver"`,
         instructions: `Make a function named "firstOver" that takes two arguments: an array of numbers and a threshold number. Using a while loop, return the first number in the array that is greater than the threshold. If no number exceeds the threshold, return null. Example: firstOver([1, 5, 3, 8], 4) returns 5`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(firstOver).toBeDeclared();
@@ -2993,6 +3067,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'countToNTests',
         title: `function "countToN"`,
         instructions: `Make a function named "countToN" that takes one argument, a number. Using a for loop, return an array of numbers from 1 up to and including that number. Example: countToN(4) returns [1, 2, 3, 4]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(countToN).toBeDeclared();
@@ -3023,6 +3098,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'sumArrayTests',
         title: `function "sumArray"`,
         instructions: `Make a function named "sumArray" that takes one argument, an array of numbers. Using a for loop, return the sum of all numbers in the array. Example: sumArray([1, 2, 3]) returns 6`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(sumArray).toBeDeclared();
@@ -3054,6 +3130,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'doubleAllTests',
         title: `function "doubleAll"`,
         instructions: `Make a function named "doubleAll" that takes one argument, an array of numbers. Using a for loop, return a new array where every number has been doubled. Example: doubleAll([1, 2, 3]) returns [2, 4, 6]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(doubleAll).toBeDeclared();
@@ -3085,6 +3162,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'findMaxTests',
         title: `function "findMax"`,
         instructions: `Make a function named "findMax" that takes one argument, an array of numbers. Using a for loop, return the largest number in the array. Example: findMax([3, 1, 7, 2]) returns 7`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(findMax).toBeDeclared();
@@ -3116,6 +3194,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'joinWordsTests',
         title: `function "joinWords"`,
         instructions: `Make a function named "joinWords" that takes one argument, an array of strings. Using a for loop, return a single string with all words joined by a space. Example: joinWords(["hello", "world"]) returns "hello world"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(joinWords).toBeDeclared();
@@ -3155,6 +3234,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'getCharsTests',
         title: `function "getChars"`,
         instructions: `Make a function named "getChars" that takes one argument, a string. Using a for...of loop, return an array containing each character of the string. Example: getChars("hi") returns ["h", "i"]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(getChars).toBeDeclared();
@@ -3182,6 +3262,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'shoutTests',
         title: `function "shout"`,
         instructions: `Make a function named "shout" that takes one argument, a string. Using a for...of loop, return an array of each character uppercased. Example: shout("hi") returns ["H", "I"]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(shout).toBeDeclared();
@@ -3209,6 +3290,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'totalTests',
         title: `function "total"`,
         instructions: `Make a function named "total" that takes one argument, an array of numbers. Using a for...of loop, return the sum of all the numbers. Example: total([1, 2, 3]) returns 6`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(total).toBeDeclared();
@@ -3237,6 +3319,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'addOneTests',
         title: `function "addOne"`,
         instructions: `Make a function named "addOne" that takes one argument, an array of numbers. Using a for...of loop, return a new array with 1 added to each number. Example: addOne([1, 2, 3]) returns [2, 3, 4]`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(addOne).toBeDeclared();
@@ -3264,6 +3347,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'makeStringTests',
         title: `function "makeString"`,
         instructions: `Make a function named "makeString" that takes one argument, an array of strings. Using a for...of loop, return a single string with all items concatenated together. Example: makeString(["hello", " ", "world"]) returns "hello world"`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
               expect(makeString).toBeDeclared();
@@ -3298,6 +3382,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'ifTrueTests',
         title: `if (true)`,
         instructions: `Write an if statement with the condition "true". Inside it, console.log the string "it's true".`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
@@ -3310,6 +3395,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'ifFalseTests',
         title: `if (false)`,
         instructions: `Write an if statement with the condition "false". Inside it, console.log the string "you shouldn't see this". Nothing should appear in the terminal.`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
@@ -3328,6 +3414,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'ifNotFalseTests',
         title: `if NOT (false)`,
         instructions: `Write an if statement with the condition "!false". Inside it, console.log the string "you should see this!".`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
@@ -3349,6 +3436,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'numberComparisonTests',
         title: `number comparison`,
         instructions: `Write if (5 > 3) and inside it console.log the string "five is greater than three".`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
@@ -3364,6 +3452,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'variableComparisonTests',
         title: `variable comparison`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 3. Write if (a > b) and inside it console.log the string "five is greater than three".`,
+        sampleCode: ``,
         tests: [
           { description: `"a" is 5`, test: () => {
               expect(a).toBe(5);
@@ -3391,6 +3480,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'equalsComparisonTests',
         title: `equals ==`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 5. Write if (a == b) and inside it console.log the string "a and b are equal".`,
+        sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
               expectCode().toUseIfStatement();
@@ -3418,6 +3508,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'notEqualsComparisonTests',
         title: `not equals !=`,
         instructions: `Declare a variable "a" set to 5 and a variable "b" set to 3. Write if (a != b) and inside it console.log the string "a and b are not equal".`,
+        sampleCode: ``,
         tests: [
           { description: `"a" is 5`, test: () => {
               expect(a).toBe(5);
@@ -3452,6 +3543,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'stringPlusStringTests',
         title: `string + string`,
         instructions: `Declare variables a, b, and c. a is "camp", b is "fire", and c is a and b together using the "+" operator.`,
+        sampleCode: ``,
         tests: [
           { description: `a is declared`, test: () => {
             expect(a).toBeDeclared();
@@ -3488,6 +3580,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'stringPlusNumberTests',
         title: `string + number`,
         instructions: `Declare a variable "message" by joining the string "I am " and the number 25 using the + operator.`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(message).toBeDeclared();
@@ -3506,6 +3599,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'templateLiteralBasicTests',
         title: `template literal`,
         instructions: `Declare a variable "phrase" using a template literal (backtick string) containing the text "hello world".`,
+        sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
             expect(phrase).toBeDeclared();
@@ -3524,6 +3618,7 @@ console.log(result);         // NaN`,
       { type: 'test', key: 'templateLiteralInterpolationTests',
         title: `template literal with interpolation`,
         instructions: `Declare a variable "greeting" set to "Hello". Then declare a variable "myFriend" set to "Beth". Declare a variable "greeting", using a template literal that interpolates "greeting" and "myFriend" to produce "Hello Beth!". (i.e. \`\${greeting} \${myFriend}\`))`,
+        sampleCode: ``,
         tests: [
           { description: `"greeting" is declared`, test: () => {
             expect(greeting).toBeDeclared();
