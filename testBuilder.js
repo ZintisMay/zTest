@@ -37,6 +37,18 @@ function buildTests() {
     .sort((t1, t2) => getNumFromTestName(t1) - getNumFromTestName(t2));
   // Get all data into array
   const groups = files.map((f) => require('./testSource/' + f));
+  // Check for duplicate keys within each group
+  groups.forEach((group) => {
+    const seen = {};
+    (group.items || []).forEach((item) => {
+      if (seen[item.key]) {
+        console.warn(
+          `WARNING: duplicate key "${item.key}" in group "${group.id}" (${group.title})`,
+        );
+      }
+      seen[item.key] = true;
+    });
+  });
   // Combine
   const content = groups.map(serializeGroup).join(',\n');
   const output = `const allTests = [\n${content}\n];\n\nif (typeof module !== 'undefined') module.exports = allTests;\n`;
@@ -48,6 +60,19 @@ function buildTests() {
 function watchTests() {
   console.log('Watching ./testSource for changes...');
   buildTests();
+  const groups = fs
+    .readdirSync('./testSource')
+    .filter((f) => f.endsWith('.js'))
+    .sort((t1, t2) => getNumFromTestName(t1) - getNumFromTestName(t2))
+    .map((f) => require('./testSource/' + f));
+  groups.forEach((group) => {
+    console.log(`\n  ${group.id}: ${group.title}`);
+    (group.items || []).forEach((item) => {
+      const testIndent = item.type === 'test' ? '  ' : '';
+      console.log(`    ${testIndent}[${item.type}] ${item.title}`);
+    });
+  });
+  console.log('');
   fs.watch('./testSource', (eventType, filename) => {
     if (!filename?.endsWith('.js')) return;
     console.log(`${filename} changed — rebuilding...`);

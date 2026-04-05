@@ -170,7 +170,7 @@ Try running the code and changing true to false!`,
     },
     {
       type: 'lesson',
-      key: 'lesson-0b',
+      key: 'lesson-0c',
       title: 'The ! Operator',
       text: `The <b>!</b> operator means <b>not</b>. It flips a truthy value to false, and a falsy value to true.<br><br>
 

@@ -173,7 +173,7 @@ var sampleCode;`,
     },
     {
       type: 'lesson',
-      key: 'lesson-0',
+      key: 'lesson-consolelog',
       title: 'console.log()',
       text: `You're going to see a lot of console.log(), and when writing code, you'll use this to peek at values.<br><br>
 console.log("Hi there") outputs it into the "terminal".<br><br>

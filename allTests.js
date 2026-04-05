@@ -129,7 +129,7 @@ var sampleCode;`,
           } }
         ],
       },
-      { type: 'lesson', key: 'lesson-0',
+      { type: 'lesson', key: 'lesson-consolelog',
         title: 'console.log()',
         text: `You're going to see a lot of console.log(), and when writing code, you'll use this to peek at values.<br><br>
 console.log("Hi there") outputs it into the "terminal".<br><br>
@@ -662,6 +662,45 @@ console.log(quotient);   // 4`,
             expect(l).toBe(2 ** 20);
           } }
         ],
+      },
+      { type: 'lesson', key: 'lesson-3',
+        title: 'String Concatenation',
+        text: `So there operators are all for math, BUT they also have some other uses.<br><br>
+      
+      The most common one would be the "+" operator, which ALSO lets you put strings together.<br><br>
+      
+      Try running the code on the right, take a look at the output.<br><br>
+      
+      Also notice there is a space being added.<br><br>
+      
+      (This works with strings but ONLY STRINGS... if you try using "+" with other data types it'll have an unexpected result...)`,
+        sampleCode: `var name1 = "Hudson";
+var name2 = "Carter";
+console.log(name1 + " " + name2);
+console.log(name2 + " " + name1);`,
+      },
+      { type: 'test', key: 'concatenationTest',
+        title: `String Concatenation`,
+        instructions: `There are two variables already declared. Please use "+" to put them together into variable c as "campfire".`,
+        sampleCode: `var a = "camp";
+var b = "fire";`,
+        tests: [
+          { description: `a is "camp"`, test: () => {
+            expect(a).toBe('camp');
+          } },
+          { description: `b is "fire"`, test: () => {
+            expect(b).toBe('fire');
+          } },
+          { description: `c is declared`, test: () => {
+            expect(c).toBeDeclared();
+          } },
+          { description: `code uses +`, test: () => {
+            expectCode().toContain('+');
+          } },
+          { description: `c is campfire`, test: () => {
+            expect(c).toBe('campfire');
+          } }
+        ],
       }
     ],
   },
@@ -1183,7 +1222,7 @@ Try running the code and changing true to false!`,
   console.log("You failed.");
 }`,
       },
-      { type: 'lesson', key: 'lesson-0b',
+      { type: 'lesson', key: 'lesson-0c',
         title: 'The ! Operator',
         text: `The <b>!</b> operator means <b>not</b>. It flips a truthy value to false, and a falsy value to true.<br><br>
 
