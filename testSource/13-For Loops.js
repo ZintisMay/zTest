@@ -3,6 +3,40 @@ const test =   {
     title: 'For Loops',
     help: 'https://www.w3schools.com/js/js_loop_for.asp',
     items: [
+    {
+      type: 'lesson',
+      key: 'lesson-for-loops',
+      title: 'For Loops & Arrays',
+      text: `You've seen for loops before, but they're especially powerful when combined with arrays.<br><br>
+
+Using the array's <b>length</b> as the stop condition, you can loop over every item:<br><br>
+
+<b>for (var i = 0; i &lt; array.length; i++)</b><br><br>
+
+Inside the loop, <b>array[i]</b> gives you the current item. You can read it, transform it, or use it to build up a result.<br><br>
+
+Common patterns:<br>
+— <b>accumulate</b>: start with 0 or "", add to it each loop<br>
+— <b>collect</b>: start with [], push items each loop<br>
+— <b>track</b>: start with a value, update it each loop (e.g. finding the max)<br><br>
+
+Try running the code!`,
+      sampleCode: `var numbers = [10, 3, 7, 2, 8];
+
+// Accumulate — sum all numbers
+var sum = 0;
+for (var i = 0; i < numbers.length; i++) {
+  sum += numbers[i];
+}
+console.log(sum); // 30
+
+// Collect — build a new array
+var doubled = [];
+for (var i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2);
+}
+console.log(doubled); // [20, 6, 14, 4, 16]`,
+    },
       { type: 'test', key: 'countToNTests',
         title: `function "countToN"`,
         instructions: `Make a function named "countToN" that takes one argument, a number. Using a for loop, return an array of numbers from 1 up to and including that number. Example: countToN(4) returns [1, 2, 3, 4]`,

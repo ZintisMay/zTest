@@ -3,6 +3,35 @@ const test =   {
     title: 'For...Of Loops',
     help: 'https://www.w3schools.com/js/js_loop_forof.asp',
     items: [
+    {
+      type: 'lesson',
+      key: 'lesson-for-of',
+      title: 'For...Of Loops',
+      text: `A <b>for...of</b> loop is a cleaner way to loop over arrays and strings.<br><br>
+
+Instead of tracking an index with <b>i</b>, you get each item directly:<br><br>
+
+<b>for (var item of array)</b><br><br>
+
+This is simpler than a regular for loop when you don't need the index — you just care about the values.<br><br>
+
+It works on strings too — each iteration gives you one character.<br><br>
+
+Try running the code!`,
+      sampleCode: `var fruits = ["apple", "banana", "cherry"];
+
+for (var fruit of fruits) {
+  console.log(fruit);
+}
+// "apple"
+// "banana"
+// "cherry"
+
+// Also works on strings
+for (var char of "hello") {
+  console.log(char);
+}`,
+    },
       { type: 'test', key: 'getCharsTests',
         title: `function "getChars"`,
         instructions: `Make a function named "getChars" that takes one argument, a string. Using a for...of loop, return an array containing each character of the string. Example: getChars("hi") returns ["h", "i"]`,

@@ -3,6 +3,31 @@ const test =   {
     title: 'Array.filter',
     help: 'https://www.w3schools.com/jsref/jsref_filter.asp',
     items: [
+    {
+      type: 'lesson',
+      key: 'lesson-filter',
+      title: 'Array.filter()',
+      text: `<b>array.filter()</b> returns a <b>new array</b> containing only the items that pass a test.<br><br>
+
+You pass it a function that takes each item and returns <b>true</b> (keep it) or <b>false</b> (remove it).<br><br>
+
+The original array is <b>not modified</b>. The new array may be shorter — or even empty if nothing passes.<br><br>
+
+Think of it like a sieve — only what fits through stays.<br><br>
+
+Try running the code!`,
+      sampleCode: `var numbers = [1, 2, 3, 4, 5, 6];
+
+// Keep only even numbers
+var evens = numbers.filter((num) => num % 2 === 0);
+console.log(evens);   // [2, 4, 6]
+console.log(numbers); // [1, 2, 3, 4, 5, 6] — unchanged
+
+// Keep only words longer than 3 letters
+var words = ["cat", "elephant", "dog", "rhinoceros"];
+var longWords = words.filter((word) => word.length > 3);
+console.log(longWords); // ["elephant", "rhinoceros"]`,
+    },
       { type: 'test', key: 'removeOddNumbers',
         title: `function "removeOddNumbers"`,
         instructions: `Make a function that takes one argument, an array of numbers. Call "array.filter" and return an array with no odd numbers. Example: removeOddNumbers([1,2,3,4]) returns [2,4]`,

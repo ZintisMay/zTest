@@ -8,16 +8,16 @@ Lessons | Review
 [X]      [ ]      4-Function Parameters.js
 [X]      [ ]      5-Functions with Logic.js
 [X]      [ ]      6-Objects.js
-[ ]      [ ]      7-Arrays.js
-[ ]      [ ]      8-Array Methods.js
-[ ]      [ ]      9-Loops & Strings.js
-[ ]      [ ]      10-Array.map.js
-[ ]      [ ]      11-Array.filter.js
-[ ]      [ ]      12-While Loops.js
-[ ]      [ ]      13-For Loops.js
-[ ]      [ ]      14-For...Of Loops.js
-[ ]      [ ]      15-If Statements.js
-[ ]      [ ]      16-String Concatenation.js
+[X]      [ ]      7-Arrays.js
+[X]      [ ]      8-Array Methods.js
+[X]      [ ]      9-Loops & Strings.js
+[X]      [ ]      10-Array.map.js
+[X]      [ ]      11-Array.filter.js
+[X]      [ ]      12-While Loops.js
+[X]      [ ]      13-For Loops.js
+[X]      [ ]      14-For...Of Loops.js
+[X]      [ ]      15-If Statements.js
+[X]      [ ]      16-String Concatenation.js
 
 
 == LOW EFFORT ==

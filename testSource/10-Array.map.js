@@ -3,6 +3,52 @@ const test =   {
     title: 'Array.map',
     help: 'https://www.w3schools.com/jsref/jsref_map.asp',
     items: [
+    {
+      type: 'lesson',
+      key: 'lesson-map',
+      title: 'Array.map()',
+      text: `<b>array.map()</b> transforms every item in an array and returns a <b>new array</b> of the same length.<br><br>
+
+You pass it a function, and that function runs once for each item. Whatever the function returns becomes the new value at that position.<br><br>
+
+The original array is <b>not modified</b>.<br><br>
+
+The function receives each item as its argument — you can name it anything.<br><br>
+
+Try running the code!`,
+      sampleCode: `var numbers = [1, 2, 3, 4, 5];
+
+var doubled = numbers.map(function(num) {
+  return num * 2;
+});
+
+console.log(doubled);  // [2, 4, 6, 8, 10]
+console.log(numbers);  // [1, 2, 3, 4, 5] — unchanged`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-map-arrow',
+      title: 'map() with Arrow Functions',
+      text: `You'll often see <b>map()</b> written with an <b>arrow function</b> — it's shorter and very common.<br><br>
+
+An arrow function looks like: <b>(item) => item * 2</b><br><br>
+
+If the function only returns one expression, you can skip the curly braces and the <b>return</b> keyword — the value is returned automatically.<br><br>
+
+Both styles do the same thing. The tests in this section require you to use <b>array.map()</b> specifically.<br><br>
+
+Try running the code!`,
+      sampleCode: `var numbers = [1, 2, 3, 4, 5];
+
+// Arrow function with map
+var doubled = numbers.map((num) => num * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// Also works on strings
+var words = ["cat", "dog", "bird"];
+var firstLetters = words.map((word) => word[0]);
+console.log(firstLetters); // ["c", "d", "b"]`,
+    },
       { type: 'test', key: 'arrayValuesPlusOne',
         title: `function "arrayValuesPlusOne"`,
         instructions: `Make a function that takes one argument, an array of numbers. Use "array.map" to add one to each number and return the resulting array. Example: arrayValuesPlusOne([1, 3, 5]) returns [2, 4, 6]`,

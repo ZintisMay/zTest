@@ -3,6 +3,50 @@ const test =   {
     title: 'Loops & Strings',
     help: 'https://www.w3schools.com/js/js_loops.asp',
     items: [
+    {
+      type: 'lesson',
+      key: 'lesson-for-loop',
+      title: 'For Loops',
+      text: `A <b>for loop</b> repeats a block of code a set number of times.<br><br>
+
+It has three parts:<br>
+<b>var i = 0</b> — start value<br>
+<b>i &lt; 5</b> — keep going while this is true<br>
+<b>i++</b> — what to do after each loop (i++ means add 1)<br><br>
+
+<b>i</b> is just a variable name — it's short for "index" and is the convention, but you can name it anything.<br><br>
+
+Try running the code!`,
+      sampleCode: `for (var i = 0; i < 5; i++) {
+  console.log(i); // 0, 1, 2, 3, 4
+}`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-loops-strings',
+      title: 'Loops & Strings',
+      text: `Loops are great for building strings character by character, or for iterating over each character in a string.<br><br>
+
+You can loop over a string's characters using its index, just like an array. <b>str[0]</b> is the first character, <b>str[1]</b> is the second, and so on.<br><br>
+
+<b>str.length</b> gives you the number of characters, so you can use it as the loop's stop condition.<br><br>
+
+You can also build up a string by starting with an empty string and adding to it with <b>+=</b> inside the loop.<br><br>
+
+Try running the code!`,
+      sampleCode: `// Loop over a string's characters
+var word = "hello";
+for (var i = 0; i < word.length; i++) {
+  console.log(word[i]);
+}
+
+// Build a string with a loop
+var result = "";
+for (var i = 0; i < 5; i++) {
+  result += "*";
+}
+console.log(result); // "*****"`,
+    },
       { type: 'test', key: 'makeXAsterisks',
         title: `function "makeXAsterisks"`,
         instructions: `Make a function that takes one argument, a number. It should return a string with that many asterisks. Example: makeXAsterisks(5) returns "*****"`,

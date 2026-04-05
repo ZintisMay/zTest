@@ -3,6 +3,31 @@ const test =   {
     title: 'While Loops',
     help: 'https://www.w3schools.com/js/js_loop_while.asp',
     items: [
+    {
+      type: 'lesson',
+      key: 'lesson-while',
+      title: 'While Loops',
+      text: `A <b>while loop</b> keeps running as long as a condition is true.<br><br>
+
+Unlike a for loop where you know how many times it will run, a while loop is useful when you don't know in advance — you just keep going until something changes.<br><br>
+
+<b>Important:</b> you must change something inside the loop that will eventually make the condition false, otherwise you'll have an <b>infinite loop</b> that freezes the page!<br><br>
+
+Try running the code!`,
+      sampleCode: `var i = 1;
+
+while (i <= 5) {
+  console.log(i);
+  i++; // without this, the loop runs forever!
+}
+
+// While loops are great when you don't know how many steps you need
+var num = 100;
+while (num > 1) {
+  num = Math.floor(num / 2);
+  console.log(num);
+}`,
+    },
       { type: 'test', key: 'countUpTests',
         title: `function "countUp"`,
         instructions: `Make a function named "countUp" that takes one argument, a number. Using a while loop, return an array of numbers counting up from 1 to that number. Example: countUp(5) returns [1, 2, 3, 4, 5]`,

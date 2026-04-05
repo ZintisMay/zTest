@@ -3,6 +3,39 @@ const test =   {
     title: 'If Statements',
     help: 'https://www.w3schools.com/js/js_if_else.asp',
     items: [
+    {
+      type: 'lesson',
+      key: 'lesson-if-statements',
+      title: 'If Statements',
+      text: `An <b>if statement</b> runs a block of code only if a condition is true.<br><br>
+
+The condition goes inside the parentheses. If it evaluates to <b>true</b>, the code inside the curly braces runs. If it's <b>false</b>, it's skipped.<br><br>
+
+You can compare values using operators:<br>
+<b>==</b> equal to<br>
+<b>!=</b> not equal to<br>
+<b>&gt;</b> greater than<br>
+<b>&lt;</b> less than<br>
+<b>&gt;=</b> greater than or equal to<br>
+<b>&lt;=</b> less than or equal to<br><br>
+
+You can also use <b>!</b> (NOT) to flip a condition — <b>!true</b> is false, <b>!false</b> is true.<br><br>
+
+Try running the code!`,
+      sampleCode: `var age = 20;
+
+if (age >= 18) {
+  console.log("you are an adult");
+}
+
+if (age < 18) {
+  console.log("you are not an adult");
+}
+
+if (!false) {
+  console.log("not false is true!");
+}`,
+    },
       { type: 'test', key: 'ifTrueTests',
         title: `if (true)`,
         instructions: `Write an if statement with the condition "true". Inside it, console.log the string "it's true".`,

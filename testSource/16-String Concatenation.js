@@ -4,6 +4,35 @@ const test = {
   help: 'https://www.w3schools.com/js/js_string_methods.asp',
   items: [
     {
+      type: 'lesson',
+      key: 'lesson-concatenation',
+      title: 'String Concatenation',
+      text: `<b>String concatenation</b> is joining strings together to make a new string.<br><br>
+
+The simplest way is with the <b>+</b> operator — the same one used for adding numbers. When used with strings, it joins them instead.<br><br>
+
+You can also join a string and a number — JavaScript will convert the number to a string automatically.<br><br>
+
+The second way is with <b>template literals</b> — strings wrapped in backticks (<b>\`\`</b>) instead of quotes. Inside them you can embed any expression using <b>\${}</b>. This is often cleaner than using +.<br><br>
+
+Try running the code!`,
+      sampleCode: `var first = "camp";
+var second = "fire";
+
+// Using +
+var word = first + second;
+console.log(word); // "campfire"
+
+// Joining a string and a number
+var message = "I am " + 25;
+console.log(message); // "I am 25"
+
+// Template literal with interpolation
+var name = "Beth";
+var greeting = \`Hello \${name}!\`;
+console.log(greeting); // "Hello Beth!"`,
+    },
+    {
       type: 'test',
       key: 'stringPlusStringTests',
       title: `string + string`,
