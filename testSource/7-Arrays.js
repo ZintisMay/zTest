@@ -267,7 +267,7 @@ console.log(fruits);`,
       title: 'Indexes',
       text: `Each item in an array has a position called an <b>index</b>.<br><br>
 
-Arrays are <b>zero-indexed</b> — the first item is at index <b>0</b>, the second at index <b>1</b>, and so on.<br><br>
+Arrays are <b>zero-indexed</b> so the first item is at index <b>0</b>, the second at index <b>1</b>, and so on.<br><br>
 
 You access items using square brackets: <b>array[index]</b><br><br>
 

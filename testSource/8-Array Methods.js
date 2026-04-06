@@ -15,10 +15,14 @@ Some methods <b>modify</b> the original array. Others <b>return a new array</b> 
 
 Here are a few common ones:<br><br>
 
-<b>push()</b> — adds an item to the end<br>
-<b>pop()</b> — removes the last item<br>
-<b>reverse()</b> — reverses the order<br>
-<b>sort()</b> — sorts the items<br><br>
+<ul>
+<li><b>push()</b> - adds an item to the end<br></li>
+<li><b>pop()</b> - removes the last item (and returns it to you)<br></li>
+<li><b>reverse()</b> - reverses the order<br></li>
+<li><b>sort()</b> - sorts the items<br><br></li>
+</ul>
+
+There are more, but lets start with these.<br><br>
 
 Try running the code!`,
       sampleCode: `var fruits = ["apple", "banana", "cherry"];
@@ -26,81 +30,62 @@ Try running the code!`,
 fruits.push("mango");
 console.log(fruits); // ["apple", "banana", "cherry", "mango"]
 
-fruits.pop();
+let oneFruit = fruits.pop(); // Pulls out the last item
+console.log(oneFruit); // mango
+console.log(fruits); // ["apple", "banana", "cherry"]
+
+fruits.reverse(); // Flips the order
+console.log(fruits); // ["cherry", "banana", "apple"]
+
+fruits.sort(); // By default this alphabetizes them
 console.log(fruits); // ["apple", "banana", "cherry"]`,
     },
-    {
-      type: 'lesson',
-      key: 'lesson-sort',
-      title: 'Sorting Arrays',
-      text: `<b>sort()</b> sorts an array alphabetically by default — which works great for strings, but not for numbers.<br><br>
 
-<b>Why doesn't sort() work for numbers by default?</b><br>
-It converts numbers to strings first, so 10 comes before 2 (because "1" comes before "2" alphabetically).<br><br>
-
-To sort numbers correctly, pass a <b>compare function</b> to sort():<br><br>
-
-<b>array.sort((a, b) => a - b)</b> — sorts smallest to biggest<br>
-<b>array.sort((a, b) => b - a)</b> — sorts biggest to smallest<br><br>
-
-The compare function returns a negative, zero, or positive number to tell sort() which item comes first.<br><br>
-
-Try running the code and see the difference!`,
-      sampleCode: `var letters = ["banana", "apple", "cherry"];
-console.log(letters.sort()); // ["apple", "banana", "cherry"]
-
-var numbers = [10, 2, 30, 5];
-console.log(numbers.sort());           // wrong: [10, 2, 30, 5]
-console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
-    },
     {
       type: 'test',
-      key: 'makeArrayOfX',
-      title: `function "makeArrayOfX"`,
-      instructions: `Make a function that takes 2 arguments. First argument is how many. 2nd argument is what will be in the array. Example: makeArrayOfX(4, 'a') returns ['a', 'a', 'a', 'a']`,
+      key: 'add3ToArray',
+      title: `function "add3ToArray"`,
+      instructions: `Create a function called add3ToArray, and inside use push() to add "ho" to the array, three times. Then return the array.<br><br>`,
+      sampleCode: `// Don't need to touch this!
+var arr = ["santa", "says"];
+
+function add3ToArray(arr, str){
+  // Write your code in here!
+}`,
       tests: [
         {
-          description: `is declared`,
+          description: `arr is ["santa", "says"] (reset if red)`,
           test: () => {
-            expect(makeArrayOfX).toBeDeclared();
+            expect(arr).toBe(['santa', 'says']);
           },
         },
         {
-          description: `is a function`,
+          description: `add3ToArray is a function (reset if red)`,
           test: () => {
-            expect(makeArrayOfX).toBeFunction();
+            expect(add3ToArray).toBeFunction();
           },
         },
         {
-          description: `takes two arguments`,
+          description: `use arr.push()`,
           test: () => {
-            expect(makeArrayOfX).takesXArguments(2);
+            expect(add3ToArray)
+              .withArgs(arr, 'ho')
+              .callsFunction(Array.prototype, 'push');
           },
         },
         {
-          description: `returns something`,
+          description: `add3ToArray returns an array`,
           test: () => {
-            expect(makeArrayOfX).withArgs(3, 3).toReturnSomething();
+            expect(add3ToArray).withArgs(arr, 'ho').toReturnArray();
           },
         },
         {
-          description: `returns an array`,
+          description: `returns ['santa', 'says', 'ho', 'ho', 'ho']`,
           test: () => {
-            expect(makeArrayOfX).withArgs(3, 3).toReturnArray();
-          },
-        },
-        {
-          description: `return array contains correct type`,
-          test: () => {
-            expect(makeArrayOfX).withArgs(3, 3).toReturnArrayOfType('number');
-            expect(makeArrayOfX).withArgs(3, 'a').toReturnArrayOfType('string');
-          },
-        },
-        {
-          description: `returns the correct result`,
-          test: () => {
-            expect(makeArrayOfX(5, 8)).toBeSameArrayAs([8, 8, 8, 8, 8]);
-            expect(makeArrayOfX(3, 'a')).toBeSameArrayAs(['a', 'a', 'a']);
+            arr = ['santa', 'says'];
+            expect(add3ToArray)
+              .withArgs(arr, 'ho')
+              .toReturn(['santa', 'says', 'ho', 'ho', 'ho']);
           },
         },
       ],
@@ -109,7 +94,11 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
       type: 'test',
       key: 'reverseArray',
       title: `function "reverseArray"`,
-      instructions: `Make a function that takes an array as an argument. It should return the array in reverse order. Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']`,
+      instructions: `Make a function that takes an array as an argument.<br><br>
+      
+      It should return the array in reverse order.<br><br>
+      
+      Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']`,
       tests: [
         {
           description: `is declared`,
@@ -166,10 +155,103 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
       ],
     },
     {
+      type: 'lesson',
+      key: 'lesson-sort',
+      title: 'Sorting Arrays',
+      text: `<b>sort()</b> sorts an array alphabetically by default - which works great for strings, but not for numbers.<br><br>
+
+<b>Why doesn't sort() work for numbers by default?</b><br>
+It converts numbers to strings first, so 10 comes before 2 (because "1" comes before "2" alphabetically).<br><br>
+
+To sort numbers correctly, pass a <b>compare function</b> to sort():<br><br>
+
+<b>array.sort(function(a, b) {return a - b})</b> - sorts smallest to biggest<br>
+<b>array.sort(function(a, b) {return b - a})</b> - sorts biggest to smallest<br><br>
+
+The compare function returns a negative, zero, or positive number to tell sort() which item comes first.<br><br>
+
+Try running the code and see the difference!`,
+      sampleCode: `var words = ["banana", "apple", "cherry"];
+var wordsInOrder = words.sort();
+console.log(wordsInOrder); // ["apple", "banana", "cherry"]
+
+var numbers = [10, 2, 30, 5];
+
+var numbersInWrongOrder = numbers.sort();
+console.log(numbersInWrongOrder); // wrong: [10, 2, 30, 5]
+
+var numbersInRightOrder = numbers.sort(function (a, b) {
+  return a - b;
+});
+console.log(numbersInRightOrder); // correct: [2, 5, 10, 30]
+
+`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-callbacks',
+      title: 'Callback Functions',
+      text: `So that last lesson had something new we hadn't seen before:<br><br>
+      
+      <b>array.sort(function(a, b) {return a - b})</b> - sorts smallest to biggest.<br><br>
+
+See how we wrote a function inside the sort( )?<br><br>
+
+When we <b>GIVE</b> a function as the parameter to another function, it's referred to as a <b>Callback Function</b>.<br><br>
+
+It's not a formal keyword in JS. It's just how we refer to using a function in that way. (see next lesson)<br><br>
+      `,
+      sampleCode: `function yell() {
+  console.log("YELL");
+}
+
+function doItThreeTimes(func) {
+  func();
+  func();
+  func();
+}
+
+// This one uses a named function: yell
+doItThreeTimes(yell);
+`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-anonymous-functions',
+      title: 'Anonymous Functions',
+      text: `Anonymous functions are usually used as callbacks for other functions. You can also use them as the value of an object.<br><br>
+
+      Lets try a simple (but kind of impractical) example:<br><br>
+
+      <ul><b>function doAnotherFunction(func){<br><ul>func();</ul>}</b><br><br></ul>
+
+      Then you would use it like this:<br><br>
+
+      <ul><b>doAnotherFunction( function(){} )</b></ul><br>
+
+      In this example, we have a function that takes a function as an argument, and then calls it. What does the func() do? Could be anything! All depends on the function you pass in.<br><br>
+
+      <i>(Also, the name "func" doesn't matter. Just like variables, it could be any variable name. If you accidentally pass a non-function as the argument, there'll be an error.)</i><br><br>
+      `,
+      sampleCode: `function doItThreeTimes(func) {
+  func();
+  func();
+  func();
+}
+
+// This uses an "anonymous" function, because we are not declaring it with a name, as usual. But this works when you only need the function once, and as a callback.
+doItThreeTimes(function () {
+  console.log("scream");
+});
+`,
+    },
+    {
       type: 'test',
       key: 'sortLetters',
       title: `function "sortLetters"`,
-      instructions: `Make a function that takes one argument, an array of letters. It should return the array of letters in alphabetical order.`,
+      instructions: `Make a function that takes one argument, an array of letters.<br><br>
+      
+      It should return the array of letters in alphabetical order.`,
       tests: [
         {
           description: `is declared`,
@@ -226,7 +308,9 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
       type: 'test',
       key: 'sortNumbers',
       title: `function "sortNumbers"`,
-      instructions: `Make a function that takes one argument, an array of numbers. It should return the numbers from smallest to biggest.`,
+      instructions: `Make a function that takes one argument, an array of numbers.<br><br>
+      
+      It should return the numbers from smallest to largest.`,
       tests: [
         {
           description: `is declared`,
@@ -281,7 +365,9 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
       type: 'test',
       key: 'sortByWordLength',
       title: `function "sortByWordLength"`,
-      instructions: `Make a function that takes one argument, an array of words. Return the words in an array from shortest to longest.`,
+      instructions: `Make a function that takes one argument, an array of words.<br><br>
+      
+      Return the words in an array from shortest to longest.`,
       tests: [
         {
           description: `is declared`,

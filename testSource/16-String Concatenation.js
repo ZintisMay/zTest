@@ -9,11 +9,11 @@ const test = {
       title: 'String Concatenation',
       text: `<b>String concatenation</b> is joining strings together to make a new string.<br><br>
 
-The simplest way is with the <b>+</b> operator — the same one used for adding numbers. When used with strings, it joins them instead.<br><br>
+The simplest way is with the <b>+</b> operator - the same one used for adding numbers. When used with strings, it joins them instead.<br><br>
 
-You can also join a string and a number — JavaScript will convert the number to a string automatically.<br><br>
+You can also join a string and a number - JavaScript will convert the number to a string automatically.<br><br>
 
-The second way is with <b>template literals</b> — strings wrapped in backticks (<b>\`\`</b>) instead of quotes. Inside them you can embed any expression using <b>\${}</b>. This is often cleaner than using +.<br><br>
+The second way is with <b>template literals</b> - strings wrapped in backticks (<b>\`\`</b>) instead of quotes. Inside them you can embed any expression using <b>\${}</b>. This is often cleaner than using +.<br><br>
 
 Try running the code!`,
       sampleCode: `var first = "camp";

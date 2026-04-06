@@ -2162,7 +2162,7 @@ console.log(fruits);`,
         title: 'Indexes',
         text: `Each item in an array has a position called an <b>index</b>.<br><br>
 
-Arrays are <b>zero-indexed</b> — the first item is at index <b>0</b>, the second at index <b>1</b>, and so on.<br><br>
+Arrays are <b>zero-indexed</b> so the first item is at index <b>0</b>, the second at index <b>1</b>, and so on.<br><br>
 
 You access items using square brackets: <b>array[index]</b><br><br>
 
@@ -2269,10 +2269,14 @@ Some methods <b>modify</b> the original array. Others <b>return a new array</b> 
 
 Here are a few common ones:<br><br>
 
-<b>push()</b> — adds an item to the end<br>
-<b>pop()</b> — removes the last item<br>
-<b>reverse()</b> — reverses the order<br>
-<b>sort()</b> — sorts the items<br><br>
+<ul>
+<li><b>push()</b> - adds an item to the end<br></li>
+<li><b>pop()</b> - removes the last item (and returns it to you)<br></li>
+<li><b>reverse()</b> - reverses the order<br></li>
+<li><b>sort()</b> - sorts the items<br><br></li>
+</ul>
+
+There are more, but lets start with these.<br><br>
 
 Try running the code!`,
         sampleCode: `var fruits = ["apple", "banana", "cherry"];
@@ -2280,64 +2284,55 @@ Try running the code!`,
 fruits.push("mango");
 console.log(fruits); // ["apple", "banana", "cherry", "mango"]
 
-fruits.pop();
+let oneFruit = fruits.pop(); // Pulls out the last item
+console.log(oneFruit); // mango
+console.log(fruits); // ["apple", "banana", "cherry"]
+
+fruits.reverse(); // Flips the order
+console.log(fruits); // ["cherry", "banana", "apple"]
+
+fruits.sort(); // By default this alphabetizes them
 console.log(fruits); // ["apple", "banana", "cherry"]`,
       },
-      { type: 'lesson', key: 'lesson-sort',
-        title: 'Sorting Arrays',
-        text: `<b>sort()</b> sorts an array alphabetically by default — which works great for strings, but not for numbers.<br><br>
+      { type: 'test', key: 'add3ToArray',
+        title: `function "add3ToArray"`,
+        instructions: `Create a function called add3ToArray, and inside use push() to add "ho" to the array, three times. Then return the array.<br><br>`,
+        sampleCode: `// Don't need to touch this!
+var arr = ["santa", "says"];
 
-<b>Why doesn't sort() work for numbers by default?</b><br>
-It converts numbers to strings first, so 10 comes before 2 (because "1" comes before "2" alphabetically).<br><br>
-
-To sort numbers correctly, pass a <b>compare function</b> to sort():<br><br>
-
-<b>array.sort((a, b) => a - b)</b> — sorts smallest to biggest<br>
-<b>array.sort((a, b) => b - a)</b> — sorts biggest to smallest<br><br>
-
-The compare function returns a negative, zero, or positive number to tell sort() which item comes first.<br><br>
-
-Try running the code and see the difference!`,
-        sampleCode: `var letters = ["banana", "apple", "cherry"];
-console.log(letters.sort()); // ["apple", "banana", "cherry"]
-
-var numbers = [10, 2, 30, 5];
-console.log(numbers.sort());           // wrong: [10, 2, 30, 5]
-console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
-      },
-      { type: 'test', key: 'makeArrayOfX',
-        title: `function "makeArrayOfX"`,
-        instructions: `Make a function that takes 2 arguments. First argument is how many. 2nd argument is what will be in the array. Example: makeArrayOfX(4, 'a') returns ['a', 'a', 'a', 'a']`,
-        sampleCode: ``,
+function add3ToArray(arr, str){
+  // Write your code in here!
+}`,
         tests: [
-          { description: `is declared`, test: () => {
-            expect(makeArrayOfX).toBeDeclared();
+          { description: `arr is ["santa", "says"] (reset if red)`, test: () => {
+            expect(arr).toBe(['santa', 'says']);
           } },
-          { description: `is a function`, test: () => {
-            expect(makeArrayOfX).toBeFunction();
+          { description: `add3ToArray is a function (reset if red)`, test: () => {
+            expect(add3ToArray).toBeFunction();
           } },
-          { description: `takes two arguments`, test: () => {
-            expect(makeArrayOfX).takesXArguments(2);
+          { description: `use arr.push()`, test: () => {
+            expect(add3ToArray)
+              .withArgs(arr, 'ho')
+              .callsFunction(Array.prototype, 'push');
           } },
-          { description: `returns something`, test: () => {
-            expect(makeArrayOfX).withArgs(3, 3).toReturnSomething();
+          { description: `add3ToArray returns an array`, test: () => {
+            expect(add3ToArray).withArgs(arr, 'ho').toReturnArray();
           } },
-          { description: `returns an array`, test: () => {
-            expect(makeArrayOfX).withArgs(3, 3).toReturnArray();
-          } },
-          { description: `return array contains correct type`, test: () => {
-            expect(makeArrayOfX).withArgs(3, 3).toReturnArrayOfType('number');
-            expect(makeArrayOfX).withArgs(3, 'a').toReturnArrayOfType('string');
-          } },
-          { description: `returns the correct result`, test: () => {
-            expect(makeArrayOfX(5, 8)).toBeSameArrayAs([8, 8, 8, 8, 8]);
-            expect(makeArrayOfX(3, 'a')).toBeSameArrayAs(['a', 'a', 'a']);
+          { description: `returns ['santa', 'says', 'ho', 'ho', 'ho']`, test: () => {
+            arr = ['santa', 'says'];
+            expect(add3ToArray)
+              .withArgs(arr, 'ho')
+              .toReturn(['santa', 'says', 'ho', 'ho', 'ho']);
           } }
         ],
       },
       { type: 'test', key: 'reverseArray',
         title: `function "reverseArray"`,
-        instructions: `Make a function that takes an array as an argument. It should return the array in reverse order. Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']`,
+        instructions: `Make a function that takes an array as an argument.<br><br>
+      
+      It should return the array in reverse order.<br><br>
+      
+      Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -2373,9 +2368,96 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
           } }
         ],
       },
+      { type: 'lesson', key: 'lesson-sort',
+        title: 'Sorting Arrays',
+        text: `<b>sort()</b> sorts an array alphabetically by default - which works great for strings, but not for numbers.<br><br>
+
+<b>Why doesn't sort() work for numbers by default?</b><br>
+It converts numbers to strings first, so 10 comes before 2 (because "1" comes before "2" alphabetically).<br><br>
+
+To sort numbers correctly, pass a <b>compare function</b> to sort():<br><br>
+
+<b>array.sort(function(a, b) {return a - b})</b> - sorts smallest to biggest<br>
+<b>array.sort(function(a, b) {return b - a})</b> - sorts biggest to smallest<br><br>
+
+The compare function returns a negative, zero, or positive number to tell sort() which item comes first.<br><br>
+
+Try running the code and see the difference!`,
+        sampleCode: `var words = ["banana", "apple", "cherry"];
+var wordsInOrder = words.sort();
+console.log(wordsInOrder); // ["apple", "banana", "cherry"]
+
+var numbers = [10, 2, 30, 5];
+
+var numbersInWrongOrder = numbers.sort();
+console.log(numbersInWrongOrder); // wrong: [10, 2, 30, 5]
+
+var numbersInRightOrder = numbers.sort(function (a, b) {
+  return a - b;
+});
+console.log(numbersInRightOrder); // correct: [2, 5, 10, 30]
+
+`,
+      },
+      { type: 'lesson', key: 'lesson-callbacks',
+        title: 'Callback Functions',
+        text: `So that last lesson had something new we hadn't seen before:<br><br>
+      
+      <b>array.sort(function(a, b) {return a - b})</b> - sorts smallest to biggest.<br><br>
+
+See how we wrote a function inside the sort( )?<br><br>
+
+When we <b>GIVE</b> a function as the parameter to another function, it's referred to as a <b>Callback Function</b>.<br><br>
+
+It's not a formal keyword in JS. It's just how we refer to using a function in that way. (see next lesson)<br><br>
+      `,
+        sampleCode: `function yell() {
+  console.log("YELL");
+}
+
+function doItThreeTimes(func) {
+  func();
+  func();
+  func();
+}
+
+// This one uses a named function: yell
+doItThreeTimes(yell);
+`,
+      },
+      { type: 'lesson', key: 'lesson-anonymous-functions',
+        title: 'Anonymous Functions',
+        text: `Anonymous functions are usually used as callbacks for other functions. You can also use them as the value of an object.<br><br>
+
+      Lets try a simple (but kind of impractical) example:<br><br>
+
+      <ul><b>function doAnotherFunction(func){<br><ul>func();</ul>}</b><br><br></ul>
+
+      Then you would use it like this:<br><br>
+
+      <ul><b>doAnotherFunction( function(){} )</b></ul><br>
+
+      In this example, we have a function that takes a function as an argument, and then calls it. What does the func() do? Could be anything! All depends on the function you pass in.<br><br>
+
+      <i>(Also, the name "func" doesn't matter. Just like variables, it could be any variable name. If you accidentally pass a non-function as the argument, there'll be an error.)</i><br><br>
+      `,
+        sampleCode: `function doItThreeTimes(func) {
+  func();
+  func();
+  func();
+}
+
+// This uses an "anonymous" function, because we are not declaring it with a name, as usual. But this works when you only need the function once, and as a callback.
+doItThreeTimes(function () {
+  console.log("scream");
+});
+`,
+      },
       { type: 'test', key: 'sortLetters',
         title: `function "sortLetters"`,
-        instructions: `Make a function that takes one argument, an array of letters. It should return the array of letters in alphabetical order.`,
+        instructions: `Make a function that takes one argument, an array of letters.<br><br>
+      
+      It should return the array of letters in alphabetical order.`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -2410,7 +2492,9 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
       },
       { type: 'test', key: 'sortNumbers',
         title: `function "sortNumbers"`,
-        instructions: `Make a function that takes one argument, an array of numbers. It should return the numbers from smallest to biggest.`,
+        instructions: `Make a function that takes one argument, an array of numbers.<br><br>
+      
+      It should return the numbers from smallest to largest.`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -2443,7 +2527,9 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
       },
       { type: 'test', key: 'sortByWordLength',
         title: `function "sortByWordLength"`,
-        instructions: `Make a function that takes one argument, an array of words. Return the words in an array from shortest to longest.`,
+        instructions: `Make a function that takes one argument, an array of words.<br><br>
+      
+      Return the words in an array from shortest to longest.`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -2487,11 +2573,11 @@ console.log(numbers.sort((a, b) => a - b)); // correct: [2, 5, 10, 30]`,
         text: `A <b>for loop</b> repeats a block of code a set number of times.<br><br>
 
 It has three parts:<br>
-<b>var i = 0</b> — start value<br>
-<b>i &lt; 5</b> — keep going while this is true<br>
-<b>i++</b> — what to do after each loop (i++ means add 1)<br><br>
+<b>var i = 0</b> - start value<br>
+<b>i &lt; 5</b> - keep going while this is true<br>
+<b>i++</b> - what to do after each loop (i++ means add 1)<br><br>
 
-<b>i</b> is just a variable name — it's short for "index" and is the convention, but you can name it anything.<br><br>
+<b>i</b> is just a variable name - it's short for "index" and is the convention, but you can name it anything.<br><br>
 
 Try running the code!`,
         sampleCode: `for (var i = 0; i < 5; i++) {
@@ -2528,25 +2614,25 @@ console.log(result); // "*****"`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(makeXAsterisks).toBeDeclared();
-            } },
+            expect(makeXAsterisks).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(makeXAsterisks).toBeFunction();
-            } },
+            expect(makeXAsterisks).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(makeXAsterisks).takesXArguments(1);
-            } },
+            expect(makeXAsterisks).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(makeXAsterisks).withArgs(3).toReturnSomething();
-            } },
+            expect(makeXAsterisks).withArgs(3).toReturnSomething();
+          } },
           { description: `returns a string`, test: () => {
-              expect(makeXAsterisks).withArgs(3).toReturnString();
-            } },
+            expect(makeXAsterisks).withArgs(3).toReturnString();
+          } },
           { description: `returns the correct result`, test: () => {
-              expect(makeXAsterisks(5)).toBe('*****');
-              expect(makeXAsterisks(3)).toBe('***');
-              expect(makeXAsterisks(12)).toBe('************');
-            } }
+            expect(makeXAsterisks(5)).toBe('*****');
+            expect(makeXAsterisks(3)).toBe('***');
+            expect(makeXAsterisks(12)).toBe('************');
+          } }
         ],
       },
       { type: 'test', key: 'allNumbersUpToX',
@@ -2555,30 +2641,30 @@ console.log(result); // "*****"`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(allNumbersUpToX).toBeDeclared();
-            } },
+            expect(allNumbersUpToX).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(allNumbersUpToX).toBeFunction();
-            } },
+            expect(allNumbersUpToX).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(allNumbersUpToX).takesXArguments(1);
-            } },
+            expect(allNumbersUpToX).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(allNumbersUpToX).withArgs(4).toReturnSomething();
-            } },
+            expect(allNumbersUpToX).withArgs(4).toReturnSomething();
+          } },
           { description: `returns array`, test: () => {
-              expect(allNumbersUpToX).withArgs(4).toReturnArray();
-            } },
+            expect(allNumbersUpToX).withArgs(4).toReturnArray();
+          } },
           { description: `returns array of numbers`, test: () => {
-              expect(allNumbersUpToX).withArgs(4).toReturnArrayOfType('number');
-            } },
+            expect(allNumbersUpToX).withArgs(4).toReturnArrayOfType('number');
+          } },
           { description: `returns the correct result`, test: () => {
-              expect(allNumbersUpToX(8)).toBeSameArrayAs([
-                1, 2, 3, 4, 5, 6, 7, 8,
-              ]);
-              expect(allNumbersUpToX(1)).toBeSameArrayAs([1]);
-              expect(allNumbersUpToX(3)).toBeSameArrayAs([1, 2, 3]);
-            } }
+            expect(allNumbersUpToX(8)).toBeSameArrayAs([
+              1, 2, 3, 4, 5, 6, 7, 8,
+            ]);
+            expect(allNumbersUpToX(1)).toBeSameArrayAs([1]);
+            expect(allNumbersUpToX(3)).toBeSameArrayAs([1, 2, 3]);
+          } }
         ],
       },
       { type: 'test', key: 'makeStringWithXLetterY',
@@ -2587,27 +2673,25 @@ console.log(result); // "*****"`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(makeStringWithXLetterY).toBeDeclared();
-            } },
+            expect(makeStringWithXLetterY).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(makeStringWithXLetterY).toBeFunction();
-            } },
+            expect(makeStringWithXLetterY).toBeFunction();
+          } },
           { description: `takes two arguments`, test: () => {
-              expect(makeStringWithXLetterY).takesXArguments(2);
-            } },
+            expect(makeStringWithXLetterY).takesXArguments(2);
+          } },
           { description: `returns something`, test: () => {
-              expect(makeStringWithXLetterY)
-                .withArgs(3, 'b')
-                .toReturnSomething();
-            } },
+            expect(makeStringWithXLetterY).withArgs(3, 'b').toReturnSomething();
+          } },
           { description: `returns a string`, test: () => {
-              expect(makeStringWithXLetterY).withArgs(3, 'b').toReturnString();
-            } },
+            expect(makeStringWithXLetterY).withArgs(3, 'b').toReturnString();
+          } },
           { description: `returns the correct result`, test: () => {
-              expect(makeStringWithXLetterY(5, 'a')).toBe('aaaaa');
-              expect(makeStringWithXLetterY(10, 'x')).toBe('xxxxxxxxxx');
-              expect(makeStringWithXLetterY(0, 'q')).toBe('');
-            } }
+            expect(makeStringWithXLetterY(5, 'a')).toBe('aaaaa');
+            expect(makeStringWithXLetterY(10, 'x')).toBe('xxxxxxxxxx');
+            expect(makeStringWithXLetterY(0, 'q')).toBe('');
+          } }
         ],
       },
       { type: 'test', key: 'reverseWord',
@@ -2616,25 +2700,25 @@ console.log(result); // "*****"`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(reverseWord).toBeDeclared();
-            } },
+            expect(reverseWord).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(reverseWord).toBeFunction();
-            } },
+            expect(reverseWord).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(reverseWord).takesXArguments(1);
-            } },
+            expect(reverseWord).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(reverseWord).withArgs('bill').toReturnSomething();
-            } },
+            expect(reverseWord).withArgs('bill').toReturnSomething();
+          } },
           { description: `returns a string`, test: () => {
-              expect(reverseWord).withArgs('bill').toReturnString();
-            } },
+            expect(reverseWord).withArgs('bill').toReturnString();
+          } },
           { description: `returns the correct result`, test: () => {
-              expect(reverseWord('towel')).toBe('lewot');
-              expect(reverseWord('aba')).toBe('aba');
-              expect(reverseWord('cow')).toBe('woc');
-            } }
+            expect(reverseWord('towel')).toBe('lewot');
+            expect(reverseWord('aba')).toBe('aba');
+            expect(reverseWord('cow')).toBe('woc');
+          } }
         ],
       },
       { type: 'test', key: 'removeVowels',
@@ -2643,27 +2727,27 @@ console.log(result); // "*****"`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeVowels).toBeDeclared();
-            } },
+            expect(removeVowels).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeVowels).toBeFunction();
-            } },
+            expect(removeVowels).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(removeVowels).takesXArguments(1);
-            } },
+            expect(removeVowels).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeVowels).withArgs('ca').toReturnSomething();
-            } },
+            expect(removeVowels).withArgs('ca').toReturnSomething();
+          } },
           { description: `returns a string`, test: () => {
-              expect(removeVowels).withArgs('ca').toReturnString();
-            } },
+            expect(removeVowels).withArgs('ca').toReturnString();
+          } },
           { description: `returns the correct result`, test: () => {
-              expect(removeVowels('behaviour')).toBe('bhvr');
-              expect(removeVowels('aeiou')).toBe('');
-              expect(removeVowels('bcdfghjklmnpqrstvwxyz')).toBe(
-                'bcdfghjklmnpqrstvwxyz',
-              );
-            } }
+            expect(removeVowels('behaviour')).toBe('bhvr');
+            expect(removeVowels('aeiou')).toBe('');
+            expect(removeVowels('bcdfghjklmnpqrstvwxyz')).toBe(
+              'bcdfghjklmnpqrstvwxyz',
+            );
+          } }
         ],
       },
       { type: 'test', key: 'removeConsonants',
@@ -2672,27 +2756,27 @@ console.log(result); // "*****"`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeConsonants).toBeDeclared();
-            } },
+            expect(removeConsonants).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeConsonants).toBeFunction();
-            } },
+            expect(removeConsonants).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(removeConsonants).takesXArguments(1);
-            } },
+            expect(removeConsonants).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeConsonants).withArgs('ab').toReturnSomething();
-            } },
+            expect(removeConsonants).withArgs('ab').toReturnSomething();
+          } },
           { description: `returns a string`, test: () => {
-              expect(removeConsonants).withArgs('ab').toReturnString();
-            } },
+            expect(removeConsonants).withArgs('ab').toReturnString();
+          } },
           { description: `returns the correct result`, test: () => {
-              expect(removeConsonants('abcdefghijklmnopqrstuvwxyz')).toBe(
-                'aeiou',
-              );
-              expect(removeConsonants('aeiou')).toBe('aeiou');
-              expect(removeConsonants('xyz')).toBe('');
-            } }
+            expect(removeConsonants('abcdefghijklmnopqrstuvwxyz')).toBe(
+              'aeiou',
+            );
+            expect(removeConsonants('aeiou')).toBe('aeiou');
+            expect(removeConsonants('xyz')).toBe('');
+          } }
         ],
       },
       { type: 'test', key: 'removeWordsOfLengthXPlus',
@@ -2701,49 +2785,49 @@ console.log(result); // "*****"`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeWordsOfLengthXPlus).toBeDeclared();
-            } },
+            expect(removeWordsOfLengthXPlus).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeWordsOfLengthXPlus).toBeFunction();
-            } },
+            expect(removeWordsOfLengthXPlus).toBeFunction();
+          } },
           { description: `takes two arguments`, test: () => {
-              expect(removeWordsOfLengthXPlus).takesXArguments(2);
-            } },
+            expect(removeWordsOfLengthXPlus).takesXArguments(2);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeWordsOfLengthXPlus)
-                .withArgs(['cat'], 5)
-                .toReturnSomething();
-            } },
+            expect(removeWordsOfLengthXPlus)
+              .withArgs(['cat'], 5)
+              .toReturnSomething();
+          } },
           { description: `returns array`, test: () => {
-              expect(removeWordsOfLengthXPlus)
-                .withArgs(['cat'], 5)
-                .toReturnArray();
-            } },
+            expect(removeWordsOfLengthXPlus)
+              .withArgs(['cat'], 5)
+              .toReturnArray();
+          } },
           { description: `returns array of strings`, test: () => {
-              expect(removeWordsOfLengthXPlus)
-                .withArgs(['cat'], 5)
-                .toReturnArrayOfType('string');
-            } },
+            expect(removeWordsOfLengthXPlus)
+              .withArgs(['cat'], 5)
+              .toReturnArrayOfType('string');
+          } },
           { description: `returns the correct result`, test: () => {
-              expect(
-                removeWordsOfLengthXPlus(
-                  ['president', 'leader', 'cat', 'dog'],
-                  4,
-                ),
-              ).toBeSameArrayAs(['cat', 'dog']);
-              expect(
-                removeWordsOfLengthXPlus(
-                  ['president', 'leader', 'cat', 'dog'],
-                  1,
-                ),
-              ).toBeSameArrayAs([]);
-              expect(
-                removeWordsOfLengthXPlus(
-                  ['president', 'leader', 'cat', 'dog'],
-                  12,
-                ),
-              ).toBeSameArrayAs(['president', 'leader', 'cat', 'dog']);
-            } }
+            expect(
+              removeWordsOfLengthXPlus(
+                ['president', 'leader', 'cat', 'dog'],
+                4,
+              ),
+            ).toBeSameArrayAs(['cat', 'dog']);
+            expect(
+              removeWordsOfLengthXPlus(
+                ['president', 'leader', 'cat', 'dog'],
+                1,
+              ),
+            ).toBeSameArrayAs([]);
+            expect(
+              removeWordsOfLengthXPlus(
+                ['president', 'leader', 'cat', 'dog'],
+                12,
+              ),
+            ).toBeSameArrayAs(['president', 'leader', 'cat', 'dog']);
+          } }
         ],
       },
       { type: 'test', key: 'calculateAverage',
@@ -2752,25 +2836,25 @@ console.log(result); // "*****"`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(calculateAverage).toBeDeclared();
-            } },
+            expect(calculateAverage).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(calculateAverage).toBeFunction();
-            } },
+            expect(calculateAverage).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(calculateAverage).takesXArguments(1);
-            } },
+            expect(calculateAverage).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(calculateAverage).withArgs([1, 2, 3]).toReturnSomething();
-            } },
+            expect(calculateAverage).withArgs([1, 2, 3]).toReturnSomething();
+          } },
           { description: `returns a number`, test: () => {
-              expect(calculateAverage).withArgs([1, 2, 3]).toReturnNumber();
-            } },
+            expect(calculateAverage).withArgs([1, 2, 3]).toReturnNumber();
+          } },
           { description: `returns the correct result`, test: () => {
-              expect(calculateAverage([1, 8, 5, 20, 16])).toBe(10);
-              expect(calculateAverage([2])).toBe(2);
-              expect(calculateAverage([1, 2])).toBe(1.5);
-            } }
+            expect(calculateAverage([1, 8, 5, 20, 16])).toBe(10);
+            expect(calculateAverage([2])).toBe(2);
+            expect(calculateAverage([1, 2])).toBe(1.5);
+          } }
         ],
       }
     ],
@@ -2788,7 +2872,7 @@ You pass it a function, and that function runs once for each item. Whatever the 
 
 The original array is <b>not modified</b>.<br><br>
 
-The function receives each item as its argument — you can name it anything.<br><br>
+The function receives each item as its argument - you can name it anything.<br><br>
 
 Try running the code!`,
         sampleCode: `var numbers = [1, 2, 3, 4, 5];
@@ -2798,15 +2882,15 @@ var doubled = numbers.map(function(num) {
 });
 
 console.log(doubled);  // [2, 4, 6, 8, 10]
-console.log(numbers);  // [1, 2, 3, 4, 5] — unchanged`,
+console.log(numbers);  // [1, 2, 3, 4, 5] - unchanged`,
       },
       { type: 'lesson', key: 'lesson-map-arrow',
         title: 'map() with Arrow Functions',
-        text: `You'll often see <b>map()</b> written with an <b>arrow function</b> — it's shorter and very common.<br><br>
+        text: `You'll often see <b>map()</b> written with an <b>arrow function</b> - it's shorter and very common.<br><br>
 
 An arrow function looks like: <b>(item) => item * 2</b><br><br>
 
-If the function only returns one expression, you can skip the curly braces and the <b>return</b> keyword — the value is returned automatically.<br><br>
+If the function only returns one expression, you can skip the curly braces and the <b>return</b> keyword - the value is returned automatically.<br><br>
 
 Both styles do the same thing. The tests in this section require you to use <b>array.map()</b> specifically.<br><br>
 
@@ -2828,37 +2912,37 @@ console.log(firstLetters); // ["c", "d", "b"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(arrayValuesPlusOne).toBeDeclared();
-            } },
+            expect(arrayValuesPlusOne).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(arrayValuesPlusOne).toHaveValue();
-            } },
+            expect(arrayValuesPlusOne).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(arrayValuesPlusOne).toBeFunction();
-            } },
+            expect(arrayValuesPlusOne).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(arrayValuesPlusOne).takesXArguments(1);
-            } },
+            expect(arrayValuesPlusOne).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(arrayValuesPlusOne).withArgs([1, 2]).toReturnSomething();
-            } },
+            expect(arrayValuesPlusOne).withArgs([1, 2]).toReturnSomething();
+          } },
           { description: `returns an array of numbers`, test: () => {
-              expect(arrayValuesPlusOne)
-                .withArgs([1, 2])
-                .toReturnArrayOfType('number');
-            } },
+            expect(arrayValuesPlusOne)
+              .withArgs([1, 2])
+              .toReturnArrayOfType('number');
+          } },
           { description: `calls the "array.map" method`, test: () => {
-              expect(arrayValuesPlusOne)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'map');
-            } },
+            expect(arrayValuesPlusOne)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'map');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(arrayValuesPlusOne([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs(
-                [2, 3, 4, 5, 6, 7, 8],
-              );
-              expect(arrayValuesPlusOne([])).toBeSameArrayAs([]);
-              expect(arrayValuesPlusOne([1])).toBeSameArrayAs([2]);
-            } }
+            expect(arrayValuesPlusOne([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
+              2, 3, 4, 5, 6, 7, 8,
+            ]);
+            expect(arrayValuesPlusOne([])).toBeSameArrayAs([]);
+            expect(arrayValuesPlusOne([1])).toBeSameArrayAs([2]);
+          } }
         ],
       },
       { type: 'test', key: 'doubleArrayValues',
@@ -2867,40 +2951,40 @@ console.log(firstLetters); // ["c", "d", "b"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(doubleArrayValues).toBeDeclared();
-            } },
+            expect(doubleArrayValues).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(doubleArrayValues).toHaveValue();
-            } },
+            expect(doubleArrayValues).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(doubleArrayValues).toBeFunction();
-            } },
+            expect(doubleArrayValues).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(doubleArrayValues).takesXArguments(1);
-            } },
+            expect(doubleArrayValues).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(doubleArrayValues).withArgs([1]).toReturnSomething();
-            } },
+            expect(doubleArrayValues).withArgs([1]).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(doubleArrayValues).withArgs([1]).toReturnArray();
-            } },
+            expect(doubleArrayValues).withArgs([1]).toReturnArray();
+          } },
           { description: `returns an array of numbers`, test: () => {
-              expect(doubleArrayValues)
-                .withArgs([1])
-                .toReturnArrayOfType('number');
-            } },
+            expect(doubleArrayValues)
+              .withArgs([1])
+              .toReturnArrayOfType('number');
+          } },
           { description: `calls the "array.map" method`, test: () => {
-              expect(doubleArrayValues)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'map');
-            } },
+            expect(doubleArrayValues)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'map');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(doubleArrayValues([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
-                2, 4, 6, 8, 10, 12, 14,
-              ]);
-              expect(doubleArrayValues([])).toBeSameArrayAs([]);
-              expect(doubleArrayValues([-1, 0, 1])).toBeSameArrayAs([-2, 0, 2]);
-            } }
+            expect(doubleArrayValues([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
+              2, 4, 6, 8, 10, 12, 14,
+            ]);
+            expect(doubleArrayValues([])).toBeSameArrayAs([]);
+            expect(doubleArrayValues([-1, 0, 1])).toBeSameArrayAs([-2, 0, 2]);
+          } }
         ],
       },
       { type: 'test', key: 'halveArrayValues',
@@ -2909,42 +2993,42 @@ console.log(firstLetters); // ["c", "d", "b"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(halveArrayValues).toBeDeclared();
-            } },
+            expect(halveArrayValues).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(halveArrayValues).toHaveValue();
-            } },
+            expect(halveArrayValues).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(halveArrayValues).toBeFunction();
-            } },
+            expect(halveArrayValues).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(halveArrayValues).takesXArguments(1);
-            } },
+            expect(halveArrayValues).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(halveArrayValues).withArgs([]).toReturnSomething();
-            } },
+            expect(halveArrayValues).withArgs([]).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(halveArrayValues).withArgs([]).toReturnArray();
-            } },
+            expect(halveArrayValues).withArgs([]).toReturnArray();
+          } },
           { description: `returns an array of numbers`, test: () => {
-              expect(halveArrayValues)
-                .withArgs([1])
-                .toReturnArrayOfType('number');
-            } },
+            expect(halveArrayValues)
+              .withArgs([1])
+              .toReturnArrayOfType('number');
+          } },
           { description: `calls the "array.map" method`, test: () => {
-              expect(halveArrayValues)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'map');
-            } },
+            expect(halveArrayValues)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'map');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(halveArrayValues([2, 4, 6, 8, 10, 12])).toBeSameArrayAs([
-                1, 2, 3, 4, 5, 6,
-              ]);
-              expect(halveArrayValues([])).toBeSameArrayAs([]);
-              expect(halveArrayValues([-1, -2, 0])).toBeSameArrayAs([
-                -0.5, -1, 0,
-              ]);
-            } }
+            expect(halveArrayValues([2, 4, 6, 8, 10, 12])).toBeSameArrayAs([
+              1, 2, 3, 4, 5, 6,
+            ]);
+            expect(halveArrayValues([])).toBeSameArrayAs([]);
+            expect(halveArrayValues([-1, -2, 0])).toBeSameArrayAs([
+              -0.5, -1, 0,
+            ]);
+          } }
         ],
       },
       { type: 'test', key: 'squareArrayValues',
@@ -2953,40 +3037,40 @@ console.log(firstLetters); // ["c", "d", "b"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(squareArrayValues).toBeDeclared();
-            } },
+            expect(squareArrayValues).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(squareArrayValues).toHaveValue();
-            } },
+            expect(squareArrayValues).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(squareArrayValues).toBeFunction();
-            } },
+            expect(squareArrayValues).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(squareArrayValues).takesXArguments(1);
-            } },
+            expect(squareArrayValues).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(squareArrayValues).withArgs([1]).toReturnSomething();
-            } },
+            expect(squareArrayValues).withArgs([1]).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(squareArrayValues).withArgs([1]).toReturnArray();
-            } },
+            expect(squareArrayValues).withArgs([1]).toReturnArray();
+          } },
           { description: `returns an array of numbers`, test: () => {
-              expect(squareArrayValues)
-                .withArgs([1])
-                .toReturnArrayOfType('number');
-            } },
+            expect(squareArrayValues)
+              .withArgs([1])
+              .toReturnArrayOfType('number');
+          } },
           { description: `calls the "array.map" method`, test: () => {
-              expect(squareArrayValues)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'map');
-            } },
+            expect(squareArrayValues)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'map');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(squareArrayValues([2, 4, 6, 8, 10, 12])).toBeSameArrayAs([
-                4, 16, 36, 64, 100, 144,
-              ]);
-              expect(squareArrayValues([0])).toBeSameArrayAs([0]);
-              expect(squareArrayValues([])).toBeSameArrayAs([]);
-            } }
+            expect(squareArrayValues([2, 4, 6, 8, 10, 12])).toBeSameArrayAs([
+              4, 16, 36, 64, 100, 144,
+            ]);
+            expect(squareArrayValues([0])).toBeSameArrayAs([0]);
+            expect(squareArrayValues([])).toBeSameArrayAs([]);
+          } }
         ],
       },
       { type: 'test', key: 'onlyFirstLetterOfWords',
@@ -2995,44 +3079,44 @@ console.log(firstLetters); // ["c", "d", "b"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(onlyFirstLetterOfWords).toBeDeclared();
-            } },
+            expect(onlyFirstLetterOfWords).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(onlyFirstLetterOfWords).toHaveValue();
-            } },
+            expect(onlyFirstLetterOfWords).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(onlyFirstLetterOfWords).toBeFunction();
-            } },
+            expect(onlyFirstLetterOfWords).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(onlyFirstLetterOfWords).takesXArguments(1);
-            } },
+            expect(onlyFirstLetterOfWords).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(onlyFirstLetterOfWords)
-                .withArgs(['a'])
-                .toReturnSomething();
-            } },
+            expect(onlyFirstLetterOfWords).withArgs(['a']).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(onlyFirstLetterOfWords).withArgs(['a']).toReturnArray();
-            } },
+            expect(onlyFirstLetterOfWords).withArgs(['a']).toReturnArray();
+          } },
           { description: `returns an array of strings`, test: () => {
-              expect(onlyFirstLetterOfWords)
-                .withArgs(['a'])
-                .toReturnArrayOfType('string');
-            } },
+            expect(onlyFirstLetterOfWords)
+              .withArgs(['a'])
+              .toReturnArrayOfType('string');
+          } },
           { description: `calls the "array.map" method`, test: () => {
-              expect(onlyFirstLetterOfWords)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'map');
-            } },
+            expect(onlyFirstLetterOfWords)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'map');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(
-                onlyFirstLetterOfWords(['cat', 'sibling', 'pepper', 'zebra']),
-              ).toBeSameArrayAs(['c', 's', 'p', 'z']);
-              expect(onlyFirstLetterOfWords([])).toBeSameArrayAs([]);
-              expect(
-                onlyFirstLetterOfWords(['az', 'bz', 'cz']),
-              ).toBeSameArrayAs(['a', 'b', 'c']);
-            } }
+            expect(
+              onlyFirstLetterOfWords(['cat', 'sibling', 'pepper', 'zebra']),
+            ).toBeSameArrayAs(['c', 's', 'p', 'z']);
+            expect(onlyFirstLetterOfWords([])).toBeSameArrayAs([]);
+            expect(onlyFirstLetterOfWords(['az', 'bz', 'cz'])).toBeSameArrayAs([
+              'a',
+              'b',
+              'c',
+            ]);
+          } }
         ],
       },
       { type: 'test', key: 'onlyLastLetterOfWords',
@@ -3041,43 +3125,43 @@ console.log(firstLetters); // ["c", "d", "b"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(onlyLastLetterOfWords).toBeDeclared();
-            } },
+            expect(onlyLastLetterOfWords).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(onlyLastLetterOfWords).toHaveValue();
-            } },
+            expect(onlyLastLetterOfWords).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(onlyLastLetterOfWords).toBeFunction();
-            } },
+            expect(onlyLastLetterOfWords).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(onlyLastLetterOfWords).takesXArguments(1);
-            } },
+            expect(onlyLastLetterOfWords).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(onlyLastLetterOfWords)
-                .withArgs(['a', 'ab', 'abc'])
-                .toReturnSomething();
-            } },
+            expect(onlyLastLetterOfWords)
+              .withArgs(['a', 'ab', 'abc'])
+              .toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(onlyLastLetterOfWords)
-                .withArgs(['a', 'ab', 'abc'])
-                .toReturnArray();
-            } },
+            expect(onlyLastLetterOfWords)
+              .withArgs(['a', 'ab', 'abc'])
+              .toReturnArray();
+          } },
           { description: `returns an array of strings`, test: () => {
-              expect(onlyLastLetterOfWords)
-                .withArgs(['a', 'ab', 'abc'])
-                .toReturnArrayOfType('string');
-            } },
+            expect(onlyLastLetterOfWords)
+              .withArgs(['a', 'ab', 'abc'])
+              .toReturnArrayOfType('string');
+          } },
           { description: `calls the "array.map" method`, test: () => {
-              expect(onlyLastLetterOfWords)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'map');
-            } },
+            expect(onlyLastLetterOfWords)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'map');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(
-                onlyLastLetterOfWords(['cat', 'wing', 'trot', 'coo']),
-              ).toBeSameArrayAs(['t', 'g', 't', 'o']);
-              expect(onlyLastLetterOfWords([])).toBeSameArrayAs([]);
-            } }
+            expect(
+              onlyLastLetterOfWords(['cat', 'wing', 'trot', 'coo']),
+            ).toBeSameArrayAs(['t', 'g', 't', 'o']);
+            expect(onlyLastLetterOfWords([])).toBeSameArrayAs([]);
+          } }
         ],
       }
     ],
@@ -3093,9 +3177,9 @@ console.log(firstLetters); // ["c", "d", "b"]`,
 
 You pass it a function that takes each item and returns <b>true</b> (keep it) or <b>false</b> (remove it).<br><br>
 
-The original array is <b>not modified</b>. The new array may be shorter — or even empty if nothing passes.<br><br>
+The original array is <b>not modified</b>. The new array may be shorter - or even empty if nothing passes.<br><br>
 
-Think of it like a sieve — only what fits through stays.<br><br>
+Think of it like a sieve - only what fits through stays.<br><br>
 
 Try running the code!`,
         sampleCode: `var numbers = [1, 2, 3, 4, 5, 6];
@@ -3103,7 +3187,7 @@ Try running the code!`,
 // Keep only even numbers
 var evens = numbers.filter((num) => num % 2 === 0);
 console.log(evens);   // [2, 4, 6]
-console.log(numbers); // [1, 2, 3, 4, 5, 6] — unchanged
+console.log(numbers); // [1, 2, 3, 4, 5, 6] - unchanged
 
 // Keep only words longer than 3 letters
 var words = ["cat", "elephant", "dog", "rhinoceros"];
@@ -3116,41 +3200,41 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeOddNumbers).toBeDeclared();
-            } },
+            expect(removeOddNumbers).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(removeOddNumbers).toHaveValue();
-            } },
+            expect(removeOddNumbers).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeOddNumbers).toBeFunction();
-            } },
+            expect(removeOddNumbers).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(removeOddNumbers).takesXArguments(1);
-            } },
+            expect(removeOddNumbers).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeOddNumbers).withArgs([1, 2]).toReturnSomething();
-            } },
+            expect(removeOddNumbers).withArgs([1, 2]).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(removeOddNumbers).withArgs([1, 2]).toReturnArray();
-            } },
+            expect(removeOddNumbers).withArgs([1, 2]).toReturnArray();
+          } },
           { description: `returns an array of numbers`, test: () => {
-              expect(removeOddNumbers)
-                .withArgs([1, 2])
-                .toReturnArrayOfType('number');
-            } },
+            expect(removeOddNumbers)
+              .withArgs([1, 2])
+              .toReturnArrayOfType('number');
+          } },
           { description: `calls the "array.filter" method`, test: () => {
-              expect(removeOddNumbers)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'filter');
-            } },
+            expect(removeOddNumbers)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'filter');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(removeOddNumbers([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
-                2, 4, 6,
-              ]);
-              expect(removeOddNumbers([])).toBeSameArrayAs([]);
-              expect(removeOddNumbers([11, 31, 51])).toBeSameArrayAs([]);
-              expect(removeOddNumbers([22, 44])).toBeSameArrayAs([22, 44]);
-            } }
+            expect(removeOddNumbers([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
+              2, 4, 6,
+            ]);
+            expect(removeOddNumbers([])).toBeSameArrayAs([]);
+            expect(removeOddNumbers([11, 31, 51])).toBeSameArrayAs([]);
+            expect(removeOddNumbers([22, 44])).toBeSameArrayAs([22, 44]);
+          } }
         ],
       },
       { type: 'test', key: 'removeEvenNumbers',
@@ -3159,43 +3243,43 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeEvenNumbers).toBeDeclared();
-            } },
+            expect(removeEvenNumbers).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(removeEvenNumbers).toHaveValue();
-            } },
+            expect(removeEvenNumbers).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeEvenNumbers).toBeFunction();
-            } },
+            expect(removeEvenNumbers).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(removeEvenNumbers).takesXArguments(1);
-            } },
+            expect(removeEvenNumbers).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeEvenNumbers).withArgs([1, 2]).toReturnSomething();
-            } },
+            expect(removeEvenNumbers).withArgs([1, 2]).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(removeEvenNumbers).withArgs([1, 2]).toReturnArray();
-            } },
+            expect(removeEvenNumbers).withArgs([1, 2]).toReturnArray();
+          } },
           { description: `returns an array of numbers`, test: () => {
-              expect(removeEvenNumbers)
-                .withArgs([1, 2])
-                .toReturnArrayOfType('number');
-            } },
+            expect(removeEvenNumbers)
+              .withArgs([1, 2])
+              .toReturnArrayOfType('number');
+          } },
           { description: `calls the "array.filter" method`, test: () => {
-              expect(removeEvenNumbers)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'filter');
-            } },
+            expect(removeEvenNumbers)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'filter');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(removeEvenNumbers([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
-                1, 3, 5, 7,
-              ]);
-              expect(removeEvenNumbers([])).toBeSameArrayAs([]);
-              expect(removeEvenNumbers([11, 31, 51])).toBeSameArrayAs([
-                11, 31, 51,
-              ]);
-              expect(removeEvenNumbers([22, 44])).toBeSameArrayAs([]);
-            } }
+            expect(removeEvenNumbers([1, 2, 3, 4, 5, 6, 7])).toBeSameArrayAs([
+              1, 3, 5, 7,
+            ]);
+            expect(removeEvenNumbers([])).toBeSameArrayAs([]);
+            expect(removeEvenNumbers([11, 31, 51])).toBeSameArrayAs([
+              11, 31, 51,
+            ]);
+            expect(removeEvenNumbers([22, 44])).toBeSameArrayAs([]);
+          } }
         ],
       },
       { type: 'test', key: 'removeNumbersLessThan3',
@@ -3204,48 +3288,46 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeNumbersLessThan3).toBeDeclared();
-            } },
+            expect(removeNumbersLessThan3).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(removeNumbersLessThan3).toHaveValue();
-            } },
+            expect(removeNumbersLessThan3).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeNumbersLessThan3).toBeFunction();
-            } },
+            expect(removeNumbersLessThan3).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(removeNumbersLessThan3).takesXArguments(1);
-            } },
+            expect(removeNumbersLessThan3).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeNumbersLessThan3)
-                .withArgs([1, 2, 3])
-                .toReturnSomething();
-            } },
+            expect(removeNumbersLessThan3)
+              .withArgs([1, 2, 3])
+              .toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(removeNumbersLessThan3)
-                .withArgs([1, 2, 3])
-                .toReturnArray();
-            } },
+            expect(removeNumbersLessThan3).withArgs([1, 2, 3]).toReturnArray();
+          } },
           { description: `returns an array of numbers`, test: () => {
-              expect(removeNumbersLessThan3)
-                .withArgs([1, 2, 3])
-                .toReturnArrayOfType('number');
-            } },
+            expect(removeNumbersLessThan3)
+              .withArgs([1, 2, 3])
+              .toReturnArrayOfType('number');
+          } },
           { description: `calls the "filter" method`, test: () => {
-              expect(removeNumbersLessThan3)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'filter');
-            } },
+            expect(removeNumbersLessThan3)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'filter');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(
-                removeNumbersLessThan3([1, 2, 3, 4, 5, 6, 7]),
-              ).toBeSameArrayAs([3, 4, 5, 6, 7]);
-              expect(
-                removeNumbersLessThan3([1, 1, 2, 2, 1, 2, 1]),
-              ).toBeSameArrayAs([]);
-              expect(removeNumbersLessThan3([3, 4, 5, 6, 100])).toBeSameArrayAs(
-                [3, 4, 5, 6, 100],
-              );
-            } }
+            expect(
+              removeNumbersLessThan3([1, 2, 3, 4, 5, 6, 7]),
+            ).toBeSameArrayAs([3, 4, 5, 6, 7]);
+            expect(
+              removeNumbersLessThan3([1, 1, 2, 2, 1, 2, 1]),
+            ).toBeSameArrayAs([]);
+            expect(removeNumbersLessThan3([3, 4, 5, 6, 100])).toBeSameArrayAs([
+              3, 4, 5, 6, 100,
+            ]);
+          } }
         ],
       },
       { type: 'test', key: 'removeNumbersLessThanX',
@@ -3254,49 +3336,47 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeNumbersLessThanX).toBeDeclared();
-            } },
+            expect(removeNumbersLessThanX).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(removeNumbersLessThanX).toHaveValue();
-            } },
+            expect(removeNumbersLessThanX).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeNumbersLessThanX).toBeFunction();
-            } },
+            expect(removeNumbersLessThanX).toBeFunction();
+          } },
           { description: `takes two arguments`, test: () => {
-              expect(removeNumbersLessThanX).takesXArguments(2);
-            } },
+            expect(removeNumbersLessThanX).takesXArguments(2);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeNumbersLessThanX)
-                .withArgs([1, 2, 3])
-                .toReturnSomething();
-            } },
+            expect(removeNumbersLessThanX)
+              .withArgs([1, 2, 3])
+              .toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(removeNumbersLessThanX)
-                .withArgs([1, 2, 3])
-                .toReturnArray();
-            } },
+            expect(removeNumbersLessThanX).withArgs([1, 2, 3]).toReturnArray();
+          } },
           { description: `returns an array of numbers`, test: () => {
-              expect(removeNumbersLessThanX)
-                .withArgs([1, 2, 3])
-                .toReturnArrayOfType('number');
-            } },
+            expect(removeNumbersLessThanX)
+              .withArgs([1, 2, 3])
+              .toReturnArrayOfType('number');
+          } },
           { description: `calls the "filter" method`, test: () => {
-              expect(removeNumbersLessThanX)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'filter');
-            } },
+            expect(removeNumbersLessThanX)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'filter');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(
-                removeNumbersLessThanX([1, 2, 3, 4, 5, 6, 7], 4),
-              ).toBeSameArrayAs([4, 5, 6, 7]);
-              expect(
-                removeNumbersLessThanX([1, 1, 2, 2, 1, 2, 1], 2),
-              ).toBeSameArrayAs([2, 2, 2]);
-              expect(
-                removeNumbersLessThanX([3, 4, 5, 6, 100], 50),
-              ).toBeSameArrayAs([100]);
-              expect(removeNumbersLessThanX([], 50)).toBeSameArrayAs([]);
-            } }
+            expect(
+              removeNumbersLessThanX([1, 2, 3, 4, 5, 6, 7], 4),
+            ).toBeSameArrayAs([4, 5, 6, 7]);
+            expect(
+              removeNumbersLessThanX([1, 1, 2, 2, 1, 2, 1], 2),
+            ).toBeSameArrayAs([2, 2, 2]);
+            expect(
+              removeNumbersLessThanX([3, 4, 5, 6, 100], 50),
+            ).toBeSameArrayAs([100]);
+            expect(removeNumbersLessThanX([], 50)).toBeSameArrayAs([]);
+          } }
         ],
       },
       { type: 'test', key: 'removeEmptyStrings',
@@ -3305,47 +3385,45 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeEmptyStrings).toBeDeclared();
-            } },
+            expect(removeEmptyStrings).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(removeEmptyStrings).toHaveValue();
-            } },
+            expect(removeEmptyStrings).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeEmptyStrings).toBeFunction();
-            } },
+            expect(removeEmptyStrings).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(removeEmptyStrings).takesXArguments(1);
-            } },
+            expect(removeEmptyStrings).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeEmptyStrings)
-                .withArgs(['a', ''])
-                .toReturnSomething();
-            } },
+            expect(removeEmptyStrings).withArgs(['a', '']).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(removeEmptyStrings).withArgs(['a', '']).toReturnArray();
-            } },
+            expect(removeEmptyStrings).withArgs(['a', '']).toReturnArray();
+          } },
           { description: `returns an array of strings`, test: () => {
-              expect(removeEmptyStrings)
-                .withArgs(['a', ''])
-                .toReturnArrayOfType('string');
-            } },
+            expect(removeEmptyStrings)
+              .withArgs(['a', ''])
+              .toReturnArrayOfType('string');
+          } },
           { description: `calls "array.filter" method`, test: () => {
-              expect(removeEmptyStrings)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'filter');
-            } },
+            expect(removeEmptyStrings)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'filter');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(
-                removeEmptyStrings(['', '', 'dog', 'document', 'cat']),
-              ).toBeSameArrayAs(['dog', 'document', 'cat']);
-              expect(removeEmptyStrings([])).toBeSameArrayAs([]);
-              expect(removeEmptyStrings(['', '', ''])).toBeSameArrayAs([]);
-              expect(removeEmptyStrings(['a', 'a', 'a'])).toBeSameArrayAs([
-                'a',
-                'a',
-                'a',
-              ]);
-            } }
+            expect(
+              removeEmptyStrings(['', '', 'dog', 'document', 'cat']),
+            ).toBeSameArrayAs(['dog', 'document', 'cat']);
+            expect(removeEmptyStrings([])).toBeSameArrayAs([]);
+            expect(removeEmptyStrings(['', '', ''])).toBeSameArrayAs([]);
+            expect(removeEmptyStrings(['a', 'a', 'a'])).toBeSameArrayAs([
+              'a',
+              'a',
+              'a',
+            ]);
+          } }
         ],
       },
       { type: 'test', key: 'removeVowelsFromArray',
@@ -3354,52 +3432,50 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeVowelsFromArray).toBeDeclared();
-            } },
+            expect(removeVowelsFromArray).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(removeVowelsFromArray).toHaveValue();
-            } },
+            expect(removeVowelsFromArray).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeVowelsFromArray).toBeFunction();
-            } },
+            expect(removeVowelsFromArray).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(removeVowelsFromArray).takesXArguments(1);
-            } },
+            expect(removeVowelsFromArray).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeVowelsFromArray)
-                .withArgs(['a', 'z'])
-                .toReturnSomething();
-            } },
+            expect(removeVowelsFromArray)
+              .withArgs(['a', 'z'])
+              .toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(removeVowelsFromArray)
-                .withArgs(['a', 'z'])
-                .toReturnArray();
-            } },
+            expect(removeVowelsFromArray).withArgs(['a', 'z']).toReturnArray();
+          } },
           { description: `returns an array of strings`, test: () => {
-              expect(removeVowelsFromArray)
-                .withArgs(['a', 'z'])
-                .toReturnArrayOfType('string');
-            } },
+            expect(removeVowelsFromArray)
+              .withArgs(['a', 'z'])
+              .toReturnArrayOfType('string');
+          } },
           { description: `calls the "array.filter" method`, test: () => {
-              expect(removeVowelsFromArray)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'filter');
-            } },
+            expect(removeVowelsFromArray)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'filter');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(removeVowelsFromArray(['a', 'b', 'c'])).toBeSameArrayAs([
-                'b',
-                'c',
-              ]);
-              expect(
-                removeVowelsFromArray(['a', 'e', 'i', 'o', 'u']),
-              ).toBeSameArrayAs([]);
-              expect(removeVowelsFromArray([])).toBeSameArrayAs([]);
-              expect(removeVowelsFromArray(['b', 'x', 'z'])).toBeSameArrayAs([
-                'b',
-                'x',
-                'z',
-              ]);
-            } }
+            expect(removeVowelsFromArray(['a', 'b', 'c'])).toBeSameArrayAs([
+              'b',
+              'c',
+            ]);
+            expect(
+              removeVowelsFromArray(['a', 'e', 'i', 'o', 'u']),
+            ).toBeSameArrayAs([]);
+            expect(removeVowelsFromArray([])).toBeSameArrayAs([]);
+            expect(removeVowelsFromArray(['b', 'x', 'z'])).toBeSameArrayAs([
+              'b',
+              'x',
+              'z',
+            ]);
+          } }
         ],
       },
       { type: 'test', key: 'removeConsonantsInArray',
@@ -3408,49 +3484,49 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeConsonantsInArray).toBeDeclared();
-            } },
+            expect(removeConsonantsInArray).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(removeConsonantsInArray).toHaveValue();
-            } },
+            expect(removeConsonantsInArray).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeConsonantsInArray).toBeFunction();
-            } },
+            expect(removeConsonantsInArray).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(removeConsonantsInArray).takesXArguments(1);
-            } },
+            expect(removeConsonantsInArray).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeConsonantsInArray)
-                .withArgs(['a', 'z'])
-                .toReturnSomething();
-            } },
+            expect(removeConsonantsInArray)
+              .withArgs(['a', 'z'])
+              .toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(removeConsonantsInArray)
-                .withArgs(['a', 'z'])
-                .toReturnArray();
-            } },
+            expect(removeConsonantsInArray)
+              .withArgs(['a', 'z'])
+              .toReturnArray();
+          } },
           { description: `returns an array of strings`, test: () => {
-              expect(removeConsonantsInArray)
-                .withArgs(['a', 'z'])
-                .toReturnArrayOfType('string');
-            } },
+            expect(removeConsonantsInArray)
+              .withArgs(['a', 'z'])
+              .toReturnArrayOfType('string');
+          } },
           { description: `calls the "array.filter" method`, test: () => {
-              expect(removeConsonantsInArray)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'filter');
-            } },
+            expect(removeConsonantsInArray)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'filter');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(removeConsonantsInArray(['a', 'b', 'c'])).toBeSameArrayAs([
-                'a',
-              ]);
-              expect(
-                removeConsonantsInArray(['a', 'e', 'i', 'o', 'u']),
-              ).toBeSameArrayAs(['a', 'e', 'i', 'o', 'u']);
-              expect(removeConsonantsInArray([])).toBeSameArrayAs([]);
-              expect(removeConsonantsInArray(['b', 'x', 'z'])).toBeSameArrayAs(
-                [],
-              );
-            } }
+            expect(removeConsonantsInArray(['a', 'b', 'c'])).toBeSameArrayAs([
+              'a',
+            ]);
+            expect(
+              removeConsonantsInArray(['a', 'e', 'i', 'o', 'u']),
+            ).toBeSameArrayAs(['a', 'e', 'i', 'o', 'u']);
+            expect(removeConsonantsInArray([])).toBeSameArrayAs([]);
+            expect(removeConsonantsInArray(['b', 'x', 'z'])).toBeSameArrayAs(
+              [],
+            );
+          } }
         ],
       },
       { type: 'test', key: 'removeWordFromArray',
@@ -3459,49 +3535,49 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(removeWordFromArray).toBeDeclared();
-            } },
+            expect(removeWordFromArray).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(removeWordFromArray).toHaveValue();
-            } },
+            expect(removeWordFromArray).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(removeWordFromArray).toBeFunction();
-            } },
+            expect(removeWordFromArray).toBeFunction();
+          } },
           { description: `takes two arguments`, test: () => {
-              expect(removeWordFromArray).takesXArguments(2);
-            } },
+            expect(removeWordFromArray).takesXArguments(2);
+          } },
           { description: `returns something`, test: () => {
-              expect(removeWordFromArray)
-                .withArgs(['a', 'b'], 'a')
-                .toReturnSomething();
-            } },
+            expect(removeWordFromArray)
+              .withArgs(['a', 'b'], 'a')
+              .toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(removeWordFromArray)
-                .withArgs(['a', 'b'], 'a')
-                .toReturnArray();
-            } },
+            expect(removeWordFromArray)
+              .withArgs(['a', 'b'], 'a')
+              .toReturnArray();
+          } },
           { description: `returns an array of strings`, test: () => {
-              expect(removeWordFromArray)
-                .withArgs(['a', 'b'], 'a')
-                .toReturnArrayOfType('string');
-            } },
+            expect(removeWordFromArray)
+              .withArgs(['a', 'b'], 'a')
+              .toReturnArrayOfType('string');
+          } },
           { description: `calls the "array.filter" method`, test: () => {
-              expect(removeWordFromArray)
-                .withArgs([1, 2, 3])
-                .callsFunction(Array.prototype, 'filter');
-            } },
+            expect(removeWordFromArray)
+              .withArgs([1, 2, 3])
+              .callsFunction(Array.prototype, 'filter');
+          } },
           { description: `returns the correct value`, test: () => {
-              expect(
-                removeWordFromArray(['joke', 'documentation'], 'documentation'),
-              ).toBeSameArrayAs(['joke']);
-              expect(
-                removeWordFromArray(['joke', 'documentation'], 'cat'),
-              ).toBeSameArrayAs(['joke', 'documentation']);
-              expect(removeWordFromArray([], 'cat')).toBeSameArrayAs([]);
-              expect(
-                removeWordFromArray(['cat', 'cat', 'cat'], 'cat'),
-              ).toBeSameArrayAs([]);
-            } }
+            expect(
+              removeWordFromArray(['joke', 'documentation'], 'documentation'),
+            ).toBeSameArrayAs(['joke']);
+            expect(
+              removeWordFromArray(['joke', 'documentation'], 'cat'),
+            ).toBeSameArrayAs(['joke', 'documentation']);
+            expect(removeWordFromArray([], 'cat')).toBeSameArrayAs([]);
+            expect(
+              removeWordFromArray(['cat', 'cat', 'cat'], 'cat'),
+            ).toBeSameArrayAs([]);
+          } }
         ],
       }
     ],
@@ -3515,7 +3591,7 @@ console.log(longWords); // ["elephant", "rhinoceros"]`,
         title: 'While Loops',
         text: `A <b>while loop</b> keeps running as long as a condition is true.<br><br>
 
-Unlike a for loop where you know how many times it will run, a while loop is useful when you don't know in advance — you just keep going until something changes.<br><br>
+Unlike a for loop where you know how many times it will run, a while loop is useful when you don't know in advance - you just keep going until something changes.<br><br>
 
 <b>Important:</b> you must change something inside the loop that will eventually make the condition false, otherwise you'll have an <b>infinite loop</b> that freezes the page!<br><br>
 
@@ -3540,32 +3616,32 @@ while (num > 1) {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(countUp).toBeDeclared();
-            } },
+            expect(countUp).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(countUp).toHaveValue();
-            } },
+            expect(countUp).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(countUp).toBeFunction();
-            } },
+            expect(countUp).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(countUp).takesXArguments(1);
-            } },
+            expect(countUp).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(countUp).withArgs(3).toReturnSomething();
-            } },
+            expect(countUp).withArgs(3).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(countUp).withArgs(3).toReturnArray();
-            } },
+            expect(countUp).withArgs(3).toReturnArray();
+          } },
           { description: `uses a while loop`, test: () => {
-              expectCode().toUseWhileLoop();
-            } },
+            expectCode().toUseWhileLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(countUp(1)).toBeSameArrayAs([1]);
-              expect(countUp(3)).toBeSameArrayAs([1, 2, 3]);
-              expect(countUp(5)).toBeSameArrayAs([1, 2, 3, 4, 5]);
-              expect(countUp(8)).toBeSameArrayAs([1, 2, 3, 4, 5, 6, 7, 8]);
-            } }
+            expect(countUp(1)).toBeSameArrayAs([1]);
+            expect(countUp(3)).toBeSameArrayAs([1, 2, 3]);
+            expect(countUp(5)).toBeSameArrayAs([1, 2, 3, 4, 5]);
+            expect(countUp(8)).toBeSameArrayAs([1, 2, 3, 4, 5, 6, 7, 8]);
+          } }
         ],
       },
       { type: 'test', key: 'countDownTests',
@@ -3574,32 +3650,32 @@ while (num > 1) {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(countDown).toBeDeclared();
-            } },
+            expect(countDown).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(countDown).toHaveValue();
-            } },
+            expect(countDown).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(countDown).toBeFunction();
-            } },
+            expect(countDown).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(countDown).takesXArguments(1);
-            } },
+            expect(countDown).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(countDown).withArgs(3).toReturnSomething();
-            } },
+            expect(countDown).withArgs(3).toReturnSomething();
+          } },
           { description: `returns an array`, test: () => {
-              expect(countDown).withArgs(3).toReturnArray();
-            } },
+            expect(countDown).withArgs(3).toReturnArray();
+          } },
           { description: `uses a while loop`, test: () => {
-              expectCode().toUseWhileLoop();
-            } },
+            expectCode().toUseWhileLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(countDown(1)).toBeSameArrayAs([1]);
-              expect(countDown(3)).toBeSameArrayAs([3, 2, 1]);
-              expect(countDown(5)).toBeSameArrayAs([5, 4, 3, 2, 1]);
-              expect(countDown(8)).toBeSameArrayAs([8, 7, 6, 5, 4, 3, 2, 1]);
-            } }
+            expect(countDown(1)).toBeSameArrayAs([1]);
+            expect(countDown(3)).toBeSameArrayAs([3, 2, 1]);
+            expect(countDown(5)).toBeSameArrayAs([5, 4, 3, 2, 1]);
+            expect(countDown(8)).toBeSameArrayAs([8, 7, 6, 5, 4, 3, 2, 1]);
+          } }
         ],
       },
       { type: 'test', key: 'sumWhileTests',
@@ -3608,33 +3684,33 @@ while (num > 1) {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(sumWhile).toBeDeclared();
-            } },
+            expect(sumWhile).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(sumWhile).toHaveValue();
-            } },
+            expect(sumWhile).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(sumWhile).toBeFunction();
-            } },
+            expect(sumWhile).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(sumWhile).takesXArguments(1);
-            } },
+            expect(sumWhile).takesXArguments(1);
+          } },
           { description: `returns something`, test: () => {
-              expect(sumWhile).withArgs(3).toReturnSomething();
-            } },
+            expect(sumWhile).withArgs(3).toReturnSomething();
+          } },
           { description: `returns a number`, test: () => {
-              expect(sumWhile).withArgs(3).toReturnNumber();
-            } },
+            expect(sumWhile).withArgs(3).toReturnNumber();
+          } },
           { description: `uses a while loop`, test: () => {
-              expectCode().toUseWhileLoop();
-            } },
+            expectCode().toUseWhileLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(sumWhile(1)).toBe(1);
-              expect(sumWhile(3)).toBe(6);
-              expect(sumWhile(5)).toBe(15);
-              expect(sumWhile(10)).toBe(55);
-              expect(sumWhile(100)).toBe(5050);
-            } }
+            expect(sumWhile(1)).toBe(1);
+            expect(sumWhile(3)).toBe(6);
+            expect(sumWhile(5)).toBe(15);
+            expect(sumWhile(10)).toBe(55);
+            expect(sumWhile(100)).toBe(5050);
+          } }
         ],
       },
       { type: 'test', key: 'repeatStringTests',
@@ -3643,33 +3719,33 @@ while (num > 1) {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(repeatString).toBeDeclared();
-            } },
+            expect(repeatString).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(repeatString).toHaveValue();
-            } },
+            expect(repeatString).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(repeatString).toBeFunction();
-            } },
+            expect(repeatString).toBeFunction();
+          } },
           { description: `takes two arguments`, test: () => {
-              expect(repeatString).takesXArguments(2);
-            } },
+            expect(repeatString).takesXArguments(2);
+          } },
           { description: `returns something`, test: () => {
-              expect(repeatString).withArgs('ha', 3).toReturnSomething();
-            } },
+            expect(repeatString).withArgs('ha', 3).toReturnSomething();
+          } },
           { description: `returns a string`, test: () => {
-              expect(repeatString).withArgs('ha', 3).toReturnString();
-            } },
+            expect(repeatString).withArgs('ha', 3).toReturnString();
+          } },
           { description: `uses a while loop`, test: () => {
-              expectCode().toUseWhileLoop();
-            } },
+            expectCode().toUseWhileLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(repeatString('ha', 3)).toBe('hahaha');
-              expect(repeatString('ab', 1)).toBe('ab');
-              expect(repeatString('x', 4)).toBe('xxxx');
-              expect(repeatString('na', 8)).toBe('nananananananana');
-              expect(repeatString('yo', 0)).toBe('');
-            } }
+            expect(repeatString('ha', 3)).toBe('hahaha');
+            expect(repeatString('ab', 1)).toBe('ab');
+            expect(repeatString('x', 4)).toBe('xxxx');
+            expect(repeatString('na', 8)).toBe('nananananananana');
+            expect(repeatString('yo', 0)).toBe('');
+          } }
         ],
       },
       { type: 'test', key: 'firstOverTests',
@@ -3678,30 +3754,30 @@ while (num > 1) {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(firstOver).toBeDeclared();
-            } },
+            expect(firstOver).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(firstOver).toHaveValue();
-            } },
+            expect(firstOver).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(firstOver).toBeFunction();
-            } },
+            expect(firstOver).toBeFunction();
+          } },
           { description: `takes two arguments`, test: () => {
-              expect(firstOver).takesXArguments(2);
-            } },
+            expect(firstOver).takesXArguments(2);
+          } },
           { description: `returns something`, test: () => {
-              expect(firstOver).withArgs([1, 5, 3], 4).toReturnSomething();
-            } },
+            expect(firstOver).withArgs([1, 5, 3], 4).toReturnSomething();
+          } },
           { description: `uses a while loop`, test: () => {
-              expectCode().toUseWhileLoop();
-            } },
+            expectCode().toUseWhileLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(firstOver([1, 5, 3, 8], 4)).toBe(5);
-              expect(firstOver([10, 1, 2], 5)).toBe(10);
-              expect(firstOver([1, 2, 3], 10)).toBe(null);
-              expect(firstOver([], 0)).toBe(null);
-              expect(firstOver([3, 3, 3, 7], 5)).toBe(7);
-            } }
+            expect(firstOver([1, 5, 3, 8], 4)).toBe(5);
+            expect(firstOver([10, 1, 2], 5)).toBe(10);
+            expect(firstOver([1, 2, 3], 10)).toBe(null);
+            expect(firstOver([], 0)).toBe(null);
+            expect(firstOver([3, 3, 3, 7], 5)).toBe(7);
+          } }
         ],
       }
     ],
@@ -3722,21 +3798,21 @@ Using the array's <b>length</b> as the stop condition, you can loop over every i
 Inside the loop, <b>array[i]</b> gives you the current item. You can read it, transform it, or use it to build up a result.<br><br>
 
 Common patterns:<br>
-— <b>accumulate</b>: start with 0 or "", add to it each loop<br>
-— <b>collect</b>: start with [], push items each loop<br>
-— <b>track</b>: start with a value, update it each loop (e.g. finding the max)<br><br>
+- <b>accumulate</b>: start with 0 or "", add to it each loop<br>
+- <b>collect</b>: start with [], push items each loop<br>
+- <b>track</b>: start with a value, update it each loop (e.g. finding the max)<br><br>
 
 Try running the code!`,
         sampleCode: `var numbers = [10, 3, 7, 2, 8];
 
-// Accumulate — sum all numbers
+// Accumulate - sum all numbers
 var sum = 0;
 for (var i = 0; i < numbers.length; i++) {
   sum += numbers[i];
 }
 console.log(sum); // 30
 
-// Collect — build a new array
+// Collect - build a new array
 var doubled = [];
 for (var i = 0; i < numbers.length; i++) {
   doubled.push(numbers[i] * 2);
@@ -3749,29 +3825,29 @@ console.log(doubled); // [20, 6, 14, 4, 16]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(countToN).toBeDeclared();
-            } },
+            expect(countToN).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(countToN).toHaveValue();
-            } },
+            expect(countToN).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(countToN).toBeFunction();
-            } },
+            expect(countToN).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(countToN).takesXArguments(1);
-            } },
+            expect(countToN).takesXArguments(1);
+          } },
           { description: `returns an array`, test: () => {
-              expect(countToN).withArgs(3).toReturnArray();
-            } },
+            expect(countToN).withArgs(3).toReturnArray();
+          } },
           { description: `uses a for loop`, test: () => {
-              expectCode().toUseForLoop();
-            } },
+            expectCode().toUseForLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(countToN(1)).toBeSameArrayAs([1]);
-              expect(countToN(3)).toBeSameArrayAs([1, 2, 3]);
-              expect(countToN(5)).toBeSameArrayAs([1, 2, 3, 4, 5]);
-              expect(countToN(7)).toBeSameArrayAs([1, 2, 3, 4, 5, 6, 7]);
-            } }
+            expect(countToN(1)).toBeSameArrayAs([1]);
+            expect(countToN(3)).toBeSameArrayAs([1, 2, 3]);
+            expect(countToN(5)).toBeSameArrayAs([1, 2, 3, 4, 5]);
+            expect(countToN(7)).toBeSameArrayAs([1, 2, 3, 4, 5, 6, 7]);
+          } }
         ],
       },
       { type: 'test', key: 'sumArrayTests',
@@ -3780,30 +3856,30 @@ console.log(doubled); // [20, 6, 14, 4, 16]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(sumArray).toBeDeclared();
-            } },
+            expect(sumArray).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(sumArray).toHaveValue();
-            } },
+            expect(sumArray).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(sumArray).toBeFunction();
-            } },
+            expect(sumArray).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(sumArray).takesXArguments(1);
-            } },
+            expect(sumArray).takesXArguments(1);
+          } },
           { description: `returns a number`, test: () => {
-              expect(sumArray).withArgs([1, 2]).toReturnNumber();
-            } },
+            expect(sumArray).withArgs([1, 2]).toReturnNumber();
+          } },
           { description: `uses a for loop`, test: () => {
-              expectCode().toUseForLoop();
-            } },
+            expectCode().toUseForLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(sumArray([1, 2, 3])).toBe(6);
-              expect(sumArray([10, 20, 30])).toBe(60);
-              expect(sumArray([0, 0, 0])).toBe(0);
-              expect(sumArray([])).toBe(0);
-              expect(sumArray([100])).toBe(100);
-            } }
+            expect(sumArray([1, 2, 3])).toBe(6);
+            expect(sumArray([10, 20, 30])).toBe(60);
+            expect(sumArray([0, 0, 0])).toBe(0);
+            expect(sumArray([])).toBe(0);
+            expect(sumArray([100])).toBe(100);
+          } }
         ],
       },
       { type: 'test', key: 'doubleAllTests',
@@ -3812,30 +3888,30 @@ console.log(doubled); // [20, 6, 14, 4, 16]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(doubleAll).toBeDeclared();
-            } },
+            expect(doubleAll).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(doubleAll).toHaveValue();
-            } },
+            expect(doubleAll).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(doubleAll).toBeFunction();
-            } },
+            expect(doubleAll).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(doubleAll).takesXArguments(1);
-            } },
+            expect(doubleAll).takesXArguments(1);
+          } },
           { description: `returns an array`, test: () => {
-              expect(doubleAll).withArgs([1, 2]).toReturnArray();
-            } },
+            expect(doubleAll).withArgs([1, 2]).toReturnArray();
+          } },
           { description: `uses a for loop`, test: () => {
-              expectCode().toUseForLoop();
-            } },
+            expectCode().toUseForLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(doubleAll([1, 2, 3])).toBeSameArrayAs([2, 4, 6]);
-              expect(doubleAll([0, 5, 10])).toBeSameArrayAs([0, 10, 20]);
-              expect(doubleAll([])).toBeSameArrayAs([]);
-              expect(doubleAll([7])).toBeSameArrayAs([14]);
-              expect(doubleAll([-3, -1, 0])).toBeSameArrayAs([-6, -2, 0]);
-            } }
+            expect(doubleAll([1, 2, 3])).toBeSameArrayAs([2, 4, 6]);
+            expect(doubleAll([0, 5, 10])).toBeSameArrayAs([0, 10, 20]);
+            expect(doubleAll([])).toBeSameArrayAs([]);
+            expect(doubleAll([7])).toBeSameArrayAs([14]);
+            expect(doubleAll([-3, -1, 0])).toBeSameArrayAs([-6, -2, 0]);
+          } }
         ],
       },
       { type: 'test', key: 'findMaxTests',
@@ -3844,30 +3920,30 @@ console.log(doubled); // [20, 6, 14, 4, 16]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(findMax).toBeDeclared();
-            } },
+            expect(findMax).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(findMax).toHaveValue();
-            } },
+            expect(findMax).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(findMax).toBeFunction();
-            } },
+            expect(findMax).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(findMax).takesXArguments(1);
-            } },
+            expect(findMax).takesXArguments(1);
+          } },
           { description: `returns a number`, test: () => {
-              expect(findMax).withArgs([1, 2]).toReturnNumber();
-            } },
+            expect(findMax).withArgs([1, 2]).toReturnNumber();
+          } },
           { description: `uses a for loop`, test: () => {
-              expectCode().toUseForLoop();
-            } },
+            expectCode().toUseForLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(findMax([3, 1, 7, 2])).toBe(7);
-              expect(findMax([1])).toBe(1);
-              expect(findMax([-5, -1, -3])).toBe(-1);
-              expect(findMax([0, 0, 0])).toBe(0);
-              expect(findMax([100, 200, 150])).toBe(200);
-            } }
+            expect(findMax([3, 1, 7, 2])).toBe(7);
+            expect(findMax([1])).toBe(1);
+            expect(findMax([-5, -1, -3])).toBe(-1);
+            expect(findMax([0, 0, 0])).toBe(0);
+            expect(findMax([100, 200, 150])).toBe(200);
+          } }
         ],
       },
       { type: 'test', key: 'joinWordsTests',
@@ -3876,31 +3952,31 @@ console.log(doubled); // [20, 6, 14, 4, 16]`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(joinWords).toBeDeclared();
-            } },
+            expect(joinWords).toBeDeclared();
+          } },
           { description: `has a value`, test: () => {
-              expect(joinWords).toHaveValue();
-            } },
+            expect(joinWords).toHaveValue();
+          } },
           { description: `is a function`, test: () => {
-              expect(joinWords).toBeFunction();
-            } },
+            expect(joinWords).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(joinWords).takesXArguments(1);
-            } },
+            expect(joinWords).takesXArguments(1);
+          } },
           { description: `returns a string`, test: () => {
-              expect(joinWords).withArgs(['a', 'b']).toReturnString();
-            } },
+            expect(joinWords).withArgs(['a', 'b']).toReturnString();
+          } },
           { description: `uses a for loop`, test: () => {
-              expectCode().toUseForLoop();
-            } },
+            expectCode().toUseForLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(joinWords(['hello', 'world'])).toBe('hello world');
-              expect(joinWords(['one'])).toBe('one');
-              expect(joinWords(['a', 'b', 'c', 'd'])).toBe('a b c d');
-              expect(joinWords(['the', 'quick', 'brown', 'fox'])).toBe(
-                'the quick brown fox',
-              );
-            } }
+            expect(joinWords(['hello', 'world'])).toBe('hello world');
+            expect(joinWords(['one'])).toBe('one');
+            expect(joinWords(['a', 'b', 'c', 'd'])).toBe('a b c d');
+            expect(joinWords(['the', 'quick', 'brown', 'fox'])).toBe(
+              'the quick brown fox',
+            );
+          } }
         ],
       }
     ],
@@ -3918,9 +3994,9 @@ Instead of tracking an index with <b>i</b>, you get each item directly:<br><br>
 
 <b>for (var item of array)</b><br><br>
 
-This is simpler than a regular for loop when you don't need the index — you just care about the values.<br><br>
+This is simpler than a regular for loop when you don't need the index - you just care about the values.<br><br>
 
-It works on strings too — each iteration gives you one character.<br><br>
+It works on strings too - each iteration gives you one character.<br><br>
 
 Try running the code!`,
         sampleCode: `var fruits = ["apple", "banana", "cherry"];
@@ -3943,26 +4019,26 @@ for (var char of "hello") {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(getChars).toBeDeclared();
-            } },
+            expect(getChars).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(getChars).toBeFunction();
-            } },
+            expect(getChars).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(getChars).takesXArguments(1);
-            } },
+            expect(getChars).takesXArguments(1);
+          } },
           { description: `returns an array`, test: () => {
-              expect(getChars).withArgs('hi').toReturnArray();
-            } },
+            expect(getChars).withArgs('hi').toReturnArray();
+          } },
           { description: `uses a for...of loop`, test: () => {
-              expectCode().toUseForOfLoop();
-            } },
+            expectCode().toUseForOfLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(getChars('hi')).toBeSameArrayAs(['h', 'i']);
-              expect(getChars('abc')).toBeSameArrayAs(['a', 'b', 'c']);
-              expect(getChars('z')).toBeSameArrayAs(['z']);
-              expect(getChars('')).toBeSameArrayAs([]);
-            } }
+            expect(getChars('hi')).toBeSameArrayAs(['h', 'i']);
+            expect(getChars('abc')).toBeSameArrayAs(['a', 'b', 'c']);
+            expect(getChars('z')).toBeSameArrayAs(['z']);
+            expect(getChars('')).toBeSameArrayAs([]);
+          } }
         ],
       },
       { type: 'test', key: 'shoutTests',
@@ -3971,26 +4047,26 @@ for (var char of "hello") {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(shout).toBeDeclared();
-            } },
+            expect(shout).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(shout).toBeFunction();
-            } },
+            expect(shout).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(shout).takesXArguments(1);
-            } },
+            expect(shout).takesXArguments(1);
+          } },
           { description: `returns an array`, test: () => {
-              expect(shout).withArgs('hi').toReturnArray();
-            } },
+            expect(shout).withArgs('hi').toReturnArray();
+          } },
           { description: `uses a for...of loop`, test: () => {
-              expectCode().toUseForOfLoop();
-            } },
+            expectCode().toUseForOfLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(shout('hi')).toBeSameArrayAs(['H', 'I']);
-              expect(shout('abc')).toBeSameArrayAs(['A', 'B', 'C']);
-              expect(shout('z')).toBeSameArrayAs(['Z']);
-              expect(shout('')).toBeSameArrayAs([]);
-            } }
+            expect(shout('hi')).toBeSameArrayAs(['H', 'I']);
+            expect(shout('abc')).toBeSameArrayAs(['A', 'B', 'C']);
+            expect(shout('z')).toBeSameArrayAs(['Z']);
+            expect(shout('')).toBeSameArrayAs([]);
+          } }
         ],
       },
       { type: 'test', key: 'totalTests',
@@ -3999,27 +4075,27 @@ for (var char of "hello") {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(total).toBeDeclared();
-            } },
+            expect(total).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(total).toBeFunction();
-            } },
+            expect(total).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(total).takesXArguments(1);
-            } },
+            expect(total).takesXArguments(1);
+          } },
           { description: `returns a number`, test: () => {
-              expect(total).withArgs([1, 2]).toReturnNumber();
-            } },
+            expect(total).withArgs([1, 2]).toReturnNumber();
+          } },
           { description: `uses a for...of loop`, test: () => {
-              expectCode().toUseForOfLoop();
-            } },
+            expectCode().toUseForOfLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(total([1, 2, 3])).toBe(6);
-              expect(total([10, 20, 30])).toBe(60);
-              expect(total([0])).toBe(0);
-              expect(total([])).toBe(0);
-              expect(total([100, 1])).toBe(101);
-            } }
+            expect(total([1, 2, 3])).toBe(6);
+            expect(total([10, 20, 30])).toBe(60);
+            expect(total([0])).toBe(0);
+            expect(total([])).toBe(0);
+            expect(total([100, 1])).toBe(101);
+          } }
         ],
       },
       { type: 'test', key: 'addOneTests',
@@ -4028,26 +4104,26 @@ for (var char of "hello") {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(addOne).toBeDeclared();
-            } },
+            expect(addOne).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(addOne).toBeFunction();
-            } },
+            expect(addOne).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(addOne).takesXArguments(1);
-            } },
+            expect(addOne).takesXArguments(1);
+          } },
           { description: `returns an array`, test: () => {
-              expect(addOne).withArgs([1, 2]).toReturnArray();
-            } },
+            expect(addOne).withArgs([1, 2]).toReturnArray();
+          } },
           { description: `uses a for...of loop`, test: () => {
-              expectCode().toUseForOfLoop();
-            } },
+            expectCode().toUseForOfLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(addOne([1, 2, 3])).toBeSameArrayAs([2, 3, 4]);
-              expect(addOne([0, 0, 0])).toBeSameArrayAs([1, 1, 1]);
-              expect(addOne([9])).toBeSameArrayAs([10]);
-              expect(addOne([])).toBeSameArrayAs([]);
-            } }
+            expect(addOne([1, 2, 3])).toBeSameArrayAs([2, 3, 4]);
+            expect(addOne([0, 0, 0])).toBeSameArrayAs([1, 1, 1]);
+            expect(addOne([9])).toBeSameArrayAs([10]);
+            expect(addOne([])).toBeSameArrayAs([]);
+          } }
         ],
       },
       { type: 'test', key: 'makeStringTests',
@@ -4056,26 +4132,26 @@ for (var char of "hello") {
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
-              expect(makeString).toBeDeclared();
-            } },
+            expect(makeString).toBeDeclared();
+          } },
           { description: `is a function`, test: () => {
-              expect(makeString).toBeFunction();
-            } },
+            expect(makeString).toBeFunction();
+          } },
           { description: `takes one argument`, test: () => {
-              expect(makeString).takesXArguments(1);
-            } },
+            expect(makeString).takesXArguments(1);
+          } },
           { description: `returns a string`, test: () => {
-              expect(makeString).withArgs(['a', 'b']).toReturnString();
-            } },
+            expect(makeString).withArgs(['a', 'b']).toReturnString();
+          } },
           { description: `uses a for...of loop`, test: () => {
-              expectCode().toUseForOfLoop();
-            } },
+            expectCode().toUseForOfLoop();
+          } },
           { description: `returns correct values`, test: () => {
-              expect(makeString(['hello', ' ', 'world'])).toBe('hello world');
-              expect(makeString(['a', 'b', 'c'])).toBe('abc');
-              expect(makeString(['one'])).toBe('one');
-              expect(makeString([])).toBe('');
-            } }
+            expect(makeString(['hello', ' ', 'world'])).toBe('hello world');
+            expect(makeString(['a', 'b', 'c'])).toBe('abc');
+            expect(makeString(['one'])).toBe('one');
+            expect(makeString([])).toBe('');
+          } }
         ],
       }
     ],
@@ -4099,7 +4175,7 @@ You can compare values using operators:<br>
 <b>&gt;=</b> greater than or equal to<br>
 <b>&lt;=</b> less than or equal to<br><br>
 
-You can also use <b>!</b> (NOT) to flip a condition — <b>!true</b> is false, <b>!false</b> is true.<br><br>
+You can also use <b>!</b> (NOT) to flip a condition - <b>!true</b> is false, <b>!false</b> is true.<br><br>
 
 Try running the code!`,
         sampleCode: `var age = 20;
@@ -4122,11 +4198,11 @@ if (!false) {
         sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
-              expectCode().toUseIfStatement();
-            } },
+            expectCode().toUseIfStatement();
+          } },
           { description: `if statement has "true" argument`, test: () => {
-              expectCode().toUseIfTrue();
-            } }
+            expectCode().toUseIfTrue();
+          } }
         ],
       },
       { type: 'test', key: 'ifFalseTests',
@@ -4135,17 +4211,17 @@ if (!false) {
         sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
-              expectCode().toUseIfStatement();
-            } },
+            expectCode().toUseIfStatement();
+          } },
           { description: `has a console.log inside it`, test: () => {
-              expectCode().toContain(`console.log(`);
-            } },
+            expectCode().toContain(`console.log(`);
+          } },
           { description: `has "you shouldn't see this" as argument for console.log()`, test: () => {
-              expectCode().toContain(`console.log("you shouldn't see this")`);
-            } },
+            expectCode().toContain(`console.log("you shouldn't see this")`);
+          } },
           { description: `does not log anything`, test: () => {
-              expectConsole().notToHaveLogged();
-            } }
+            expectConsole().notToHaveLogged();
+          } }
         ],
       },
       { type: 'test', key: 'ifNotFalseTests',
@@ -4154,20 +4230,20 @@ if (!false) {
         sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
-              expectCode().toUseIfStatement();
-            } },
+            expectCode().toUseIfStatement();
+          } },
           { description: `if statement has "!" (NOT) before the "false" argument`, test: () => {
-              expectCode().toUseIfWithNot();
-            } },
+            expectCode().toUseIfWithNot();
+          } },
           { description: `has a console.log`, test: () => {
-              expectCode().toContain(`console.log(`);
-            } },
+            expectCode().toContain(`console.log(`);
+          } },
           { description: `has "you should see this" as argument for console.log()`, test: () => {
-              expectCode().toContain(`console.log("you should see this")`);
-            } },
+            expectCode().toContain(`console.log("you should see this")`);
+          } },
           { description: `logs "you should see this"`, test: () => {
-              expectConsole().toHaveLogged('you should see this');
-            } }
+            expectConsole().toHaveLogged('you should see this');
+          } }
         ],
       },
       { type: 'test', key: 'numberComparisonTests',
@@ -4176,14 +4252,14 @@ if (!false) {
         sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
-              expectCode().toUseIfStatement();
-            } },
+            expectCode().toUseIfStatement();
+          } },
           { description: `uses the > operator`, test: () => {
-              expectCode().toUseOperator('>');
-            } },
+            expectCode().toUseOperator('>');
+          } },
           { description: `logs "five is greater than three"`, test: () => {
-              expectConsole().toHaveLogged('five is greater than three');
-            } }
+            expectConsole().toHaveLogged('five is greater than three');
+          } }
         ],
       },
       { type: 'test', key: 'variableComparisonTests',
@@ -4192,26 +4268,26 @@ if (!false) {
         sampleCode: ``,
         tests: [
           { description: `"a" is 5`, test: () => {
-              expect(a).toBe(5);
-            } },
+            expect(a).toBe(5);
+          } },
           { description: `"b" is 3`, test: () => {
-              expect(b).toBe(3);
-            } },
+            expect(b).toBe(3);
+          } },
           { description: `uses an if statement`, test: () => {
-              expectCode().toUseIfStatement();
-            } },
+            expectCode().toUseIfStatement();
+          } },
           { description: `uses the > operator`, test: () => {
-              expectCode().toUseOperator('>');
-            } },
+            expectCode().toUseOperator('>');
+          } },
           { description: `uses "a" in the if condition`, test: () => {
-              expectCode().toUseVariableInIfCondition('a');
-            } },
+            expectCode().toUseVariableInIfCondition('a');
+          } },
           { description: `uses "b" in the if condition`, test: () => {
-              expectCode().toUseVariableInIfCondition('b');
-            } },
+            expectCode().toUseVariableInIfCondition('b');
+          } },
           { description: `logs "five is greater than three"`, test: () => {
-              expectConsole().toHaveLogged('five is greater than three');
-            } }
+            expectConsole().toHaveLogged('five is greater than three');
+          } }
         ],
       },
       { type: 'test', key: 'equalsComparisonTests',
@@ -4220,26 +4296,26 @@ if (!false) {
         sampleCode: ``,
         tests: [
           { description: `uses an if statement`, test: () => {
-              expectCode().toUseIfStatement();
-            } },
+            expectCode().toUseIfStatement();
+          } },
           { description: `uses the == operator`, test: () => {
-              expectCode().toUseOperator('==');
-            } },
+            expectCode().toUseOperator('==');
+          } },
           { description: `uses "a" in the if condition`, test: () => {
-              expectCode().toUseVariableInIfCondition('a');
-            } },
+            expectCode().toUseVariableInIfCondition('a');
+          } },
           { description: `uses "b" in the if condition`, test: () => {
-              expectCode().toUseVariableInIfCondition('b');
-            } },
+            expectCode().toUseVariableInIfCondition('b');
+          } },
           { description: `"a" is 5`, test: () => {
-              expect(a).toBe(5);
-            } },
+            expect(a).toBe(5);
+          } },
           { description: `"b" is 5`, test: () => {
-              expect(b).toBe(5);
-            } },
+            expect(b).toBe(5);
+          } },
           { description: `logs "a and b are equal"`, test: () => {
-              expectConsole().toHaveLogged('a and b are equal');
-            } }
+            expectConsole().toHaveLogged('a and b are equal');
+          } }
         ],
       },
       { type: 'test', key: 'notEqualsComparisonTests',
@@ -4248,26 +4324,26 @@ if (!false) {
         sampleCode: ``,
         tests: [
           { description: `"a" is 5`, test: () => {
-              expect(a).toBe(5);
-            } },
+            expect(a).toBe(5);
+          } },
           { description: `"b" is 3`, test: () => {
-              expect(b).toBe(3);
-            } },
+            expect(b).toBe(3);
+          } },
           { description: `uses an if statement`, test: () => {
-              expectCode().toUseIfStatement();
-            } },
+            expectCode().toUseIfStatement();
+          } },
           { description: `uses the != operator`, test: () => {
-              expectCode().toUseOperator('!=');
-            } },
+            expectCode().toUseOperator('!=');
+          } },
           { description: `uses "a" in the if condition`, test: () => {
-              expectCode().toUseVariableInIfCondition('a');
-            } },
+            expectCode().toUseVariableInIfCondition('a');
+          } },
           { description: `uses "b" in the if condition`, test: () => {
-              expectCode().toUseVariableInIfCondition('b');
-            } },
+            expectCode().toUseVariableInIfCondition('b');
+          } },
           { description: `logs "a and b are not equal"`, test: () => {
-              expectConsole().toHaveLogged('a and b are not equal');
-            } }
+            expectConsole().toHaveLogged('a and b are not equal');
+          } }
         ],
       }
     ],
@@ -4281,11 +4357,11 @@ if (!false) {
         title: 'String Concatenation',
         text: `<b>String concatenation</b> is joining strings together to make a new string.<br><br>
 
-The simplest way is with the <b>+</b> operator — the same one used for adding numbers. When used with strings, it joins them instead.<br><br>
+The simplest way is with the <b>+</b> operator - the same one used for adding numbers. When used with strings, it joins them instead.<br><br>
 
-You can also join a string and a number — JavaScript will convert the number to a string automatically.<br><br>
+You can also join a string and a number - JavaScript will convert the number to a string automatically.<br><br>
 
-The second way is with <b>template literals</b> — strings wrapped in backticks (<b>\`\`</b>) instead of quotes. Inside them you can embed any expression using <b>\${}</b>. This is often cleaner than using +.<br><br>
+The second way is with <b>template literals</b> - strings wrapped in backticks (<b>\`\`</b>) instead of quotes. Inside them you can embed any expression using <b>\${}</b>. This is often cleaner than using +.<br><br>
 
 Try running the code!`,
         sampleCode: `var first = "camp";
