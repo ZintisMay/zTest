@@ -1,14 +1,14 @@
 == TEST SOURCE FILES ==
 
-Lessons | Review
-[X]      [ ]      0-Getting Started.js
-[X]      [ ]      1-Variables.js
-[X]      [ ]      2-Operators.js
-[X]      [ ]      3-Basic Functions.js
-[X]      [ ]      4-Function Parameters.js
-[X]      [ ]      5-Functions with Logic.js
-[X]      [ ]      6-Objects.js
-[X]      [ ]      7-Arrays.js
+Lessons | Review (human verified)
+[X]      [X]      0-Getting Started.js
+[X]      [X]      1-Variables.js
+[X]      [X]      2-Operators.js
+[X]      [X]      3-Basic Functions.js
+[X]      [X]      4-Function Parameters.js
+[X]      [X]      5-Functions with Logic.js
+[X]      [X]      6-Objects.js
+[X]      [X]      7-Arrays.js
 [X]      [ ]      8-Array Methods.js
 [X]      [ ]      9-Loops & Strings.js
 [X]      [ ]      10-Array.map.js

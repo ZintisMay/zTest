@@ -37,7 +37,7 @@ function startTour() {
           element: document.querySelector('.panel-tests'),
           title: 'Question',
           intro:
-            'This panel shows the active question — its title, instructions, and the individual tests your code must pass.',
+            'This panel shows the active question. Its title, instructions, and the individual tests your code must pass.',
         },
         {
           element: document.querySelector('.panel-code'),
@@ -442,7 +442,10 @@ function buildAstFlags(code) {
         case 'MemberExpression':
           if (node.computed) hasBracketNotation = true;
           else {
-            const isConsoleLog = node.object?.type === 'Identifier' && node.object?.name === 'console' && node.property?.name === 'log';
+            const isConsoleLog =
+              node.object?.type === 'Identifier' &&
+              node.object?.name === 'console' &&
+              node.property?.name === 'log';
             if (!isConsoleLog) hasDotNotation = true;
           }
           break;

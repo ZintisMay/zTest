@@ -929,7 +929,7 @@ Check out the code on the right, try running it!`,
 }
 
 areTheyExactlyTheSame(55, 55);    // exactly the same
-areTheyExactlyTheSame(55, "55");  // NOT exactly the same — different types!`,
+areTheyExactlyTheSame(55, "55");  // NOT exactly the same, they are different types!`,
     },
     {
       type: 'test',

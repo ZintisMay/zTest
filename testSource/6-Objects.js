@@ -17,7 +17,7 @@ var obj = { key: value };<br><br>
 
 Keys are always strings (quotes optional, but usually no quotes).<br><br>
 
-Values can be any type — strings, numbers, booleans, arrays, even other objects.<br><br>
+Values can be any type: strings, numbers, booleans, arrays, even other objects.<br><br>
 
 Try running the code and look at the output!`,
       sampleCode: `var emptyObject = {};
@@ -48,7 +48,7 @@ In this example:<br><br>
 <b>year</b> is a key, <b>2020</b> is its value.<br>
 <b>electric</b> is a key, <b>false</b> is its value.<br><br>
 
-Properties can hold any type of value — including arrays and other objects!<br><br>
+Properties can hold any type of value including arrays and other objects!<br><br>
 
 Try adding a new property (key AND value).`,
       sampleCode: `var car = {
@@ -339,7 +339,7 @@ console.log(car);`,
       title: 'Accessing Properties',
       text: `To read a value from an object, use <b>dot notation</b>: <b>object.key</b><br><br>
 
-You can also use <b>bracket notation</b>: <b>object["key"]</b> — useful when the key is stored in a variable or has special characters.<br><br>
+You can also use <b>bracket notation</b>: <b>object["key"]</b> (useful when the key is stored in a variable or has special characters).<br><br>
 
 Both do the same thing. Dot notation is more common and easier to read.<br><br>
 
@@ -498,14 +498,19 @@ Use two console.log to log both values separately.<br><br>`,
       type: 'test',
       key: 'setPropertyTest',
       title: `Setting a Property`,
-      instructions: `Declare a variable named <b>book</b> that is an object with a property <b>title</b> set to <b>"Dune"</b>.<br><br>
+      instructions: `Leave <b>book</b> alone, we're going to change it's properties.<br><br>
+      Change its title to "Dune".<br><br>
+      Change its pages to 412.<br><br>
+      Change its year to 1965.<br><br>
 
 Then add a new property <b>author</b> to the <b>book</b> object and set it to <b>"Frank Herbert"</b> using dot notation.`,
-      sampleCode: `var book = {
+      sampleCode: `// Don't touch this!
+var book = {
   title: "Moby Dick",
   pages: 720,
   year: 1851
 };
+// Just add new code below!
 `,
       tests: [
         {
@@ -536,6 +541,18 @@ Then add a new property <b>author</b> to the <b>book</b> object and set it to <b
           description: `change "book" key "year" to value 1965`,
           test: () => {
             expect(book).toHaveKeyValuePair('year', 1965);
+          },
+        },
+        {
+          description: `add "book" key "author" to value "Frank Herbert"`,
+          test: () => {
+            expect(book).toHaveKeyValuePair('author', 'Frank Herbert');
+          },
+        },
+        {
+          description: `should use dot notation`,
+          test: () => {
+            expectCode().toUseDotNotation();
           },
         },
       ],
