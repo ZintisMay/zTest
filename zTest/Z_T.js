@@ -1,4 +1,5 @@
 function isEqual(a, b) {
+  if (Number.isNaN(a) && Number.isNaN(b)) return true;
   if (a === b) return true;
   if (a === null || b === null) return false;
   if (typeof a !== typeof b) return false;

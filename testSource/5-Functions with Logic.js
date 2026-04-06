@@ -838,6 +838,65 @@ areTheyExactlyTheSame(55, 55);    // exactly the same
 areTheyExactlyTheSame(55, "55");  // NOT exactly the same — different types!`,
     },
     {
+      type: 'test',
+      key: 'equalityOperatorsTest',
+      title: `== and ===`,
+      instructions: `Declare a variable <b>a</b> set to the number <b>5</b> and a variable <b>b</b> set to the string <b>"5"</b>.<br><br>
+      Using an if statement with <b>==</b>, console.log <b>"loosely equal"</b> if they are loosely equal.<br><br>
+      Using an if statement with <b>===</b>, console.log <b>"strictly equal"</b> if they are strictly equal.<br><br>
+      Only the first should a number and a string are never strictly equal.`,
+      sampleCode: `var a = 5;
+var b = "5";
+
+// fix the #### using the equality operator
+if (a #### b) {
+  console.log("loosely equal");
+} 
+
+// fix the #### using the equality operator
+if (a #### b) {
+  console.log("strictly equal");
+}`,
+      tests: [
+        {
+          description: `a is 5 (number)`,
+          test: () => {
+            expect(a).toBe(5);
+          },
+        },
+        {
+          description: `b is "5" (string)`,
+          test: () => {
+            expect(b).toBe('5');
+          },
+        },
+        {
+          description: `uses ==`,
+          test: () => {
+            expectCode().toUseOperator('==');
+          },
+        },
+        {
+          description: `uses ===`,
+          test: () => {
+            expectCode().toUseOperator('===');
+          },
+        },
+        {
+          description: `logs "loosely equal"`,
+          test: () => {
+            expectConsole().toHaveLogged('loosely equal');
+          },
+        },
+        {
+          description: `does not log "strictly equal"`,
+          test: () => {
+            expectConsole().toHaveLoggedXTimes(1);
+          },
+        },
+      ],
+    },
+    {
       type: 'lesson',
       key: 'lesson-9',
       title: 'null, undefined, and NaN',
@@ -845,9 +904,9 @@ areTheyExactlyTheSame(55, "55");  // NOT exactly the same — different types!`,
 
 <b>null</b> means "intentionally empty". If something is null, it's empty on purpose (usually).<br><br>
 
-<b>undefined</b> means "this hasn't been given a value yet". So like null, but unintentional. You'll get it if you try to access a variable that hasn't been assigned or doesn't exist!<br><br>
+<b>undefined</b> means "this hasn't been given a value yet". So like null, but unintentional (usually). You'll get it if you try to access a variable that hasn't been assigned or doesn't exist!<br><br>
 
-<b>NaN</b> stands for "Not a Number". When you accidentally  do math to something that isn't a number.<br><br>
+<b>NaN</b> stands for "Not a Number". When you accidentally  do math to something that isn't a number. This one is almost always an unintentional error.<br><br>
 
 Try running the code!`,
       sampleCode: `// null - intentionally empty
@@ -865,6 +924,61 @@ console.log(doNothing()); // undefined
 // NaN - a bad math operation
 var result = "hello" * 5;
 console.log(result);         // NaN`,
+    },
+    {
+      type: 'test',
+      key: 'nullUndefinedNaNTest',
+      title: `null, undefined, and NaN`,
+      instructions: `Declare three variables:<br><br>
+      <b>a</b> set to <b>null</b><br>
+      <b>b</b> with no value assigned (undefined)<br>
+      <b>c</b> set to <b>"hello" * 5</b> (NaN)<br><br>
+      Then console.log all three.`,
+      sampleCode: `var a;
+var b;
+var c;
+
+console.log(a);
+console.log(b);
+console.log(c);`,
+      tests: [
+        {
+          description: `a is null`,
+          test: () => {
+            expect(a).toBe(null);
+          },
+        },
+        {
+          description: `b is undefined`,
+          test: () => {
+            expect(b).toBe(undefined);
+          },
+        },
+        {
+          description: `c is NaN`,
+          test: () => {
+            expect(c).toBe(NaN);
+          },
+        },
+        {
+          description: `logs null`,
+          test: () => {
+            expectConsole().toHaveLogged(null);
+          },
+        },
+        {
+          description: `logs undefined`,
+          test: () => {
+            expectConsole().toHaveLogged(undefined);
+          },
+        },
+        {
+          description: `logs NaN`,
+          test: () => {
+            expectConsole().toHaveLogged(NaN);
+          },
+        },
+      ],
     },
   ],
 };
