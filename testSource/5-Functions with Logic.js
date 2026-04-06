@@ -339,15 +339,15 @@ if (!NaN) {
           },
         },
         {
-          description: `returns a boolean`,
-          test: () => {
-            expect(isThisValueTrue).withArgs().toReturnBoolean();
-          },
-        },
-        {
           description: `uses an if statement`,
           test: () => {
             expectCode().toUseIfStatement();
+          },
+        },
+        {
+          description: `returns a boolean`,
+          test: () => {
+            expect(isThisValueTrue).withArgs().toReturnBoolean();
           },
         },
         {
@@ -718,13 +718,14 @@ if (!NaN) {
       type: 'lesson',
       key: 'lesson-6',
       title: '>, <, >=, <=, ==, !=',
-      text: `You may remember these from math class:<br><br>
+      text: `You may remember (some of) these from math class:<br><br>
 
       <ul>
      <li><b>\></b> greater than</li>
      <li><b>\<</b> less than</li>
      <li><b>\>=</b> greater than or equal</li>
      <li><b>\<=</b> less than or equal</li>
+     <br>
      <li><b>!=</b> not equal</li>
      <li><b>==</b> is equal (be careful with this one! it looks like assignment but is actually comparison!)</li>
 
@@ -732,7 +733,7 @@ if (!NaN) {
 
 These can be used in logical operations like so:<br><br>
 
-<ul>if( 5 > 3 ){ console.log("five is greater than three") }</ul><br>
+<ul><b>if( 5 > 3 ){ console.log("five is greater than three") }</b></ul><br>
 
 But to most, this would seem pretty obvious. No reason to use fancy code here right?<br><br>
 
@@ -758,47 +759,76 @@ whichIsGreater(2, 2);
       type: 'lesson',
       key: 'lesson-7',
       title: 'focusing on == and !=',
-      text: `So with the prior lesson, \>, |< \>= and \<= are used with numbers.<br><br>
+      text: `So with the prior lesson, \>, \<, \>= and \<= are used with numbers.<br><br>
 
-      BUT == and != can be used with anything! 
+      BUT == and != can be used with other values, like strings or numbers.<br><br>
 
-      <ul>
-     <li><b>\></b> greater than</li>
-     <li><b>\<</b> less than</li>
-     <li><b>\>=</b> greater than or equal</li>
-     <li><b>\<=</b> less than or equal</li>
-     <li><b>!=</b> not equal</li>
-     <li><b>==</b> is equal (be careful with this one! it looks like assignment but is actually comparison!)</li>
-
-      </ul><br>
-
-These can be used in logical operations like so:<br><br>
-
-<ul>if( 5 > 3 ){ console.log("five is greater than three") }</ul><br>
-
-But to most, this would seem pretty obvious. No reason to use fancy code here right?<br><br>
-
-These statements really shine through when you use variables. Especially when you don't know the value of a variable. <br><br>
+      It can be used with arrays and objects, but the behavior is NOT what you would expect. The details of why this is goes a little beyond the scope of Z_Test.<br><br>
+      
+      <i>(Basically you should treat arrays and objects like they are always unique. There ARE ways to compare them, but it's more complicated than just "obj == otherObj".</i><br><br>
 
 Check out the code on the right, try running it!`,
-      sampleCode: `function whichIsGreater(a, b) {
-  if (a > b) {
-    console.log("a is greater than b");
-  } else if (a < b) {
-    console.log("a is less than b");
-  } else if (a == b) {
-    console.log("a is equal to b");
-  }
+      sampleCode: `function areTheyTheSame(a,b){
+  if(a == b){
+      console.log(a + " and " + b + " are the same!");
+  }else {
+      console.log(a + " and " + b + " are NOT the same!");
+  }      
 }
-  
-whichIsGreater(2, 1);
-whichIsGreater(1, 2);
-whichIsGreater(2, 2);
+
+areTheyTheSame(55, 55);
+areTheyTheSame(1, 100);
 `,
     },
     {
       type: 'lesson',
       key: 'lesson-8',
+      title: '== and ===',
+      text: `Ok now, here's a confusing part:<br><br>
+
+      =, ==, and === are all operators in JS. BUT they do different things. Here's my way of remembering it:<br><br>
+
+      = "is"<br>
+      == "is equal"<br>
+      === "is exactly equal"<br><br>
+
+      So when you see <b>var x = 5</b>... that reads as <b>"variable x IS 5"</b>.<br><br>
+
+      But when you see <b>if (x == 5) {}</b>... that reads as <b>"if x IS EQUAL to 5"</b>.<br><br>
+
+      Lastly, <b>if (x === 5) {}</b>... that reads <b>"if x IS EXACTLY EQUAL to 5"</b>. This would fail if x is the string "5".<br><br>
+
+      === checks that the values are the same type of data. So == thinks the number 5 and the string "5" are the same. <b>My general recommendation is to use ===</b><br><br>
+
+Check out the code on the right, try running it!`,
+      sampleCode: `function areTheyTheSame(a,b){
+  console.log("a is ", typeof a);
+  console.log("b is ", typeof b);
+  if(a == b){
+      console.log("a and b are the same!");
+  }else {
+      console.log("a and b are NOT the same!");
+  }      
+}
+
+areTheyTheSame(55, 55);
+areTheyTheSame(55, "55");
+
+function areTheyExactlyTheSame(a,b){
+  if(a === b){
+      console.log("a and b are exactly the same!");
+  }else {
+      console.log("a and b are NOT exactly the same!");
+  }      
+}
+
+areTheyExactlyTheSame(55, 55);
+areTheyExactlyTheSame(55, "55");
+`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-9',
       title: 'null, undefined, and NaN',
       text: `These are different kinds of falsy values:<br><br>
 
