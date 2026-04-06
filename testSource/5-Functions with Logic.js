@@ -148,24 +148,33 @@ Try running the code and changing true to false!`,
     {
       type: 'lesson',
       key: 'lesson-0b',
-      title: 'If Else Statements',
-      text: `You can combine the two to create an "if else(){}" statement.<br><br>
+      title: 'Else If Statements',
+      text: `You can combine the two to create an <b>"Else If( ){ }"</b> statement.<br><br>
 
 Just keep in mind:<br><br>
 
 <ul>
 <li>The first one is always just "if".</li>
-<li>The later ones are "if else".</li>
+<li>The later ones are "Else If".</li>
 <li>If you want to catch all other possibilities, then put an "else" statement at the end.</li>
-</ul><br><br>
+</ul><br>
 
-When you write these, you'll have to think about what kinds of values you'll see, and what you want the outcome to be. 
+When you write these, you'll have to think about what kinds of values you'll see, and what you want the outcome to be.<br><br>
 
-Try running the code and changing true to false!`,
-      sampleCode: `if (true) {
-  console.log("You passed!");
+Try running the code!`,
+      sampleCode: `
+var a = 101;
+
+// This one is check first
+if (a > 1000) {
+  // This won't fire, b/c a is NOT greater than 1000
+  console.log("Huge Number");
+} else if (a > 100){
+  // This one WILL fire
+  console.log("Big Number");
 } else {
-  console.log("You failed.");
+  // b/c the prior one fired, this one won't.
+  console.log("Small Number");
 }`,
     },
     {
@@ -194,120 +203,6 @@ if (!isRaining) {
   console.log("Stay inside.");
 }`,
     },
-    {
-      type: 'lesson',
-      key: 'lesson-1',
-      title: 'What is True?',
-      text: `In JavaScript lots of values are considered <b>true</b>. Almost all, in fact.<br><br>
-
-This is called being <b>truthy</b>. If a value is truthy, an <b>if</b> statement will run its block.<br><br>
-
-It's actually easiest to learn which values are <b>falsy</b> rather than all the true values (see next lesson).<br><br>
-
-Try running the code!`,
-      sampleCode: `// All of these are truthy
-if (1) {
-  console.log("1 is truthy");
-}
-if (true) {
-  console.log("true is truthy");
-}
-if ("a") {
-  console.log("characters are truthy");
-}
-if ("hello") {
-  console.log("words are truthy");
-}
-if ("hi there") {
-  console.log("sentences are truthy");
-}`,
-    },
-    {
-      type: 'lesson',
-      key: 'lesson-2',
-      title: 'What is False?',
-      text: `There are only a handful of <b>falsy</b> values.<br><br>
-
-Just try to keep these in mind when you code your own projects! There's only 6 to remember!<br><br>
-
-<ul>
-<li><b>false</b> is "false", a boolean</li>
-<li><b>0</b> the number zero</li>
-<li><b>null</b> keyword "null"</li>
-<li><b>""</b> an empty string (not even a space!)</li>
-<li><b>undefined</b> is a keyword</li>
-<li><b>NaN</b> is a keyword (stands for <b>Not a Number</b>)</li>
-</ul><br><br>
-
-(There's actually 9, but the last 3 are rare, go look them up if you want!)
-
-Everything else is truthy. When in doubt, assume it's true!`,
-      sampleCode: `// All of these are falsy
-if (!false) {
-  console.log("false is falsy");
-}
-if (!0) {
-  console.log("0 is falsy");
-}
-if (!"") {
-  console.log("an empty string is falsy");
-}
-if (!null) {
-  console.log("null is falsy");
-}
-if (!undefined) {
-  console.log("undefined is falsy");
-}
-if (!NaN) {
-  console.log("NaN is falsy");
-}`,
-    },
-
-    // {
-    //   type: 'test',
-    //   key: 'greeting',
-    //   title: `function greeting`,
-    //   instructions: `Make a function named "greeting" that takes one argument. It should return a string like "Hello Zintis!" when passed the argument "Zintis"`,
-    //   tests: [
-    //     {
-    //       description: `is declared`,
-    //       test: () => {
-    //         expect(greeting).toBeDeclared();
-    //       },
-    //     },
-    //     {
-    //       description: `has a value`,
-    //       test: () => {
-    //         expect(greeting).toHaveValue();
-    //       },
-    //     },
-    //     {
-    //       description: `is a function`,
-    //       test: () => {
-    //         expect(greeting).toBeFunction();
-    //       },
-    //     },
-    //     {
-    //       description: `takes one argument`,
-    //       test: () => {
-    //         expect(greeting).takesXArguments(1);
-    //       },
-    //     },
-    //     {
-    //       description: `returns a string`,
-    //       test: () => {
-    //         expect(greeting).withArgs().toReturnString();
-    //       },
-    //     },
-    //     {
-    //       description: `returns correct values`,
-    //       test: () => {
-    //         expect(greeting).withArgs('Barry').toReturn(`Hello Barry!`);
-    //         expect(greeting).withArgs(`Rosie`).toReturn(`Hello Rosie!`);
-    //       },
-    //     },
-    //   ],
-    // },
     {
       type: 'test',
       key: 'isThisValueTrue',
@@ -511,6 +406,205 @@ if (!NaN) {
             expect(doYouWantCake).withArgs(true).toReturn('yes');
             expect(doYouWantCake).withArgs(false).toReturn('no');
             expect(doYouWantCake).withArgs().toReturn('no');
+          },
+        },
+      ],
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-1',
+      title: 'What is True?',
+      text: `In JavaScript lots of values are considered <b>true</b>. Almost all, in fact.<br><br>
+
+This is called being <b>truthy</b>. If a value is truthy, an <b>if</b> statement will run its block.<br><br>
+
+It's actually easiest to learn which values are <b>falsy</b> rather than all the true values (see next lesson).<br><br>
+
+Try running the code!`,
+      sampleCode: `// All of these are truthy
+if (1) {
+  console.log("1 is truthy");
+}
+if (true) {
+  console.log("true is truthy");
+}
+if ("a") {
+  console.log("characters are truthy");
+}
+if ("hello") {
+  console.log("words are truthy");
+}
+if ("hi there") {
+  console.log("sentences are truthy");
+}`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-2',
+      title: 'What is False?',
+      text: `There are only a handful of <b>falsy</b> values.<br><br>
+
+Just try to keep these in mind when you code your own projects! There's only 6 to remember!<br><br>
+
+<ul>
+<li><b>false</b> is "false", a boolean</li>
+<li><b>0</b> the number zero</li>
+<li><b>null</b> keyword "null"</li>
+<li><b>""</b> an empty string (not even a space!)</li>
+<li><b>undefined</b> is a keyword</li>
+<li><b>NaN</b> is a keyword (stands for <b>Not a Number</b>)</li>
+</ul><br><br>
+
+(There's actually 9, but the last 3 are rare, go look them up if you want!)
+
+Everything else is truthy. When in doubt, assume it's true!`,
+      sampleCode: `// All of these are falsy
+if (!false) {
+  console.log("false is falsy");
+}
+if (!0) {
+  console.log("0 is falsy");
+}
+if (!"") {
+  console.log("an empty string is falsy");
+}
+if (!null) {
+  console.log("null is falsy");
+}
+if (!undefined) {
+  console.log("undefined is falsy");
+}
+if (!NaN) {
+  console.log("NaN is falsy");
+}`,
+    },
+
+    // {
+    //   type: 'test',
+    //   key: 'greeting',
+    //   title: `function greeting`,
+    //   instructions: `Make a function named "greeting" that takes one argument. It should return a string like "Hello Zintis!" when passed the argument "Zintis"`,
+    //   tests: [
+    //     {
+    //       description: `is declared`,
+    //       test: () => {
+    //         expect(greeting).toBeDeclared();
+    //       },
+    //     },
+    //     {
+    //       description: `has a value`,
+    //       test: () => {
+    //         expect(greeting).toHaveValue();
+    //       },
+    //     },
+    //     {
+    //       description: `is a function`,
+    //       test: () => {
+    //         expect(greeting).toBeFunction();
+    //       },
+    //     },
+    //     {
+    //       description: `takes one argument`,
+    //       test: () => {
+    //         expect(greeting).takesXArguments(1);
+    //       },
+    //     },
+    //     {
+    //       description: `returns a string`,
+    //       test: () => {
+    //         expect(greeting).withArgs().toReturnString();
+    //       },
+    //     },
+    //     {
+    //       description: `returns correct values`,
+    //       test: () => {
+    //         expect(greeting).withArgs('Barry').toReturn(`Hello Barry!`);
+    //         expect(greeting).withArgs(`Rosie`).toReturn(`Hello Rosie!`);
+    //       },
+    //     },
+    //   ],
+    // },
+
+    {
+      type: 'lesson',
+      key: 'lesson-9',
+      title: 'null, undefined, and NaN',
+      text: `These are different kinds of falsy values:<br><br>
+
+<b>null</b> means "intentionally empty". If something is null, it's empty on purpose (usually).<br><br>
+
+<b>undefined</b> means "this hasn't been given a value yet". So like null, but unintentional (usually). You'll get it if you try to access a variable that hasn't been assigned or doesn't exist!<br><br>
+
+<b>NaN</b> stands for "Not a Number". When you accidentally  do math to something that isn't a number. This one is almost always an unintentional error.<br><br>
+
+Try running the code!`,
+      sampleCode: `// null - intentionally empty
+var winner = null;
+console.log(winner); // null
+
+// undefined - notice that there's no value assigned, no "="
+var score;
+console.log(score); // undefined
+
+// A function with no return gives undefined
+function doNothing() {}
+console.log(doNothing()); // undefined
+
+// NaN - a bad math operation
+var result = "hello" * 5;
+console.log(result);         // NaN`,
+    },
+    {
+      type: 'test',
+      key: 'nullUndefinedNaNTest',
+      title: `null, undefined, and NaN`,
+      instructions: `Declare three variables:<br><br>
+      <b>a</b> set to <b>null</b><br>
+      <b>b</b> with no value assigned (undefined)<br>
+      <b>c</b> set to <b>"hello" * 5</b> (NaN)<br><br>
+      Then console.log all three.`,
+      sampleCode: `var a;
+var b;
+var c;
+
+console.log(a);
+console.log(b);
+console.log(c);`,
+      tests: [
+        {
+          description: `a is null`,
+          test: () => {
+            expect(a).toBe(null);
+          },
+        },
+        {
+          description: `b is undefined`,
+          test: () => {
+            expect(b).toBe(undefined);
+          },
+        },
+        {
+          description: `c is NaN`,
+          test: () => {
+            expect(c).toBe(NaN);
+          },
+        },
+        {
+          description: `logs null`,
+          test: () => {
+            expectConsole().toHaveLogged(null);
+          },
+        },
+        {
+          description: `logs undefined`,
+          test: () => {
+            expectConsole().toHaveLogged(undefined);
+          },
+        },
+        {
+          description: `logs NaN`,
+          test: () => {
+            expectConsole().toHaveLogged(NaN);
           },
         },
       ],
@@ -892,90 +986,6 @@ if (a #### b) {
           description: `does not log "strictly equal"`,
           test: () => {
             expectConsole().toHaveLoggedXTimes(1);
-          },
-        },
-      ],
-    },
-    {
-      type: 'lesson',
-      key: 'lesson-9',
-      title: 'null, undefined, and NaN',
-      text: `These are different kinds of falsy values:<br><br>
-
-<b>null</b> means "intentionally empty". If something is null, it's empty on purpose (usually).<br><br>
-
-<b>undefined</b> means "this hasn't been given a value yet". So like null, but unintentional (usually). You'll get it if you try to access a variable that hasn't been assigned or doesn't exist!<br><br>
-
-<b>NaN</b> stands for "Not a Number". When you accidentally  do math to something that isn't a number. This one is almost always an unintentional error.<br><br>
-
-Try running the code!`,
-      sampleCode: `// null - intentionally empty
-var winner = null;
-console.log(winner); // null
-
-// undefined - notice that there's no value assigned, no "="
-var score;
-console.log(score); // undefined
-
-// A function with no return gives undefined
-function doNothing() {}
-console.log(doNothing()); // undefined
-
-// NaN - a bad math operation
-var result = "hello" * 5;
-console.log(result);         // NaN`,
-    },
-    {
-      type: 'test',
-      key: 'nullUndefinedNaNTest',
-      title: `null, undefined, and NaN`,
-      instructions: `Declare three variables:<br><br>
-      <b>a</b> set to <b>null</b><br>
-      <b>b</b> with no value assigned (undefined)<br>
-      <b>c</b> set to <b>"hello" * 5</b> (NaN)<br><br>
-      Then console.log all three.`,
-      sampleCode: `var a;
-var b;
-var c;
-
-console.log(a);
-console.log(b);
-console.log(c);`,
-      tests: [
-        {
-          description: `a is null`,
-          test: () => {
-            expect(a).toBe(null);
-          },
-        },
-        {
-          description: `b is undefined`,
-          test: () => {
-            expect(b).toBe(undefined);
-          },
-        },
-        {
-          description: `c is NaN`,
-          test: () => {
-            expect(c).toBe(NaN);
-          },
-        },
-        {
-          description: `logs null`,
-          test: () => {
-            expectConsole().toHaveLogged(null);
-          },
-        },
-        {
-          description: `logs undefined`,
-          test: () => {
-            expectConsole().toHaveLogged(undefined);
-          },
-        },
-        {
-          description: `logs NaN`,
-          test: () => {
-            expectConsole().toHaveLogged(NaN);
           },
         },
       ],
