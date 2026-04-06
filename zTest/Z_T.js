@@ -497,7 +497,7 @@ function expect(value) {
 
   // This only works when calling a function inside a function
   // @#@#@# Maybe extend to allow function call checking in global scope
-  function callsFunction(obj, fName, x = 1) {
+  function callsFunction(obj, fName, x = 0) {
     let callCount = 0;
     const originalFunction = obj[fName];
 
@@ -523,7 +523,7 @@ function expect(value) {
     }
 
     // was function called x times?
-    if (callCount != x) {
+    if (x > 0 && callCount !== x) {
       throw new Error(
         `${fName} was called ${callCount} times, should be ${x} times`,
       );
