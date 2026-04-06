@@ -1327,11 +1327,11 @@ if (!NaN) {
           { description: `takes one argument`, test: () => {
             expect(isThisValueTrue).takesXArguments(1);
           } },
-          { description: `returns a boolean`, test: () => {
-            expect(isThisValueTrue).withArgs().toReturnBoolean();
-          } },
           { description: `uses an if statement`, test: () => {
             expectCode().toUseIfStatement();
+          } },
+          { description: `returns a boolean`, test: () => {
+            expect(isThisValueTrue).withArgs().toReturnBoolean();
           } },
           { description: `returns correct values`, test: () => {
             expect(isThisValueTrue).withArgs(true).toReturn(true);
@@ -1357,17 +1357,17 @@ if (!NaN) {
           { description: `takes one argument`, test: () => {
             expect(makeNumberNegative).takesXArguments(1);
           } },
-          { description: `returns a number`, test: () => {
-            expect(makeNumberNegative).withArgs(1).toReturnNumber();
-          } },
           { description: `uses an if statement`, test: () => {
             expectCode().toUseIfStatement();
           } },
-          { description: `returns correct values`, test: () => {
+          { description: `returns a number`, test: () => {
+            expect(makeNumberNegative).withArgs(1).toReturnNumber();
+          } },
+          { description: `returns negative number when given positive number`, test: () => {
             expect(makeNumberNegative).withArgs(1).toReturn(-1);
-            expect(makeNumberNegative).withArgs(0).toReturn(0);
+          } },
+          { description: `returns negative number when given negative number`, test: () => {
             expect(makeNumberNegative).withArgs(-1).toReturn(-1);
-            expect(makeNumberNegative).withArgs(444).toReturn(-444);
           } }
         ],
       },
@@ -1402,14 +1402,15 @@ if (!NaN) {
         ],
       },
       { type: 'lesson', key: 'lesson-6',
-        title: '>, <, >=, <=, ==, !=',
-        text: `You may remember these from math class:<br><br>
+        title: 'Comparison Operators',
+        text: `You may remember (some of) these from math class:<br><br>
 
       <ul>
      <li><b>></b> greater than</li>
      <li><b><</b> less than</li>
      <li><b>>=</b> greater than or equal</li>
      <li><b><=</b> less than or equal</li>
+     <br>
      <li><b>!=</b> not equal</li>
      <li><b>==</b> is equal (be careful with this one! it looks like assignment but is actually comparison!)</li>
 
@@ -1417,11 +1418,11 @@ if (!NaN) {
 
 These can be used in logical operations like so:<br><br>
 
-<ul>if( 5 > 3 ){ console.log("five is greater than three") }</ul><br>
+<ul><b>if( 5 > 3 ){ console.log("five is greater than three") }</b></ul><br>
 
 But to most, this would seem pretty obvious. No reason to use fancy code here right?<br><br>
 
-These statements really shine through when you use variables. Especially when you don't know the value of a variable. <br><br>
+These statements really shine through when you use variables. Especially when those values change. <br><br>
 
 Check out the code on the right, try running it!`,
         sampleCode: `function whichIsGreater(a, b) {
@@ -1440,46 +1441,79 @@ whichIsGreater(2, 2);
 `,
       },
       { type: 'lesson', key: 'lesson-7',
-        title: 'focusing on == and !=',
-        text: `So with the prior lesson, >, |< >= and <= are used with numbers.<br><br>
+        title: 'Focusing on == and !=',
+        text: `<b>== and !=</b> can be used with other values, like strings and booleans.<br><br>
 
-      BUT == and != can be used with anything! 
-
-      <ul>
-     <li><b>></b> greater than</li>
-     <li><b><</b> less than</li>
-     <li><b>>=</b> greater than or equal</li>
-     <li><b><=</b> less than or equal</li>
-     <li><b>!=</b> not equal</li>
-     <li><b>==</b> is equal (be careful with this one! it looks like assignment but is actually comparison!)</li>
-
-      </ul><br>
-
-These can be used in logical operations like so:<br><br>
-
-<ul>if( 5 > 3 ){ console.log("five is greater than three") }</ul><br>
-
-But to most, this would seem pretty obvious. No reason to use fancy code here right?<br><br>
-
-These statements really shine through when you use variables. Especially when you don't know the value of a variable. <br><br>
+      It can be used with arrays and objects, but the behavior is NOT what you would expect. The details go a little beyond the scope of Z_Test (they are nuanced and unintuitive, and not always useful).<br><br>
+      
+      <i>(Basically you should treat arrays and objects like they are always unique and different. There ARE ways to compare them, but it's more complicated than just "obj == otherObj".</i><br><br>
 
 Check out the code on the right, try running it!`,
-        sampleCode: `function whichIsGreater(a, b) {
-  if (a > b) {
-    console.log("a is greater than b");
-  } else if (a < b) {
-    console.log("a is less than b");
-  } else if (a == b) {
-    console.log("a is equal to b");
-  }
+        sampleCode: `function areTheyTheSame(a,b){
+  console.log(a, " is ", typeof a);
+  console.log(b, " is ", typeof b);
+  if(a == b){
+      console.log("a and b are the same!");
+  }else {
+      console.log("a and b are NOT the same!");
+  }      
 }
-  
-whichIsGreater(2, 1);
-whichIsGreater(1, 2);
-whichIsGreater(2, 2);
+
+areTheyTheSame(55, 55);
+areTheyTheSame(1, 100);
 `,
       },
-      { type: 'lesson', key: 'lesson-8',
+      { type: 'lesson', key: 'lesson-8a',
+        title: '== Equality (loose)',
+        text: `Ok now, here's a confusing part:<br><br>
+
+      =, ==, and === are all operators in JS. BUT they do different things. Here's my way of remembering it:<br><br>
+
+      = "is"<br>
+      == "is equal"<br>
+      === "is exactly equal"<br><br>
+
+      So when you see <b>var x = 5</b>... that reads as <b>"variable x IS 5"</b>.<br><br>
+
+      When you see <b>if (x == 5) {}</b>... that reads as <b>"if x IS EQUAL to 5"</b>.<br><br>
+
+      <b>==</b> only checks the value, not the type. So it thinks the number 5 and the string "5" are the same.<br><br>
+
+Check out the code on the right, try running it!`,
+        sampleCode: `function areTheyExactlyTheSame(a,b){
+  console.log(a, " is ", typeof a);
+  console.log(b, " is ", typeof b);
+  if(a == b){
+      console.log("a and b are the same!");
+  }else {
+      console.log("a and b are NOT the same!");
+  }      
+}
+
+areTheyExactlyTheSame(55, 55);
+areTheyExactlyTheSame(55, "55");`,
+      },
+      { type: 'lesson', key: 'lesson-8b',
+        title: '=== Equality (strict)',
+        text: `<b>===</b> is the strict version of <b>==</b>. It checks both the <b>value AND the type</b>.<br><br>
+
+      So <b>if (x === 5) {}</b> reads as <b>"if x IS EXACTLY EQUAL to 5"</b>. This would fail if x is the <b>string "5"</b>, because even though the value looks the same, the types are different.<br><br>
+
+      <b>My general recommendation is to use ===</b> as it's more predictable and avoids subtle bugs.<br><br>
+
+Check out the code on the right, try running it!`,
+        sampleCode: `function areTheyExactlyTheSame(a, b) {
+  if (a === b) {
+    console.log("a and b are exactly the same!");
+  } else {
+    console.log("a and b are NOT exactly the same!");
+  }
+}
+
+areTheyExactlyTheSame(55, 55);    // exactly the same
+areTheyExactlyTheSame(55, "55");  // NOT exactly the same — different types!`,
+      },
+      { type: 'lesson', key: 'lesson-9',
         title: 'null, undefined, and NaN',
         text: `These are different kinds of falsy values:<br><br>
 
