@@ -1,3 +1,5 @@
+This file is build by testBuilder.js
+
   0: Getting Started
     [lesson] Z_Test
     [lesson] Z_Test Flow
@@ -8,7 +10,8 @@
       [test] console.log
   1: Variables
     [lesson] Variables
-    [lesson] Data
+    [lesson] Data Types
+    [lesson] typeof
     [lesson] Bringing It Together
       [test] var "a"
       [test] var "b"

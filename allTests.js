@@ -207,38 +207,44 @@ const PI = 3.14;
 PI = "pie"; // This throws an error!`,
       },
       { type: 'lesson', key: 'lesson-2',
-        title: 'Data',
-        text: `The basic forms of data (aka primitive data) are strings, numbers, and booleans:<br><br>
+        title: 'Data Types',
+        text: `The basic forms of data (also called <b>primitive data types</b>) are strings, numbers, and booleans:<br><br>
 
-<b>string</b> → This is a word or sentence. Basically any series of characters from your keyboard (and more). They always are inside a ' or " or \` pair (single quote, double quote, or backtick).<br><br>
-<b>number</b> → Any numbers. So like 1, or 200, or -50.<br><br>
-<b>boolean</b> → This can be true or false.<br><br>
-Also, <b>typeof</b> is a JS keyword that will tell you the type of something.<br><br> 
+<b>string</b> → A word or sentence. Any series of characters wrapped in a ' or " or \` pair (single quote, double quote, or backtick).<br><br>
+<b>number</b> → Any number — like 1, 200, or -50.<br><br>
+<b>boolean</b> → Can only be <b>true</b> or <b>false</b>.<br><br>
+
 Try running the code!`,
         sampleCode: `// string
 var word = 'banana';
-
 console.log(word);
-console.log(typeof word);
 
 // number
 var bigNumber = 1000;
-
 console.log(bigNumber);
-console.log(typeof bigNumber);
 
 // boolean
 var yes = true;
 var no = false;
 
 console.log(yes);
-console.log(typeof yes);
+console.log(no);`,
+      },
+      { type: 'lesson', key: 'lesson-2b',
+        title: 'typeof',
+        text: `<b>typeof</b> is a JavaScript keyword that tells you what type of data something is.<br><br>
 
-console.log(no);
-console.log(typeof no);
+It returns a word — like <b>"string"</b>, <b>"number"</b>, or <b>"boolean"</b>.<br><br>
 
-// Try running the code with CTRL+ENTER
-// You'll see the output below in the Terminal`,
+Try running the code!`,
+        sampleCode: `var word = 'banana';
+console.log(typeof word);    // "string"
+
+var bigNumber = 1000;
+console.log(typeof bigNumber); // "number"
+
+var yes = true;
+console.log(typeof yes);     // "boolean"`,
       },
       { type: 'lesson', key: 'lesson-3',
         title: 'Bringing It Together',
@@ -459,27 +465,6 @@ console.log(PI);   // This code does not run because of the error!
             expect(sentence).toBe('I ate breakfast.');
           } }
         ],
-      },
-      { type: 'test', key: 'varParagraphTests',
-        title: `var "paragraph"`,
-        instructions: `Declare a variable "paragraph" and set it to the string "The code is like magic. I will learn how to use it!"`,
-        sampleCode: ``,
-        tests: [
-          { description: `is declared`, test: () => {
-            expect(paragraph).toBeDeclared();
-          } },
-          { description: `has a value`, test: () => {
-            expect(paragraph).toHaveValue();
-          } },
-          { description: `is a string`, test: () => {
-            expect(paragraph).toBeString();
-          } },
-          { description: `is "The code is like magic. I will learn how to use it!"`, test: () => {
-            expect(paragraph).toBe(
-              `The code is like magic. I will learn how to use it!`,
-            );
-          } }
-        ],
       }
     ],
   },
@@ -533,7 +518,7 @@ console.log(quotient);   // 4`,
       },
       { type: 'test', key: 'plusTests',
         title: `var "g" +`,
-        instructions: `Declare a variable "g" and it should be the number equal to 654321 plus 123456`,
+        instructions: `Declare a variable "g" and it should be the number equal to 54321 plus 12345`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -548,14 +533,14 @@ console.log(quotient);   // 4`,
           { description: `uses the + operator`, test: () => {
             expectCode().toUseOperator('+');
           } },
-          { description: `is 654321 + 123456`, test: () => {
-            expect(g).toBe(654321 + 123456);
+          { description: `is 54321 + 12345`, test: () => {
+            expect(g).toBe(54321 + 12345);
           } }
         ],
       },
       { type: 'test', key: 'minusTests',
         title: `var "h" -`,
-        instructions: `Declare a variable "h" and it should be the number equal to 654321 minus 123456`,
+        instructions: `Declare a variable "h" and it should be the number equal to 54321 minus 12345`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -570,14 +555,14 @@ console.log(quotient);   // 4`,
           { description: `uses the - operator`, test: () => {
             expectCode().toUseOperator('-');
           } },
-          { description: `is 654321 - 123456`, test: () => {
-            expect(h).toBe(654321 - 123456);
+          { description: `is 54321 - 12345`, test: () => {
+            expect(h).toBe(54321 - 12345);
           } }
         ],
       },
       { type: 'test', key: 'multiplyTests',
         title: `var "i" *`,
-        instructions: `Declare a variable "i" and it should be the number equal to 654321 times 123456`,
+        instructions: `Declare a variable "i" and it should be the number equal to 54321 times 12345`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -592,14 +577,14 @@ console.log(quotient);   // 4`,
           { description: `uses the * operator`, test: () => {
             expectCode().toUseOperator('*');
           } },
-          { description: `is 654321 * 123456`, test: () => {
-            expect(i).toBe(654321 * 123456);
+          { description: `is 54321 * 12345`, test: () => {
+            expect(i).toBe(54321 * 12345);
           } }
         ],
       },
       { type: 'test', key: 'divideTests',
         title: `var "j" /`,
-        instructions: `Declare a variable "j" and it should be the number equal to 654321 divided by 123456`,
+        instructions: `Declare a variable "j" and it should be the number equal to 54321 divided by 12345`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -614,14 +599,14 @@ console.log(quotient);   // 4`,
           { description: `uses the / operator`, test: () => {
             expectCode().toUseOperator('/');
           } },
-          { description: `is 654321 / 123456`, test: () => {
-            expect(j).toBe(654321 / 123456);
+          { description: `is 54321 / 12345`, test: () => {
+            expect(j).toBe(54321 / 12345);
           } }
         ],
       },
       { type: 'test', key: 'modulusTests',
         title: `var "k" %`,
-        instructions: `Declare a variable "k" and it should be the number equal to 654321 modulus 123456`,
+        instructions: `Declare a variable "k" and it should be the number equal to 54321 modulus 12345`,
         sampleCode: ``,
         tests: [
           { description: `is declared`, test: () => {
@@ -636,8 +621,8 @@ console.log(quotient);   // 4`,
           { description: `uses the % operator`, test: () => {
             expectCode().toUseOperator('%');
           } },
-          { description: `is 654321 % 123456`, test: () => {
-            expect(k).toBe(654321 % 123456);
+          { description: `is 54321 % 12345`, test: () => {
+            expect(k).toBe(54321 % 12345);
           } }
         ],
       },
@@ -665,7 +650,7 @@ console.log(quotient);   // 4`,
       },
       { type: 'lesson', key: 'lesson-3',
         title: 'String Concatenation',
-        text: `So there operators are all for math, BUT they also have some other uses.<br><br>
+        text: `So those operators are all for math, BUT they also have some other uses.<br><br>
       
       The most common one would be the "+" operator, which ALSO lets you put strings together.<br><br>
       
@@ -673,11 +658,11 @@ console.log(quotient);   // 4`,
       
       Also notice there is a space being added.<br><br>
       
-      (This works with strings but ONLY STRINGS... if you try using "+" with other data types it'll have an unexpected result...)`,
+      (This works with strings but ONLY STRINGS... if you try using "+" with different data types it could have an unexpected result)`,
         sampleCode: `var name1 = "Hudson";
 var name2 = "Carter";
-console.log(name1 + " " + name2);
-console.log(name2 + " " + name1);`,
+console.log(name1 + name2);
+console.log(name1 + " " + name2);`,
       },
       { type: 'test', key: 'concatenationTest',
         title: `String Concatenation`,
@@ -701,6 +686,62 @@ var b = "fire";`,
             expect(c).toBe('campfire');
           } }
         ],
+      },
+      { type: 'test', key: 'concatenation3Test',
+        title: `More Concatenation`,
+        instructions: `Three variables are declared. Combine the first two into variable "d", and all three into variable "e".`,
+        sampleCode: `var a = "sun";
+var b = "flow";
+var c = "er";`,
+        tests: [
+          { description: `a is "sun"`, test: () => {
+            expect(a).toBe('sun');
+          } },
+          { description: `b is "flow"`, test: () => {
+            expect(b).toBe('flow');
+          } },
+          { description: `c is "er"`, test: () => {
+            expect(c).toBe('er');
+          } },
+          { description: `d is declared`, test: () => {
+            expect(d).toBeDeclared();
+          } },
+          { description: `code uses +`, test: () => {
+            expectCode().toContain('+');
+          } },
+          { description: `d is "sunflow"`, test: () => {
+            expect(d).toBe('sunflow');
+          } },
+          { description: `e is declared`, test: () => {
+            expect(e).toBeDeclared();
+          } },
+          { description: `e is "sunflower"`, test: () => {
+            expect(e).toBe('sunflower');
+          } }
+        ],
+      },
+      { type: 'test', key: 'concatSpaceTest',
+        title: `Concat with Space`,
+        instructions: `Two variables are declared. Use "+" to combine them with a space in between, and store the result in "fullName".`,
+        sampleCode: `var firstName = "John";
+var lastName = "Smith";`,
+        tests: [
+          { description: `firstName is "John"`, test: () => {
+            expect(firstName).toBe('John');
+          } },
+          { description: `lastName is "Smith"`, test: () => {
+            expect(lastName).toBe('Smith');
+          } },
+          { description: `fullName is declared`, test: () => {
+            expect(fullName).toBeDeclared();
+          } },
+          { description: `code uses +`, test: () => {
+            expectCode().toContain('+');
+          } },
+          { description: `fullName is "John Smith"`, test: () => {
+            expect(fullName).toBe('John Smith');
+          } }
+        ],
       }
     ],
   },
@@ -713,13 +754,13 @@ var b = "fire";`,
         title: 'Functions',
         text: `A function is a reusable block of code that you can run whenever you need it.<br><br>
 
-You define a function with the <b>function</b> keyword, give it a name, some parentheses, and put the code inside curly braces <b>{ }</b>.<br><br>
+You define a function with the <b>function</b> keyword, give it a name, some parentheses <b>( )</b>, and put the code inside curly braces <b>{ }</b>.<br><br>
 
-To run the function, you <b>call</b> it by writing its name followed by <b>parenthesis ( )</b>. i.e. doSomething()<br><br>
+To run the function, you <b>call</b> it by writing its name followed by <b>parenthesis ( )</b>. Example: doSomething()<br><br>
 
 Try running the code, notice how the function only runs when called!<br><br>
 
-(There are other ways to make functions, we'll talk about those later, i.e. arrow functions and function expressions)`,
+<i>(There are other ways to make functions, we'll talk about those later, i.e. arrow functions and function expressions)</i>`,
         sampleCode: `function sayHello() {
   console.log("Hello!");
 }

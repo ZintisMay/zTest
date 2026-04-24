@@ -39,38 +39,46 @@ PI = "pie"; // This throws an error!`,
     {
       type: 'lesson',
       key: 'lesson-2',
-      title: 'Data',
-      text: `The basic forms of data (aka primitive data) are strings, numbers, and booleans:<br><br>
+      title: 'Data Types',
+      text: `The basic forms of data (also called <b>primitive data types</b>) are strings, numbers, and booleans:<br><br>
 
-<b>string</b> → This is a word or sentence. Basically any series of characters from your keyboard (and more). They always are inside a ' or " or \` pair (single quote, double quote, or backtick).<br><br>
-<b>number</b> → Any numbers. So like 1, or 200, or -50.<br><br>
-<b>boolean</b> → This can be true or false.<br><br>
-Also, <b>typeof</b> is a JS keyword that will tell you the type of something.<br><br> 
+<b>string</b> → A word or sentence. Any series of characters wrapped in a ' or " or \` pair (single quote, double quote, or backtick).<br><br>
+<b>number</b> → Any number — like 1, 200, or -50.<br><br>
+<b>boolean</b> → Can only be <b>true</b> or <b>false</b>.<br><br>
+
 Try running the code!`,
       sampleCode: `// string
 var word = 'banana';
-
 console.log(word);
-console.log(typeof word);
 
 // number
 var bigNumber = 1000;
-
 console.log(bigNumber);
-console.log(typeof bigNumber);
 
 // boolean
 var yes = true;
 var no = false;
 
 console.log(yes);
-console.log(typeof yes);
+console.log(no);`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-2b',
+      title: 'typeof',
+      text: `<b>typeof</b> is a JavaScript keyword that tells you what type of data something is.<br><br>
 
-console.log(no);
-console.log(typeof no);
+It returns a word — like <b>"string"</b>, <b>"number"</b>, or <b>"boolean"</b>.<br><br>
 
-// Try running the code with CTRL+ENTER
-// You'll see the output below in the Terminal`,
+Try running the code!`,
+      sampleCode: `var word = 'banana';
+console.log(typeof word);    // "string"
+
+var bigNumber = 1000;
+console.log(typeof bigNumber); // "number"
+
+var yes = true;
+console.log(typeof yes);     // "boolean"`,
     },
     {
       type: 'lesson',
@@ -424,40 +432,7 @@ console.log(PI);   // This code does not run because of the error!
         },
       ],
     },
-    {
-      type: 'test',
-      key: 'varParagraphTests',
-      title: `var "paragraph"`,
-      instructions: `Declare a variable "paragraph" and set it to the string "The code is like magic. I will learn how to use it!"`,
-      tests: [
-        {
-          description: `is declared`,
-          test: () => {
-            expect(paragraph).toBeDeclared();
-          },
-        },
-        {
-          description: `has a value`,
-          test: () => {
-            expect(paragraph).toHaveValue();
-          },
-        },
-        {
-          description: `is a string`,
-          test: () => {
-            expect(paragraph).toBeString();
-          },
-        },
-        {
-          description: `is "The code is like magic. I will learn how to use it!"`,
-          test: () => {
-            expect(paragraph).toBe(
-              `The code is like magic. I will learn how to use it!`,
-            );
-          },
-        },
-      ],
-    },
+
   ],
 };
 

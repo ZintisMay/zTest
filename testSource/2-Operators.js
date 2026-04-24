@@ -54,7 +54,7 @@ console.log(quotient);   // 4`,
       type: 'test',
       key: 'plusTests',
       title: `var "g" +`,
-      instructions: `Declare a variable "g" and it should be the number equal to 654321 plus 123456`,
+      instructions: `Declare a variable "g" and it should be the number equal to 54321 plus 12345`,
       tests: [
         {
           description: `is declared`,
@@ -81,9 +81,9 @@ console.log(quotient);   // 4`,
           },
         },
         {
-          description: `is 654321 + 123456`,
+          description: `is 54321 + 12345`,
           test: () => {
-            expect(g).toBe(654321 + 123456);
+            expect(g).toBe(54321 + 12345);
           },
         },
       ],
@@ -92,7 +92,7 @@ console.log(quotient);   // 4`,
       type: 'test',
       key: 'minusTests',
       title: `var "h" -`,
-      instructions: `Declare a variable "h" and it should be the number equal to 654321 minus 123456`,
+      instructions: `Declare a variable "h" and it should be the number equal to 54321 minus 12345`,
       tests: [
         {
           description: `is declared`,
@@ -119,9 +119,9 @@ console.log(quotient);   // 4`,
           },
         },
         {
-          description: `is 654321 - 123456`,
+          description: `is 54321 - 12345`,
           test: () => {
-            expect(h).toBe(654321 - 123456);
+            expect(h).toBe(54321 - 12345);
           },
         },
       ],
@@ -130,7 +130,7 @@ console.log(quotient);   // 4`,
       type: 'test',
       key: 'multiplyTests',
       title: `var "i" *`,
-      instructions: `Declare a variable "i" and it should be the number equal to 654321 times 123456`,
+      instructions: `Declare a variable "i" and it should be the number equal to 54321 times 12345`,
       tests: [
         {
           description: `is declared`,
@@ -157,9 +157,9 @@ console.log(quotient);   // 4`,
           },
         },
         {
-          description: `is 654321 * 123456`,
+          description: `is 54321 * 12345`,
           test: () => {
-            expect(i).toBe(654321 * 123456);
+            expect(i).toBe(54321 * 12345);
           },
         },
       ],
@@ -168,7 +168,7 @@ console.log(quotient);   // 4`,
       type: 'test',
       key: 'divideTests',
       title: `var "j" /`,
-      instructions: `Declare a variable "j" and it should be the number equal to 654321 divided by 123456`,
+      instructions: `Declare a variable "j" and it should be the number equal to 54321 divided by 12345`,
       tests: [
         {
           description: `is declared`,
@@ -195,9 +195,9 @@ console.log(quotient);   // 4`,
           },
         },
         {
-          description: `is 654321 / 123456`,
+          description: `is 54321 / 12345`,
           test: () => {
-            expect(j).toBe(654321 / 123456);
+            expect(j).toBe(54321 / 12345);
           },
         },
       ],
@@ -206,7 +206,7 @@ console.log(quotient);   // 4`,
       type: 'test',
       key: 'modulusTests',
       title: `var "k" %`,
-      instructions: `Declare a variable "k" and it should be the number equal to 654321 modulus 123456`,
+      instructions: `Declare a variable "k" and it should be the number equal to 54321 modulus 12345`,
       tests: [
         {
           description: `is declared`,
@@ -233,9 +233,9 @@ console.log(quotient);   // 4`,
           },
         },
         {
-          description: `is 654321 % 123456`,
+          description: `is 54321 % 12345`,
           test: () => {
-            expect(k).toBe(654321 % 123456);
+            expect(k).toBe(54321 % 12345);
           },
         },
       ],
@@ -282,7 +282,7 @@ console.log(quotient);   // 4`,
       type: 'lesson',
       key: 'lesson-3',
       title: 'String Concatenation',
-      text: `So there operators are all for math, BUT they also have some other uses.<br><br>
+      text: `So those operators are all for math, BUT they also have some other uses.<br><br>
       
       The most common one would be the "+" operator, which ALSO lets you put strings together.<br><br>
       
@@ -290,11 +290,11 @@ console.log(quotient);   // 4`,
       
       Also notice there is a space being added.<br><br>
       
-      (This works with strings but ONLY STRINGS... if you try using "+" with other data types it'll have an unexpected result...)`,
+      (This works with strings but ONLY STRINGS... if you try using "+" with different data types it could have an unexpected result)`,
       sampleCode: `var name1 = "Hudson";
 var name2 = "Carter";
-console.log(name1 + " " + name2);
-console.log(name2 + " " + name1);`,
+console.log(name1 + name2);
+console.log(name1 + " " + name2);`,
     },
     {
       type: 'test',
@@ -332,6 +332,105 @@ var b = "fire";`,
           description: `c is campfire`,
           test: () => {
             expect(c).toBe('campfire');
+          },
+        },
+      ],
+    },
+    {
+      type: 'test',
+      key: 'concatenation3Test',
+      title: `More Concatenation`,
+      instructions: `Three variables are declared. Combine the first two into variable "d", and all three into variable "e".`,
+      sampleCode: `var a = "sun";
+var b = "flow";
+var c = "er";`,
+      tests: [
+        {
+          description: `a is "sun"`,
+          test: () => {
+            expect(a).toBe('sun');
+          },
+        },
+        {
+          description: `b is "flow"`,
+          test: () => {
+            expect(b).toBe('flow');
+          },
+        },
+        {
+          description: `c is "er"`,
+          test: () => {
+            expect(c).toBe('er');
+          },
+        },
+        {
+          description: `d is declared`,
+          test: () => {
+            expect(d).toBeDeclared();
+          },
+        },
+        {
+          description: `code uses +`,
+          test: () => {
+            expectCode().toContain('+');
+          },
+        },
+        {
+          description: `d is "sunflow"`,
+          test: () => {
+            expect(d).toBe('sunflow');
+          },
+        },
+        {
+          description: `e is declared`,
+          test: () => {
+            expect(e).toBeDeclared();
+          },
+        },
+        {
+          description: `e is "sunflower"`,
+          test: () => {
+            expect(e).toBe('sunflower');
+          },
+        },
+      ],
+    },
+    {
+      type: 'test',
+      key: 'concatSpaceTest',
+      title: `Concat with Space`,
+      instructions: `Two variables are declared. Use "+" to combine them with a space in between, and store the result in "fullName".`,
+      sampleCode: `var firstName = "John";
+var lastName = "Smith";`,
+      tests: [
+        {
+          description: `firstName is "John"`,
+          test: () => {
+            expect(firstName).toBe('John');
+          },
+        },
+        {
+          description: `lastName is "Smith"`,
+          test: () => {
+            expect(lastName).toBe('Smith');
+          },
+        },
+        {
+          description: `fullName is declared`,
+          test: () => {
+            expect(fullName).toBeDeclared();
+          },
+        },
+        {
+          description: `code uses +`,
+          test: () => {
+            expectCode().toContain('+');
+          },
+        },
+        {
+          description: `fullName is "John Smith"`,
+          test: () => {
+            expect(fullName).toBe('John Smith');
           },
         },
       ],
