@@ -69,7 +69,7 @@ function watchTests() {
   groups.forEach((group) => {
     const groupName = `  ${group.id}: ${group.title}`;
     testSummaryText.push(groupName);
-    console.log(`\n${groupName}}`);
+    console.log(`\n${groupName}`);
     (group.items || []).forEach((item) => {
       const testIndent = item.type === 'test' ? '  ' : '';
       const text = `    ${testIndent}[${item.type}] ${item.title}`;
