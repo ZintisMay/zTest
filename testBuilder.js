@@ -60,18 +60,24 @@ function buildTests() {
 function watchTests() {
   console.log('Watching ./testSource for changes...');
   buildTests();
+  const testSummaryText = ['This file is build by testBuilder.js', ''];
   const groups = fs
     .readdirSync('./testSource')
     .filter((f) => f.endsWith('.js'))
     .sort((t1, t2) => getNumFromTestName(t1) - getNumFromTestName(t2))
     .map((f) => require('./testSource/' + f));
   groups.forEach((group) => {
-    console.log(`\n  ${group.id}: ${group.title}`);
+    const groupName = `  ${group.id}: ${group.title}`;
+    testSummaryText.push(groupName);
+    console.log(`\n${groupName}}`);
     (group.items || []).forEach((item) => {
       const testIndent = item.type === 'test' ? '  ' : '';
-      console.log(`    ${testIndent}[${item.type}] ${item.title}`);
+      const text = `    ${testIndent}[${item.type}] ${item.title}`;
+      console.log(text);
+      testSummaryText.push(text);
     });
   });
+  fs.writeFileSync('TestSummary.txt', testSummaryText.join('\n'), 'utf-8');
   console.log('');
   fs.watch('./testSource', (eventType, filename) => {
     if (!filename?.endsWith('.js')) return;

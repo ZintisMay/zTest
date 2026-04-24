@@ -1,0 +1,171 @@
+  0: Getting Started
+    [lesson] Z_Test
+    [lesson] Z_Test Flow
+      [test] Passing A Test
+      [test] Failing A Test
+      [test] Errors
+    [lesson] console.log()
+      [test] console.log
+  1: Variables
+    [lesson] Variables
+    [lesson] Data
+    [lesson] Bringing It Together
+      [test] var "a"
+      [test] var "b"
+      [test] var "c"
+      [test] var "d"
+      [test] var "e"
+      [test] var "isHavingFun"
+      [test] var "isDifficult"
+      [test] var "letterA"
+      [test] var "word"
+      [test] var "sentence"
+      [test] var "paragraph"
+  2: Operators
+    [lesson] Operators
+    [lesson] Operators with Variables
+      [test] var "g" +
+      [test] var "h" -
+      [test] var "i" *
+      [test] var "j" /
+      [test] var "k" %
+      [test] var "l" **
+    [lesson] String Concatenation
+      [test] String Concatenation
+  3: Functions
+    [lesson] Functions
+    [lesson] The Return Keyword
+      [test] function "returnNumber"
+      [test] function "returnString"
+      [test] function "returnTrue"
+      [test] function "returnFalse"
+  4: Function Parameters
+    [lesson] Parameters
+    [lesson] Naming Parameters
+    [lesson] Parameters + Return
+      [test] function "double"
+      [test] function "add"
+      [test] function "subtract"
+      [test] function "multiply"
+      [test] function "divide"
+      [test] function "exponent"
+  5: Logic
+    [lesson] If Statements
+      [test] Write an if statement
+      [test] Write an if statement (false)
+    [lesson] Else Statements
+      [test] if (true) with else
+      [test] if (false) with else
+    [lesson] Else If Statements
+    [lesson] The ! Operator
+      [test] function isThisValueTrue
+      [test] function makeNumberNegative
+      [test] function doYouWantCake
+    [lesson] What is True?
+    [lesson] What is False?
+    [lesson] null, undefined, and NaN
+      [test] null, undefined, and NaN
+    [lesson] Comparison Operators
+    [lesson] Focusing on == and !=
+    [lesson] == Equality (loose)
+    [lesson] === Equality (strict)
+      [test] == and ===
+  6: Objects
+    [lesson] What is an Object?
+    [lesson] Properties
+      [test] var "person"
+      [test] var "jsClassroom"
+      [test] var "shoppingCart"
+    [lesson] Accessing Properties
+      [test] Accessing a Property
+      [test] Bracket Notation
+    [lesson] Setting Properties
+      [test] Setting a Property
+  7: Arrays
+    [lesson] What is an Array?
+      [test] var "emptyArray"
+      [test] var "simpleArray"
+      [test] var "favoriteFoods"
+      [test] var "bigNumbers"
+      [test] var "arrayOf10"
+      [test] var "arrayOfBooleans"
+    [lesson] Indexes
+      [test] Access Array Items
+    [lesson] Changing Index
+      [test] Change Array Items
+  8: Array Methods
+    [lesson] Array Methods
+      [test] function "add3ToArray"
+      [test] function "reverseArray"
+    [lesson] Sorting Arrays
+    [lesson] Callback Functions
+    [lesson] Anonymous Functions
+      [test] function "sortLetters"
+      [test] function "sortNumbers"
+      [test] function "sortByWordLength"
+  9: Loops & Strings
+    [lesson] For Loops
+    [lesson] Loops & Strings
+      [test] function "makeXAsterisks"
+      [test] function "allNumbersUpToX"
+      [test] function "makeStringWithXLetterY"
+      [test] function "reverseWord"
+      [test] function "removeVowels"
+      [test] function "removeConsonants"
+      [test] function "removeWordsOfLengthXPlus"
+      [test] function "calculateAverage"
+  10: Array.map
+    [lesson] Array.map()
+    [lesson] map() with Arrow Functions
+      [test] function "arrayValuesPlusOne"
+      [test] function "doubleArrayValues"
+      [test] function "halveArrayValues"
+      [test] function "squareArrayValues"
+      [test] function "onlyFirstLetterOfWords"
+      [test] function "onlyLastLetterOfWords"
+  11: Array.filter
+    [lesson] Array.filter()
+      [test] function "removeOddNumbers"
+      [test] function "removeEvenNumbers"
+      [test] function "removeNumbersLessThan3"
+      [test] function "removeNumbersLessThanX"
+      [test] function "removeEmptyStrings"
+      [test] function "removeVowelsFromArray"
+      [test] function "removeConsonantsInArray"
+      [test] function "removeWordFromArray"
+  12: While Loops
+    [lesson] While Loops
+      [test] function "countUp"
+      [test] function "countDown"
+      [test] function "sumWhile"
+      [test] function "repeatString"
+      [test] function "firstOver"
+  13: For Loops
+    [lesson] For Loops & Arrays
+      [test] function "countToN"
+      [test] function "sumArray"
+      [test] function "doubleAll"
+      [test] function "findMax"
+      [test] function "joinWords"
+  14: For...Of Loops
+    [lesson] For...Of Loops
+      [test] function "getChars"
+      [test] function "shout"
+      [test] function "total"
+      [test] function "addOne"
+      [test] function "makeString"
+  15: If Statements
+    [lesson] If Statements
+      [test] if (true)
+      [test] if (false)
+      [test] if NOT (false)
+      [test] number comparison
+      [test] variable comparison
+      [test] equals ==
+      [test] not equals !=
+  16: String Concatenation
+    [lesson] String Concatenation
+      [test] string + string
+      [test] string + number
+      [test] template literal
+      [test] template literal with interpolation
