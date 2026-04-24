@@ -419,13 +419,12 @@ body {
 }
 
 .code-footer {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 4px 8px;
+  background-color: #1a1a1a;
 }
 
 .save-indicator {
@@ -472,7 +471,6 @@ body {
   flex-direction: column;
   padding: 0;
   overflow: hidden;
-  position: relative;
 }
 
 .panel-terminal .panel-header {
@@ -492,9 +490,12 @@ body {
 }
 
 .terminal-footer {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
+  flex-shrink: 0;
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 8px;
+  background-color: #1a1a1a;
 }
 
 .clear-btn {
@@ -525,7 +526,7 @@ body {
 
 .panel-code .CodeMirror {
   flex: 1;
-  height: 100%;
+  min-height: 0;
   font-size: 14px;
   border-radius: 4px;
 }
