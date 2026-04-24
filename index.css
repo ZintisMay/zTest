@@ -231,9 +231,11 @@ body {
 }
 
 .tests-footer {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 8px;
+  background-color: #1a1a1a;
 }
 
 .reset-btn {
