@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./allTests.js)",
+      "Read(./allTestsBackup.js)"
+    ]
+  }
+}
