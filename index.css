@@ -793,6 +793,24 @@ body {
   background-color: #a02828;
 }
 
+/* ── TTS Button ── */
+.tts-btn {
+  display: block;
+  margin: 10px auto 0;
+  background: none;
+  border: 1px solid #444;
+  color: #555;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.tts-btn:hover {
+  border-color: #777;
+  color: #999;
+}
+
 /* ── Intro.js Tour ── */
 .introjs-tooltip {
   background-color: #fff !important;

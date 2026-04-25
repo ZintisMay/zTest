@@ -165,6 +165,7 @@ window.addEventListener('hashchange', () => {
   const hash = window.location.hash;
   const topCenter = document.querySelector('.top-center');
   terminalOutput.innerHTML = '';
+  speechSynthesis.cancel();
   const hint = document.querySelector('.run-hint');
   hint.textContent = RUN_HOTKEY;
   hint.classList.remove('run-hint-complete');
@@ -214,6 +215,59 @@ window.addEventListener('hashchange', () => {
   updateProgress();
 });
 
+function getBestVoice() {
+  const voices = speechSynthesis.getVoices();
+  const ua = navigator.userAgent;
+
+  let preferred;
+  if (/Windows/i.test(ua)) {
+    preferred = [
+      'Microsoft Aria Online (Natural)',
+      'Microsoft Jenny Online (Natural)',
+      'Microsoft Aria',
+      'Microsoft Jenny',
+      'Microsoft Zira',
+    ];
+  } else if (/Android/i.test(ua)) {
+    preferred = ['Google US English', 'Google UK English Female'];
+  } else {
+    // macOS / iOS
+    preferred = ['Samantha', 'Karen', 'Moira'];
+  }
+
+  // Google voices as a fallback (Chrome on any OS)
+  preferred.push('Google US English', 'Google UK English Female');
+
+  for (const name of preferred) {
+    const voice = voices.find((v) => v.name === name);
+    if (voice) return voice;
+  }
+
+  return voices.find((v) => v.lang.startsWith('en')) || null;
+}
+
+function makeTtsButton(html) {
+  const btn = document.createElement('button');
+  btn.classList.add('tts-btn');
+  btn.textContent = 'Read aloud';
+  btn.addEventListener('click', () => {
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      btn.textContent = 'Read aloud';
+    } else {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      const utterance = new SpeechSynthesisUtterance(tmp.innerText);
+      const voice = getBestVoice();
+      if (voice) utterance.voice = voice;
+      utterance.onend = () => { btn.textContent = 'Read aloud'; };
+      btn.textContent = 'Stop';
+      speechSynthesis.speak(utterance);
+    }
+  });
+  return btn;
+}
+
 function renderTests(section, helpUrl) {
   const testsPanel = document.querySelector('.tests-content');
   testsPanel.innerHTML = '';
@@ -232,6 +286,7 @@ function renderTests(section, helpUrl) {
 
   header.appendChild(headerTitle);
   header.appendChild(headerInstructions);
+  header.appendChild(makeTtsButton(section.instructions));
   testsPanel.appendChild(header);
 
   section.tests.forEach((t) => {
@@ -270,6 +325,7 @@ function renderLesson(lesson) {
   const body = document.createElement('div');
   body.classList.add('lesson-body');
   body.innerHTML = lesson.text;
+  body.appendChild(makeTtsButton(lesson.text));
   testsPanel.appendChild(body);
 }
 
