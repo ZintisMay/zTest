@@ -7,35 +7,59 @@ const test = {
       type: 'lesson',
       key: 'lesson-2',
       title: 'Parameters',
-      text: `Functions more useful when you can have them do extra work for you.<br><br>
+      text: `Functions are more useful when you can pass information into them.<br><br>
 
-<b>Parameters</b> are variables inside the <b>( )</b> when you declare it.<br>→ <b>function hello( parameter ){ }</b><br><br>
+<b>Parameters</b> are variables listed inside the <b>( )</b> when you declare a function.<br>→ <b>function hello( name ){ }</b><br><br>
 
-When you <b>call</b> a function you can pass in <b>arguments</b>.<br>→ <b>hello( "bob" )</b> <br><br>
+When you <b>call</b> the function, you pass in an <b>argument</b> — the actual value.<br>→ <b>hello( "Alice" )</b><br><br>
 
-So in the code, when you have "bob" as an argument, it will show up as <b>parameter</b> in the function declaration. The code will run as if <b>parameter</b> was "bob".<br><br>
+Inside the function, <b>name</b> will be <b>"Alice"</b>. Call it again with a different argument and it becomes that instead.<br><br>
 
+<b>console.log()</b> is a function! You've been using functions AND parameters this whole time!<br><br>
 
-
-<b>console.log()</b> is a function! You've been using <b>functions</b> AND <b>parameters</b> this whole time!<br><br>
-
-Try running the code and change the arguments and see how the output changes!`,
+Try running the code and change the arguments!`,
       sampleCode: `function hello(name) {
   console.log("Hello, " + name + "!");
 }
 
 hello("Alice"); // Hello, Alice!
-hello("Bob");   // Hello, Bob!
+hello("Bob");   // Hello, Bob!`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-2c',
+      title: 'Multiple Parameters',
+      text: `Functions can have more than one parameter — just separate them with a <b>comma</b>.<br><br>
 
-// Functions can have multiple parameters
-function logBoth(word1, word2) {
+→ <b>function logBoth( word1, word2 ){ }</b><br><br>
+
+When you call it, pass in the same number of arguments in the same order.<br><br>
+
+Try running the code and swap the arguments around to see what changes!`,
+      sampleCode: `function logBoth(word1, word2) {
   console.log(word1);
   console.log(word2);
 }
 
-// Try changing these arguments (look, up, oh, my)
 logBoth("look", "up");
 logBoth("oh", "my");`,
+    },
+    {
+      type: 'lesson',
+      key: 'lesson-2d',
+      title: 'Missing Parameters',
+      text: `If you call a function with fewer arguments than it has parameters, the missing ones become <b>undefined</b>.<br><br>
+
+<b>undefined</b> is a special value in JavaScript that means "no value was given".<br><br>
+
+Try running the code — notice what happens when the second argument is left out!`,
+      sampleCode: `function greet(firstName, lastName) {
+  console.log("First: " + firstName);
+  console.log("Last: " + lastName);
+}
+
+greet("Alice", "Smith"); // both provided
+greet("Bob");            // lastName is undefined`,
     },
     {
       type: 'lesson',
@@ -43,7 +67,7 @@ logBoth("oh", "my");`,
       title: 'Naming Parameters',
       text: `Parameter names only exist inside the function. You name them like normal variables.<br><br>
 
-For now, use parameters like "a" or "b" or "x". This is OK when you are first learning programming. There are better practices, we'll learn about those later.<br><br>
+For now, you can use parameters like "a" or "b" or "x". This is OK when you are first learning programming. There are better practices that we'll learn about those later.<br><br>
       
 Try running the code!`,
       sampleCode: `// "x" works but tells you nothing
