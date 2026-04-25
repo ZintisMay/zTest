@@ -1248,6 +1248,28 @@ Try running the code — notice what happens when the second argument is left ou
 greet("Alice", "Smith"); // both provided
 greet("Bob"); // lastName is undefined
 greet(); // both are undefined`,
+      },
+      { type: 'test', key: 'logUndefinedTests',
+        title: `log undefined`,
+        instructions: `Write a function named "logBoth" that takes two parameters and console.logs each one.<br><br>Then call it with no arguments. i.e. logBoth();`,
+        sampleCode: ``,
+        tests: [
+          { description: `logBoth is declared`, test: () => {
+            expect(logBoth).toBeDeclared();
+          } },
+          { description: `logBoth is a function`, test: () => {
+            expect(logBoth).toBeFunction();
+          } },
+          { description: `takes two arguments`, test: () => {
+            expect(logBoth).takesXArguments(2);
+          } },
+          { description: `logged twice`, test: () => {
+            expectConsole().toHaveLoggedXTimes(2);
+          } },
+          { description: `logged undefined twice`, test: () => {
+            expectConsole().toHaveLoggedInOrder(undefined, undefined);
+          } }
+        ],
       }
     ],
   },
