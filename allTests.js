@@ -943,38 +943,6 @@ Try running the code and change the arguments!`,
 hello("Alice"); // Hello, Alice!
 hello("Bob");   // Hello, Bob!`,
       },
-      { type: 'lesson', key: 'lesson-2c',
-        title: 'Multiple Parameters',
-        text: `Functions can have more than one parameter — just separate them with a <b>comma</b>.<br><br>
-
-→ <b>function logBoth( word1, word2 ){ }</b><br><br>
-
-When you call it, pass in the same number of arguments in the same order.<br><br>
-
-Try running the code and swap the arguments around to see what changes!`,
-        sampleCode: `function logBoth(word1, word2) {
-  console.log(word1);
-  console.log(word2);
-}
-
-logBoth("look", "up");
-logBoth("oh", "my");`,
-      },
-      { type: 'lesson', key: 'lesson-2d',
-        title: 'Missing Parameters',
-        text: `If you call a function with fewer arguments than it has parameters, the missing ones become <b>undefined</b>.<br><br>
-
-<b>undefined</b> is a special value in JavaScript that means "no value was given".<br><br>
-
-Try running the code — notice what happens when the second argument is left out!`,
-        sampleCode: `function greet(firstName, lastName) {
-  console.log("First: " + firstName);
-  console.log("Last: " + lastName);
-}
-
-greet("Alice", "Smith"); // both provided
-greet("Bob");            // lastName is undefined`,
-      },
       { type: 'lesson', key: 'lesson-2b',
         title: 'Naming Parameters',
         text: `Parameter names only exist inside the function. You name them like normal variables.<br><br>
@@ -1201,6 +1169,85 @@ console.log(double(100)); // 200`,
             expect(exponent).withArgs(0, 0).toReturn(1);
           } }
         ],
+      },
+      { type: 'lesson', key: 'lesson-2c',
+        title: 'Multiple Parameters',
+        text: `Functions can have more than one parameter — just separate them with a <b>comma</b>.<br><br>
+
+→ <b>function logBoth( word1, word2 ){ }</b><br><br>
+
+When you call it, pass in the same number of arguments in the same order.<br><br>
+
+Try running the code and swap the arguments around to see what changes!`,
+        sampleCode: `function logBoth(word1, word2) {
+  console.log(word1);
+  console.log(word2);
+}
+
+logBoth("look", "up");
+logBoth("oh", "my");`,
+      },
+      { type: 'test', key: 'fullNameTests',
+        title: `function "fullName"`,
+        instructions: `Make a function named "fullName" that takes two arguments: "first" and "last". It should return them combined with a space in between.`,
+        sampleCode: ``,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(fullName).toBeDeclared();
+          } },
+          { description: `is a function`, test: () => {
+            expect(fullName).toBeFunction();
+          } },
+          { description: `takes two arguments`, test: () => {
+            expect(fullName).takesXArguments(2);
+          } },
+          { description: `returns a string`, test: () => {
+            expect(fullName).withArgs('John', 'Smith').toReturnString();
+          } },
+          { description: `returns correct values`, test: () => {
+            expect(fullName).withArgs('John', 'Smith').toReturn('John Smith');
+            expect(fullName).withArgs('Alice', 'Jones').toReturn('Alice Jones');
+          } }
+        ],
+      },
+      { type: 'test', key: 'buildWordTests',
+        title: `function "buildWord"`,
+        instructions: `Make a function named "buildWord" that takes two arguments: "part1" and "part2". It should return them joined together as one word.`,
+        sampleCode: ``,
+        tests: [
+          { description: `is declared`, test: () => {
+            expect(buildWord).toBeDeclared();
+          } },
+          { description: `is a function`, test: () => {
+            expect(buildWord).toBeFunction();
+          } },
+          { description: `takes two arguments`, test: () => {
+            expect(buildWord).takesXArguments(2);
+          } },
+          { description: `returns a string`, test: () => {
+            expect(buildWord).withArgs('sun', 'flower').toReturnString();
+          } },
+          { description: `returns correct values when called as buildWord("rain", "bow")`, test: () => {
+            expect(buildWord).withArgs('rain', 'bow').toReturn('rainbow');
+          } }
+        ],
+      },
+      { type: 'lesson', key: 'lesson-2d',
+        title: 'Missing Parameters',
+        text: `If you call a function with fewer arguments than it has parameters, the missing ones become <b>undefined</b>.<br><br>
+
+<b>undefined</b> is a special value in JavaScript that means "no value was given".<br><br>
+
+<b>Generally</b> this won't happen. You'll try to write code and use functions so that parameters are not accidentally blank.<br><br>
+
+Try running the code — notice what happens when the second argument is left out!`,
+        sampleCode: `function greet(firstName, lastName) {
+  console.log("my name is: " + firstName + " " + lastName);
+}
+
+greet("Alice", "Smith"); // both provided
+greet("Bob"); // lastName is undefined
+greet(); // both are undefined`,
       }
     ],
   },
