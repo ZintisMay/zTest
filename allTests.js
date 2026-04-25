@@ -786,7 +786,7 @@ Try running the code and see how the returned value is captured!`,
 
 // The returned value can be stored in a variable
 var result1 = numberFive();
-console.log(result1); // 10
+console.log(result1); // 5
 
 // The returned value can be stored in a variable
 var result2 = numberFive() + numberFive();
@@ -874,6 +874,45 @@ console.log(numberFive() * numberFive()); // 25`,
           } },
           { description: `returns correct value false`, test: () => {
             expect(returnFalse).toReturn(false);
+          } }
+        ],
+      },
+      { type: 'lesson', key: 'lesson-2',
+        title: 'Return Stops the Function',
+        text: `<b>return</b> does two things: it sends a value out of the function, and it <b>stops the function immediately</b>.<br><br>
+
+Any code after a <b>return</b> is ignored — it will never run.<br><br>
+
+Try running the code and notice what gets logged!`,
+        sampleCode: `function getNumber() {
+  console.log("About to return...");
+  return 5;
+  console.log("This line never runs.");
+}
+
+var result = getNumber();
+console.log(result); // 5`,
+      },
+      { type: 'test', key: 'addReturnTests',
+        title: `Add "return"`,
+        instructions: `The function has two console.logs but both are running. Add a "return score" between them so only the first one runs.`,
+        sampleCode: `function getScore() {
+  var score = 100;
+  console.log("You should see this in the console");
+  console.log("But not this");
+}`,
+        tests: [
+          { description: `getScore is a function`, test: () => {
+            expect(getScore).toBeFunction();
+          } },
+          { description: `code uses return`, test: () => {
+            expectCode().toContain('return');
+          } },
+          { description: `returns 100`, test: () => {
+            expect(getScore).toReturn(100);
+          } },
+          { description: `logs "You should see this in the console"`, test: () => {
+            expectConsole().toHaveLogged('You should see this in the console');
           } }
         ],
       }
