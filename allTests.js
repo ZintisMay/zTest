@@ -2433,7 +2433,7 @@ console.log(fruits.length);  // 3`,
         title: 'Array Methods',
         text: `Arrays come with built-in functions called <b>methods</b> that let you manipulate them.<br><br>
 
-You call a method using dot notation: <b>arrayName.methodName()</b><br><br>
+You call a method using dot notation: <b>arrayName.methodName( )</b><br><br>
 
 Some methods <b>modify</b> the original array. Others <b>return a new array</b> and leave the original untouched. It's important to know which is which!<br><br>
 
@@ -2829,6 +2829,66 @@ doItThreeTimes();
             ).toBeSameArrayAs(['cat', 'throw', 'jungle', 'longest']);
           } }
         ],
+      },
+      { type: 'lesson', key: 'lesson-sort-complex',
+        title: 'Sorting Arrays (complex)',
+        text: `So <b>sort( )</b> can be much more complex than what we've used so far. Especially if you have more complex data.<br><br>
+      
+      You could, for example, have it sort by word length AND alphabetically, or if you have a more complex data structure (like an object) sort by different values in the object.<br><br>
+      
+      Here's an example, we have an array of objects that have a name and age, and we're going to sort by age, then name.`,
+        sampleCode: `var people = [
+  {
+    name: "Abby",
+    age: 88,
+  },
+  {
+    name: "Zach",
+    age: 40,
+  },
+  {
+    name: "Abby",
+    age: 40,
+  },
+  {
+    name: "Zach",
+    age: 22,
+  },
+  {
+    name: "Megan",
+    age: 22,
+  },  
+  {
+    name: "Abby",
+    age: 88,
+  },
+];
+
+people.sort(function (a, b) {
+
+  // This part checks if one has a greater/lesser age
+  if (a.age > b.age) {
+    return 1;
+  } else if (a.age < b.age) {
+    return -1;
+  }
+
+  // This part checks if one has an earlier/later alphabetical name
+  // Note that we do not get to this part of the code UNLESS the ages are the same
+  if (a.name > b.name) {
+    return 1;
+  } else if (a.name < b.name) {
+    return -1;
+  }
+
+  // Lastly, if the ages and names are the same, we return 0 to show they are equal
+  return 0;
+});
+
+// Notice that the array has been sorted by age first, THEN by name
+console.log(people);
+
+`,
       }
     ],
   },
