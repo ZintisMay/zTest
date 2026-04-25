@@ -122,6 +122,14 @@ This file is build by testBuilder.js
       [test] function "getIndex"
       [test] function "findOver10"
       [test] function "findIndexOver10"
+    [lesson] shift( ) and unshift( )
+      [test] function "replaceFirst"
+    [lesson] Combining Arrays with concat( )
+      [test] function "combineArrays"
+    [lesson] Cutting Arrays with slice( )
+      [test] slice( ) practice
+    [lesson] Modifying Arrays with splice()
+      [test] splice() practice
   9: Loops & Strings
     [lesson] For Loops
     [lesson] Loops & Strings

@@ -1,3 +1,35 @@
+  Transforming
+  - map() — create a new array by transforming each item
+  - filter() — create a new array with only items that pass a test
+  - reduce() — collapse an array into a single value
+
+  Finding
+  a- find() — get the first item that matches
+  a- findIndex() — same but returns the index
+  a- includes() — check if a value exists (returns true/false)
+  a- indexOf() — find the position of a value
+
+  Adding / Removing
+  a- push() / pop() — add/remove from the end
+  a - unshift() / shift() — add/remove from the beginning
+  - splice() — remove, replace, or insert at any position
+  a - slice() — copy a portion of an array (non-destructive)
+
+  Ordering
+  a- sort() — sort in place
+  a- reverse() — reverse in place
+
+  Iterating
+  - forEach() — loop over items (like a for loop, returns nothing)
+  - every() / some() — check if all/any items pass a test
+
+  Combining
+  a - concat() — merge arrays
+  - flat() / flatMap() — flatten nested arrays
+  - join() — turn an array into a string
+
+
+
 == TEST SOURCE FILES ==
 
 Lessons | Review (human verified)

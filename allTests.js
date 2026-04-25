@@ -3237,6 +3237,99 @@ var middle;`,
             expect(middle).toBeSameArrayAs(['b', 'c', 'd']);
           } }
         ],
+      },
+      { type: 'lesson', key: 'lesson-splice',
+        title: 'Modifying Arrays with splice()',
+        text: `<b>splice()</b> is the most powerful array method for changing what's <i>inside</i> an array. It can <b>remove</b>, <b>insert</b>, or <b>replace</b> items — and it modifies the original array directly.<br><br>
+
+<b>Removing items:</b><br>
+<ul>
+<b>array.splice(start, deleteCount)</b> — removes deleteCount items starting at index start</ul><br>
+
+<b>Inserting items:</b><br>
+<ul>
+<b>array.splice(start, 0, newItem)</b> — inserts newItem at index start, removes nothing</ul><br>
+
+<b>Replacing items:</b><br>
+<ul>
+<b>array.splice(start, 1, newItem)</b> — removes 1 item and inserts newItem in its place</ul><br>
+
+splice() also <b>returns</b> the items it removed (as an array).<br><br>
+
+Try running the code!`,
+        sampleCode: `var colors = ['red', 'green', 'blue', 'yellow'];
+
+// Remove 1 item at index 1
+var removed = colors.splice(1, 1);
+console.log(removed); // ['green']  — what was removed
+console.log(colors);  // ['red', 'blue', 'yellow']  — original is changed
+
+// Insert 'purple' at index 1 (remove nothing)
+colors.splice(1, 0, 'purple');
+console.log(colors);  // ['red', 'purple', 'blue', 'yellow']
+
+// Replace 'blue' and 'yellow' (now at index 2 and 3) with 'orange'
+colors.splice(2, 2, 'orange');
+console.log(colors);  // ['red', 'purple', 'orange']
+`,
+      },
+      { type: 'test', key: 'removeItem',
+        title: `splice() practice`,
+        instructions: `Three arrays each have an X's in the wrong place.<br><br>
+      
+      Write a function called "fixArrays" and use splice() three times to remove those X's.<br><br>
+
+      When you're done, all three arrays should be <b>['O', 'O', 'O']</b>.`,
+        sampleCode: `
+
+            // Remove the X
+      var row1 = ['O', 'X', 'O', 'O'];
+
+      // Remove the X and replace witih O
+var row2 = ['X', 'O', 'O'];
+
+// Remove all three X's and replace with O
+var row3 = ['O', 'X', 'X', 'X', 'O'];
+
+      function fixArrays(){
+      console.log("fixArrays", row1, row2, row3)
+// Fix row1 here
+// Fix row2 here
+// Fix row3 here
+      }
+
+
+
+`,
+        tests: [
+          { description: `all variables and functions are declared (reset if red)`, test: () => {
+            expect(fixArrays).toBeFunction();
+            expect(row1).toBeArray();
+            expect(row2).toBeArray();
+            expect(row3).toBeArray();
+          } },
+          { description: `row1 is ['O', 'O', 'O']`, test: () => {
+            // THIS LINE IS IMPORTANT! RUN IT JUST ONCE FOR ALL CHECKS
+            fixArrays();
+            expect(row1).toBeSameArrayAs(['O', 'O', 'O']);
+          } },
+          { description: `row2 is ['O', 'O', 'O']`, test: () => {
+            expect(row2).toBeSameArrayAs(['O', 'O', 'O']);
+          } },
+          { description: `row3 is ['O', 'O', 'O']`, test: () => {
+            expect(row3).toBeSameArrayAs(['O', 'O', 'O']);
+          } },
+          { description: `calls splice`, test: () => {
+            expect(fixArrays)
+              .withArgs()
+              .callsFunction(Array.prototype, 'splice');
+          } },
+          { description: `calls splice 3 times`, test: () => {
+            expect(fixArrays)
+              .withArgs()
+              .callsFunction(Array.prototype, 'splice', 3);
+          } }
+        ],
       }
     ],
   },
