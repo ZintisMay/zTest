@@ -17,7 +17,7 @@ So in the code, when you have "bob" as an argument, it will show up as <b>parame
 
 
 
-<b>console.log()</b> is a function! You've been using a function this whole time!<br><br>
+<b>console.log()</b> is a function! You've been using <b>functions</b> AND <b>parameters</b> this whole time!<br><br>
 
 Try running the code and change the arguments and see how the output changes!`,
       sampleCode: `function hello(name) {
