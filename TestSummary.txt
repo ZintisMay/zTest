@@ -110,12 +110,18 @@ This file is build by testBuilder.js
       [test] function "popTwice"
       [test] function "reverseArray"
       [test] function "sortArray"
-    [lesson] Sorting Arrays
+    [lesson] Sorting Arrays (custom)
     [lesson] Callback Functions
     [lesson] Anonymous Functions
       [test] function "sortLetters"
       [test] function "sortNumbers"
       [test] function "sortByWordLength"
+    [lesson] Sorting Arrays (complex)
+    [lesson] Finding Things in Arrays
+      [test] function "hasItem"
+      [test] function "getIndex"
+      [test] function "findOver10"
+      [test] function "findIndexOver10"
   9: Loops & Strings
     [lesson] For Loops
     [lesson] Loops & Strings
