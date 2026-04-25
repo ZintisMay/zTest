@@ -2069,10 +2069,11 @@ Use two console.log to log both values separately.<br><br>`,
       Use bracket notation to access maker. i.e. obj["maker"]<br><br>
       Use bracket notation to access year. i.e. obj[keyName]<br>`,
         sampleCode: `var toy = {
-      maker: "Hasbro",
-      year: 1999,
-      }
-      var keyName = "year"
+  maker: "Hasbro",
+  year: 1999,
+}
+  
+var keyName = "year"
       `,
         tests: [
           { description: `variables are declared by default (toy, keyName... reset if this is red)`, test: () => {
@@ -2105,11 +2106,11 @@ Use two console.log to log both values separately.<br><br>`,
         title: 'Setting Properties',
         text: `You can also change the value of a property. It's about the same way you would change a variable:<br><br>
 
-          var obj = {
-              name: "Zoe"
-          };<br><br>
+var obj = {
+    name: "Zoe"
+};<br><br>
 
-          obj.name = "Zachary";
+obj.name = "Zachary";
     `,
         sampleCode: `var obj = {
       name: "Zoe"

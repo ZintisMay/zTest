@@ -23,7 +23,6 @@ This file is build by testBuilder.js
       [test] var "letterA"
       [test] var "word"
       [test] var "sentence"
-      [test] var "paragraph"
   2: Operators
     [lesson] Operators
     [lesson] Operators with Variables
@@ -35,6 +34,8 @@ This file is build by testBuilder.js
       [test] var "l" **
     [lesson] String Concatenation
       [test] String Concatenation
+      [test] More Concatenation
+      [test] Concat with Space
   3: Functions
     [lesson] Functions
     [lesson] The Return Keyword
@@ -42,6 +43,8 @@ This file is build by testBuilder.js
       [test] function "returnString"
       [test] function "returnTrue"
       [test] function "returnFalse"
+    [lesson] Return Stops the Function
+      [test] Add "return"
   4: Function Parameters
     [lesson] Parameters
     [lesson] Naming Parameters
@@ -52,6 +55,11 @@ This file is build by testBuilder.js
       [test] function "multiply"
       [test] function "divide"
       [test] function "exponent"
+    [lesson] Multiple Parameters
+      [test] function "fullName"
+      [test] function "buildWord"
+    [lesson] Missing Parameters
+      [test] log undefined
   5: Logic
     [lesson] If Statements
       [test] Write an if statement
