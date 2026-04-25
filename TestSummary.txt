@@ -107,7 +107,9 @@ This file is build by testBuilder.js
   8: Array Methods
     [lesson] Array Methods
       [test] function "add3ToArray"
+      [test] function "popTwice"
       [test] function "reverseArray"
+      [test] function "sortArray"
     [lesson] Sorting Arrays
     [lesson] Callback Functions
     [lesson] Anonymous Functions

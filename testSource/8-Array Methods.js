@@ -9,7 +9,7 @@ const test = {
       title: 'Array Methods',
       text: `Arrays come with built-in functions called <b>methods</b> that let you manipulate them.<br><br>
 
-You call a method using dot notation: <b>array.methodName()</b><br><br>
+You call a method using dot notation: <b>arrayName.methodName()</b><br><br>
 
 Some methods <b>modify</b> the original array. Others <b>return a new array</b> and leave the original untouched. It's important to know which is which!<br><br>
 
@@ -74,6 +74,20 @@ function add3ToArray(arr, str){
           },
         },
         {
+          description: `use arr.push() three times`,
+          test: () => {
+            expect(add3ToArray)
+              .withArgs(arr, 'ho')
+              .callsFunction(Array.prototype, 'push', 3);
+          },
+        },
+        {
+          description: `add3ToArray returns something`,
+          test: () => {
+            expect(add3ToArray).withArgs(arr, 'ho').toReturnSomething();
+          },
+        },
+        {
           description: `add3ToArray returns an array`,
           test: () => {
             expect(add3ToArray).withArgs(arr, 'ho').toReturnArray();
@@ -90,6 +104,71 @@ function add3ToArray(arr, str){
         },
       ],
     },
+
+    {
+      type: 'test',
+      key: 'popTwice',
+      title: `function "popTwice"`,
+      instructions: `Make a function that takes an array as an argument.<br><br>
+
+      Use pop() twice to remove the last two items from the array, and return the array.<br><br>
+
+      Example: popTwice(['a', 'b', 'c']) returns ['a']`,
+      tests: [
+        {
+          description: `is declared`,
+          test: () => {
+            expect(popTwice).toBeDeclared();
+          },
+        },
+        {
+          description: `is a function`,
+          test: () => {
+            expect(popTwice).toBeFunction();
+          },
+        },
+        {
+          description: `takes one argument`,
+          test: () => {
+            expect(popTwice).takesXArguments(1);
+          },
+        },
+        {
+          description: `uses arr.pop()`,
+          test: () => {
+            expect(popTwice)
+              .withArgs(['a', 'b', 'c'])
+              .callsFunction(Array.prototype, 'pop');
+          },
+        },
+        {
+          description: `uses arr.pop() twice`,
+          test: () => {
+            expect(popTwice)
+              .withArgs(['a', 'b', 'c'])
+              .callsFunction(Array.prototype, 'pop', 2);
+          },
+        },
+        {
+          description: `return something`,
+          test: () => {
+            expect(popTwice).withArgs(['a', 'b', 'c']).toReturnSomething();
+          },
+        },
+        {
+          description: `return array`,
+          test: () => {
+            expect(popTwice).withArgs(['a', 'b', 'c']).toReturnArray();
+          },
+        },
+        {
+          description: `returns the remaining array`,
+          test: () => {
+            expect(popTwice(['a', 'b', 'c'])).toBe(['a']);
+          },
+        },
+      ],
+    },
     {
       type: 'test',
       key: 'reverseArray',
@@ -98,7 +177,7 @@ function add3ToArray(arr, str){
       
       It should return the array in reverse order.<br><br>
       
-      Example: reverseArray(['d', 'e', 'f']) returns ['f','e','d']`,
+      Example: reverseArray(['a', 'b', 'c']) returns ['c','b','a']`,
       tests: [
         {
           description: `is declared`,
@@ -119,6 +198,14 @@ function add3ToArray(arr, str){
           },
         },
         {
+          description: `calls array.reverse()`,
+          test: () => {
+            expect(reverseArray)
+              .withArgs([])
+              .callsFunction(Array.prototype, 'reverse');
+          },
+        },
+        {
           description: `returns something`,
           test: () => {
             expect(reverseArray).withArgs([]).toReturnSomething();
@@ -130,26 +217,84 @@ function add3ToArray(arr, str){
             expect(reverseArray).withArgs([]).toReturnArray();
           },
         },
+
         {
           description: `returns array of correct type`,
           test: () => {
-            expect(reverseArray)
-              .withArgs([1, 2, 3])
-              .toReturnArrayOfType('number');
             expect(reverseArray)
               .withArgs(['a', 'b', 'c'])
               .toReturnArrayOfType('string');
           },
         },
         {
-          description: `returns the correct result`,
+          description: `returns the correct result (i.e. ['c', 'b', 'a'] returns ['a', 'b', 'c'])`,
           test: () => {
             expect(reverseArray(['a', 'b', 'c'])).toBeSameArrayAs([
               'c',
               'b',
               'a',
             ]);
-            expect(reverseArray([1, 2, 3])).toBeSameArrayAs([3, 2, 1]);
+          },
+        },
+      ],
+    },
+    {
+      type: 'test',
+      key: 'sortArray',
+      title: `function "sortArray"`,
+      instructions: `Make a function that takes an array of strings as an argument.<br><br>
+
+      Use sort() to sort the strings alphabetically, and return the sorted array.<br><br>
+
+      Example: sortArray(['banana', 'apple', 'cherry']) returns ['apple', 'banana', 'cherry']`,
+      tests: [
+        {
+          description: `is declared`,
+          test: () => {
+            expect(sortArray).toBeDeclared();
+          },
+        },
+        {
+          description: `is a function`,
+          test: () => {
+            expect(sortArray).toBeFunction();
+          },
+        },
+        {
+          description: `takes one argument`,
+          test: () => {
+            expect(sortArray).takesXArguments(1);
+          },
+        },
+        {
+          description: `uses arr.sort()`,
+          test: () => {
+            expect(sortArray)
+              .withArgs(['banana', 'apple', 'cherry'])
+              .callsFunction(Array.prototype, 'sort');
+          },
+        },
+        {
+          description: `returns something`,
+          test: () => {
+            expect(sortArray).withArgs(['b', 'a']).toReturnSomething();
+          },
+        },
+        {
+          description: `returns an array`,
+          test: () => {
+            expect(sortArray).withArgs(['b', 'a']).toReturnArray();
+          },
+        },
+        {
+          description: `returns the correct result (i.e. ['banana', 'apple', 'cherry'] returns ['apple', 'banana', 'cherry'])`,
+          test: () => {
+            expect(sortArray(['banana', 'apple', 'cherry'])).toBeSameArrayAs([
+              'apple',
+              'banana',
+              'cherry',
+            ]);
+            expect(sortArray(['z', 'a', 'm'])).toBeSameArrayAs(['a', 'm', 'z']);
           },
         },
       ],
@@ -157,18 +302,23 @@ function add3ToArray(arr, str){
     {
       type: 'lesson',
       key: 'lesson-sort',
-      title: 'Sorting Arrays',
-      text: `<b>sort()</b> sorts an array alphabetically by default - which works great for strings, but not for numbers.<br><br>
+      title: 'Sorting Arrays (custom)',
+      text: `<b>sort( )</b> sorts an array alphabetically by default - which works great for strings, but not for numbers.<br><br>
 
-<b>Why doesn't sort() work for numbers by default?</b><br>
+<b>Why doesn't sort( ) work for numbers by default?</b><br>
 It converts numbers to strings first, so 10 comes before 2 (because "1" comes before "2" alphabetically).<br><br>
 
-To sort numbers correctly, pass a <b>compare function</b> to sort():<br><br>
+To sort numbers correctly, pass a <b>compare function to sort()</b>:<br><br>
 
-<b>array.sort(function(a, b) {return a - b})</b> - sorts smallest to biggest<br>
-<b>array.sort(function(a, b) {return b - a})</b> - sorts biggest to smallest<br><br>
+<ul>
+<b>array.sort( function( a, b ) { return a - b } )</b> - sorts smallest to biggest<br>
+<b>array.sort( function( a, b ) { return b - a } )</b> - sorts biggest to smallest
+</ul>
+<br>
 
-The compare function returns a negative, zero, or positive number to tell sort() which item comes first.<br><br>
+In the above functions, a and b are two items in the array. <b>sort( )</b> goes through the items and compares them to each other, and re-orders them when a value is greater or lesser (that's the a - b and b - a parts)<br><br>
+
+The compare function returns a negative, zero, or positive number to tell sort( ) which item comes first.<br><br>
 
 Try running the code and see the difference!`,
       sampleCode: `var words = ["banana", "apple", "cherry"];
@@ -177,9 +327,11 @@ console.log(wordsInOrder); // ["apple", "banana", "cherry"]
 
 var numbers = [10, 2, 30, 5];
 
+// This is the "normal" sort() behavior, doesn't work for numbers
 var numbersInWrongOrder = numbers.sort();
 console.log(numbersInWrongOrder); // wrong: [10, 2, 30, 5]
 
+// This is the working sort() behavior, which DOES work for numbers
 var numbersInRightOrder = numbers.sort(function (a, b) {
   return a - b;
 });
@@ -193,9 +345,9 @@ console.log(numbersInRightOrder); // correct: [2, 5, 10, 30]
       title: 'Callback Functions',
       text: `So that last lesson had something new we hadn't seen before:<br><br>
       
-      <b>array.sort(function(a, b) {return a - b})</b> - sorts smallest to biggest.<br><br>
+<ul><b>array.sort( function( a, b ) { return a - b } )</b> - sorts smallest to biggest.</ul><br>
 
-See how we wrote a function inside the sort( )?<br><br>
+See how we wrote a <b>function</b> inside the <b>sort( )</b>?<br><br>
 
 When we <b>GIVE</b> a function as the parameter to another function, it's referred to as a <b>Callback Function</b>.<br><br>
 
@@ -219,17 +371,17 @@ doItThreeTimes(yell);
       type: 'lesson',
       key: 'lesson-anonymous-functions',
       title: 'Anonymous Functions',
-      text: `Anonymous functions are usually used as callbacks for other functions. You can also use them as the value of an object.<br><br>
+      text: `Anonymous functions are usually used as callbacks for other functions. We used them before when declaring object methods.<br><br>
 
       Lets try a simple (but kind of impractical) example:<br><br>
 
-      <ul><b>function doAnotherFunction(func){<br><ul>func();</ul>}</b><br><br></ul>
+      <ul><b>function doAnotherFunction( func ){<br><ul>func();</ul>}</b><br><br></ul>
 
       Then you would use it like this:<br><br>
 
-      <ul><b>doAnotherFunction( function(){} )</b></ul><br>
+      <ul><b>doAnotherFunction( function( ){ } )</b></ul><br>
 
-      In this example, we have a function that takes a function as an argument, and then calls it. What does the func() do? Could be anything! All depends on the function you pass in.<br><br>
+      In this example, we have a function that takes a function as an argument, and then calls it. What does the func( ) do? Could be anything! All depends on the function you pass in.<br><br>
 
       <i>(Also, the name "func" doesn't matter. Just like variables, it could be any variable name. If you accidentally pass a non-function as the argument, there'll be an error.)</i><br><br>
       `,
@@ -243,6 +395,9 @@ doItThreeTimes(yell);
 doItThreeTimes(function () {
   console.log("scream");
 });
+
+// This will throw an error. Since we aren't passing in anything, when it tries to call the "undefined" value as if it was a function, the JS will error out. Since undefined is not a function it cannot be called like a function.
+doItThreeTimes();
 `,
     },
     {
@@ -367,7 +522,9 @@ doItThreeTimes(function () {
       title: `function "sortByWordLength"`,
       instructions: `Make a function that takes one argument, an array of words.<br><br>
       
-      Return the words in an array from shortest to longest.`,
+      Return the words in an array from shortest to longest.<br><br>
+      
+      <i>Remember that you can use ".length" to access the length of a string. ( i.e. word.length )`,
       tests: [
         {
           description: `is declared`,
