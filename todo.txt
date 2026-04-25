@@ -12,7 +12,7 @@
   Adding / Removing
   a- push() / pop() — add/remove from the end
   a - unshift() / shift() — add/remove from the beginning
-  - splice() — remove, replace, or insert at any position
+  a - splice() — remove, replace, or insert at any position
   a - slice() — copy a portion of an array (non-destructive)
 
   Ordering
