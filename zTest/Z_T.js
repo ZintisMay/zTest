@@ -1,3 +1,13 @@
+// Z_T.js — test runner library for Z_Test.
+// Provides the Z_T runner, the expect() assertion API, expectConsole() for
+// checking console output, and expectCode() for enforcing syntax requirements.
+// This file is fetched as text by index.js and injected verbatim into the
+// sandbox iframe on every run, so it shares the iframe's global scope with
+// the student's code.
+
+// === isEqual ===
+// Deep equality helper — replaces the lodash _.isEqual that was here before.
+
 function isEqual(a, b) {
   if (Number.isNaN(a) && Number.isNaN(b)) return true;
   if (a === b) return true;
@@ -18,6 +28,8 @@ function isEqual(a, b) {
 
   return false;
 }
+
+// === Z_T Namespace ===
 
 const Z_T = {
   containerParent: document.getElementById('Z_T') || document.body,
@@ -58,7 +70,12 @@ const Z_T = {
   },
 };
 
-// execute all categories and subtests, then display results
+// === Test Runner ===
+
+// Entry point called by index.js after injecting student code into the iframe.
+// testSuite is an object keyed by sectionKey, each value having a tests array.
+// The %c-prefixed console.log calls here are filtered out by index.js so they
+// don't appear in the student's terminal output.
 Z_T.testAll = function (testSuite) {
   let results = {};
 
@@ -88,7 +105,8 @@ Z_T.testAll = function (testSuite) {
   Z_T.completedTests = results;
 };
 
-// Evaluates the test, logs in the console, provides a resulting error (or null, null is passing)
+// Runs a single test function and returns null on pass or the Error on fail.
+// null = passing is the convention used throughout the rest of the codebase.
 Z_T.test = function (description, testFunc) {
   Z_T.testCounter.push(description);
   const {
@@ -116,6 +134,12 @@ Z_T.test = function (description, testFunc) {
   }
   return error || null;
 };
+
+// === expect() — Assertion API ===
+// Usage: expect(value).toBeNumber()
+// Methods are chainable — each returns `this` so assertions can be stacked:
+//   expect(fn).withArgs(1, 2).toReturn(3)
+// withArgs() stores arguments consumed by exec() and all toReturn* methods.
 
 // Sets the object value and provides the function toolset.
 function expect(value) {
@@ -305,6 +329,8 @@ function expect(value) {
     }
   }
 
+  // @#@#@#
+  // Stores arguments to be passed when exec() is called.
   function withArgs(...args) {
     this.args = [...args];
     return this;
@@ -387,6 +413,7 @@ function expect(value) {
     return this;
   }
 
+  // Calls this.value as a function with any args stored by withArgs().
   function exec() {
     return this.value(...this.args);
   }
@@ -489,13 +516,17 @@ function expect(value) {
     return this;
   }
 
+  // @#@#@#
   function customTest(f) {
     this._CUSTOM_TEST = f;
     this._CUSTOM_TEST();
     return this;
   }
 
-  // This only works when calling a function inside a function
+  // @#@#@#
+  // Monkey-patches obj[fName] to count how many times it's called during
+  // exec(), then restores the original. Only works for methods on objects —
+  // standalone functions can't be intercepted this way.
   // @#@#@# Maybe extend to allow function call checking in global scope
   function callsFunction(obj, fName, x = 0) {
     let callCount = 0;
@@ -532,6 +563,7 @@ function expect(value) {
     return this;
   }
 
+  // @#@#@#
   function callsFunctionWithArgs(obj, fName, ...expectedArgs) {
     const calls = [];
     const originalFunction = obj[fName];
@@ -561,7 +593,11 @@ function expect(value) {
   }
 }
 
-// Checks console.log calls captured during student code execution
+// === expectConsole() — Console Assertion API ===
+// Checks console.log calls made during student code execution.
+// __logs is a global array populated by the console.log override injected
+// by index.js into the iframe before the student's code runs.
+
 function expectConsole() {
   const logs = typeof __logs !== 'undefined' ? __logs : [];
   return {
@@ -589,6 +625,7 @@ function expectConsole() {
         throw new Error(`console.log was never called`);
       }
     },
+    // @#@#@#
     toHaveLoggedInOrder(...expectedCalls) {
       let logIndex = 0;
       for (const expected of expectedCalls) {
@@ -607,7 +644,12 @@ function expectConsole() {
   };
 }
 
-// Checks student source code and AST flags injected by the test runner
+// === expectCode() — Code / AST Assertion API ===
+// Checks structural properties of the student's source code.
+// __astFlags and __src are globals injected by index.js into the iframe —
+// __astFlags is the parsed AST summary built by buildAstFlags(), and __src
+// is the raw source string. Both are undefined outside the iframe context.
+
 function expectCode() {
   const flags = typeof __astFlags !== 'undefined' ? __astFlags : null;
   const src = typeof __src !== 'undefined' ? __src : '';
@@ -762,6 +804,10 @@ function expectCode() {
     },
   };
 }
+
+// === Result Reporting ===
+// Serializes results to plain JSON (Errors aren't JSON-serializable by default)
+// and sends them to the parent window via postMessage for index.js to display.
 
 Z_T.reportResults = function (results) {
   const clean = JSON.parse(
