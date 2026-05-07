@@ -19,7 +19,7 @@ Here are a few common ones:<br><br>
 <li><b>push( )</b> - adds an item to the end<br></li>
 <li><b>pop( )</b> - removes the last item (and returns it to you)<br></li>
 <li><b>reverse( )</b> - reverses the order<br></li>
-<li><b>sort( )</b> - sorts the items<br><br></li>
+<li><b>sort( )</b> - sorts the items (can do more)<br><br></li>
 </ul>
 
 There are more, but lets start with these.<br><br>
@@ -44,7 +44,7 @@ console.log(fruits); // ["apple", "banana", "cherry"]`,
     {
       type: 'test',
       key: 'add3ToArray',
-      title: `function "add3ToArray"`,
+      title: `function "add3ToArray" (array.push)`,
       instructions: `Create a function called add3ToArray, and inside use push( ) to add "ho" to the array, three times. Then return the array.<br><br>`,
       sampleCode: `// Don't need to touch this!
 var arr = ["santa", "says"];
@@ -108,7 +108,7 @@ function add3ToArray(arr, str){
     {
       type: 'test',
       key: 'popTwice',
-      title: `function "popTwice"`,
+      title: `function "popTwice" (array.pop)`,
       instructions: `Make a function that takes an array as an argument.<br><br>
 
       Use pop( ) twice to remove the last two items from the array, and return the array.<br><br>
@@ -172,7 +172,7 @@ function add3ToArray(arr, str){
     {
       type: 'test',
       key: 'reverseArray',
-      title: `function "reverseArray"`,
+      title: `function "reverseArray" (array.reverse)`,
       instructions: `Make a function that takes an array as an argument.<br><br>
       
       It should return the array in reverse order.<br><br>
@@ -240,36 +240,36 @@ function add3ToArray(arr, str){
     },
     {
       type: 'test',
-      key: 'sortArray',
-      title: `function "sortArray"`,
+      key: 'sortFruits',
+      title: `function "sortFruits" (array.sort)`,
       instructions: `Make a function that takes an array of strings as an argument.<br><br>
 
       Use sort( ) to sort the strings alphabetically, and return the sorted array.<br><br>
 
-      Example: sortArray(['banana', 'apple', 'cherry']) returns ['apple', 'banana', 'cherry']`,
+      Example: sortFruits(['banana', 'apple', 'cherry']) returns ['apple', 'banana', 'cherry']`,
       tests: [
         {
           description: `is declared`,
           test: () => {
-            expect(sortArray).toBeDeclared();
+            expect(sortFruits).toBeDeclared();
           },
         },
         {
           description: `is a function`,
           test: () => {
-            expect(sortArray).toBeFunction();
+            expect(sortFruits).toBeFunction();
           },
         },
         {
           description: `takes one argument`,
           test: () => {
-            expect(sortArray).takesXArguments(1);
+            expect(sortFruits).takesXArguments(1);
           },
         },
         {
           description: `uses arr.sort( )`,
           test: () => {
-            expect(sortArray)
+            expect(sortFruits)
               .withArgs(['banana', 'apple', 'cherry'])
               .callsFunction(Array.prototype, 'sort');
           },
@@ -277,13 +277,13 @@ function add3ToArray(arr, str){
         {
           description: `returns something`,
           test: () => {
-            expect(sortArray).withArgs(['b', 'a']).toReturnSomething();
+            expect(sortFruits).withArgs(['b', 'a']).toReturnSomething();
           },
         },
         {
           description: `returns an array`,
           test: () => {
-            expect(sortArray).withArgs(['b', 'a']).toReturnArray();
+            expect(sortFruits).withArgs(['b', 'a']).toReturnArray();
           },
         },
         {
@@ -403,7 +403,7 @@ doItThreeTimes( );
     {
       type: 'test',
       key: 'sortLetters',
-      title: `function "sortLetters"`,
+      title: `function "sortLetters" (array.sort)`,
       instructions: `Make a function that takes one argument, an array of letters.<br><br>
       
       It should return the array of letters in alphabetical order.`,
@@ -462,7 +462,7 @@ doItThreeTimes( );
     {
       type: 'test',
       key: 'sortNumbers',
-      title: `function "sortNumbers"`,
+      title: `function "sortNumbers" (array.sort)`,
       instructions: `Make a function that takes one argument, an array of numbers.<br><br>
       
       It should return the numbers from smallest to largest.`,
@@ -519,7 +519,7 @@ doItThreeTimes( );
     {
       type: 'test',
       key: 'sortByWordLength',
-      title: `function "sortByWordLength"`,
+      title: `function "sortByWordLength" (array.sort)`,
       instructions: `Make a function that takes one argument, an array of words.<br><br>
       
       Return the words in an array from shortest to longest.<br><br>
@@ -584,7 +584,9 @@ doItThreeTimes( );
       
       You could, for example, have it sort by word length AND alphabetically, or if you have a more complex data structure (like an object) sort by different values in the object.<br><br>
       
-      Here's an example, we have an array of objects that have a name and age, and we're going to sort by age, then name.`,
+      Here's an example, we have an array of objects that have a name and age, and we're going to sort by age, then name.<br><br>
+      
+      <i>(We're not going into too much depth here, just understsand that the sorting function could be as complicated or simple as you like, as long as it follows a similar structure and returns a positive or negative number)`,
       sampleCode: `var people = [
   {
     name: "Abby",
@@ -634,8 +636,9 @@ people.sort(function (a, b) {
 });
 
 // Notice that the array has been sorted by age first, THEN by name
-console.log(people);
-
+people.forEach(function (person) {
+  console.log(person);
+});
 `,
     },
     {
@@ -647,17 +650,17 @@ console.log(people);
 Here are four methods for that:<br><br>
 
 <ul>
-<li><b>includes(value)</b> - returns <b>true</b> or <b>false</b>: is this value in the array?<br></li>
-<li><b>indexOf(value)</b> - returns the <b>index</b> of the value, or <b>-1</b> if not found<br></li>
-<li><b>find(fn)</b> - returns the <b>first item</b> that passes your test function, or <b>undefined</b><br></li>
-<li><b>findIndex(fn)</b> - same, but returns the <b>index</b> instead of the item<br><br></li>
+<li><b>includes( value )</b> - returns <b>true</b> or <b>false</b>: is this value in the array?<br></li>
+<li><b>indexOf( value )</b> - returns the <b>index</b> of the value, or <b>-1</b> if not found<br></li>
+<li><b>find( fn )</b> - returns the <b>first item</b> that passes your test function, or <b>undefined</b><br></li>
+<li><b>findIndex( fn )</b> - same, but returns the <b>index</b> instead of the item<br><br></li>
 </ul>
 
 Use <b>includes</b> and <b>indexOf</b> when you're looking for a simple value.<br>
 Use <b>find</b> and <b>findIndex</b> when you need to match on a condition.<br><br>
 
 Try running the code!`,
-      sampleCode: `var fruits = ["apple", "banana", "cherry", "mango"];
+      sampleCode: `var fruits = ["apple", "banana", "cherry", "mango", "pineapple", "blueberry"];
 
 // includes - just true or false
 console.log("includes banana?", fruits.includes("banana")); // true
@@ -668,25 +671,19 @@ console.log("indexOf cherry:", fruits.indexOf("cherry")); // 2
 console.log("indexOf grape:", fruits.indexOf("grape")); // -1
 
 // find - returns the first item that passes the test
-var numbers = [4, 9, 2, 7, 5];
-
-var firstBigNumber = numbers.find(function (n) {
-  return n > 6;
-});
-console.log("first Big Number:", firstBigNumber); // 9
-
-// findIndex - returns the index of that item instead
-var firstBigIndex = numbers.findIndex(function (n) {
-  return n > 6;
-});
-console.log("first Big Index:", firstBigIndex); // 1
+// this function is the test, it'll return true when it hits a fruit name that is longer than 6
+function firstLongFruitName(fruit) {
+  return fruit.length > 6;
+}
+console.log("first long fruit name:", fruits.find(firstLongFruitName)); // pineapple
+console.log("first long fruit index:", fruits.findIndex(firstLongFruitName)); // 4
 
 `,
     },
     {
       type: 'test',
       key: 'hasItem',
-      title: `function "hasItem"`,
+      title: `function "hasItem" (array.includes)`,
       instructions: `Make a function that takes an array and a value.<br><br>
 
       Use includes( ) to return true if the value is in the array, false if not.<br><br>
@@ -731,7 +728,7 @@ console.log("first Big Index:", firstBigIndex); // 1
     {
       type: 'test',
       key: 'getIndex',
-      title: `function "getIndex"`,
+      title: `function "getIndex" (array.indexOf)`,
       instructions: `Make a function that takes an array and a value.<br><br>
 
       Use indexOf( ) to return the index of the value in the array. If it's not found, return -1.<br><br>
@@ -776,7 +773,7 @@ console.log("first Big Index:", firstBigIndex); // 1
     {
       type: 'test',
       key: 'findOver10',
-      title: `function "findOver10"`,
+      title: `function "findOver10" (array.find)`,
       instructions: `Make a function that takes an array of numbers.<br><br>
 
       Use find( ) to return the first number that is greater than 10.<br><br>
@@ -821,7 +818,7 @@ console.log("first Big Index:", firstBigIndex); // 1
     {
       type: 'test',
       key: 'findIndexOver10',
-      title: `function "findIndexOver10"`,
+      title: `function "findIndexOver10" (array.findIndex)`,
       instructions: `Make a function that takes an array of numbers.<br><br>
 
       Use findIndex( ) to return the index of the first number greater than 10.<br><br>
@@ -892,7 +889,7 @@ console.log(line);  // ["Zara", "Bob", "Carol"]
     {
       type: 'test',
       key: 'replaceFirst',
-      title: `function "replaceFirst"`,
+      title: `function "replaceFirst" (array.shift)`,
       instructions: `Make a function that takes an array and a new value as arguments.<br><br>
 
       Use shift( ) to remove the first item, then use unshift( ) to add the new value to the beginning. Return the modified array.<br><br>
@@ -948,7 +945,7 @@ console.log(line);  // ["Zara", "Bob", "Carol"]
     {
       type: 'lesson',
       key: 'lesson-concat',
-      title: 'Combining Arrays with concat( )',
+      title: 'Combine with concat( )',
       text: `<b>concat( )</b> combines two or more arrays into a <b>new array</b>. It does not modify the originals.<br><br>
 
       <ul>
@@ -1043,7 +1040,7 @@ console.log(all); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
     {
       type: 'lesson',
       key: 'lesson-slice',
-      title: 'Cutting Arrays with slice( )',
+      title: 'Cutting with slice( )',
       text: `<b>slice( )</b> cuts out a portion of an array and returns it as a <b>new array</b>. The original is not modified.<br><br>
 
       <ul>
@@ -1116,7 +1113,7 @@ var middle;`,
     {
       type: 'lesson',
       key: 'lesson-splice',
-      title: 'Modifying Arrays with splice()',
+      title: 'Modifying Arrays with splice( )',
       text: `<b>splice()</b> is the most powerful array method for changing what's <i>inside</i> an array. It can <b>remove</b>, <b>insert</b>, or <b>replace</b> items — and it modifies the original array directly.<br><br>
 
 <b>Removing items:</b><br>
@@ -1131,7 +1128,7 @@ var middle;`,
 <ul>
 <b>array.splice(start, 1, newItem)</b> — removes 1 item and inserts newItem in its place</ul><br>
 
-splice() also <b>returns</b> the items it removed (as an array).<br><br>
+<b>splice( )</b> also <b>returns</b> the items it removed (as an array).<br><br>
 
 Try running the code!`,
       sampleCode: `var colors = ['red', 'green', 'blue', 'yellow'];
@@ -1153,7 +1150,7 @@ console.log(colors);  // ['red', 'purple', 'orange']
     {
       type: 'test',
       key: 'removeItem',
-      title: `splice() practice`,
+      title: `splice( ) practice`,
       instructions: `Three arrays each have an X's in the wrong place.<br><br>
       
       Write a function called "fixArrays" and use splice() three times to remove those X's.<br><br>

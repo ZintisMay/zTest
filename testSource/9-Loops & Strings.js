@@ -7,12 +7,21 @@ const test = {
       type: 'lesson',
       key: 'lesson-for-loop',
       title: 'For Loops',
-      text: `A <b>for loop</b> repeats a block of code a set number of times.<br><br>
+      text: `<b>for loop</b> repeats a block of code a set number of times.<br><br>
+
+<ul>
+for ( var i = 0; i < 5; i++ ) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log( i );<br>
+}
+</ul><br>
 
 It has three parts:<br>
+
+<ul>
 <b>var i = 0</b> - start value<br>
 <b>i &lt; 5</b> - keep going while this is true<br>
-<b>i++</b> - what to do after each loop (i++ means add 1)<br><br>
+<b>i++</b> - what to do after each loop ( i++ adds 1 to i )
+</ul><br>
 
 <b>i</b> is just a variable name - it's short for "index" and is the convention, but you can name it anything.<br><br>
 
@@ -69,6 +78,12 @@ console.log(result); // "*****"`,
           description: `takes one argument`,
           test: () => {
             expect(makeXAsterisks).takesXArguments(1);
+          },
+        },
+        {
+          description: `uses a for loop`,
+          test: () => {
+            expectCode().toUseForLoop();
           },
         },
         {
