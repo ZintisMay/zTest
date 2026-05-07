@@ -393,6 +393,7 @@ function buildAstFlags(code) {
     const assignOps = new Set();
     const stmts = new Set();
     const decls = new Set();
+    const functions = {};
     let hasTernary = false;
     let hasArrowFunction = false;
     let hasTemplateLiteral = false;
@@ -471,6 +472,35 @@ function buildAstFlags(code) {
         case 'TryStatement':
           stmts.add(node.type);
           break;
+        case 'FunctionDeclaration':
+        case 'FunctionExpression': {
+          const fnName = node.id?.name;
+          if (fnName) {
+            const fnStmts = new Set();
+            function walkFn(n) {
+              if (!n || typeof n !== 'object' || !n.type) return;
+              switch (n.type) {
+                case 'ForStatement':
+                case 'ForInStatement':
+                case 'ForOfStatement':
+                case 'WhileStatement':
+                case 'DoWhileStatement':
+                case 'SwitchStatement':
+                case 'TryStatement':
+                case 'IfStatement':
+                  fnStmts.add(n.type);
+                  break;
+              }
+              for (const val of Object.values(n)) {
+                if (Array.isArray(val)) val.forEach(walkFn);
+                else if (val && typeof val === 'object' && val.type) walkFn(val);
+              }
+            }
+            walkFn(node.body);
+            functions[fnName] = { statements: [...fnStmts] };
+          }
+          break;
+        }
         case 'VariableDeclaration':
           decls.add(node.kind);
           break;
@@ -536,6 +566,7 @@ function buildAstFlags(code) {
       hasIfFalse,
       hasIfWithNot,
       ifConditionIdentifiers: [...ifConditionIdentifiers],
+      functions,
     };
   } catch (e) {
     return null;

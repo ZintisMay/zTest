@@ -653,6 +653,13 @@ function expectCode() {
         throw new Error('does not use a for loop');
       }
     },
+    toUseFunctionWithForLoop(name) {
+      const fn = flags?.functions?.[name];
+      if (!fn) throw new Error(`function "${name}" not found`);
+      if (!fn.statements.includes('ForStatement')) {
+        throw new Error(`function "${name}" does not use a for loop`);
+      }
+    },
     toUseForInLoop() {
       if (!flags?.statements.includes('ForInStatement')) {
         throw new Error('does not use a for...in loop');

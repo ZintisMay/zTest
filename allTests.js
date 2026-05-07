@@ -3401,6 +3401,9 @@ console.log(result); // "*****"`,
           { description: `uses a for loop`, test: () => {
             expectCode().toUseForLoop();
           } },
+          { description: `makeXAsterisks uses a for loop`, test: () => {
+            expectCode().toUseFunctionWithForLoop('makeXAsterisks');
+          } },
           { description: `returns something`, test: () => {
             expect(makeXAsterisks).withArgs(3).toReturnSomething();
           } },
