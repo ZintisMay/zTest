@@ -1,3 +1,114 @@
+== Claude Notes ==> 
+
+I would like you to read over alltests.js and give me a thorough review of whether the lessons presented cover everything up to
+  that point adequately.
+
+  Searched for 1 pattern, read 11 files, listed 3 directories (ctrl+o to expand)
+
+● Now let me read the remaining files (10–16).
+
+  Read 7 files (ctrl+o to expand)
+
+● Here is a thorough review of the curriculum as a whole, going section by section.
+
+  ---
+  Overall Assessment
+
+  The quality of individual lessons and tests is high — the expectCode() enforcement is genuinely clever, the test cases cover edge
+  cases well, and the accumulator/builder pattern lesson (9) is excellent. The main problems are ordering and a few notable gaps.
+
+  ---
+  Ordering Issues
+
+  The biggest problem: loops come before and after map/filter.
+
+  The sequence is: 9-Loops & Strings → 10-Array.map → 11-Array.filter → 12-While Loops → 13-For Loops → 14-For...Of Loops.
+
+  A student completes a brief for loop intro in 9, then has to use callbacks in map/filter (10/11) — which requires understanding
+  anonymous functions, which were themselves only briefly introduced mid-way through lesson 8. Then full loop chapters arrive at
+  12/13/14. This is backwards. The natural flow would be: introduce all three loop types, then teach map/filter as "here's a cleaner
+  way to do what you just did manually."
+
+  If statements revisited too late (lesson 15).
+
+  If/else is taught in depth at lesson 5, then completely disappears until lesson 15, which comes after all the loop lessons. Lesson
+  15 re-teaches the exact same basics (if true, if false, comparisons). If it's meant as drilling practice, it should sit right after
+  lesson 5. If it's a standalone review, that should be clearer.
+
+  String concatenation appears twice under the same name.
+
+  Lesson 2 already has "String Concatenation." Lesson 16 is named "String Concatenation" again but is really about template literals.
+  Lesson 16 should be titled "Template Literals" — students who already passed lesson 2 will not expect to revisit it and may skip it.
+
+  ---
+  Content Gaps
+
+  && and || are never taught. This is the biggest content gap. Lesson 5 teaches !, comparison operators, ==/===, but logical AND and
+  OR are completely absent from all 17 files. Students can't write a meaningful if condition with two conditions without them.
+
+  ++, --, += are never explicitly taught. They appear in lesson 9's for loop (i++, result += "*") and lesson 12's while loop (i++)
+  without any prior introduction. They appear silently in sample code but there is no lesson or test that covers them. At minimum, a
+  short lesson before loops explaining i++ and += would prevent confusion.
+
+  .toUpperCase() is required but never taught. Lesson 14's shout test requires uppercasing characters, implying the student will use
+  .toUpperCase(). No string methods lesson exists anywhere in the curriculum. .length is explained, but methods like .toUpperCase(),
+  .toLowerCase(), .includes(), .split(), .trim() are never introduced.
+
+  Math object is used but never explained. Lesson 12's sample code uses Math.floor() without any explanation. It shows up, works, and
+  moves on. A short note would help.
+
+  No Array.reduce. After map and filter are taught as "the higher-order methods," reduce is the natural third. Even a brief
+  introduction would complete the picture.
+
+  No object methods. Lesson 6 covers properties but never shows that a function can be a property value (obj.greet = function() {}).
+  This is foundational for understanding how array methods like .push() actually work.
+
+  ---
+  Specific Bugs
+
+  sortFruits test calls the wrong function name (8-Array Methods.js, sortFruits test, last check):
+  // These call sortArray, not sortFruits — will error for students
+  expect(sortArray(['banana', 'apple', 'cherry'])).toBeSameArrayAs([...])
+  expect(sortArray(['z', 'a', 'm'])).toBeSameArrayAs([...])
+
+  Wrong test description in lesson 9 (allNumbersUpToX test):
+  description: `makeXAsterisks uses a for loop`,  // should be allNumbersUpToX
+  test: () => { expectCode().toUseFunctionWithForLoop('allNumbersUpToX'); }
+
+  lesson-8a in file 5 is mislabeled. The title says "== Equality (loose)" but the sample function inside is named
+  areTheyExactlyTheSame — which would confuse a student reading along.
+
+  lesson-8a in file 5 also uses == in its sample code body but the title says it's demonstrating strict equality. The === lesson
+  (lesson-8b) comes next but the naming of the sample function bleeds over.
+
+  ---
+  Things Done Well
+
+  - The tests are genuinely thorough — multiple edge cases, empty arrays, negative numbers, boundary values. Good work.
+  - expectCode() checks are excellent for enforcing that students actually use the construct rather than cheating.
+  - The onboarding (lesson 0) sets expectations well and the "learning is the goal, not finishing" framing is great for a beginner
+  audience.
+  - The undefined parameters exercise (lesson 4's logUndefined) is a smart way to teach a concept that bites people later.
+  - The accumulator/builder pattern lesson in 9 is a standout — naming a pattern explicitly helps students recognize it in the wild.
+  - Callbacks and anonymous functions get their own lessons before being required in tests (lesson 8), which is the right approach —
+  it just needs to happen earlier for the loop-based lessons too.
+
+  ---
+  Recommended Priority Fixes
+
+  1. Fix the sortFruits bug — it'll throw a reference error for every student.
+  2. Fix the wrong test description in allNumbersUpToX.
+  3. Add a && / || lesson somewhere in lesson 5 or immediately after.
+  4. Add a short lesson on +=, ++, -- before loops (lesson 9 or as part of operators in 2).
+  5. Reorder 12/13/14 to come before 10/11 — loops before higher-order functions.
+  6. Rename lesson 16 to "Template Literals."
+  7. Add a basic string methods lesson before lesson 14's shout test requires .toUpperCase().
+
+
+
+
+== To Do ==
+
   Transforming
   - map() — create a new array by transforming each item
   - filter() — create a new array with only items that pass a test

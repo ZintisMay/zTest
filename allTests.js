@@ -3384,6 +3384,57 @@ for (var i = 0; i < 5; i++) {
 }
 console.log(result); // "*****"`,
       },
+      { type: 'lesson', key: 'lesson-functions-result-pattern',
+        title: 'Builder & Accumulator',
+        text: `Before you start doing tests, we're going to talk about Functions for a second.<br><br>
+
+      We are going to talk about "patterns" when programming. Patterns just being a way to write code. In the same way you can write a book, or poetry, or a haiku. So unlike other lessons, this isn't a keyword or operator... just a concept.<br><br>
+
+      An <b>"accumulator"</b> is a function that sets a variable, then keeps adding to it until returned.<br><br>
+
+      A <b>"builder"</b> is similar, except it may be a more complex data structure. You add/modify it until it is returned.<br><br>
+
+      The next few tests are going to have you use for loops, and probably the best way to complete them is to have a "result" variable that you keep modifying. Looks something like this:<br><br> 
+
+      <ul>function ( ) {<br>
+      <ul>
+      var result = 0;<br>
+      // do something to result<br>
+      return result;<br>
+      </ul>
+      }</ul><br>
+      
+      Check the sample code closely after running it!`,
+        sampleCode: `// Accumulator... the "result" variable accumulates all the sums up to x
+function sumAllNumbersUpToX(x) {
+  var result = 0;
+  for (var i = 0; i <= x; i++) {
+    result += i;
+  }
+  return result;
+}
+
+console.log("sum up to 10:", sumAllNumbersUpToX(10));
+console.log("sum up to 44:", sumAllNumbersUpToX(44));
+  
+// Builder... the "result" variable is an object built from the arguments
+function createStudent(name, mathGrade, scienceGrade, englishGrade) {
+  var gpa = (mathGrade + scienceGrade + englishGrade) / 3;
+  var isPassing = gpa >= 60;
+  var student = {};
+  student.name = name;
+  student.gpa = gpa;
+  student.isPassing = isPassing;
+  return student;
+}
+
+let bob = createStudent("Bob", 50, 34, 66);
+let stacy = createStudent("Stacy", 40, 90, 80);
+
+console.log(bob);
+console.log(stacy);
+`,
+      },
       { type: 'test', key: 'makeXAsterisks',
         title: `function "makeXAsterisks"`,
         instructions: `Make a function that takes one argument, a number. It should return a string with that many asterisks. Example: makeXAsterisks(5) returns "*****"`,
@@ -3430,6 +3481,12 @@ console.log(result); // "*****"`,
           } },
           { description: `takes one argument`, test: () => {
             expect(allNumbersUpToX).takesXArguments(1);
+          } },
+          { description: `uses a for loop`, test: () => {
+            expectCode().toUseForLoop();
+          } },
+          { description: `makeXAsterisks uses a for loop`, test: () => {
+            expectCode().toUseFunctionWithForLoop('allNumbersUpToX');
           } },
           { description: `returns something`, test: () => {
             expect(allNumbersUpToX).withArgs(4).toReturnSomething();
