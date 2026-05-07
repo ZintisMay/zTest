@@ -786,6 +786,10 @@ function applyTestResults(data, shouldAdvance = false) {
   const complete = isQuestionComplete(window.location.hash);
   hint.textContent = complete ? NEXT_HOTKEY : RUN_HOTKEY;
   hint.classList.toggle('run-hint-complete', complete);
+
+  if (shouldAdvance) {
+    playSound(complete ? '/sounds/success.mp3' : '/sounds/fail.mp3');
+  }
 }
 
 function resetQuestion() {
@@ -806,6 +810,11 @@ function appendToTerminal(text, className) {
   line.classList.add(className);
   line.textContent = text;
   terminalOutput.appendChild(line);
+}
+
+function playSound(src) {
+  const audio = new Audio(src);
+  audio.play().catch(() => {});
 }
 
 renderQuestionCards();

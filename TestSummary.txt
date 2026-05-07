@@ -106,33 +106,34 @@ This file is build by testBuilder.js
       [test] Change Array Items
   8: Array Methods
     [lesson] Array Methods
-      [test] function "add3ToArray"
-      [test] function "popTwice"
-      [test] function "reverseArray"
-      [test] function "sortArray"
+      [test] function "add3ToArray" (array.push)
+      [test] function "popTwice" (array.pop)
+      [test] function "reverseArray" (array.reverse)
+      [test] function "sortFruits" (array.sort)
     [lesson] Sorting Arrays (custom)
     [lesson] Callback Functions
     [lesson] Anonymous Functions
-      [test] function "sortLetters"
-      [test] function "sortNumbers"
-      [test] function "sortByWordLength"
+      [test] function "sortLetters" (array.sort)
+      [test] function "sortNumbers" (array.sort)
+      [test] function "sortByWordLength" (array.sort)
     [lesson] Sorting Arrays (complex)
     [lesson] Finding Things in Arrays
-      [test] function "hasItem"
-      [test] function "getIndex"
-      [test] function "findOver10"
-      [test] function "findIndexOver10"
+      [test] function "hasItem" (array.includes)
+      [test] function "getIndex" (array.indexOf)
+      [test] function "findOver10" (array.find)
+      [test] function "findIndexOver10" (array.findIndex)
     [lesson] shift( ) and unshift( )
-      [test] function "replaceFirst"
-    [lesson] Combining Arrays with concat( )
+      [test] function "replaceFirst" (array.shift)
+    [lesson] Combine with concat( )
       [test] function "combineArrays"
-    [lesson] Cutting Arrays with slice( )
+    [lesson] Cutting with slice( )
       [test] slice( ) practice
-    [lesson] Modifying Arrays with splice()
-      [test] splice() practice
+    [lesson] Modifying Arrays with splice( )
+      [test] splice( ) practice
   9: Loops & Strings
     [lesson] For Loops
     [lesson] Loops & Strings
+    [lesson] Builder & Accumulator
       [test] function "makeXAsterisks"
       [test] function "allNumbersUpToX"
       [test] function "makeStringWithXLetterY"
