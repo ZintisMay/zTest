@@ -1,16 +1,39 @@
-let ZT_SOURCE = '';
-let ALLTESTS_SOURCE = '';
-
+// Consts
 const RUN_HOTKEY = 'CTRL+ENTER → run';
 const NEXT_HOTKEY = 'CTRL+SHIFT+ENTER → next';
+
+// Terminal to write to
+const terminalOutput = document.querySelector('.terminal-output');
+
+// Listener to iframe messages
+let messageHandler = null;
+
+// Lesson/Test groups/item names
+let activeGroupId = null;
+let activeItem = null;
+
+// === Init ===
+
+renderQuestionCards();
+updateNavState();
+updateProgress();
+initDivider();
+
+// === Source Loading ===
+
+// Fetched as raw text so they can be injected verbatim into the sandbox iframe on each run
+let ZTSource = '';
+let allTestsSource = '';
 
 Promise.all([
   fetch('zTest/Z_T.js').then((r) => r.text()),
   fetch('allTests.js').then((r) => r.text()),
 ]).then(([zt, at]) => {
-  ZT_SOURCE = zt;
-  ALLTESTS_SOURCE = at;
+  ZTSource = zt;
+  allTestsSource = at;
 });
+
+// === Menu & Tour ===
 
 function toggleMenu() {
   document.getElementById('side-menu').classList.toggle('open');
@@ -68,6 +91,8 @@ function startTour() {
     .start();
 }
 
+// === Modal ===
+
 const modalContent = {
   'What is Z_Test?': {
     title: 'What is Z_Test?',
@@ -101,13 +126,21 @@ function closeModal() {
   document.getElementById('modal-backdrop').classList.remove('open');
 }
 
+// === Routing ===
+// Hash format: #GroupId-sectionKey (e.g. #A1-varATests).
+// activeGroupId / activeItem track what's currently displayed so other
+// functions don't need to re-parse the URL on every call.
+
+// Re-fire hashchange on load so the correct question is rendered if the
+// page is refreshed or opened with a hash already in the URL.
+if (window.location.hash) {
+  window.dispatchEvent(new Event('hashchange'));
+}
+
 function parseHash(hash) {
   const [groupId, sectionKey] = hash.replace('#', '').split('-');
   return { groupId, sectionKey };
 }
-
-let activeGroupId = null;
-let activeItem = null;
 
 function renderQuestionCards() {
   const leftPanel = document.querySelector('.panel-nav-content');
@@ -165,10 +198,11 @@ window.addEventListener('hashchange', () => {
   const hash = window.location.hash;
   const topCenter = document.querySelector('.top-center');
   terminalOutput.innerHTML = '';
-  speechSynthesis.cancel();
+  speechSynthesis.cancel(); // stop any TTS that was playing on the previous question
   const hint = document.querySelector('.run-hint');
   hint.textContent = RUN_HOTKEY;
   hint.classList.remove('run-hint-complete');
+  // remove the prior run's message listener to prevent double-firing results
   if (messageHandler) {
     window.removeEventListener('message', messageHandler);
     messageHandler = null;
@@ -204,6 +238,7 @@ window.addEventListener('hashchange', () => {
           updateProgress();
           const entry = getSaves()[hash] || {};
           editor.setValue(entry.code || item.sampleCode || '');
+          // restore saved results silently — shouldAdvance is false so no sound plays
           if (entry.results) applyTestResults(entry.results);
         }
         return;
@@ -214,6 +249,8 @@ window.addEventListener('hashchange', () => {
   renderTests(null);
   updateProgress();
 });
+
+// === Text-to-Speech ===
 
 function getBestVoice() {
   const voices = speechSynthesis.getVoices();
@@ -270,6 +307,8 @@ function makeTtsButton(html) {
   return btn;
 }
 
+// === Rendering ===
+
 function renderTests(section, helpUrl) {
   const testsPanel = document.querySelector('.tests-content');
   testsPanel.innerHTML = '';
@@ -294,6 +333,8 @@ function renderTests(section, helpUrl) {
   section.tests.forEach((t) => {
     const pane = document.createElement('div');
     if (t.intro) {
+      // intro panes are purely descriptive — they have no test function and
+      // are never marked pass/fail
       pane.classList.add('test-pane', 'test-pane-intro');
     } else {
       pane.classList.add('test-pane');
@@ -331,7 +372,7 @@ function renderLesson(lesson) {
   testsPanel.appendChild(body);
 }
 
-const terminalOutput = document.querySelector('.terminal-output');
+// === Editor ===
 
 const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
   mode: 'javascript',
@@ -356,6 +397,10 @@ editor.on('change', () => {
   }, 300);
 });
 
+// === Persistence ===
+// All saves live under a single localStorage key as a JSON object.
+// Shape: { [hash]: { code: string, results: object } }
+
 function getSaves() {
   return JSON.parse(localStorage.getItem('Z_T_saves') || '{}');
 }
@@ -366,7 +411,7 @@ function saveEntry(hash, patch) {
   localStorage.setItem('Z_T_saves', JSON.stringify(saves));
 }
 
-let messageHandler = null;
+// === Keyboard Shortcuts ===
 
 document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.shiftKey && e.key === 'Enter') {
@@ -382,6 +427,13 @@ document.addEventListener('keydown', (e) => {
     runCode();
   }
 });
+
+// === AST Analysis ===
+// Parses the student's code with Prettier's Babel parser and walks the AST
+// to collect structural facts (operators used, loop types, arrow functions,
+// etc.). The result object is injected into the iframe as __astFlags so that
+// Z_T.js test helpers can enforce syntax requirements — e.g. "must use a
+// for loop" or "must use a template literal".
 
 function buildAstFlags(code) {
   try {
@@ -576,6 +628,15 @@ function buildAstFlags(code) {
   }
 }
 
+// === Code Execution ===
+// Student code runs inside a hidden iframe. Scripts are injected in order:
+//   1. setup script  — overrides console.log / window.onerror, exposes __src and __astFlags
+//   2. Z_T.js        — test runner library
+//   3. allTests.js   — all exercise data
+//   4. student code  — the code from the editor
+//   5. test runner   — calls Z_T.testAll() for the active section
+// Results are sent back to the parent via postMessage.
+
 function runCode() {
   try {
     const cursor = editor.getCursor();
@@ -593,7 +654,6 @@ function runCode() {
   const astFlags = buildAstFlags(code);
   terminalOutput.innerHTML = '';
 
-  // Clear our prior iframe
   const existing = document.getElementById('sandbox');
   if (existing) existing.remove();
 
@@ -616,6 +676,8 @@ function runCode() {
 
   window.addEventListener('message', messageHandler);
 
+  // intro-typed tests have no real test function; replace them with a no-op
+  // so Z_T.testAll() doesn't try to execute them
   const testRunnerScript =
     activeItem?.type === 'test'
       ? `
@@ -634,10 +696,12 @@ function runCode() {
   iframeDoc.open();
   iframeDoc.write(`
     <script>
+      // __src and __astFlags are globals for Z_T.js test helpers to inspect
       const __src = ${JSON.stringify(code)};
       const __astFlags = ${JSON.stringify(astFlags)};
       const __logs = [];
       window.console.log = function(...args) {
+        // Z_T.js uses %c-prefixed calls for its own styled output; skip them
         if (typeof args[0] === "string" && args[0].startsWith("%c")) return;
         __logs.push(args);
         window.parent.postMessage({ type: "log", data: args.map(a => (typeof a === 'object' && a !== null) ? JSON.stringify(a, null, 2) : String(a)) }, "*");
@@ -647,13 +711,16 @@ function runCode() {
         return true;
       };
     <\/script>
-    <script>${ZT_SOURCE}<\/script>
-    <script>${ALLTESTS_SOURCE}<\/script>
+    <script>${ZTSource}<\/script>
+    <script>${allTestsSource}<\/script>
     <script>${code}<\/script>
     <script>${testRunnerScript}<\/script>
   `);
   iframeDoc.close();
 }
+
+// === Navigation ===
+// Z_T uses null as the passing result value; any string is the failure message.
 
 function isQuestionComplete(hash) {
   const { sectionKey } = parseHash(hash);
@@ -663,6 +730,7 @@ function isQuestionComplete(hash) {
   );
 }
 
+// Advances to the literal next item in the list (used by Ctrl+Shift+Enter).
 function getNextItemHash() {
   let found = false;
   for (const group of allTests) {
@@ -675,6 +743,8 @@ function getNextItemHash() {
   return null;
 }
 
+// Advances to the next incomplete question, skipping already-passing tests
+// (used by the Next button so students aren't sent back to finished work).
 function getNextHash() {
   let found = false;
   for (const group of allTests) {
@@ -710,6 +780,8 @@ function goBack() {
   const prev = getPrevHash();
   if (prev) window.location.hash = prev;
 }
+
+// === Progress ===
 
 function updateProgress() {
   const progressEl = document.querySelector('.progress');
@@ -756,6 +828,10 @@ function updateNavState() {
   });
 }
 
+// === Test Results ===
+
+// shouldAdvance is true only on a live run (not when restoring saved results
+// on navigation), so sound only plays when the student actually ran the code.
 function applyTestResults(data, shouldAdvance = false) {
   if (!activeItem?.key || !data[activeItem.key]) return;
   const existingEntry = getSaves()[window.location.hash];
@@ -765,7 +841,7 @@ function applyTestResults(data, shouldAdvance = false) {
     .querySelectorAll('.test-pane');
   panes.forEach((pane, i) => {
     if (!results[i]) return;
-    if (pane.classList.contains('test-pane-intro')) return;
+    if (pane.classList.contains('test-pane-intro')) return; // intro panes have no result
     const passed = results[i].result === null;
     pane.classList.remove('test-pass', 'test-fail');
     pane.classList.add(passed ? 'test-pass' : 'test-fail');
@@ -804,6 +880,8 @@ function resetQuestion() {
   runCode();
 }
 
+// === Terminal ===
+
 function clearTerminal() {
   terminalOutput.innerHTML = '';
 }
@@ -815,6 +893,8 @@ function appendToTerminal(text, className) {
   terminalOutput.appendChild(line);
 }
 
+// === Sound ===
+
 let soundMuted = false;
 
 function playSound(src) {
@@ -823,14 +903,42 @@ function playSound(src) {
   audio.play().catch(() => {});
 }
 
-renderQuestionCards();
-updateNavState();
-updateProgress();
-initDivider();
+// === Draggable Divider ===
 
-if (window.location.hash) {
-  window.dispatchEvent(new Event('hashchange'));
+function initDivider() {
+  const handle = document.querySelector('.divider-handle');
+  const codePanel = document.querySelector('.panel-code');
+  const terminalPanel = document.querySelector('.panel-terminal');
+
+  let isDragging = false;
+  let startY, startCodeHeight, startTerminalHeight;
+
+  handle.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startY = e.clientY;
+    startCodeHeight = codePanel.getBoundingClientRect().height;
+    startTerminalHeight = terminalPanel.getBoundingClientRect().height;
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const delta = e.clientY - startY;
+    const newCodeHeight = startCodeHeight + delta;
+    const newTerminalHeight = startTerminalHeight - delta;
+    if (newCodeHeight < 50 || newTerminalHeight < 50) return;
+    codePanel.style.flex = 'none';
+    codePanel.style.height = newCodeHeight + 'px';
+    terminalPanel.style.flex = 'none';
+    terminalPanel.style.height = newTerminalHeight + 'px';
+  });
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
 }
+
+// === Event Listeners ===
 
 document.getElementById('sound-btn').addEventListener('click', () => {
   soundMuted = !soundMuted;
@@ -904,35 +1012,10 @@ document.getElementById('logo').addEventListener('click', () => {
 document.getElementById('back-btn').addEventListener('click', goBack);
 document.getElementById('next-btn').addEventListener('click', goNext);
 
-function initDivider() {
-  const handle = document.querySelector('.divider-handle');
-  const codePanel = document.querySelector('.panel-code');
-  const terminalPanel = document.querySelector('.panel-terminal');
+// === Hash Check ===
 
-  let isDragging = false;
-  let startY, startCodeHeight, startTerminalHeight;
-
-  handle.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startY = e.clientY;
-    startCodeHeight = codePanel.getBoundingClientRect().height;
-    startTerminalHeight = terminalPanel.getBoundingClientRect().height;
-    e.preventDefault();
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    const delta = e.clientY - startY;
-    const newCodeHeight = startCodeHeight + delta;
-    const newTerminalHeight = startTerminalHeight - delta;
-    if (newCodeHeight < 50 || newTerminalHeight < 50) return;
-    codePanel.style.flex = 'none';
-    codePanel.style.height = newCodeHeight + 'px';
-    terminalPanel.style.flex = 'none';
-    terminalPanel.style.height = newTerminalHeight + 'px';
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
+// Re-fire hashchange on load so the correct question is rendered if the
+// page is refreshed or opened with a hash already in the URL.
+if (window.location.hash) {
+  window.dispatchEvent(new Event('hashchange'));
 }
