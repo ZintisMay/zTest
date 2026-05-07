@@ -793,6 +793,39 @@ body {
   background-color: #a02828;
 }
 
+/* ── Sound Button ── */
+.sound-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.sound-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.sound-btn .icon-sound-off {
+  display: none;
+}
+
+.sound-btn.muted {
+  color: #555;
+}
+
+.sound-btn.muted .icon-sound-on {
+  display: none;
+}
+
+.sound-btn.muted .icon-sound-off {
+  display: block;
+}
+
 /* ── TTS Button ── */
 .tts-btn {
   display: block;

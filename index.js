@@ -812,7 +812,10 @@ function appendToTerminal(text, className) {
   terminalOutput.appendChild(line);
 }
 
+let soundMuted = false;
+
 function playSound(src) {
+  if (soundMuted) return;
   const audio = new Audio(src);
   audio.play().catch(() => {});
 }
@@ -826,6 +829,10 @@ if (window.location.hash) {
   window.dispatchEvent(new Event('hashchange'));
 }
 
+document.getElementById('sound-btn').addEventListener('click', () => {
+  soundMuted = !soundMuted;
+  document.getElementById('sound-btn').classList.toggle('muted', soundMuted);
+});
 document.getElementById('hamburger-btn').addEventListener('click', toggleMenu);
 document.getElementById('modal-backdrop').addEventListener('click', (e) => {
   if (e.target === document.getElementById('modal-backdrop')) closeModal();
