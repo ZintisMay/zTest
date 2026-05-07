@@ -260,7 +260,9 @@ function makeTtsButton(html) {
       const utterance = new SpeechSynthesisUtterance(tmp.innerText);
       const voice = getBestVoice();
       if (voice) utterance.voice = voice;
-      utterance.onend = () => { btn.textContent = 'Read aloud'; };
+      utterance.onend = () => {
+        btn.textContent = 'Read aloud';
+      };
       btn.textContent = 'Stop';
       speechSynthesis.speak(utterance);
     }
@@ -493,7 +495,8 @@ function buildAstFlags(code) {
               }
               for (const val of Object.values(n)) {
                 if (Array.isArray(val)) val.forEach(walkFn);
-                else if (val && typeof val === 'object' && val.type) walkFn(val);
+                else if (val && typeof val === 'object' && val.type)
+                  walkFn(val);
               }
             }
             walkFn(node.body);
@@ -787,8 +790,8 @@ function applyTestResults(data, shouldAdvance = false) {
   hint.textContent = complete ? NEXT_HOTKEY : RUN_HOTKEY;
   hint.classList.toggle('run-hint-complete', complete);
 
-  if (shouldAdvance) {
-    playSound(complete ? '/sounds/success.mp3' : '/sounds/fail.mp3');
+  if (shouldAdvance && complete) {
+    playSound('/sounds/success.mp3');
   }
 }
 
